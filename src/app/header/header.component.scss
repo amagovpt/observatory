@@ -1,0 +1,28 @@
+.small-logo {
+	margin-top: 1em;
+	width: 60%;
+}
+
+.sticky_toolbar {
+	position: fixed;
+  z-index: 100;
+}
+
+.title {
+	text-align: center;
+
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .drop_content {
+    margin-bottom: 60px;
+  }
+}

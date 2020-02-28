@@ -1,0 +1,13 @@
+<nav id="navBar" fxLayout="row">
+  <span>{{ "HEADER.NAV.location" | translate }} &nbsp;</span>
+  <a href="http://www.acessibilidade.gov.pt/">{{ "HEADER.NAV.access" | translate }}</a>
+
+  <mat-icon>keyboard_arrow_right</mat-icon>
+  <a routerLink="/" routerLinkActive="active">{{ "HEADER.NAV.home" | translate }}</a>
+
+  <mat-icon *ngIf="tag">keyboard_arrow_right</mat-icon>
+  <a [routerLink]="['/', tag]" routerLinkActive="active" *ngIf="tag">{{ tag }}</a>
+
+  <mat-icon *ngIf="website">keyboard_arrow_right</mat-icon>
+  <a [routerLink]="['/', tag, website]" routerLinkActive="active" *ngIf="website">{{ website }}</a>
+</nav>

@@ -1,0 +1,11 @@
+.chart {
+  overflow: hidden;
+}
+
+table {
+  text-align: center;
+
+  tr td:nth-child(2) {
+    text-align: left;
+  }
+}

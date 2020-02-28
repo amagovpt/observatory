@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>{{ "DIALOGS.errors.title" | translate }}</h1>
+<mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab label="{{ 'DIALOGS.chart' | translate }}">
+      <div class="chart">
+        <canvas #chartErrors></canvas>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{ 'DIALOGS.table' | translate }}">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th fxHide.lt-sm>{{ "DIALOGS.errors.level" | translate }}</th>
+            <th>{{ "DIALOGS.errors.description" | translate }}</th>
+            <th *ngIf="isCat">{{ "DIALOGS.errors.websites" | translate }}</th>
+            <th>{{ "DIALOGS.errors.pages" | translate }}</th>
+            <th>{{ "DIALOGS.errors.situations" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of errors">
+            <td fxHide.lt-sm>{{elemStats[e["key"]]["lev"]}}</td>
+            <td innerHTML="{{ 'ELEMS.' + e['key'] | translate }}"></td>
+            <td *ngIf="isCat">{{e["n_websites"]}}</td>
+            <td>{{e["n_pages"]}}</td>
+            <td>{{e["n_elems"]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions fxLayout="row">
+  <span fxFlex></span>
+  <button mat-flat-button color="warn" mat-dialog-close>{{ "DIALOGS.close" | translate }}</button>
+</mat-dialog-actions>

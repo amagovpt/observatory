@@ -43,8 +43,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSidenavModule
   ],
   exports: [
-  	MatButtonModule,
-  	MatCheckboxModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatTooltipModule,
     MatIconModule,
     MatCardModule,
