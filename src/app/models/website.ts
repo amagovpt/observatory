@@ -109,13 +109,16 @@ export class Website {
   }
 
   getTopTenErrors(): any {
-    const errors = this.errors.map((v: any, k: number) => {
-      return {
-        key: k,
-        n_elems: this.errors[k].n_elems,
-        n_pages: this.errors[k].n_pages
-      };
-    });
+    const errors = new Array<any>();
+    for (const key in this.errors || {}) {
+      if (this.errors[key]) {
+        errors.push({
+          key,
+          n_elems: this.errors[key].n_elems,
+          n_pages: this.errors[key].n_pages,
+        });
+      }
+    }
 
     return errors.sort((a: any, b: any) => a.n_elems - b.n_elems).slice(0, 10);
   }

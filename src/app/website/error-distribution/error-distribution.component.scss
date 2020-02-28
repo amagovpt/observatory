@@ -1,0 +1,11 @@
+:host {
+  width: 100%;
+}
+
+table {
+  text-align: center;
+}
+
+table tr td:nth-child(2) {
+  text-align: left;
+}

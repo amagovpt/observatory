@@ -1,4 +1,4 @@
-import { OnInit, OnDestroy, Component, Injectable, ViewChild, ElementRef } from '@angular/core';
+import { OnInit, OnDestroy, Component, Injectable, ViewChild, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,8 @@ import { DataService } from './data.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit, OnDestroy {
 
@@ -41,7 +42,8 @@ export class AppComponent implements OnInit, OnDestroy {
     public readonly el: ElementRef,
     private readonly data: DataService,
     public readonly translate: TranslateService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly cd: ChangeDetectorRef
   ) {
     this.translate.addLangs(Object.values(this.langs));
     this.translate.setDefaultLang('Portuguese');
@@ -80,6 +82,8 @@ export class AppComponent implements OnInit, OnDestroy {
         switch (segments.length) {
           case 3:
             this.website = decodeURIComponent(segments[2]);
+            this.tag = decodeURIComponent(segments[1]);
+            break;
           case 2:
             this.tag = decodeURIComponent(segments[1]);
             break;
@@ -95,6 +99,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
 
         this.loading = false;
+        this.cd.detectChanges();
       });
   }
 

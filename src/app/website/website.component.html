@@ -1,0 +1,34 @@
+<main id="main" fxLayout="row" fxLayoutAlign="center center">
+  <section *ngIf="!loading && !error" fxLayout="column" fxLayoutAlign="center center" fxFlex.lt-md="95" fxFlex.md="80" fxFlex.lg="80" fxFlex.gt-lg="60">
+    <mat-card class="mat-typography">
+      <mat-card-header fxLayout="row" fxLayoutAlign="center center">
+        <mat-card-title>
+          <h1>{{ "WEBSITE.title" | translate }}</h1>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <h2>{{ "WEBSITE.subtitle" | translate }} {{ website.name }}</h2>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <a mat-icon-button [routerLink]="['/', tag.name]" matTooltip="{{ 'MISC.go_back' | translate }}">
+           <mat-icon aria-label="'MISC.go_back' | translate">arrow_back</mat-icon>
+        </a>
+      </mat-card-actions>
+    </mat-card>
+    <br>
+    <app-website-statistics [website]="website"></app-website-statistics>
+    <br>
+    <app-score-distribution [data]="scoreDistributionData"></app-score-distribution>
+    <br>
+    <app-error-distribution [data]="errorDistributionData"></app-error-distribution>
+    <br>
+    <app-top-five-errors [data]="topFiveErrorsData"></app-top-five-errors>
+    <br>
+    <app-accessibility-plot [data]="accessibilityPlotData"></app-accessibility-plot>
+    <br>
+    <app-all-errors-list [data]="tableData"></app-all-errors-list>
+  </section>
+  <span *ngIf="error">
+    <strong>{{ "MISC.website_error" | translate }}</strong>
+  </span>
+</main>

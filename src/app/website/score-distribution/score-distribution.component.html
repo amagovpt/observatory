@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>{{ "DIALOGS.scores.title" | translate }}</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+    <mat-tab-group fxFlex="70" fxFlex.lt-md="100">
+      <mat-tab label="{{ 'DIALOGS.chart' | translate }}">
+        <canvas #chartDomains></canvas>
+      </mat-tab>
+      <mat-tab label="{{ 'DIALOGS.table' | translate }}">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>{{ "DIALOGS.scores.range" | translate }}</th>
+              <th>{{ "DIALOGS.scores.frequency" | translate }}</th>
+              <th>{{ "DIALOGS.scores.frequency" | translate }} (%)</th>
+              <th>{{ "DIALOGS.scores.cumulative" | translate }}</th>
+              <th>{{ "DIALOGS.scores.cumulative" | translate }} (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let lab of labels; let i = index">
+              <td>{{labels[i]}}</td>
+              <td>{{values[i]}}</td>
+              <td>{{percentageValues[i] | toFixed}}%</td>
+              <td>{{freq[i]}}</td>
+              <td>{{freqPer[i] | toFixed}}%</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

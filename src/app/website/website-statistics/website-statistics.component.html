@@ -1,0 +1,66 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>{{ "WEBSITE.statistics_title" | translate }}</h1>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <h2>{{ "WEBSITE.statistics_subtitle" | translate }}</h2>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content fxLayout.gt-sm="row" fxLayout="column" fxLayoutAlign="space-around center">
+    <div>
+      <ngx-gauge
+        [type]="'semi'"
+        [thick]="'10'"
+        [value]="website.getScore() | toFixed"
+        [label]="'STATISTICS.gauge.label' | translate"
+        [min]="0"
+        [max]="10"
+        [duration]="2000"
+        [thresholds]="thresholdConfig">
+      </ngx-gauge>
+    </div>
+    <div>
+      <mat-list>
+        <mat-list-item>
+          <span><strong>{{ "STATISTICS.pages" | translate }}:</strong> {{ website.pages.length }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span><strong>{{ "STATISTICS.newest_page_updated" | translate }}:</strong> {{ website.recentPage | date }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span><strong>{{ "STATISTICS.oldest_page_updated" | translate }}:</strong> {{ website.oldestPage | date }}</span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div>
+      <table class="table table-bordered">
+        <tr>
+          <td scope="row">{{ "STATISTICS.pages_with_errors" | translate }}</td>
+          <td>{{ pagesWithErrors }}</td>
+          <td>{{ pagesWithErrorsPercentage }}</td>
+        </tr>
+        <tr>
+          <td scope="row">{{ "STATISTICS.pages_without_errors" | translate }}</td>
+          <td>{{ pagesWithoutErrors }}</td>
+          <td>{{ pagesWithoutErrorsPercentage }}</td>
+        </tr>
+        <tr>
+          <td scope="row">{{ "STATISTICS.pages_without_errors_a" | translate }}</td>
+          <td>{{ pagesWithoutErrorsA }}</td>
+          <td>{{ pagesWithoutErrorsAPercentage }}</td>
+        </tr>
+        <tr>
+          <td scope="row">{{ "STATISTICS.pages_without_errors_a_aa" | translate }}</td>
+          <td>{{ pagesWithoutErrorsAA }}</td>
+          <td>{{ pagesWithoutErrorsAAPercentage }}</td>
+        </tr>
+        <tr>
+          <td scope="row">{{ "STATISTICS.pages_without_errors_a_aa_aaa" | translate }}</td>
+          <td>{{ pagesWithoutErrorsAAA }}</td>
+          <td>{{ pagesWithoutErrorsAAAPercentage }}</td>
+        </tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

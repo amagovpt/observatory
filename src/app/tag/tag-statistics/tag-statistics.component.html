@@ -1,1 +1,49 @@
-<p>tag-statistics works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>{{ "TAG.statistics_title" | translate }}</h1>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <h2>{{ "TAG.statistics_subtitle" | translate }}</h2>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content fxLayout.gt-sm="row" fxLayout="column" fxLayoutAlign="space-around center">
+    <div>
+      <ngx-gauge
+        [type]="'semi'"
+        [thick]="'10'"
+        [value]="tag.getScore() | toFixed"
+        [label]="'STATISTICS.gauge.label' | translate"
+        [min]="0"
+        [max]="10"
+        [duration]="2000"
+        [thresholds]="thresholdConfig">
+      </ngx-gauge>
+    </div>
+    <div>
+      <mat-list>
+        <mat-list-item>
+          <span><strong>{{ "STATISTICS.websites" | translate }}:</strong> {{ tag.websites.length }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span><strong>{{ "STATISTICS.pages" | translate }}:</strong> {{ tag.nPages }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span><strong>{{ "STATISTICS.newest_page_updated" | translate }}:</strong> {{ tag.recentPage | date }}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span><strong>{{ "STATISTICS.oldest_page_updated" | translate }}:</strong> {{ tag.oldestPage | date }}</span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card-content>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
+    <button mat-flat-button color="primary" (click)="openScoreDistributionDialog()">
+      {{ "STATISTICS.score_distribution" | translate }}
+    </button>
+    <span fxFlex="1"></span>
+    <button mat-flat-button color="warn" (click)="openErrorDistributionDialog()">
+      {{ "STATISTICS.error_distribution" | translate }}
+    </button>
+  </mat-card-actions>
+</mat-card>

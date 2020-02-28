@@ -21,6 +21,8 @@ import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 import { HomeModule } from './home/home.module';
+import { TagModule } from './tag/tag.module';
+import { WebsiteModule } from './website/website.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -53,7 +55,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgxGaugeModule,
     FlexLayoutModule,
     HttpClientModule,
-    HomeModule
+    HomeModule,
+    TagModule,
+    WebsiteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -106,14 +106,17 @@ export class Tag {
   }
 
   getTopTenErrors(): any {
-    const errors = this.errors.map((v: any, k: number) => {
-      return {
-        key: k,
-        n_elems: this.errors[k].n_elems,
-        n_pages: this.errors[k].n_pages,
-        n_websites: this.errors[k].n_websites
-      };
-    });
+    const errors = new Array<any>();
+    for (const key in this.errors || {}) {
+      if (this.errors[key]) {
+        errors.push({
+          key,
+          n_elems: this.errors[key].n_elems,
+          n_pages: this.errors[key].n_pages,
+          n_websites: this.errors[key].n_websites
+        });
+      }
+    }
     return orderBy(errors, ['n_elems', 'n_pages', 'n_websites'], ['desc', 'desc', 'desc']).slice(0, 10);
   }
 }
