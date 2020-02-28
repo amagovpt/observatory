@@ -6,8 +6,8 @@
   <a routerLink="/" routerLinkActive="active">{{ "HEADER.NAV.home" | translate }}</a>
 
   <mat-icon *ngIf="tag">keyboard_arrow_right</mat-icon>
-  <a [routerLink]="['/', tag]" routerLinkActive="active" *ngIf="tag">{{ tag }}</a>
+  <a [routerLink]="['/', tagId]" routerLinkActive="active" *ngIf="tag">{{ tag }}</a>
 
   <mat-icon *ngIf="website">keyboard_arrow_right</mat-icon>
-  <a [routerLink]="['/', tag, website]" routerLinkActive="active" *ngIf="website">{{ website }}</a>
+  <a [routerLink]="['/', tagId, websiteId]" routerLinkActive="active" *ngIf="website">{{ website }}</a>
 </nav>

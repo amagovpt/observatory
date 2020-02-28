@@ -4,5 +4,12 @@
 }
 
 table {
-  text-align: center;
+  th {
+    text-align: left;
+    font-weight: bold;
+  }
+
+  th, td {
+    padding: 0.5em;
+  }
 }

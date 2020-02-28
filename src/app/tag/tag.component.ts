@@ -34,12 +34,13 @@ export class TagComponent implements OnInit, OnDestroy {
     this.sub = this.activatedRoute.params.subscribe(params => {
       this.multi = params.tag.includes('+');
       if (this.multi) {
-        this.tag = new Tag(-1, params.tag.split('+').join(', '), new Date());
+        let name = '';
         const tags = params.tag.split('+');
         const websites = {};
 
-        for (const name of tags || []) {
-          const tag = this.data.getListTags().tags.find((t: Tag) => t.name === name);
+        for (const id of tags || []) {
+          const tag = this.data.getListTags().getTag(parseInt(id, 0));
+          name += tag.name + ', ';
           for (const website of tag.websites || []) {
             if (websites[website.id]) {
               websites[website.id].count++;
@@ -58,8 +59,10 @@ export class TagComponent implements OnInit, OnDestroy {
             this.tag.addWebsite(website);
           }
         }
+
+        this.tag = new Tag(-1, name.trim().substring(0, name.length), new Date());
       } else {
-        this.tag = this.data.getListTags().tags.find((tag: Tag) => tag.name === params.tag);
+        this.tag = this.data.getListTags().getTag(parseInt(params.tag, 0));
       }
 
       if (!this.tag) {

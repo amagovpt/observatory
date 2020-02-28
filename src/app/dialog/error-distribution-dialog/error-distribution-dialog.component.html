@@ -7,7 +7,7 @@
       </div>
     </mat-tab>
     <mat-tab label="{{ 'DIALOGS.table' | translate }}">
-      <table class="table table-sm">
+      <table border="1" frame="void" rules="rows">
         <thead>
           <tr>
             <th fxHide.lt-sm>{{ "DIALOGS.errors.level" | translate }}</th>
@@ -30,7 +30,6 @@
     </mat-tab>
   </mat-tab-group>
 </mat-dialog-content>
-<mat-divider></mat-divider>
 <mat-dialog-actions fxLayout="row">
   <span fxFlex></span>
   <button mat-flat-button color="warn" mat-dialog-close>{{ "DIALOGS.close" | translate }}</button>

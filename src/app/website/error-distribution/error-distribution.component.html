@@ -1,4 +1,5 @@
-<mat-card>
+<br fxShow="errors.length !== 0">
+<mat-card fxShow="errors.length !== 0">
   <mat-card-header>
     <mat-card-title>
       <h1>{{ "DIALOGS.errors.title" | translate }}</h1>
@@ -10,7 +11,7 @@
         <canvas #chartErrors></canvas>
       </mat-tab>
       <mat-tab label="{{ 'DIALOGS.table' | translate }}">
-        <table class="table table-sm">
+        <table border="1" frame="void" rules="rows">
           <thead>
             <tr>
               <th>{{ "DIALOGS.errors.level" | translate }}</th>

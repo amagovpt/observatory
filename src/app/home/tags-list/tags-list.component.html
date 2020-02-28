@@ -57,7 +57,7 @@
           </td>
           <td fxHide.lt-md>{{ tag.rank }}</td>
           <td>
-            <a [routerLink]="[tag.name]">{{ tag.name }}</a>
+            <a [routerLink]="[tag.id]">{{ tag.name }}</a>
           </td>
           <td>{{ tag.getScore() | toFixed }}</td>
           <td fxHide.lt-md>{{ tag.websites.length }}</td>

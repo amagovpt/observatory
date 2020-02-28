@@ -1,5 +1,6 @@
 import orderBy from 'lodash.orderby';
 import { Tag } from './tag';
+import { Website } from './website';
 
 export class ListTags {
   tags: Array<Tag>;
@@ -110,5 +111,15 @@ export class ListTags {
     }
 
     return orderBy(errors, ['n_elems', 'n_pages', 'n_websites'], ['desc', 'desc', 'desc']).slice(0, 10);
+  }
+
+  getTag(id: number): Tag {
+    return this.tags.find((tag: Tag) => tag.id === id);
+  }
+
+  getWebsite(tagId: number, websiteId: number): Website {
+    return this.tags
+      .find((tag: Tag) => tag.id = tagId).websites
+      .find((website: Website) => website.id === websiteId);
   }
 }

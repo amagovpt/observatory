@@ -44,7 +44,7 @@
         <tr *ngFor="let website of sortedData">
           <td fxHide.lt-md>{{ website.rank }}</td>
           <td>
-            <a [routerLink]="[website.name]">{{ website.name }}</a>
+            <a [routerLink]="[website.id]">{{ website.name }}</a>
           </td>
           <td>{{ website.getScore() | toFixed }}</td>
           <td fxHide.lt-md>{{ website.pages.length }}</td>

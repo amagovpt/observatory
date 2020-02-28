@@ -1,18 +1,8 @@
-<header class="drop_content">
-  <mat-toolbar class="sticky_toolbar" fxHide.gt-sm color="primary">
-    <mat-toolbar-row>
-      <button class="menu-button" mat-icon-button (click)="toggleSideNav()">
-        <mat-icon aria-label="Open sidebar menu">menu</mat-icon>
-      </button>
-      <span class="title" fxFlex>
-        <a routerLink="/">
-          {{ "HEADER.NAV.home" | translate }}
-        </a>
-      </span>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  <mat-divider fxHide.gt-sm></mat-divider>
-  <div fxHide.lt-md>
+<header>
+  <button class="menu-button" fxHide.gt-sm mat-icon-button (click)="toggleSideNav()">
+    <mat-icon aria-label="Open sidebar menu">menu</mat-icon>
+  </button>
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.lt-md>
     <app-breadcrumbs fxFlex></app-breadcrumbs>
   </div>
   <div fxLayout="row" fxLayoutAlign="center center" fxHide.lt-md>

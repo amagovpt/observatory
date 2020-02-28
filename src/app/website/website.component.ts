@@ -44,18 +44,18 @@ export class WebsiteComponent implements OnInit, OnDestroy {
       if (multi) {
         const tags = params.tag.split('+');
         let websiteExists = true;
-        for (const name of tags || []) {
-          websiteExists = websiteExists && listTags.tags.find((tag: Tag) => tag.name === 'name') ? true : false;
+        for (const id of tags || []) {
+          websiteExists = websiteExists && listTags.getTag(parseInt(id, 0)) ? true : false;
         }
         if (websiteExists) {
-          this.tag = listTags.tags.find((tag: Tag) => tag.name === tags[0]);
+          this.tag = listTags.getTag(parseInt(tags[0], 0));
         }
       } else {
-        this.tag = listTags.tags.find((tag: Tag) => tag.name === params.tag);
+        this.tag = listTags.getTag(parseInt(params.tag, 0));
       }
 
       if (this.tag) {
-        this.website = this.tag.websites.find((w: Website) => w.name === params.website);
+        this.website = this.tag.websites.find((w: Website) => w.id === parseInt(params.website, 0));
 
         if (this.website) {
           this.scoreDistributionData =  {

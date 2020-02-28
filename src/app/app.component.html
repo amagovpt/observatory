@@ -36,7 +36,7 @@
   <mat-sidenav-content (scroll)="onScroll($event)">
 
     <div id="main" class="main">
-      <app-header [sideNav]="sidenav"></app-header>
+      <app-header *ngIf="!loading && !error" [sideNav]="sidenav"></app-header>
       <router-outlet *ngIf="!loading && !error"></router-outlet>
       <app-loading *ngIf="loading"></app-loading>
       <app-error *ngIf="error"></app-error>

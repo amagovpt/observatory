@@ -10,7 +10,7 @@
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <a mat-icon-button [routerLink]="['/', tag.name]" matTooltip="{{ 'MISC.go_back' | translate }}">
+        <a mat-icon-button [routerLink]="['/', tag.id]" matTooltip="{{ 'MISC.go_back' | translate }}">
            <mat-icon aria-label="'MISC.go_back' | translate">arrow_back</mat-icon>
         </a>
       </mat-card-actions>
@@ -19,13 +19,10 @@
     <app-website-statistics [website]="website"></app-website-statistics>
     <br>
     <app-score-distribution [data]="scoreDistributionData"></app-score-distribution>
-    <br>
     <app-error-distribution [data]="errorDistributionData"></app-error-distribution>
-    <br>
     <app-top-five-errors [data]="topFiveErrorsData"></app-top-five-errors>
     <br>
     <app-accessibility-plot [data]="accessibilityPlotData"></app-accessibility-plot>
-    <br>
     <app-all-errors-list [data]="tableData"></app-all-errors-list>
   </section>
   <span *ngIf="error">

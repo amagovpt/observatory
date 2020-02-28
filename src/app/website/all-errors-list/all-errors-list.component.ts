@@ -39,13 +39,13 @@ export class AllErrorsListComponent implements OnInit {
     this.errorsKeys = Object.keys(this.errors);
   }
 
-  calculateQuartiles(errors: any): Array<any> {
-    const values = errors.map((e: any) => e !== undefined).sort((a: number, b: number) => a - b);
+  private calculateQuartiles(errors: any): Array<any> {
+    const values = errors.filter((e: any) => e !== undefined).sort((a: number, b: number) => a - b);
 
-    let q1: string;
+    let q1: number;
     let q2: number;
-    let q3: string;
-    let q4: string;
+    let q3: number;
+    let q4: number;
 
     q1 = values[Math.round(0.25 * (values.length + 1)) - 1];
 
@@ -66,7 +66,7 @@ export class AllErrorsListComponent implements OnInit {
     };
 
     let q: string;
-    for (const v of values) {
+    for (const v of values || []) {
       if (v <= q1) {
         q = 'q1';
       } else {
@@ -90,7 +90,6 @@ export class AllErrorsListComponent implements OnInit {
       if (k) {
         const v = tmp[k];
         const sum = v.length;
-
         if (sum > 0) {
           const test = {
             tot: sum,

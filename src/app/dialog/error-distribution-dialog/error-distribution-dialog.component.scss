@@ -3,9 +3,13 @@
 }
 
 table {
-  text-align: center;
-
-  tr td:nth-child(2) {
+  th {
     text-align: left;
+    font-weight: bold;
+  }
+
+  th, td {
+    padding: 0.5em;
   }
 }
+
