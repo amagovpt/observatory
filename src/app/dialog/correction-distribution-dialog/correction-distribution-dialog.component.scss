@@ -1,0 +1,43 @@
+.chart {
+  overflow: hidden;
+}
+
+table tr td:nth-child(2) {
+  text-align: left;
+}
+
+.mat-column-description {
+  flex: 0 0 65% !important;
+}
+
+.mobile-friendly .mat-column-description {
+  flex: 0 0 40% !important;
+}
+
+.mat-header-cell,
+.mat-cell {
+  font-size: 1em;
+}
+
+.mat-cell:not(.mat-column-description),
+.mat-header-cell:not(.mat-column-description){
+  justify-content: center;
+}
+
+.mat-row:nth-child(2n) {
+  background-color: whitesmoke
+}
+
+mat-table {
+  width: max-content;
+  min-width: 100%;
+}
+
+[class*="mat-column-"]{
+  min-width: 75px !important;
+}
+
+.mat-column-description {
+  min-width: 100px !important;
+}
+

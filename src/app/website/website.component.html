@@ -7,11 +7,17 @@
         </mat-card-title>
         <mat-card-subtitle>
           <h2>{{ "WEBSITE.subtitle" | translate }} {{ website.name }}</h2>
+          <span>{{website.domain}}</span>
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
         <a mat-icon-button [routerLink]="['/', tag.id]" matTooltip="{{ 'MISC.go_back' | translate }}">
            <mat-icon aria-label="'MISC.go_back' | translate">arrow_back</mat-icon>
+        </a>
+        <span fxFlex></span>
+        <a mat-icon-button matTooltip="{{ 'MISC.open_webpage' | translate }}" href="http://{{website.domain}}"
+          target="_blank">
+          <mat-icon aria-label="'RESULTS.actions.open_webpage' | translate">open_in_new</mat-icon>
         </a>
       </mat-card-actions>
     </mat-card>
@@ -21,6 +27,7 @@
     <app-score-distribution [data]="scoreDistributionData"></app-score-distribution>
     <app-error-distribution [data]="errorDistributionData"></app-error-distribution>
     <app-top-five-errors [data]="topFiveErrorsData"></app-top-five-errors>
+    <app-top-five-best-practices [data]="topFiveBestPractices"></app-top-five-best-practices>
     <br>
     <app-accessibility-plot [data]="accessibilityPlotData"></app-accessibility-plot>
     <app-all-errors-list [data]="tableData"></app-all-errors-list>

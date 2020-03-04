@@ -10,9 +10,10 @@ import { PipesModule } from '../pipes/pipes.module';
 import { HomeComponent } from './home.component';
 import { TagsStatisticsComponent } from './tags-statistics/tags-statistics.component';
 import { TagsListComponent } from './tags-list/tags-list.component';
+import { TagsTopFiveComponent } from './tags-top-five/tags-top-five.component';
 
 @NgModule({
-  declarations: [HomeComponent, TagsStatisticsComponent, TagsListComponent],
+  declarations: [HomeComponent, TagsStatisticsComponent, TagsListComponent, TagsTopFiveComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,

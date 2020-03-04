@@ -37,13 +37,21 @@
       </mat-list>
     </div>
   </mat-card-content>
-  <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
-    <button mat-flat-button color="primary" (click)="openScoreDistributionDialog()">
+  <mat-card-actions *ngIf="tag.websites.length > 0" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center">
+    <button mat-flat-button color="primary" ngClass.lt-sm='mobile-button' (click)="openScoreDistributionDialog()">
       {{ "STATISTICS.score_distribution" | translate }}
     </button>
-    <span fxFlex="1"></span>
-    <button mat-flat-button color="warn" (click)="openErrorDistributionDialog()">
+    <span fxFlex="1" fxShow.gt-sm></span>
+    <button mat-flat-button color="warn" ngClass.lt-sm='mobile-button' (click)="openErrorDistributionDialog()">
       {{ "STATISTICS.error_distribution" | translate }}
+    </button>
+    <span fxFlex="1" fxShow.gt-sm></span>
+    <button mat-flat-button color="accent" ngClass.lt-sm='mobile-button' (click)="openCorrectionDistributionDialog()">
+      {{ "STATISTICS.correction_distribution" | translate }}
+    </button>
+    <span fxFlex="1" fxShow.gt-sm></span>
+    <button mat-flat-button color="green" ngClass.lt-sm='mobile-button' (click)="openElementCorrectionDistributionDialog()">
+      {{ "STATISTICS.element_correction_distribution" | translate }}
     </button>
   </mat-card-actions>
 </mat-card>

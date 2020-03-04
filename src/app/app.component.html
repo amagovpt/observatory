@@ -8,11 +8,11 @@
           <mat-icon mat-list-icon>home</mat-icon>
           <h4 mat-line>{{ "SIDEBAR.all_tags" | translate }}</h4>
         </mat-list-item>
-        <mat-list-item *ngIf="tag" [routerLink]="['/', tag]" (click)="sidenav.close()">
+        <mat-list-item *ngIf="tag" [routerLink]="['/', tagId]" (click)="sidenav.close()">
           <mat-icon mat-list-icon>category</mat-icon>
           <h4 mat-line>{{ "SIDEBAR.tag" | translate }} {{ tag }}</h4>
         </mat-list-item>
-        <mat-list-item *ngIf="website" [routerLink]="['/', tag, website]" (click)="sidenav.close()">
+        <mat-list-item *ngIf="website" [routerLink]="['/', tagId, websiteId]" (click)="sidenav.close()">
           <mat-icon mat-list-icon>language</mat-icon>
           <h4 mat-line>{{ "SIDEBAR.website" | translate }} {{ website }}</h4>
         </mat-list-item>

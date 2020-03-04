@@ -15,9 +15,10 @@ import { AllErrorsListComponent } from './all-errors-list/all-errors-list.compon
 import { ErrorDistributionComponent } from './error-distribution/error-distribution.component';
 import { ScoreDistributionComponent } from './score-distribution/score-distribution.component';
 import { TopFiveErrorsComponent } from './top-five-errors/top-five-errors.component';
+import { TopFiveBestPracticesComponent } from './top-five-best-practices/top-five-best-practices.component';
 
 @NgModule({
-  declarations: [WebsiteComponent, WebsiteStatisticsComponent, AccessibilityPlotComponent, AllErrorsListComponent, ErrorDistributionComponent, ScoreDistributionComponent, TopFiveErrorsComponent],
+  declarations: [WebsiteComponent, WebsiteStatisticsComponent, AccessibilityPlotComponent, AllErrorsListComponent, ErrorDistributionComponent, ScoreDistributionComponent, TopFiveErrorsComponent, TopFiveBestPracticesComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,

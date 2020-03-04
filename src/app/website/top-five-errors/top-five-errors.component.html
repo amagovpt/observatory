@@ -1,5 +1,5 @@
-<br *ngIf="errorsA?.length > 0 && errorsAA.length > 0 && errorsAAA?.length > 0">
-<mat-card *ngIf="errorsA?.length > 0 && errorsAA.length > 0 && errorsAAA?.length > 0">
+<br *ngIf="errorsA.length > 0 || errorsAA.length > 0 || errorsAAA.length > 0">
+<mat-card *ngIf="errorsA.length > 0 || errorsAA.length > 0 || errorsAAA.length > 0">
   <mat-card-header>
     <mat-card-title>
       <h1>{{ "WEBSITE.top_5_errors.title" | translate }}</h1>
@@ -13,7 +13,7 @@
           {{ i+1 }}.
           <span *ngIf="e.n_pages > 1" innerHTML="{{ 'WEBSITE.top_5_errors.message.p' | translate:{ value: e.n_pages } }}"></span>
           <span *ngIf="e.n_pages === 1" innerHTML="{{ 'WEBSITE.top_5_errors.message.s' | translate:{ value: e.n_pages } }}"></span>
-          <span innerHTML="{{ 'ELEMS.' + e['key'] | translate }}"></span>
+          <span innerHTML="{{ 'RESULTS.' + e['key'] | translate | html }}"></span>
         </p>
       </mat-list-item>
     </mat-list>
@@ -24,7 +24,7 @@
           {{ i+1 }}.
           <span *ngIf="e.n_pages > 1" innerHTML="{{ 'WEBSITE.top_5_errors.message.p' | translate:{ value: e.n_pages } }}"></span>
           <span *ngIf="e.n_pages === 1" innerHTML="{{ 'WEBSITE.top_5_errors.message.s' | translate:{ value: e.n_pages } }}"></span>
-          <span innerHTML="{{ 'ELEMS.' + e['key'] | translate }}"></span>
+          <span innerHTML="{{ 'RESULTS.' + e['key'] | translate | html }}"></span>
         </p>
       </mat-list-item>
     </mat-list>
@@ -35,7 +35,7 @@
           {{ i+1 }}.
           <span *ngIf="e.n_pages > 1" innerHTML="{{ 'WEBSITE.top_5_errors.message.p' | translate:{ value: e.n_pages } }}"></span>
           <span *ngIf="e.n_pages === 1" innerHTML="{{ 'WEBSITE.top_5_errors.message.s' | translate:{ value: e.n_pages } }}"></span>
-          <span innerHTML="{{ 'ELEMS.' + e['key'] | translate }}"></span>
+          <span innerHTML="{{ 'RESULTS.' + e['key'] | translate | html }}"></span>
         </p>
       </mat-list-item>
     </mat-list>

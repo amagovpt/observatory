@@ -1,0 +1,62 @@
+<mat-card class="mat-typography">
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Top {{ sortedData.length }}</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table class="table table-bordered cats-table" matSort matSortActive="rank" matSortDisableClear
+      matSortDirection="asc" (matSortChange)="sortData($event)">
+      <thead>
+        <tr>
+          <th rowspan="2" fxHide.lt-md mat-sort-header="rank">
+            {{ "ALL_TAGS.table.rank" | translate }}
+          </th>
+          <th rowspan="2" width="60%" mat-sort-header="name">
+            {{ "ALL_TAGS.table.name" | translate }}
+          </th>
+          <th rowspan="2" mat-sort-header="score">
+            {{ "ALL_TAGS.table.score" | translate }}
+          </th>
+          <th rowspan="2" fxHide.lt-md mat-sort-header="websites">
+            {{ "ALL_TAGS.table.websites" | translate }}
+          </th>
+          <th rowspan="2" fxHide.lt-md mat-sort-header="pages">
+            {{ "ALL_TAGS.table.pages" | translate }}
+          </th>
+          <th colspan="3" fxHide.lt-sm>
+            {{ "ALL_TAGS.table.levels" | translate }}
+          </th>
+        </tr>
+        <tr>
+          <th fxHide.lt-sm mat-sort-header="A">
+            {{ "ALL_TAGS.table.A" | translate }}
+          </th>
+          <th fxHide.lt-sm mat-sort-header="AA">
+            {{ "ALL_TAGS.table.AA" | translate }}
+          </th>
+          <th fxHide.lt-sm mat-sort-header="AAA">
+            {{ "ALL_TAGS.table.AAA" | translate }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tag of sortedData">
+          <td fxHide.lt-md>{{ tag.rank }}</td>
+          <td>
+            <a [routerLink]="[tag.id]">{{ tag.name }}</a>
+          </td>
+          <td>{{ tag.getScore() | toFixed }}</td>
+          <td fxHide.lt-md>{{ tag.websites.length }}</td>
+          <td fxHide.lt-md>{{ tag.nPages }}</td>
+          <td fxHide.lt-sm>{{ tag.A }}</td>
+          <td fxHide.lt-sm>{{ tag.AA }}</td>
+          <td fxHide.lt-sm>{{ tag.AAA }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <span>
+      {{ "ALL_TAGS.table.note" | translate }}
+    </span>
+  </mat-card-content>
+</mat-card>

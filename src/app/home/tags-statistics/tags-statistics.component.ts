@@ -5,6 +5,8 @@ import { ListTags } from '../../models/list-tags';
 
 import { ScoreDistributionDialogComponent } from '../../dialog/score-distribution-dialog/score-distribution-dialog.component';
 import { ErrorDistributionDialogComponent } from '../../dialog/error-distribution-dialog/error-distribution-dialog.component';
+import { CorrectionDistributionDialogComponent } from '../../dialog/correction-distribution-dialog/correction-distribution-dialog.component';
+import { ElementCorrectionDistributionDialogComponent } from "../../dialog/element-correction-distribution-dialog/element-correction-distribution-dialog.component";
 
 @Component({
   selector: 'app-tags-statistics',
@@ -58,6 +60,26 @@ export class TagsStatisticsComponent {
         isCat: true
       },
       width: this.dialogWidth
+    });
+  }
+  
+  openCorrectionDistributionDialog(): void {
+    this.dialog.open(CorrectionDistributionDialogComponent, {
+      data: {
+        tags: this.listTags,
+        inTagsPage: true
+      },
+      width: this.dialogWidth,
+    });
+  }
+
+  openElementCorrectionDistributionDialog(): void {
+    this.dialog.open(ElementCorrectionDistributionDialogComponent, {
+      data: {
+        tags: this.listTags,
+        inTagsPage: true
+      },
+      width: this.dialogWidth,
     });
   }
 }

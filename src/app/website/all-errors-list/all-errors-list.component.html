@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let e of errors">
-          <td innerHTML="{{ 'ELEMS.' + e['key'] | translate }}"></td>
+          <td innerHTML="{{ 'RESULTS.' + e['key'] | translate | html }}"></td>
           <td fxHide.xs>{{ e.n_elems }}</td>
           <td fxHide.xs>{{ e.n_pages }}</td>
           <td>

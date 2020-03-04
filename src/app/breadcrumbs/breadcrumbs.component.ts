@@ -27,6 +27,22 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     this.tag = null;
     this.website = null;
     this.tags = this.data.getListTags();
+
+    const path = location.pathname;
+    const segments = path.split('/');
+
+    switch (segments.length) {
+      case 3:
+        this.tagId = parseInt(segments[1], 0);
+        this.websiteId = parseInt(segments[2], 0);
+        this.website = this.tags.getWebsite(parseInt(segments[1], 0), parseInt(segments[2], 0))?.name;
+        this.tag = this.tags.getTag(parseInt(segments[1], 0))?.name;
+        break;
+      case 2:
+        this.tagId = parseInt(segments[1], 0);
+        this.tag = this.tags.getTag(parseInt(segments[1], 0))?.name;
+        break;
+    }
   }
 
   ngOnInit(): void {
@@ -36,7 +52,6 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
         this.website = null;
 
         const path = location.pathname;
-        console.log(path)
         const segments = path.split('/');
 
         switch (segments.length) {

@@ -1,4 +1,5 @@
 import { Page } from './page';
+import tests from '../tests';
 
 export class Website {
   id: number;
@@ -16,6 +17,8 @@ export class Website {
   errors: any;
   recentPage: Date;
   oldestPage: Date;
+  success: any;
+  tot: any;
 
   constructor(id: number, entity: string, name: string, domain: string, creationDate: Date) {
     this.id = id;
@@ -31,14 +34,16 @@ export class Website {
     this.AAA = 0;
     this.frequencies = new Array<number>(9).fill(0);
     this.errors = {};
+    this.success = {};
+    this.tot = {};
   }
 
   addPage(pageId: number, uri: string, creationDate: Date, evaluationId: number,
-          title: string, score: number, errors: any, A: number, AA: number, AAA: number,
+          title: string, score: number, errors: any, tot: any, A: number, AA: number, AAA: number,
           evaluationDate: Date): void {
 
     const page = new Page(pageId, uri, creationDate);
-    page.addEvaluation(evaluationId, title, score, errors, A, AA, AAA, evaluationDate);
+    page.addEvaluation(evaluationId, title, score, errors, tot, A, AA, AAA, evaluationDate);
     this.pages.push(page);
 
     this.score += score;
@@ -58,29 +63,69 @@ export class Website {
     const floor = Math.floor(score);
     this.frequencies[ floor >= 2 ? floor === 10 ? floor - 2 : floor - 1 : 0 ]++;
 
-    const elemStats = {'aImgAltNo': {'lev': 'A', 't': 0, 'p': 0}, 'a': {'lev': 'AA', 't': 0, 'p': 0}, 'aAdjacentSame': {'lev': 'A', 't': 0, 'p': 0}, 'aSameText': {'lev': 'AAA', 't': 0, 'p': 0}, 'abbrNo': {'lev': 'AAA', 't': 0, 'p': 0}, 'acckeyRep': {'lev': 'A', 't': 0, 'p': 0}, 'appletAltNo': {'lev': 'A', 't': 0, 'p': 0}, 'areaAltNo': {'lev': 'A', 't': 0, 'p': 0}, 'blink': {'lev': 'A', 't': 0, 'p': 0}, 'cssBlink': {'lev': 'A', 't': 0, 'p': 0}, 'colorContrast': {'lev': 'AA', 't': 0, 'p': 0}, 'ehandMouse': {'lev': 'A', 't': 0, 'p': 0}, 'ehandBothNo': {'lev': 'A', 't': 0, 'p': 0}, 'ehandTagNo': {'lev': 'A', 't': 0, 'p': 0}, 'embedAltNo': {'lev': 'A', 't': 0, 'p': 0}, 'fieldLegNo': {'lev': 'A', 't': 0, 'p': 0}, 'fieldNoForm': {'lev': 'A', 't': 0, 'p': 0}, 'fontHtml': {'lev': 'AA', 't': 0, 'p': 0}, 'fontAbsVal': {'lev': 'AA', 't': 0, 'p': 0}, 'formSubmitNo': {'lev': 'A', 't': 0, 'p': 0}, 'frameTitleNo': {'lev': 'A', 't': 0, 'p': 0}, 'frameDtdNo': {'lev': 'A', 't': 0, 'p': 0}, 'hx': {'lev': 'A', 't': 0, 'p': 0}, 'hxNo': {'lev': 'AA', 't': 0, 'p': 0}, 'hxSkip': {'lev': 'AAA', 't': 0, 'p': 0}, 'idRep': {'lev': 'A', 't': 0, 'p': 0}, 'iframeTitleNo': {'lev': 'A', 't': 0, 'p': 0}, 'imgAltNo': {'lev': 'A', 't': 0, 'p': 0}, 'imgAltNot': {'lev': 'A', 't': 0, 'p': 0}, 'inpImgAltNo': {'lev': 'A', 't': 0, 'p': 0}, 'inputIdTitleNo': {'lev': 'A', 't': 0, 'p': 0}, 'justifiedTxt': {'lev': 'AAA', 't': 0, 'p': 0}, 'justifiedCss': {'lev': 'AAA', 't': 0, 'p': 0}, 'labelForNo': {'lev': 'A', 't': 0, 'p': 0}, 'labelPosNo': {'lev': 'A', 't': 0, 'p': 0}, 'labelTextNo': {'lev': 'A', 't': 0, 'p': 0}, 'langCodeNo': {'lev': 'A', 't': 0, 'p': 0}, 'langNo': {'lev': 'A', 't': 0, 'p': 0}, 'langMatchNo': {'lev': 'A', 't': 0, 'p': 0}, 'langExtra': {'lev': 'A', 't': 0, 'p': 0}, 'layoutElem': {'lev': 'A', 't': 0, 'p': 0}, 'layoutAttr': {'lev': 'A', 't': 0, 'p': 0}, 'liNoList': {'lev': 'A', 't': 0, 'p': 0}, 'longDNo': {'lev': 'A', 't': 0, 'p': 0}, 'marquee': {'lev': 'A', 't': 0, 'p': 0}, 'metaRefresh': {'lev': 'A', 't': 0, 'p': 0}, 'metaRedir': {'lev': 'A', 't': 0, 'p': 0}, 'objectAltNo': {'lev': 'A', 't': 0, 'p': 0}, 'scopeNo': {'lev': 'A', 't': 0, 'p': 0}, 'tableLayoutCaption': {'lev': 'A', 't': 0, 'p': 0}, 'tableDataCaption': {'lev': 'A', 't': 0, 'p': 0}, 'tableCaptionSummary': {'lev': 'A', 't': 0, 'p': 0}, 'titleVrs': {'lev': 'A', 't': 0, 'p': 0}, 'titleNo': {'lev': 'A', 't': 0, 'p': 0}, 'titleNull': {'lev': 'A', 't': 0, 'p': 0}, 'titleSame': {'lev': 'A', 't': 0, 'p': 0}, 'valueAbsHtml': {'lev': 'AA', 't': 0, 'p': 0}, 'valueAbsCss': {'lev': 'AAA', 't': 0, 'p': 0}, 'w3cValidatorErrors': {'lev': 'A', 't': 0, 'p': 0}, 'newWinOnLoad': {'lev': 'A', 't': 0, 'p': 0}};
-
     const perrors = page.evaluation.errors;
-    const keys = Object.keys(elemStats);
-    const size = keys.length;
 
-    for (let i = 0 ; i < size ; i++) {
-      const k = keys[i];
-      if (k === 'a' || k === 'hx') {
-        continue;
-      }
-      if (perrors[k]) {
-        let n = 0;
-        if (k === 'langNo' || k === 'langCodeNo' || k === 'langExtra' || k === 'titleNo') {
-          n = 1;
+    for (const key in page.evaluation.tot.results || {}) {
+
+      let tnum;
+      let test = tests[key]['test'];
+      let elem = tests[key]['elem'];
+      if (key === 'layout_01a' || key === 'layout_02a' || key === 'a_01a' || key === 'a_01b' || key.includes('title_')) {
+        tnum = 1;
+      } else {
+        if (page.evaluation.tot.elems[test]) {
+          if (test === 'langNo' || test === 'langCodeNo' || test === 'langExtra' || test === 'titleNo' || test === 'titleOk' || test === 'lang' || test === 'aSkipFirst') {
+            tnum = 1;
+          } else {
+            tnum = page.evaluation.tot['elems'][test];
+          }
         } else {
-          n = parseInt(perrors[k], 0);
+          tnum = page.evaluation.tot['elems'][elem];
         }
-        if (Object.keys(this.errors).includes(k)) {
-          this.errors[k].n_elems += n;
-          this.errors[k].n_pages++;
+      }
+
+      if (Object.keys(this.tot).includes(key)) {
+        this.tot[key]['n_times'] += tnum;
+        this.tot[key]['n_pages']++;
+      } else {
+        this.tot[key] = {
+          n_pages: 1,
+          n_times: tnum,
+          elem: tests[key]['elem'],
+          test: tests[key]['test'],
+          result: tests[key]['result']
+        };
+      }
+
+      const k = tests[key]['test'];
+
+      if (tests[key]['result'] === 'failed') {
+        if (k === 'a' || k === 'hx') {
+          return;
+        }
+
+        if (perrors[k]) {
+          let n = 0;
+          if (k === 'langNo' || k === 'langCodeNo' || k === 'langExtra' || k === 'titleNo') {
+            n = 1;
+          } else {
+            n = parseInt(perrors[k], 0);
+          }
+          if (Object.keys(this.errors).includes(key)) {
+            this.errors[key]['n_elems'] += n;
+            this.errors[key]['n_pages']++;
+          } else {
+            this.errors[key] = {n_elems: n, elem: tests[key]['elem'], n_pages: 1};
+          }
+        }
+      } else if (tests[key]['result'] === 'passed') {
+        if (k === 'a' || k === 'hx') {
+          return;
+        }
+        if (Object.keys(this.success).includes(key)) {
+          this.success[key]['n_pages']++;
         } else {
-          this.errors[k] = { n_elems: n, n_pages: 1 };
+          this.success[key] = {key: key, test: k, elem: tests[key]['elem'], n_pages: 1};
         }
       }
     }
@@ -123,14 +168,15 @@ export class Website {
     return errors.sort((a: any, b: any) => a.n_elems - b.n_elems).slice(0, 10);
   }
 
-  getErrorOccurrencesByPage(error: string): Array<number> {
+  getErrorOccurrencesByPage(test: string): Array<number> {
     const occurrences = new Array<number>();
-
+    
     for (const p of this.pages) {
-      if (p.evaluation.errors[error] && (error === 'langNo' || error === 'titleNo')) {
+      const error = p.evaluation.tot['elems'][tests[test]['test']];
+      if (error && (error === 'langNo' || error === 'titleNo')) {
         occurrences.push(1);
       } else {
-        occurrences.push(p.evaluation.errors[error]);
+        occurrences.push(error);
       }
 
     }

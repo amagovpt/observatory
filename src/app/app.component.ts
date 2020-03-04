@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { DataService } from './data.service';
+import { ListTags } from './models/list-tags';
 
 @Injectable()
 @Component({
@@ -31,8 +32,12 @@ export class AppComponent implements OnInit, OnDestroy {
     Portuguese: 'pt'
   };
 
+  tags: ListTags;
+
   tag: string;
+  tagId: number;
   website: string;
+  websiteId: number;
 
   showGoToTop: boolean;
   loading: boolean;
@@ -65,6 +70,17 @@ export class AppComponent implements OnInit, OnDestroy {
     this.showGoToTop = false;
     this.loading = true;
     this.error = false;
+
+    this.serverSub = this.data.getObservatoryData()
+      .subscribe((success: boolean) => {
+        if (!success) {
+          this.error = true;
+        }
+
+        this.loading = false;
+        this.tags = this.data.getListTags();
+        this.cd.detectChanges();
+      });
   }
 
   ngOnInit(): void {
@@ -73,34 +89,32 @@ export class AppComponent implements OnInit, OnDestroy {
     });
     this.routerSub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.tag = null;
-        this.website = null;
+        if (this.tags) {
+          this.tag = null;
+          this.tagId = null;
+          this.website = null;
+          this.websiteId = null;
 
-        const path = location.pathname;
-        const segments = path.split('/');
+          const path = location.pathname;
+          const segments = path.split('/');
 
-        switch (segments.length) {
-          case 3:
-            this.website = decodeURIComponent(segments[2]);
-            this.tag = decodeURIComponent(segments[1]);
-            break;
-          case 2:
-            this.tag = decodeURIComponent(segments[1]);
-            break;
+          switch (segments.length) {
+            case 3:
+              this.tagId = parseInt(segments[1], 0);
+              this.websiteId = parseInt(segments[2], 0);
+              this.website = this.tags.getWebsite(parseInt(segments[1], 0), parseInt(segments[2], 0))?.name;
+              this.tag = this.tags.getTag(parseInt(segments[1], 0))?.name;
+              break;
+            case 2:
+              this.tagId = parseInt(segments[1], 0);
+              this.tag = this.tags.getTag(parseInt(segments[1], 0))?.name;
+              break;
+          }
         }
 
         document.getElementById('main').scrollIntoView();
       }
     });
-    this.serverSub = this.data.getObservatoryData()
-      .subscribe((success: boolean) => {
-        if (!success) {
-          this.error = true;
-        }
-
-        this.loading = false;
-        this.cd.detectChanges();
-      });
   }
 
   ngOnDestroy(): void {

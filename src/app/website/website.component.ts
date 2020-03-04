@@ -21,6 +21,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   scoreDistributionData: any;
   errorDistributionData: any;
   topFiveErrorsData: any;
+  topFiveBestPractices: any;
   accessibilityPlotData: any;
   tableData: any;
 
@@ -56,7 +57,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
 
       if (this.tag) {
         this.website = this.tag.websites.find((w: Website) => w.id === parseInt(params.website, 0));
-
+        
         if (this.website) {
           this.scoreDistributionData =  {
             number: this.website.pages.length,
@@ -67,6 +68,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
             isCat: false
           };
           this.topFiveErrorsData = this.website.errors;
+          this.topFiveBestPractices = this.website.success;
           this.accessibilityPlotData = this.website.getAllScores();
           this.tableData = this.website;
         } else {
