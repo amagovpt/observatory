@@ -32,15 +32,15 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     const segments = path.split('/');
 
     switch (segments.length) {
-      case 3:
-        this.tagId = parseInt(segments[1], 0);
-        this.websiteId = parseInt(segments[2], 0);
-        this.website = this.tags.getWebsite(parseInt(segments[1], 0), parseInt(segments[2], 0))?.name;
-        this.tag = this.tags.getTag(parseInt(segments[1], 0))?.name;
+      case 4:
+        this.tagId = parseInt(segments[2], 0);
+        this.websiteId = parseInt(segments[3], 0);
+        this.website = this.tags.getWebsite(parseInt(segments[2], 0), parseInt(segments[3], 0))?.name;
+        this.tag = this.tags.getTag(parseInt(segments[2], 0))?.name;
         break;
-      case 2:
-        this.tagId = parseInt(segments[1], 0);
-        this.tag = this.tags.getTag(parseInt(segments[1], 0))?.name;
+      case 3:
+        this.tagId = parseInt(segments[2], 0);
+        this.tag = this.tags.getTag(parseInt(segments[2], 0))?.name;
         break;
     }
   }
@@ -55,15 +55,15 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
         const segments = path.split('/');
 
         switch (segments.length) {
-          case 3:
-            this.tagId = parseInt(segments[1], 0);
-            this.websiteId = parseInt(segments[2], 0);
-            this.website = this.tags.getWebsite(parseInt(segments[1], 0), parseInt(segments[2], 0))?.name;
-            this.tag = this.tags.getTag(parseInt(segments[1], 0))?.name;
+          case 4:
+            this.tagId = parseInt(segments[2], 0);
+            this.websiteId = parseInt(segments[3], 0);
+            this.website = this.tags.getWebsite(parseInt(segments[2], 0), parseInt(segments[3], 0))?.name;
+            this.tag = this.tags.getTag(parseInt(segments[2], 0))?.name;
             break;
-          case 2:
-            this.tagId = parseInt(segments[1], 0);
-            this.tag = this.tags.getTag(parseInt(segments[1], 0))?.name;
+          case 3:
+            this.tagId = parseInt(segments[2], 0);
+            this.tag = this.tags.getTag(parseInt(segments[2], 0))?.name;
             break;
         }
       }

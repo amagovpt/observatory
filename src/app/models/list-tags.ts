@@ -44,7 +44,6 @@ export class ListTags {
         return v + tag.frequencies[j];
       });
 
-
       const perrors = tag.errors;
       const tSuccess = tag.success;
 
@@ -175,8 +174,9 @@ export class ListTags {
   }
 
   getWebsite(tagId: number, websiteId: number): Website {
-    return this.tags
-      .find((tag: Tag) => tag.id = tagId).websites
-      .find((website: Website) => website.id === websiteId);
+    const tag = this.tags.find((tag: Tag) => tag.id === tagId);
+    const websites = tag.websites;
+    const website = websites.find((website: Website) => website.id === websiteId);
+    return website;
   }
 }

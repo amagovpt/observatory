@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, retry, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import clone from 'lodash.clone';
 
 import { ListTags } from './models/list-tags';
 import { Tag } from './models/tag';
@@ -12,23 +13,27 @@ import { Website } from './models/website';
 })
 export class DataService {
 
+  private server: string;
+
   private listTags: ListTags;
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {
+    //this.server = 'http://10.55.37.16/api';
+    this.server = '/api';
+  }
 
   getObservatoryData(): Observable<boolean> {
-    return this.http.get<any>('http://localhost:3000/observatory', {observe: 'response'}).pipe(
-      retry(3),
+    return this.http.get<any>(this.server + '/observatory', {observe: 'response'}).pipe(
       map(res => {
         const response = res.body;
         const tags = new Array<Tag>();
         const tmpTags = this.createTemporaryTags(response);
 
         for (const tag of tmpTags || []) {
-          const newTag = this.createTag(tag, response);
+          const newTag = this.createTag(tag, clone(response));
           tags.push(newTag);
         }
-
+        
         this.listTags = new ListTags(tags);
         return true;
       }),
@@ -52,6 +57,7 @@ export class DataService {
         tmpTags.push({ id: tag.TagId, name: tag.Tag_Name, creation_date: tag.Tag_Creation_Date });
       }
     });
+    
     return tmpTags;
   }
 
@@ -59,7 +65,7 @@ export class DataService {
     const newTag = new Tag(tag.id, tag.name, tag.creation_date);
     const tmpWebsitesIds = new Array<number>();
     const websites = new Array<any>();
-    response.result.map((wb: any) => {
+    for (const wb of response.result || []) {
       if (wb.TagId === tag.id && !tmpWebsitesIds.includes(wb.WebsiteId)) {
         tmpWebsitesIds.push(wb.WebsiteId);
         websites.push({
@@ -70,8 +76,8 @@ export class DataService {
           creation_date: wb.Website_Creation_Date
         });
       }
-    });
-
+    }
+    
     for (const website of websites || []) {
       const newWebsite = this.createWebsite(website, tag, response);
       newTag.addWebsite(newWebsite);

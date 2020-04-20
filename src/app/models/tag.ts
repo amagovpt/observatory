@@ -157,7 +157,7 @@ export class Tag {
   getPassedAndWarningOccurrenceByWebsite(occur: string): Array<number> {
     const occurrences = new Array<number>();
 
-    for (const w of this.websites) {
+    for (const w of this.websites || []) {
       if (w.tot[occur] && (w.tot[occur]['result'] === 'passed' || w.tot[occur]['result'] === 'warning')) {
         if (occur === 'langNo' || occur === 'langCodeNo' || occur === 'langExtra' || occur === 'titleNo' || occur === 'titleOk' || occur === 'lang' || occur === 'aSkipFirst') {
           occurrences.push(1);
