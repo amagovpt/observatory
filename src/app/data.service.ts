@@ -18,8 +18,13 @@ export class DataService {
   private listTags: ListTags;
 
   constructor(private readonly http: HttpClient) {
-    //this.server = 'http://10.55.37.16/api';
-    this.server = '/api';
+    const host = location.hostname;
+
+    if (host === 'localhost') {
+      this.server = 'http://localhost:3000';
+    } else {
+      this.server = '/api';
+    }
   }
 
   getObservatoryData(): Observable<boolean> {
