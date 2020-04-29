@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxGaugeModule } from 'ngx-gauge';
 import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 import { DialogModule } from './../dialog/dialog.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { TagRoutingModule } from './tag-routing.module';
@@ -19,11 +20,13 @@ import { WebsitesListComponent } from './websites-list/websites-list.component';
     FlexLayoutModule,
     NgxGaugeModule,
     MaterialModule,
+    CommonModule,
     TranslateModule,
     RouterModule,
     DialogModule,
     PipesModule,
-    TagRoutingModule
+    TagRoutingModule,
+    SharedModule
   ],
   exports: [TagComponent]
 })

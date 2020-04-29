@@ -7,6 +7,7 @@ import { NgxGaugeModule } from 'ngx-gauge';
 import { MaterialModule } from '../material/material.module';
 import { DialogModule } from './../dialog/dialog.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { SharedModule } from '../shared/shared.module';
 import { WebsiteRoutingModule } from './website-routing.module';
 import { WebsiteComponent } from './website.component';
 import { WebsiteStatisticsComponent } from './website-statistics/website-statistics.component';
@@ -14,11 +15,9 @@ import { AccessibilityPlotComponent } from './accessibility-plot/accessibility-p
 import { AllErrorsListComponent } from './all-errors-list/all-errors-list.component';
 import { ErrorDistributionComponent } from './error-distribution/error-distribution.component';
 import { ScoreDistributionComponent } from './score-distribution/score-distribution.component';
-import { TopFiveErrorsComponent } from './top-five-errors/top-five-errors.component';
-import { TopFiveBestPracticesComponent } from './top-five-best-practices/top-five-best-practices.component';
 
 @NgModule({
-  declarations: [WebsiteComponent, WebsiteStatisticsComponent, AccessibilityPlotComponent, AllErrorsListComponent, ErrorDistributionComponent, ScoreDistributionComponent, TopFiveErrorsComponent, TopFiveBestPracticesComponent],
+  declarations: [WebsiteComponent, WebsiteStatisticsComponent, AccessibilityPlotComponent, AllErrorsListComponent, ErrorDistributionComponent, ScoreDistributionComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -28,7 +27,8 @@ import { TopFiveBestPracticesComponent } from './top-five-best-practices/top-fiv
     RouterModule,
     DialogModule,
     PipesModule,
-    WebsiteRoutingModule
+    WebsiteRoutingModule,
+    SharedModule
   ],
   exports: [WebsiteComponent]
 })

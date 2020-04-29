@@ -54,16 +54,18 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
         const path = location.pathname;
         const segments = path.split('/');
 
+        const firstSegment = path.startsWith('/observatory') ? 2 : 1;
+
         switch (segments.length) {
-          case 4:
-            this.tagId = parseInt(segments[2], 0);
-            this.websiteId = parseInt(segments[3], 0);
-            this.website = this.tags.getWebsite(parseInt(segments[2], 0), parseInt(segments[3], 0))?.name;
-            this.tag = this.tags.getTag(parseInt(segments[2], 0))?.name;
+          case firstSegment + 2:
+            this.tagId = parseInt(segments[firstSegment], 0);
+            this.websiteId = parseInt(segments[firstSegment + 1], 0);
+            this.website = this.tags.getWebsite(parseInt(segments[firstSegment], 0), parseInt(segments[firstSegment + 1], 0))?.name;
+            this.tag = this.tags.getTag(parseInt(segments[firstSegment], 0))?.name;
             break;
-          case 3:
-            this.tagId = parseInt(segments[2], 0);
-            this.tag = this.tags.getTag(parseInt(segments[2], 0))?.name;
+          case firstSegment + 1:
+            this.tagId = parseInt(segments[firstSegment], 0);
+            this.tag = this.tags.getTag(parseInt(segments[firstSegment], 0))?.name;
             break;
         }
       }

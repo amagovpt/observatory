@@ -20,6 +20,9 @@ export class TagComponent implements OnInit, OnDestroy {
   loading: boolean;
   error: boolean;
 
+  topFiveErrorsData: any;
+  topFiveBestPractices: any;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private data: DataService
@@ -67,6 +70,9 @@ export class TagComponent implements OnInit, OnDestroy {
 
       if (!this.tag) {
         this.error = true;
+      } else {
+        this.topFiveErrorsData = this.tag.errors;
+        this.topFiveBestPractices = this.tag.success;
       }
 
       this.loading = false;

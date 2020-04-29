@@ -9,7 +9,7 @@ import _tests from '../../tests';
 })
 export class TopFiveErrorsComponent implements OnInit {
 
-  @Input() data: any;
+  @Input('data') data: any;
 
   tests: any;
 
