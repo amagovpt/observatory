@@ -28,11 +28,14 @@
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
     "chart.js": "^2.9.3",
+    "classlist.js": "^1.1.20150312",
+    "core-js": "^3.6.5",
     "lodash.clone": "^4.5.0",
     "lodash.orderby": "^4.6.0",
     "ngx-gauge": "^1.1.0",
     "rxjs": "~6.5.5",
     "tslib": "^1.11.1",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
