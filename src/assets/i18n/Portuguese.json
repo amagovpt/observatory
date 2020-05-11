@@ -13,14 +13,14 @@
     "menu": "Menu",
     "all_tags": "Todas as categorias",
     "tag": "Categoria",
-    "website": "Website"
+    "website": "Sítio web"
   },
   "STATISTICS": {
     "gauge": {
       "label": "Pontuação média"
     },
     "tags": "Nº de categorias",
-    "websites": "Nº de websites",
+    "websites": "Nº de sítios web",
     "pages": "Nº de páginas",
     "score": "Pontuação",
     "newest_page_updated": "Avaliação mais recente duma página",
@@ -53,7 +53,7 @@
       "common_errors2": "Nº de ocorrências",
       "level": "Nível",
       "description": "Descrição",
-      "websites": "Websites",
+      "websites": "Sítios web",
       "pages": "Páginas",
       "situations": "Ocorrências",
       "tests_label": "Testes",
@@ -69,7 +69,7 @@
     "element_corrections": {
       "title": "Grau de correção por elemento",
       "pages": "Páginas",
-      "websites": "Websites",
+      "websites": "Sítios web",
       "description": "Descrição",
       "elems": "Elementos",
       "level": "Nível",
@@ -81,9 +81,9 @@
       "occurrences": {
         "single_error": "aviso em",
         "multi_error": "avisos em",
-        "single_page_tag": "website",
+        "single_page_tag": "sítio web",
         "single_page_listTags": "tag",
-        "multi_page_tag": "websites",
+        "multi_page_tag": "sítios web",
         "multi_page_listTags": "tags",
         "from": "De",
         "to": "a"
@@ -97,16 +97,16 @@
     "subtitle": "Lista de categorias",
     "statistics_title": "Estatísticas",
     "statistics_subtitle": "Metadados",
-    "show_websites": "Mostrar websites",
+    "show_websites": "Mostrar sítios web",
     "table": {
       "filter": "Filtro",
       "title": "Categorias",
-      "subtitle": "Veja a acessibilidade dos Websites de algumas instituições e do governo",
+      "subtitle": "Veja a acessibilidade dos sítios web de algumas instituições e do governo",
       "rank": "Rank",
       "name": "Designação",
       "score": "Pontuação",
-      "websites": "Nº de Websites",
-      "levels": "Websites em conformidade*",
+      "websites": "Nº de sítios web",
+      "levels": "Sítios web em conformidade*",
       "A": "A",
       "AA": "AA",
       "AAA": "AAA",
@@ -123,11 +123,11 @@
     "statistics_subtitle": "Metadados",
     "table": {
       "filter": "Filtro",
-      "title": "Websites",
+      "title": "Sítios web",
       "subtitle": "Estatísticas da categoria",
       "subtitle2": "Estatísticas da categorias",
       "rank": "Rank",
-      "name": "Website",
+      "name": "Sítio web",
       "entity": "Entidade",
       "score": "Pontuação",
       "pages": "Nº de páginas",
@@ -135,13 +135,13 @@
       "A": "A",
       "AA": "AA",
       "AAA": "AAA",
-      "see_tooltip": "Ver website",
+      "see_tooltip": "Ver sítio web",
       "note": "* conformidade com as WCAG 2.0 (W3C)"
     }
   },
   "WEBSITE": {
     "title": "Observatório Português da Acessibilidade Web",
-    "subtitle": "Website",
+    "subtitle": "Sítio web",
     "statistics_title": "Estatísticas",
     "statistics_subtitle": "Metadados",
     "top_5_errors": {
@@ -199,10 +199,10 @@
     "unexpected_error": "Ocorreu um erro inesperado. Por favor tente aceder mais tarde.",
     "error_contact": "Se o problema persistir, contacte-nos...",
     "tag_error": "A categoria que tentou aceder não existe",
-    "website_error": "O website que tentou aceder não existe",
+    "website_error": "O sítio web que tentou aceder não existe",
     "go_to_top": "Ir para o topo",
     "go_back": "Voltar",
-    "open_webpage": "Abrir website",
+    "open_webpage": "Abrir sítio web",
     "_404": {
       "title": "Erro 404",
       "description": "A página que tentou aceder não existe."
