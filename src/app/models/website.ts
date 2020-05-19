@@ -1,5 +1,6 @@
 import { Page } from './page';
 import tests from '../tests';
+import orderBy from 'lodash.orderby';
 
 export class Website {
   id: number;
@@ -165,7 +166,7 @@ export class Website {
       }
     }
 
-    return errors.sort((a: any, b: any) => a.n_elems - b.n_elems).slice(0, 10);
+    return orderBy(errors, ['n_elems', 'n_pages'], ['desc', 'desc']).slice(0, 10);
   }
 
   getErrorOccurrencesByPage(test: string): Array<number> {

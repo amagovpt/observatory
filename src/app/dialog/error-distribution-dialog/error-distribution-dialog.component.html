@@ -19,8 +19,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let e of errors">
-            <td fxHide.lt-sm>{{elemStats[e["key"]]["lev"]}}</td>
-            <td innerHTML="{{ 'ELEMS.' + e['key'] | translate }}"></td>
+            <td fxHide.lt-sm>{{tests[e["key"]]["level"].toUpperCase()}}</td>
+            <td innerHTML="{{ 'RESULTS.' + e['key'] | translate | html }}"></td>
             <td *ngIf="isCat">{{e["n_websites"]}}</td>
             <td>{{e["n_pages"]}}</td>
             <td>{{e["n_elems"]}}</td>
