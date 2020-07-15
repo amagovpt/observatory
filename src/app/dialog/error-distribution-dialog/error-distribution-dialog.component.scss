@@ -2,7 +2,7 @@
   overflow: hidden;
 }
 
-table {
+/*table {
   width: 100%;
   
   th {
@@ -13,5 +13,52 @@ table {
   th, td {
     padding: 0.5em;
   }
+}*/
+
+.mat-column-description {
+  min-width: 10em;
 }
 
+.mat-column-description,
+.mat-column-quartiles {
+  padding-left: 1em;
+}
+
+.mat-header-cell,
+.mat-cell {
+  font-size: 1em;
+}
+
+.mat-cell:not(.mat-column-description):not(.mat-column-quartiles){
+  justify-content: center;
+  text-align: center;
+}
+
+mat-form-field {
+  margin-top: 0.5em;
+  width: 100%;
+  position: sticky;
+  left: 0;
+}
+
+mat-table {
+  width: 100%;
+  min-width: 40em;
+  table-layout: fixed;
+}
+
+::ng-deep .mat-sort-header-container {
+  width: 100%;
+  justify-content: center;
+}
+
+::ng-deep .mat-sort-header-button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: unset;
+}
+
+.mat-row:nth-child(2n) {
+  background-color: whitesmoke
+}

@@ -3,7 +3,7 @@
   overflow: hidden;
 }
 
-table {
+/*table {
   width: 100%;
   
   th {
@@ -14,4 +14,30 @@ table {
   th, td {
     padding: 0.5em;
   }
+}*/
+
+.mat-header-cell {
+  font-size: 0.9em;
+}
+
+.mat-cell {
+  font-size: 1em;
+}
+
+.mat-cell:not(.mat-column-description),
+.mat-header-cell:not(.mat-column-description) {
+  justify-content: center;
+}
+
+.mat-row:nth-child(2n) {
+  background-color: whitesmoke
+}
+
+mat-table {
+  width: max-content;
+  min-width: 100%;
+}
+
+[class*="mat-column-"]{
+  min-width: 100px !important;
 }

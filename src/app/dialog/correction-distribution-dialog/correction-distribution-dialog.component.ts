@@ -5,6 +5,12 @@ import {Chart} from 'chart.js';
 import tests from '../../tests'
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
+import * as forEach from 'lodash.foreach';
+import * as slice from 'lodash.slice';
+import * as includes from 'lodash.includes';
+import * as without from 'lodash.without';
+import * as size from 'lodash.size';
+import * as clone from 'lodash.clone';
 
 @Component({
   selector: 'app-correction-distribution-dialog',
@@ -13,8 +19,37 @@ import {MatSort} from "@angular/material/sort";
 })
 export class CorrectionDistributionDialogComponent implements OnInit {
 
+  elemGroups: any = {
+    'a': 'link',
+    'all': 'other',
+    'id': 'other',
+    'img': 'image',
+    'longDImg': 'graphic',
+    'area': 'area',
+    'inpImg': 'graphic',
+    //graphic buttons
+    'applet': 'object',
+    'hx': 'heading',
+    'label': 'form',
+    'inputLabel': 'form',
+    'form': 'form',
+    'tableData': 'table',
+    'table': 'table',
+    'tableLayout': 'table',
+    'tableComplex': 'table',
+    'frameset': 'frame',
+    'iframe': 'frame',
+    'frame': 'frame',
+    'embed': 'object',
+    //embedded object
+    'object': 'object',
+    'fontValues': 'other',
+    'ehandler': 'ehandler',
+    'w3cValidator': 'validator'
+  };
+
   @ViewChild('chart', { static: true }) chartCorrections: any;
-  @ViewChild(MatSort) matSort: MatSort;
+  @ViewChild(MatSort, { static: true }) matSort: MatSort;
 
   chart: any;
   tests: any;
@@ -25,19 +60,31 @@ export class CorrectionDistributionDialogComponent implements OnInit {
   graphData: any;
   dataSource: MatTableDataSource<CorrectionData>;
   columnDefinitions: any[];
+  columnDefinitionsMobile: any[];
+  existingElemGroups: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private translate: TranslateService
   ) {
     this.tests = tests;
-    
     this.inTagsPage = this.data.inTagsPage;
     this.nPages = this.data.tags.nPages;
     this.tagsSuccess = [];
     this.graphData = [];
+    this.existingElemGroups = [];
 
     this.columnDefinitions = [
+      { def: 'level', hide: false},
+      { def: 'element', hide: false},
+      { def: 'description', hide: false},
+      { def: 'websites', hide: !this.inTagsPage},
+      { def: 'pages', hide: false},
+      { def: 'elems', hide: false},
+      { def: 'quartiles', hide: false},
+    ];
+
+    this.columnDefinitionsMobile = [
       { def: 'level', hide: false},
       { def: 'description', hide: false},
       { def: 'websites', hide: !this.inTagsPage},
@@ -45,32 +92,36 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     ];
 
     const tableData: CorrectionData[] = [];
-    for (const key in this.data.tags.tot || {}) {
-      const v = this.data.tags.tot[key];
-      if (v['result'] === 'passed') {
+    forEach(this.data.tags.tot, (v, key) => {
+      if (v['result'] === 'passed' || v['result'] === 'warning') {
         let elem = v['elem'];
         let n_pages = v['n_pages'];
         let n_websites = v['n_websites'];
         let result = v['result'];
 
+        let quartiles = calculateQuartiles(this.data, key);
+        if (!includes(this.existingElemGroups, this.elemGroups[v['elem']])) {
+          this.existingElemGroups.push(this.elemGroups[v['elem']]);
+        }
         // description, element name
-        let translations: string[] = ["RESULTS." + key];
-        tableData.push(this.addToTableData(key, v, translations));
+        let translations: string[] = ["RESULTS." + key, "TEST_ELEMENTS." + elem];
+        tableData.push(this.addToTableData(key, v, translations, quartiles));
         this.graphData.push({key, elem, n_pages, n_websites, result});
       }
-    }
-
-    this.dataSource = new MatTableDataSource(tableData);
-  }
-
-  ngOnInit(): void {
-
-    this.dataSource.sort = this.matSort;
+    });
 
     this.graphData.sort(function (a, b) {
       //return a.elem === b.elem ? (b.n_pages === a.n_pages ? b.n_elems - a.n_elems : b.n_pages - a.n_pages) : a.elem.localeCompare(b.elem);
       return b.n_pages === a.n_pages ? a.key.localeCompare(b.key) : b.n_pages - a.n_pages;
     });
+    
+    // because we only want the top 10
+    this.graphData = slice(this.graphData, 0, 10);
+    this.dataSource = new MatTableDataSource(tableData);
+  }
+
+  ngOnInit(): void {
+    this.dataSource.sort = this.matSort;
 
     const translations = this.graphData.map((v, k) => {
       return 'RESULTS.' + v['key'];
@@ -82,8 +133,8 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     this.translate.get(translations).subscribe((res: any) => {
 
       const label = res['DIALOGS.corrections.n_corrections'];
-      const tests_label = res['DIALOGS.corrections.tests_label'];
-      const situations_label = res['DIALOGS.corrections.situations_label'];
+      const testsLabel = res['DIALOGS.corrections.tests_label'];
+      const situationsLabel = res['DIALOGS.corrections.situations_label'];
       delete res['DIALOGS.corrections.n_corrections'];
       delete res['DIALOGS.corrections.tests_label'];
       delete res['DIALOGS.corrections.situations_label'];
@@ -91,7 +142,14 @@ export class CorrectionDistributionDialogComponent implements OnInit {
       const labels = Object.values(res).map((s: string) => {
         s = s.replace(new RegExp('<code>', 'g'), '"');
         s = s.replace(new RegExp('</code>', 'g'), '"');
+        s = s.length > 100 ? String(s).substr(0, 97) + '...' : s;
         return this.formatLabel(s, 50);
+      });
+
+      const labelsTooltips = Object.values(res).map((s: string) => {
+        s = s.replace(new RegExp('<code>', 'g'), '"');
+        s = s.replace(new RegExp('</code>', 'g'), '"');
+        return s;
       });
 
       const values = this.graphData.map((v: any) => v.n_pages);
@@ -109,6 +167,14 @@ export class CorrectionDistributionDialogComponent implements OnInit {
           ]
         },
         options: {
+          tooltips: {
+            callbacks: {
+              // to make the title appear entirely
+              title: function(tooltipItem, data){
+                return labelsTooltips[tooltipItem[0]['index']];
+              }
+            }
+          },
           scales: {
             xAxes: [{
               display: true,
@@ -121,14 +187,14 @@ export class CorrectionDistributionDialogComponent implements OnInit {
               },
               scaleLabel: {
                 display: true,
-                labelString: situations_label
+                labelString: situationsLabel
               }
             }],
             yAxes: [{
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: tests_label
+                labelString: testsLabel
               }
             }]
           }
@@ -137,9 +203,12 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     });
   }
 
-  private calculateMax(max: number): number {
-    const t = max + (max / 3);
-    return Math.ceil(t);
+  applyFilter(filterValue: string) {
+    if(filterValue === null){
+      this.dataSource.filter = '';
+    } else {
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
   }
 
   private formatLabel(str: string, maxwidth: number): any {
@@ -180,28 +249,116 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     return sections;
   }
 
-  private addToTableData(key: string, tot: any, translations: string[]): CorrectionData {
-    let descr;
+  private addToTableData(key: string, tot: any, translations: string[], quartiles: any = []): CorrectionData {
+    let descr, elemName;
     this.translate.get(translations).subscribe((res: any) => {
       descr = res['RESULTS.' + key];
+      elemName = res['TEST_ELEMENTS.' + tot['elem']];
     });
 
     return {
       level: (tests[key]['level']).toUpperCase(),
+      elem: tot['elem'],
+      element: elemName,
       description: descr,
       websites: tot['n_websites'],
-      pages: tot['n_pages']
+      pages: tot['n_pages'],
+      elems: tot['result'] === 'passed' ? -1 : tot['n_times'],
+      quartiles: tot['result'] === 'passed' ? '-' : quartiles,
+      elemGroup: this.elemGroups[tot['elem']]
     };
   }
 
   getDisplayedColumns() {
     return this.columnDefinitions.filter(cd=>!cd.hide).map(cd=>cd.def);
   }
+  getDisplayedColumnsMobile() {
+    return this.columnDefinitionsMobile.filter(cd=>!cd.hide).map(cd=>cd.def);
+  }
+}
+
+function calculateQuartiles(d: any, test: any): Array<any> {
+  let data;
+  if (d.inTagsPage) {
+    data = d.tags.getPassedAndWarningOccurrenceByTag(test);
+  } else {
+    data = d.tags.getPassedAndWarningOccurrenceByWebsite(test);
+  }
+
+  const values = without(data, undefined).sort((a, b) => a - b);
+
+  let q1, q2, q3, q4;
+
+  q1 = values[Math.round(0.25 * (values.length + 1)) - 1];
+
+  if (values.length % 2 === 0) {
+    q2 = (values[(values.length / 2) - 1] + values[(values.length / 2)]) / 2;
+  } else {
+    q2 = values[(values.length + 1) / 2];
+  }
+
+  q3 = values[Math.round(0.75 * (values.length + 1)) - 1];
+  q4 = values[values.length - 1];
+
+  const tmp = {
+    q1: new Array<number>(),
+    q2: new Array<number>(),
+    q3: new Array<number>(),
+    q4: new Array<number>()
+  };
+
+  let q;
+  for (const v of values) {
+    if (v <= q1) {
+      q = 'q1';
+    } else {
+      if (v <= q2) {
+        q = 'q2';
+      } else {
+        if (v <= q3) {
+          q = 'q3';
+        } else {
+          q = 'q4';
+        }
+      }
+    }
+
+    tmp[q].push(v);
+  }
+
+  const final = new Array<any>();
+
+  for (const k in tmp) {
+    if (k) {
+      const v = tmp[k];
+      const sum = size(v);
+
+      if (sum > 0) {
+        const test = {
+          tot: sum,
+          por: Math.round((sum * 100) / values.length),
+          int: {
+            lower: v[0],
+            upper: v[sum - 1]
+          }
+        };
+
+        final.push(clone(test));
+      }
+    }
+  }
+  return final;
 }
 
 export interface CorrectionData {
   level: string;
+  elem: string;
+  element: string;
   description: string;
   websites: number;
   pages: number;
+  elems: number;
+  quartiles: any;
+  elemGroup: string;
 }
+

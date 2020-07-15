@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Chart } from 'chart.js';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-score-distribution-dialog',
@@ -13,51 +14,58 @@ export class ScoreDistributionDialogComponent implements OnInit {
 	@ViewChild('chartDomains', { static: true }) chartDomains: any;
   chart: any;
 
-  labels: string[];
-  values: number[];
-  percentageValues: number[];
-  freq: number[];
-  freqPer: number[];
+  values: number[] = [];
+  percentageValues: number[] = [];
+  freq: number[] = [];
+  freqPer: number[] = [];
+
+  dataSource: MatTableDataSource<ScoreData>;
+  displayedColumns: string[] = [
+    'range',
+    'freq',
+    'freqPer',
+    'cumuFreq',
+    'cumuFreqPer'
+  ];
+
+  labels: string[] = [
+    '[1 - 2[',
+    '[2 - 3[',
+    '[3 - 4[',
+    '[4 - 5[',
+    '[5 - 6[',
+    '[6 - 7[',
+    '[7 - 8[',
+    '[8 - 9[',
+    '[9 - 10]'
+  ];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private translate: TranslateService) {
-    this.labels = [
-      '[1 - 2[',
-      '[2 - 3[',
-      '[3 - 4[',
-      '[4 - 5[',
-      '[5 - 6[',
-      '[6 - 7[',
-      '[7 - 8[',
-      '[8 - 9[',
-      '[9 - 10]'
-    ];
-    this.values = [];
-    this.freq = [];
-    this.freqPer = [];
+    this.values = this.data.frequency;
+    const total = this.values.reduce((sum: number, value: number) => {
+      return sum + value;
+    }, 0);
+
+    this.percentageValues = this.values.map((value: number) => {
+      return (value / total) * 100;
+    });
+
+    let tmp = 0;
+    for (let i = 0 ; i < 10 ; i++) {
+      this.freq[i] = tmp += this.values[i];
+    }
+
+    let tmpPer = 0;
+    for (let i = 0 ; i < 10 ; i++) {
+      this.freqPer[i] = tmpPer += this.percentageValues[i];
+    }
+        
+    this.prepareTableData();
   }
 
   ngOnInit(): void {
     this.translate.get(['DIALOGS.scores.percentage', 'DIALOGS.scores.frequency', 'DIALOGS.scores.percentage_label', 'DIALOGS.scores.range'])
       .subscribe(res => {
-
-      this.values = this.data.frequency;
-      const total = this.values.reduce((sum: number, value: number) => {
-        return sum + value;
-      }, 0);
-
-      this.percentageValues = this.values.map((value: number) => {
-        return (value / total) * 100;
-      });
-
-      let tmp = 0;
-      for (let i = 0 ; i < 10 ; i++) {
-        this.freq[i] = tmp += this.values[i];
-      }
-
-      let tmpPer = 0;
-      for (let i = 0 ; i < 10 ; i++) {
-        this.freqPer[i] = tmpPer += this.percentageValues[i];
-      }
 
       this.chart = new Chart(this.chartDomains.nativeElement, {
         type: 'bar',
@@ -128,4 +136,27 @@ export class ScoreDistributionDialogComponent implements OnInit {
       });
     });
   }
+
+  private prepareTableData(): void {
+    let tableData: ScoreData[] = [];
+    for(let i = 0; i < 9; i++){
+      tableData.push({
+        range: this.labels[i],
+        freq: this.values[i],
+        freqPer: this.percentageValues[i],
+        cumuFreq: this.freq[i],
+        cumuFreqPer: this.freqPer[i]
+      });
+    }
+    this.dataSource = new MatTableDataSource(tableData);
+  }
+
+}
+
+export interface ScoreData {
+  range: string;
+  freq: number;
+  freqPer: number;
+  cumuFreq: number;
+  cumuFreqPer: number;
 }

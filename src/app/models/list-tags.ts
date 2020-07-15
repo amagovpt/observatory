@@ -169,6 +169,21 @@ export class ListTags {
     return occurrences;
   }
 
+  getErrorOccurrenceByTag(occur: string): Array<number> {
+    const occurrences = new Array<number>();
+
+    for (const t of this.tags) {
+      if (t.tot[occur] && t.tot[occur]['result'] === 'failed') {
+        if((occur === 'langNo' || occur === 'titleNo')){
+          occurrences.push(1);
+        } else {
+          occurrences.push(t.tot[occur]['n_times']);
+        }
+      }
+    }
+    return occurrences;
+  }
+
   getTag(id: number): Tag {
     return this.tags.find((tag: Tag) => tag.id === id);
   }
