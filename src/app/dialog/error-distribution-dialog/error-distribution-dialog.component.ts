@@ -69,7 +69,6 @@ export class ErrorDistributionDialogComponent implements OnInit {
   columnDefinitionsMobile: any[];
   existingElemGroups: any;
 
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private translate: TranslateService
