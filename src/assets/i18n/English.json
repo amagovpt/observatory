@@ -37,10 +37,11 @@
     "pages_without_errors_a_aa_aaa": "Conforming AAA: without errors of level A+AA+AAA"
   },
   "DIALOGS": {
-    "chart": "Chart",
-    "table": "Table",
+    "element": "Type of element",
     "scores": {
       "title": "Score distribution",
+      "chart_title": "Graph",
+      "table": "Table",
       "frequency": "Frequency (nº of pages)",
       "percentage": "Percentage (nº of pages)",
       "percentage_label": "Percentage (%)",
@@ -48,7 +49,10 @@
       "cumulative": "Cumulative frequency"
     },
     "errors": {
-      "title": "10 most frequent errors",
+      "title": "Bad practices",
+      "table_title": "Bad practices table",
+      "chart_all_title": "Bad practices graph",
+      "chart_title": "10 most frequent bad practices",
       "common_errors": "Nº of pages",
       "common_errors2": "Nº of occurrences",
       "level": "Level",
@@ -61,12 +65,14 @@
       "situations_label2": "Nº of occurrences"
     },
     "corrections": {
-      "title": "Correction degree",
+      "title": "Good practices",
+      "table_title": "Good practices table",
+      "chart_title": "10 most frequent good practices",
       "n_corrections": "Nº of pages",
       "tests_label": "Results of passed tests",
       "situations_label": "Nº of pages"
     },
-    "element_corrections": {
+    "table": {
       "title": "Element correction degree",
       "pages": "Pages",
       "websites": "Websites",
@@ -194,6 +200,7 @@
   "MISC": {
     "skip_to_main": "Skip to main content",
     "loading": "Loading...",
+    "required_field": "This field is <strong>required</strong>",
     "message_close": "Close",
     "unexpected_error": "An unexpected error has ocurred. Please try again later.",
     "error_contact": "If the problem persists, please contact us...",
@@ -417,10 +424,12 @@
     "win_01": "Pop-up windows"
   },
   "ELEM_GROUPS": {
+    "area": "Area elements",
     "ehandler": "Event handlers",
     "form": "Forms",
     "frame": "Frames",
     "graphic": "Graphic buttons",
+    "heading": "Heading",
     "headings": "Headings",
     "image": "Images",
     "link": "Links",
@@ -433,6 +442,7 @@
   "TEST_ELEMENTS": {
     "a": "<a>",
     "all": "All",
+    "area": "<area>",
     "applet": "<applet>",
     "ehandler": "Event manipulators",
     "embed": "<embed>",
