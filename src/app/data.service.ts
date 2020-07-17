@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
+import { of } from 'rxjs/internal/observable/of'
+import { map, catchError } from 'rxjs/operators/';
 import clone from 'lodash.clone';
 
 import { ListTags } from './models/list-tags';

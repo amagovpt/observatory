@@ -13,8 +13,6 @@
     <br>
     <app-tags-statistics [listTags]="listTags"></app-tags-statistics>
     <br *ngIf="listTags.tags.length > 0">
-    <app-tags-top-five *ngIf="listTags.tags.length > 0" [listTags]="listTags"></app-tags-top-five>
-    <br *ngIf="listTags.tags.length > 0">
     <app-tags-list *ngIf="listTags.tags.length > 0" [listTags]="listTags"></app-tags-list>
   </section>
 </main>
