@@ -27,8 +27,8 @@
     "oldest_page_updated": "Avaliação mais antiga duma página",
     "last_updated": "Última atualização das estatísticas",
     "score_distribution": "Distribuição de pontuações",
-    "error_distribution": "Distribuição de erros",
-    "correction_distribution": "Distribuição de correção",
+    "error_distribution": "Más práticas",
+    "correction_distribution": "Boas práticas",
     "element_correction_distribution": "Distribuição de correção por elemento",
     "pages_with_errors": "Páginas não conformes",
     "pages_without_errors": "Páginas conformes",
@@ -37,10 +37,11 @@
     "pages_without_errors_a_aa_aaa": "Conformes AAA: sem erros de nível A+AA+AAA"
   },
   "DIALOGS": {
-    "chart": "Gráfico",
-    "table": "Tabela",
+    "element": "Tipo de elemento",
     "scores": {
       "title": "Distribuição de pontuações",
+      "chart_title": "Gráfico",
+      "table": "Tabela",
       "frequency": "Frequência (nº de páginas)",
       "percentage": "Percentagem (nº de páginas)",
       "percentage_label": "Percentagem (%)",
@@ -48,7 +49,10 @@
       "cumulative": "Frequência cumulativa"
     },
     "errors": {
-      "title": "10 erros mais frequentes",
+      "title": "Más práticas",
+      "table_title": "Tabela de más práticas",
+      "chart_all_title": "Gráfico de más prácticas",
+      "chart_title": "10 más práticas mais frequentes",
       "common_errors": "Nº de páginas",
       "common_errors2": "Nº de ocorrências",
       "level": "Nível",
@@ -61,12 +65,14 @@
       "situations_label2": "Nº de ocorrências"
     },
     "corrections": {
-      "title": "Grau de correção",
+      "title": "Boas práticas",
+      "table_title": "Tabela de boas práticas",
+      "chart_title": "Gráfico de boas prácticas",
       "n_corrections": "Nº de páginas",
       "tests_label": "Resultados de testes passados",
       "situations_label": "Nº de páginas"
     },
-    "element_corrections": {
+    "table": {
       "title": "Grau de correção por elemento",
       "pages": "Páginas",
       "websites": "Sítios web",
@@ -418,10 +424,12 @@
     "win_01": "Pop-up windows"
   },
   "ELEM_GROUPS": {
+    "area": "Elementos area",
     "ehandler": "Controladores de eventos",
     "form": "Formulários",
     "frame": "Frames",
-    "graphic": "Butoes gráficos",
+    "graphic": "Botões gráficos",
+    "heading": "Cabeçalho",
     "headings": "Cabeçalhos",
     "image": "Imagens",
     "link": "Links",
@@ -434,6 +442,7 @@
   "TEST_ELEMENTS": {
     "a": "<a>",
     "all": "Todos",
+    "area": "<area>",
     "applet": "<applet>",
     "ehandler": "Manipuladores de eventos",
     "embed": "<embed>",

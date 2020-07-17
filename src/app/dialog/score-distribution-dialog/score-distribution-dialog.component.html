@@ -1,36 +1,77 @@
-<h2 mat-dialog-title>{{ "DIALOGS.scores.title" | translate }}</h2>
+<h1 mat-dialog-title>{{ "DIALOGS.scores.title" | translate }}</h1>
 <mat-dialog-content>
-  <mat-tab-group>
-    <mat-tab label="{{ 'DIALOGS.chart' | translate }}">
+  <mat-tab-group fxHide.lt-sm>
+    <mat-tab label="{{ 'DIALOGS.scores.chart_title' | translate }}">
       <div class="chart">
         <canvas #chartDomains></canvas>
       </div>
     </mat-tab>
-    <mat-tab label="{{ 'DIALOGS.table' | translate }}">
-      <table border="1" frame="void" rules="rows">
-        <thead>
-          <tr>
-            <th>{{ "DIALOGS.scores.range" | translate }}</th>
-            <th>{{ "DIALOGS.scores.frequency" | translate }}</th>
-            <th fxHide.lt-sm>{{ "DIALOGS.scores.frequency" | translate }} (%)</th>
-            <th>{{ "DIALOGS.scores.cumulative" | translate }}</th>
-            <th fxHide.lt-sm>{{ "DIALOGS.scores.cumulative" | translate }} (%)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let lab of labels; let i = index">
-            <td>{{labels[i]}}</td>
-            <td>{{values[i]}}</td>
-            <td fxHide.lt-sm>{{percentageValues[i] | toFixed}}%</td>
-            <td>{{freq[i]}}</td>
-            <td fxHide.lt-sm>{{freqPer[i] | toFixed}}%</td>
-          </tr>
-        </tbody>
-      </table>
+    <mat-tab label="{{ 'DIALOGS.scores.table' | translate }}">
+      <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="range">
+          <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.range" | translate }}</mat-header-cell>
+          <mat-cell *matCellDef="let s"><span>{{s['range']}}</span>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="freq">
+          <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.frequency" | translate }}</mat-header-cell>
+          <mat-cell *matCellDef="let s"><span>{{s['freq']}}</span></mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="freqPer">
+          <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.frequency" | translate }} (%)</mat-header-cell>
+          <mat-cell *matCellDef="let s"><span>{{s['freqPer'] | toFixed}}%</span>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="cumuFreq">
+          <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.cumulative" | translate }}</mat-header-cell>
+          <mat-cell *matCellDef="let s"><span>{{s['cumuFreq']}}</span>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="cumuFreqPer">
+          <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.cumulative" | translate }} (%)</mat-header-cell>
+          <mat-cell *matCellDef="let s"><span>{{s['cumuFreqPer'] | toFixed}}%</span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
     </mat-tab>
   </mat-tab-group>
+
+  <mat-table fxHide.gt-xs [dataSource]="dataSource">
+    <ng-container matColumnDef="range">
+      <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.range" | translate }}</mat-header-cell>
+      <mat-cell *matCellDef="let s"><span>{{s['range']}}</span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="freq">
+      <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.frequency" | translate }}</mat-header-cell>
+      <mat-cell *matCellDef="let s"><span>{{s['freq']}}</span></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="freqPer">
+      <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.frequency" | translate }} (%)</mat-header-cell>
+      <mat-cell *matCellDef="let s"><span>{{s['freqPer'] | toFixed}}%</span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cumuFreq">
+      <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.cumulative" | translate }}</mat-header-cell>
+      <mat-cell *matCellDef="let s"><span>{{s['cumuFreq']}}</span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cumuFreqPer">
+      <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.scores.cumulative" | translate }} (%)</mat-header-cell>
+      <mat-cell *matCellDef="let s"><span>{{s['cumuFreqPer'] | toFixed}}%</span>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
 </mat-dialog-content>
+<mat-divider></mat-divider>
 <mat-dialog-actions fxLayout="row">
   <span fxFlex></span>
-  <button mat-flat-button color="warn" mat-dialog-close>{{ "DIALOGS.close" | translate }}</button>
+  <button mat-raised-button color="warn" mat-dialog-close>{{ "DIALOGS.close" | translate }}</button>
 </mat-dialog-actions>

@@ -168,4 +168,19 @@ export class Tag {
     }
     return occurrences;
   }
+
+  getErrorOccurrenceByWebsite(occur: string): Array<number> {
+    const occurrences = new Array<number>();
+
+    for (const w of this.websites) {
+      if (w.tot[occur] && w.tot[occur]['result'] === 'failed') {
+        if((occur === 'langNo' || occur === 'titleNo')){
+          occurrences.push(1);
+        } else {
+          occurrences.push(w.tot[occur]['n_times']);
+        }
+      }
+    }
+    return occurrences;
+  }
 }

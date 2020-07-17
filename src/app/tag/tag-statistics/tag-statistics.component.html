@@ -42,16 +42,12 @@
       {{ "STATISTICS.score_distribution" | translate }}
     </button>
     <span fxFlex="1" fxShow.gt-sm></span>
-    <button mat-flat-button color="warn" ngClass.lt-sm='mobile-button' (click)="openErrorDistributionDialog()">
-      {{ "STATISTICS.error_distribution" | translate }}
-    </button>
-    <span fxFlex="1" fxShow.gt-sm></span>
-    <button mat-flat-button color="accent" ngClass.lt-sm='mobile-button' (click)="openCorrectionDistributionDialog()">
+    <button mat-flat-button color="green" ngClass.lt-sm='mobile-button' (click)="openCorrectionDistributionDialog()">
       {{ "STATISTICS.correction_distribution" | translate }}
     </button>
     <span fxFlex="1" fxShow.gt-sm></span>
-    <button mat-flat-button color="green" ngClass.lt-sm='mobile-button' (click)="openElementCorrectionDistributionDialog()">
-      {{ "STATISTICS.element_correction_distribution" | translate }}
+    <button mat-flat-button color="warn" ngClass.lt-sm='mobile-button' (click)="openErrorDistributionDialog()">
+      {{ "STATISTICS.error_distribution" | translate }}
     </button>
   </mat-card-actions>
 </mat-card>

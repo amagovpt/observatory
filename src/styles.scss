@@ -8,3 +8,7 @@ html, body {
   font-family: Roboto, Monospace;
   background-color: #FFF6FF;
 }
+
+mat-tab-group {
+  max-height: inherit;
+}

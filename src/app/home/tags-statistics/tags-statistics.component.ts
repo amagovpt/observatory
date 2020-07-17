@@ -6,7 +6,7 @@ import { ListTags } from '../../models/list-tags';
 import { ScoreDistributionDialogComponent } from '../../dialog/score-distribution-dialog/score-distribution-dialog.component';
 import { ErrorDistributionDialogComponent } from '../../dialog/error-distribution-dialog/error-distribution-dialog.component';
 import { CorrectionDistributionDialogComponent } from '../../dialog/correction-distribution-dialog/correction-distribution-dialog.component';
-import { ElementCorrectionDistributionDialogComponent } from "../../dialog/element-correction-distribution-dialog/element-correction-distribution-dialog.component";
+//import { ElementCorrectionDistributionDialogComponent } from "../../dialog/element-correction-distribution-dialog/element-correction-distribution-dialog.component";
 
 @Component({
   selector: 'app-tags-statistics',
@@ -15,7 +15,7 @@ import { ElementCorrectionDistributionDialogComponent } from "../../dialog/eleme
 })
 export class TagsStatisticsComponent {
 
-  @Input() listTags: ListTags;
+  @Input('listTags') listTags: ListTags;
   dialogWidth: string;
   thresholdConfig: any;
 
@@ -56,8 +56,10 @@ export class TagsStatisticsComponent {
   openErrorDistributionDialog(): void {
     this.dialog.open(ErrorDistributionDialogComponent, {
       data: {
-        errors: this.listTags.getTopTenErrors(),
-        isCat: true
+        //errors: this.listTags.getTopTenErrors(),
+        tags: this.listTags,
+        //isCat: true
+        inTagsPage: true
       },
       width: this.dialogWidth
     });
@@ -73,7 +75,7 @@ export class TagsStatisticsComponent {
     });
   }
 
-  openElementCorrectionDistributionDialog(): void {
+  /*openElementCorrectionDistributionDialog(): void {
     this.dialog.open(ElementCorrectionDistributionDialogComponent, {
       data: {
         tags: this.listTags,
@@ -81,5 +83,5 @@ export class TagsStatisticsComponent {
       },
       width: this.dialogWidth,
     });
-  }
+  }*/
 }

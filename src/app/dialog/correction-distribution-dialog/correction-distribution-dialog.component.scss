@@ -2,16 +2,13 @@
   overflow: hidden;
 }
 
-table tr td:nth-child(2) {
-  text-align: left;
-}
-
 .mat-column-description {
-  flex: 0 0 65% !important;
+  min-width: 10em;
 }
 
-.mobile-friendly .mat-column-description {
-  flex: 0 0 40% !important;
+.mat-column-description,
+.mat-column-quartiles {
+  padding-left: 1em;
 }
 
 .mat-header-cell,
@@ -19,25 +16,37 @@ table tr td:nth-child(2) {
   font-size: 1em;
 }
 
-.mat-cell:not(.mat-column-description),
-.mat-header-cell:not(.mat-column-description){
+.mat-cell:not(.mat-column-description):not(.mat-column-quartiles){
   justify-content: center;
+  text-align: center;
+}
+
+mat-form-field {
+  margin-top: 0.5em;
+  width: 100%;
+  position: sticky;
+  left: 0;
+}
+
+mat-table {
+  width: 100%;
+  min-width: 40em;
+  table-layout: fixed;
+}
+
+::ng-deep .mat-sort-header-container {
+  width: 100%;
+  justify-content: center;
+}
+
+::ng-deep .mat-sort-header-button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: unset;
 }
 
 .mat-row:nth-child(2n) {
   background-color: whitesmoke
-}
-
-mat-table {
-  width: max-content;
-  min-width: 100%;
-}
-
-[class*="mat-column-"]{
-  min-width: 75px !important;
-}
-
-.mat-column-description {
-  min-width: 100px !important;
 }
 
