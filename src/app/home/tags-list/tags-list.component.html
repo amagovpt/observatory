@@ -60,8 +60,8 @@
             <a [routerLink]="[tag.id]">{{ tag.name }}</a>
           </td>
           <td>{{ tag.getScore() | toFixed }}</td>
-          <td fxHide.lt-md>{{ tag.websites.length }}</td>
           <td fxHide.lt-md>{{ tag.nPages }}</td>
+          <td fxHide.lt-md>{{ tag.websites.length }}</td>
           <td fxHide.lt-sm>{{ tag.A }}</td>
           <td fxHide.lt-sm>{{ tag.AA }}</td>
           <td fxHide.lt-sm>{{ tag.AAA }}</td>
