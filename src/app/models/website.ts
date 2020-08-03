@@ -1,6 +1,7 @@
 import { Page } from './page';
 import tests from '../tests';
 import orderBy from 'lodash.orderby';
+import { error } from '@angular/compiler/src/util';
 
 export class Website {
   id: number;
@@ -174,12 +175,13 @@ export class Website {
     
     for (const p of this.pages) {
       const error = p.evaluation.tot['elems'][tests[test]['test']];
-      if (error && (error === 'langNo' || error === 'titleNo')) {
-        occurrences.push(1);
-      } else {
-        occurrences.push(error);
+      if (error && tests[test]['result'] === 'failed') {
+        if (error === 'langNo' || error === 'titleNo') {
+          occurrences.push(1);
+        } else {
+          occurrences.push(error);
+        }
       }
-
     }
     return occurrences;
   }
