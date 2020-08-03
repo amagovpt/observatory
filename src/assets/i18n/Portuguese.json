@@ -118,7 +118,7 @@
       "AAA": "AAA",
       "pages": "Nº de Páginas",
       "see_tooltip": "Ver categoria",
-      "note": "* conformidade com as WCAG 2.0 (W3C)"
+      "note": "* conformidade com as WCAG 2.1 (W3C)"
     }
   },
   "TAG": {
@@ -142,7 +142,7 @@
       "AA": "AA",
       "AAA": "AAA",
       "see_tooltip": "Ver sítio web",
-      "note": "* conformidade com as WCAG 2.0 (W3C)"
+      "note": "* conformidade com as WCAG 2.1 (W3C)"
     }
   },
   "WEBSITE": {
@@ -151,7 +151,7 @@
     "statistics_title": "Estatísticas",
     "statistics_subtitle": "Metadados",
     "top_5_errors": {
-      "title": "Top 5 de erros mais comuns por cada uma das 3 prioridades das WCAG 2.0 (Nº de páginas)",
+      "title": "Top 5 de erros mais comuns por cada uma das 3 prioridades das WCAG 2.1 (Nº de páginas)",
       "errorA_title": "O top dos 5 erros de prioridade \"A\" que afetam mais páginas",
       "errorAA_title": "O top dos 5 erros de prioridade \"AA\" que afetam mais páginas",
       "errorAAA_title": "O top dos 5 erros de prioridade \"AAA\" que afetam mais páginas",

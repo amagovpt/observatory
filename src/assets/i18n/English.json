@@ -115,10 +115,10 @@
       "levels": "Websites conforming*",
       "A": "A",
       "AA": "AA",
-      "AAA": "AAA",
+      "AAA": "AAA", 
       "pages": "Nº of Pages",
       "see_tooltip": "Go to category",
-      "note": "* conforming to WCAG 2.0 (W3C)"
+      "note": "* conforming to WCAG 2.1 (W3C)"
     }
   },
   "TAG": {
@@ -142,7 +142,7 @@
       "AA": "AA",
       "AAA": "AAA",
       "see_tooltip": "Go to website",
-      "note": "* conforming to WCAG 2.0 (W3C)"
+      "note": "* conforming to WCAG 2.1 (W3C)"
     }
   },
   "WEBSITE": {
@@ -151,7 +151,7 @@
     "statistics_title": "Statistics",
     "statistics_subtitle": "Metadata",
     "top_5_errors": {
-      "title": "Top 5 common errors for each of the 3 WCAG 2.0 levels (nº of pages)",
+      "title": "Top 5 common errors for each of the 3 WCAG 2.1 levels (nº of pages)",
       "errorA_title": "Top 5 errors from level \"A\"",
       "errorAA_title": "Top 5 errors from level \"AA\"",
       "errorAAA_title": "Top 5 errors from level \"AAA\"",

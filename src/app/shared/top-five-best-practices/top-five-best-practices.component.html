@@ -11,7 +11,7 @@
         <p>
           {{ i+1 }}.
           <span *ngIf="s.n_pages > 1" innerHTML="{{ 'WEBSITE.top_5_best_practices.message.p' | translate:{ value: s.n_pages } }}"></span>
-          <span *ngIf="s.n_pages === 1" innerHTML="{{ 'WEBSITE.top_5_errors.message.s' | translate:{ value: s.n_pages } }}"></span>
+          <span *ngIf="s.n_pages === 1" innerHTML="{{ 'WEBSITE.top_5_best_practices.message.s' | translate:{ value: s.n_pages } }}"></span>
           <span innerHTML="{{ 'RESULTS.' + s['key'] | translate | html }}"></span>
         </p>
       </mat-list-item>
