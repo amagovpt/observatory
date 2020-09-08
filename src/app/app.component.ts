@@ -2,6 +2,7 @@ import { OnInit, OnDestroy, Component, Injectable, ViewChild, ElementRef, Change
 import { TranslateService } from '@ngx-translate/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ThemeService } from './theme.service';
 
 import { DataService } from './data.service';
 import { ListTags } from './models/list-tags';
@@ -48,7 +49,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private readonly data: DataService,
     public readonly translate: TranslateService,
     private readonly router: Router,
-    private readonly cd: ChangeDetectorRef
+    private readonly cd: ChangeDetectorRef,
+    private readonly theme: ThemeService
   ) {
     this.translate.addLangs(Object.values(this.langs));
     this.translate.setDefaultLang('Portuguese');
@@ -66,6 +68,14 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     this.selectedLang = this.translate.currentLang;
+
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    if (currentTheme !== 'dark') {
+      this.theme.setLightTheme();
+    } else {
+      this.theme.setDarkTheme();
+    }
 
     this.showGoToTop = false;
     this.loading = true;

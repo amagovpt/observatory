@@ -1,18 +1,17 @@
-<main id="main" fxLayout="row" fxLayoutAlign="center center">
-  <section fxLayout="column" fxLayoutAlign="center center" fxFlex.lt-md="95" fxFlex.md="80" fxFlex.lg="80" fxFlex.gt-lg="60">
-    <mat-card>
-      <mat-card-header fxLayout="row" fxLayoutAlign="center center">
-        <mat-card-title>
-          <h1>{{ "ALL_TAGS.title" | translate }}</h1>
-        </mat-card-title>
-        <mat-card-subtitle>
-          <h2>{{ "ALL_TAGS.subtitle" | translate }}</h2>
-        </mat-card-subtitle>
-      </mat-card-header>
-    </mat-card>
-    <br>
-    <app-tags-statistics [listTags]="listTags"></app-tags-statistics>
-    <br *ngIf="listTags.tags.length > 0">
-    <app-tags-list *ngIf="listTags.tags.length > 0" [listTags]="listTags"></app-tags-list>
+<main id="main" fxLayout="column" fxLayoutAlign="center center">
+  <section>
+    <nav fxLayout="row">
+      <a href="https://www.acessibilidade.gov.pt/">Acessibilidade.gov.pt</a>
+      <span>></span>
+      <a routerLink="/">Observatório</a>
+      <span>></span>
+      <a [routerLink]="['/', 'directories']">Directories</a>
+    </nav>
   </section>
+  <section class="info">
+    <div class="observatory">Observatório</div>
+    <h1>Diretórios</h1>
+  </section>
+  <app-tags-statistics [listTags]="listTags"></app-tags-statistics>
+  <!--<app-tags-list *ngIf="listTags.tags.length > 0" [listTags]="listTags"></app-tags-list>-->
 </main>

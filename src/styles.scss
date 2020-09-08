@@ -1,14 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
-	margin: 0;
+html,
+body {
+  margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: Roboto, Monospace;
-  background-color: #FFF6FF;
-}
-
-mat-tab-group {
-  max-height: inherit;
+  font-family: 'Red Hat Display', Roboto, Monospace;
+  font-size: 16px;
+  background-color: var(--background);
 }

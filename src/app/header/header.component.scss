@@ -1,11 +1,45 @@
-.menu-button {
-	position: fixed;
-  z-index: 100;
-  background-color: lightblue;
+section:first-child {
+  background-color: var(--top-header-background);
+  height: 50px;
+
+  button {
+    font-size: 2em;
+  }
 }
 
+.header_wrapper {
+  width: 100%;
+  background-color: var(--header-background);
+}
 
-.small-logo {
-	margin-top: 1em;
-	width: 60%;
+.observatory_header {
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.title {
+	color: var(--header-title);
+	height: 50px;
+  width: 308px;
+  font-family: "Red Hat Display";
+  font-size: 26px;
+  letter-spacing: 0;
+	line-height: 30px;
+	
+	span:last-child {
+		font-weight: initial;
+	}
+}
+
+.header_text {
+	height: 36px;
+  width: 522px;
+  color: var(--header-text);
+  font-family: Lato;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 22px;
 }

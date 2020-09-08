@@ -1,14 +1,20 @@
 <header>
-  <button class="menu-button" fxHide.gt-sm mat-icon-button (click)="toggleSideNav()">
-    <mat-icon aria-label="Open sidebar menu">menu</mat-icon>
-  </button>
-  <div fxLayout="row" fxLayoutAlign="space-between center" fxHide.lt-md>
-    <app-breadcrumbs fxFlex></app-breadcrumbs>
-  </div>
-  <div fxLayout="row" fxLayoutAlign="center center" fxHide.lt-md>
-    <a routerLink="/" routerLinkActive="active" fxLayout="row" fxLayoutAlign="center center">
-      <img class="small-logo" src="assets/images/logo.png" alt="{{ 'HEADER.LOGO.alt' | translate }}">
-    </a>
-  </div>
+  <section fxLayout="row" fxLayoutAlign="end center">
+    <button (click)="toggleLightDarkTheme()">Toggle light/dark theme</button>
+  </section>
+  <section fxLayout="column" fxLayoutAlign="center center">
+    <div class="header_wrapper" fxLayout="row" fxLayoutAlign="center">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlex.md="87" fxFlex.lg="87" fxFlex.gt-lg="87">
+        <div class="observatory_header" fxLayout="row" fxLayoutAlign="space-between center">
+          <h1 class="title" fxLayout="column">
+            <span>Observatorio Português</span>
+            <span>da Acessibilidade Web</span>
+          </h1>
+          <div class="header_text">
+            {{ "HEADER.text" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </header>
-<br>

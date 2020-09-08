@@ -1,56 +1,11 @@
-<a class="skip-to-main" href="#main" title="{{ 'MISC.skip_to_main' | translate }}">{{ "MISC.skip_to_main" | translate }}</a>
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
-    <div fxLayout="column" fxLayoutAlign="space-between start">
-      <mat-nav-list>
-        <h3 mat-subheader>{{ "SIDEBAR.menu" | translate }}</h3>
-        <mat-list-item routerLink="/" (click)="sidenav.close()">
-          <mat-icon mat-list-icon>home</mat-icon>
-          <h4 mat-line>{{ "SIDEBAR.all_tags" | translate }}</h4>
-        </mat-list-item>
-        <mat-list-item *ngIf="tag" [routerLink]="['/', tagId]" (click)="sidenav.close()">
-          <mat-icon mat-list-icon>category</mat-icon>
-          <h4 mat-line>{{ "SIDEBAR.tag" | translate }} {{ tag }}</h4>
-        </mat-list-item>
-        <mat-list-item *ngIf="website" [routerLink]="['/', tagId, websiteId]" (click)="sidenav.close()">
-          <mat-icon mat-list-icon>language</mat-icon>
-          <h4 mat-line>{{ "SIDEBAR.website" | translate }} {{ website }}</h4>
-        </mat-list-item>
-      </mat-nav-list>
-      <br>
-      <mat-list fxLayout="row" fxLayoutAlign="center center">
-        <mat-list-item>
-          <mat-form-field>
-            <label for="sidenav-language">{{ 'FOOTER.language' | translate }}</label>
-            <mat-select id="sidenav-language" [(value)]="selectedLang" (selectionChange)="changeLanguage()">
-              <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
-                {{ "LANGUAGES."+lang | translate }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </mat-list-item>
-      </mat-list>
-    </div>
-  </mat-sidenav>
-
-  <mat-sidenav-content (scroll)="onScroll($event)">
-
-    <div id="main" class="main">
-      <app-header *ngIf="!loading && !error" [sideNav]="sidenav"></app-header>
-      <router-outlet *ngIf="!loading && !error"></router-outlet>
-      <app-loading *ngIf="loading"></app-loading>
-      <app-error *ngIf="error"></app-error>
-    </div>
-    <br>
-    <div class="footer">
-      <app-footer></app-footer>
-    </div>
-
-    <button class="go_to_top" *ngIf="showGoToTop" fxHide.lt-md mat-fab color="accent" matTooltip="{{ 'MISC.go_to_top' | translate }}" (click)="goToTop()">
-      <mat-icon aria-label="'MISC.go_to_top' | translate">arrow_upward</mat-icon>
-    </button>
-    <button class="go_to_top_mini" *ngIf="showGoToTop" fxHide.gt-sm mat-mini-fab color="accent" matTooltip="{{ 'MISC.go_to_top' | translate }}" (click)="goToTop()">
-      <mat-icon aria-label="'MISC.go_to_top' | translate">arrow_upward</mat-icon>
-    </button>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<a class="skip-to-main" [routerLink]="[]" fragment="main" title="{{ 'MISC.skip_to_main' | translate }}">{{ "MISC.skip_to_main" | translate }}</a>
+<div id="main" class="main">
+  <app-header *ngIf="!loading && !error"></app-header>
+  <router-outlet *ngIf="!loading && !error"></router-outlet>
+  <app-loading *ngIf="loading"></app-loading>
+  <app-error *ngIf="error"></app-error>
+</div>
+<br>
+<div class="footer">
+  <app-footer></app-footer>
+</div>

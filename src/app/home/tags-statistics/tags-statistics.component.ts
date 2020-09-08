@@ -1,4 +1,4 @@
-import { Component, Input, HostListener } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ListTags } from '../../models/list-tags';
@@ -26,21 +26,10 @@ export class TagsStatisticsComponent {
       5: {color: 'yellow'},
       7.5: {color: 'green'}
     };
-
-    if (window.innerWidth < 960) {
-      this.dialogWidth = '100vw';
-    } else {
-      this.dialogWidth = '60vw';
-    }
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any): void {
-    if (event.target.innerWidth < 960) {
-      this.dialogWidth = '100vw';
-    } else {
-      this.dialogWidth = '60vw';
-    }
+  ngOnInit(): void {
+    console.log(this.listTags)
   }
 
   openScoreDistributionDialog(): void {

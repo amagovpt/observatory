@@ -1,10 +1,146 @@
 :host {
-	width: 100%;
+  width: 87%;
+  background-color: var(--statistics-background);
+}
+
+.statistics-wrapper {
+  width: 90%;
+  padding: 1em;
+}
+
+.first-row {
+  margin-top: 2em;
+}
+
+.first-row div:first-child span:first-child {
+  color: var(--statistics-text);
+  font-family: Lato;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 40px;
+}
+
+.first-row div:first-child span:nth-child(2) {
+  color: var(--statistics-text2);
+  font-family: Lato;
+  font-size: 16px;
+  letter-spacing: 0;
 }
 
 ::ng-deep .reading-block {
   line-height: 40px;
+  font-size: 4em !important;
+  font-weight: bold !important;
+  letter-spacing: 5px;
+  overflow: unset !important;
+  color: var(--statistics-text);
 }
+
+::ng-deep .reading-label {
+  color: var(--statistics-text);
+}
+
+.first-row {
+  margin-bottom: 3em;
+}
+
+.first-row div span {
+  display: block;
+}
+
+.first-row div span:first-child {
+  color: var(--statistics-text);
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.first-row div span:nth-child(2) {
+  color: var(--statistics-text);
+  font-family: Lato;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.second-row {
+  margin-bottom: 2em;
+}
+
+.second-row div {
+  background-color: var(--background);
+}
+
+.second-row > div:nth-child(2) {
+  margin-left: 5em;
+}
+
+.metadata {
+  width: 90%;
+}
+
+.metadata div span {
+  display: block;
+  text-align: center;
+}
+
+.metadata div span:first-child {
+  height: 26px;
+  color: var(--statistics-text);
+  font-family: "Lato";
+  font-size: 36px;
+  letter-spacing: 0;
+  font-weight: bold;
+  line-height: 20px;
+}
+
+.metadata div span:last-child {
+  height: 11px;
+  color: var(--statistics-text);
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 20px;
+}
+
+.third-row {
+  margin-bottom: 2em;
+}
+
+.third-row button {
+  color: var(--statistics-button-text);
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 24px;
+  border-radius: 25px;
+  border: none;
+  padding: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  cursor: pointer;
+}
+
+.third-row {
+  button:first-of-type {
+    background-color: var(--statistics-button-background1);
+  }
+
+  button:nth-of-type(2) {
+    background-color: var(--statistics-button-background2);
+  }
+
+  button:nth-of-type(3) {
+    background-color: var(--statistics-button-background3);
+  }
+}
+
+//////////
 
 ::ng-deep .mat-card-actions .mat-raised-button:first-child {
   margin: 0 8px;
