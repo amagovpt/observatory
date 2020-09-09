@@ -1,46 +1,88 @@
 :host {
-	width: 100%;
+  width: 87%;
+  background-color: var(--statistics-background);
 }
 
-.cats-table {
-  thead {
-    background-color: #eee;
-  }
-
-  td, th {
-    padding: 0.5em;
-  }
-
-  th {
-    vertical-align: middle;
-  }
-
-  td:nth-child(2) {
-    text-align: left;
-  }
+.table-wrapper {
+  width: 90%;
+  padding: 1em;
 }
 
-.websites-conform {
+h1 {
+  color: var(--table-title);
+  font-family: Lato;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 48px;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+table thead {
+  color: var(--table-header-text);
+}
+
+table thead tr:first-child {
+  background-color: var(--table-header1);
+}
+
+table thead tr:last-child {
+  background-color: var(--table-header2);
+  opacity: 0.9;
+}
+
+table thead tr th {
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 22px;
+  padding: 1em;
   text-align: center;
 }
 
-.mat-sort-header-button {
-  outline: none !important;
+::ng-deep .mat-sort-header-stem {
+  color: var(--table-header-text);
 }
 
-.mat-header-cell.mat-sort-header-sorted {
-  color: black;
+::ng-deep .mat-sort-header-indicator {
+  color: var(--table-header-text);
 }
 
-.show_websites_button {
-  margin-bottom: 1em;
+.name {
+  width: 55%;
 }
 
-a {
-  text-decoration: none;
+table tbody tr td {
+  border-bottom: thin solid var(--table-border);
+}
+
+table tbody tr td:not(.name) {
+  color: var(--table-text);
+  font-family: Lato;
+  font-size: 16px;
   font-weight: bold;
+  letter-spacing: 0;
+  line-height: 80px;
+  text-align: center;
 }
 
-a:hover {
-  text-decoration: underline;
+td.name a {
+  color: var(--table-directory-name);
+  text-decoration: none;
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 80px;
+  text-align: center;
+  margin-left: 1em;
+}
+
+table tbody tr td:nth-child(3) {
+  font-size: 18px;
 }

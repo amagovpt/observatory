@@ -28,10 +28,6 @@ export class TagsStatisticsComponent {
     };
   }
 
-  ngOnInit(): void {
-    console.log(this.listTags)
-  }
-
   openScoreDistributionDialog(): void {
     this.dialog.open(ScoreDistributionDialogComponent, {
       data: {

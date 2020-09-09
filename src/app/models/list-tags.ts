@@ -5,6 +5,7 @@ import tests from '../tests';
 
 export class ListTags {
   tags: Array<Tag>;
+  nEntities: number;
   nWebsites: number;
   nPages: number;
   score: number;
@@ -20,6 +21,9 @@ export class ListTags {
 
   constructor(tags: Array<Tag>) {
     this.tags = tags;
+    this.nEntities = tags.reduce((n: number, t: Tag) => {
+      return n + t.entities.length;
+    }, 0);
     this.nWebsites = 0;
     this.nPages = 0;
     this.A = 0;

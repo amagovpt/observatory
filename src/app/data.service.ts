@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { of } from 'rxjs/internal/observable/of'
+import { of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators/';
 import clone from 'lodash.clone';
 

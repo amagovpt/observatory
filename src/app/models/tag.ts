@@ -9,6 +9,7 @@ export class Tag {
   creationDate: Date;
   websites: Array<Website>;
   nPages: number;
+  entities: Array<string>;
   score: number;
   A: number;
   AA: number;
@@ -27,6 +28,7 @@ export class Tag {
     this.creationDate = creationDate;
     this.websites = new Array<Website>();
     this.nPages = 0;
+    this.entities = new Array<string>();
     this.score = 0;
     this.A = 0;
     this.AA = 0;
@@ -132,6 +134,10 @@ export class Tag {
       this.recentPage = website.recentPage;
     } else if (website.oldestPage < this.oldestPage) {
       this.oldestPage = website.oldestPage;
+    }
+
+    if (website.entity && !this.entities.includes(website.entity)) {
+      this.entities.push(website.entity);
     }
   }
 

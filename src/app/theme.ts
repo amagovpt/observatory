@@ -62,6 +62,15 @@ const light: Theme = {
     '--statistics-button-background2': Colours._24,
     '--statistics-button-background3': Colours._25,
     '--statistics-button-text': Colours._3,
+
+    // TABLE
+    '--table-title': Colours._6,
+    '--table-header1': Colours._6,
+    '--table-header2': Colours._23,
+    '--table-header-text': Colours._3,
+    '--table-text': Colours._6,
+    '--table-directory-name': Colours._4,
+    '--table-border': Colours._6
   }
 };
 
@@ -96,6 +105,15 @@ const dark: Theme = {
     '--statistics-button-background2': Colours._24,
     '--statistics-button-background3': Colours._25,
     '--statistics-button-text': Colours._10,
+
+    // TABLE
+    '--table-title': Colours._9,
+    '--table-header1': Colours._6,
+    '--table-header2': Colours._23,
+    '--table-header-text': Colours._9,
+    '--table-text': Colours._3,
+    '--table-directory-name': Colours._3,
+    '--table-border': Colours._20
   }
 };
 
