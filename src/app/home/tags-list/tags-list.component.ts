@@ -46,33 +46,9 @@ export class TagsListComponent implements OnInit {
       switch (sort.active) {
         case 'rank': return compare(a.rank, b.rank, isAsc);
         case 'name': return compare(a.name, b.name, isAsc);
-        case 'score': return compare(a.getScore(), b.getScore(), isAsc);
-        case 'websites': return compare(a.websites, b.websites, isAsc);
-        case 'pages': return compare(a.nPages, b.nPages, isAsc);
-        case 'A': return compare(a.A, b.A, isAsc);
-        case 'AA': return compare(a.AA, b.AA, isAsc);
-        case 'AAA': return compare(a.AAA, b.AAA, isAsc);
         default: return 0;
       }
     });
-  }
-
-  mergeTags(): string {
-    return this.selection.selected.join('+');
-  }
-
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.sortedData.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.sortedData.forEach(tag => this.selection.select(tag.name));
   }
 }
 

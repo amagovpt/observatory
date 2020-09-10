@@ -1,4 +1,69 @@
-<mat-card>
+<section fxLayout="row" fxLayoutAlign="center center">
+  <div class="statistics-wrapper">
+    <div class="first-row" fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+        <span>{{ "ALL_TAGS.statistics_title" | translate }}</span>
+        <span>{{ "ALL_TAGS.statistics_subtitle" | translate }}</span>
+      </div>
+      <div>
+        <span>{{ "STATISTICS.newest_page_updated" | translate }}</span>
+        <span>{{ tag.recentPage | date }}</span>
+      </div>
+      <div>
+        <span>{{ "STATISTICS.oldest_page_updated" | translate }}</span>
+        <span>{{ tag.oldestPage | date }}</span>
+      </div>
+    </div>
+    <br>
+    <div class="second-row">
+      <ngx-gauge
+        class="score"
+        [type]="'arch'" 
+        [thick]="'10'" 
+        [cap]="'round'"
+        [value]="tag.getScore() | toFixed"
+        [label]="'STATISTICS.gauge.label' | translate"
+        [min]="0"
+        [max]="10"
+        [duration]="2000"
+        [thresholds]="thresholdConfig">
+      </ngx-gauge>
+      <div fxLayout="row" fxLayoutAlign="center center" fxFlex>
+        <div class="metadata" fxLayout="row" fxLayoutAlign="space-around center">
+          <div>
+            <span>{{ tag.entities.length }}</span>
+            <span>Entidades</span>
+          </div>
+          <div>
+            <span>{{ tag.websites.length }}</span>
+            <span>Sitios web</span>
+          </div>
+          <div>
+            <span>{{ tag.nPages }}</span>
+            <span>Páginas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="third-row">
+      <span fxFlex></span>
+      <button type="button" (click)="openScoreDistributionDialog()">
+        {{ "STATISTICS.score_distribution" | translate }}
+      </button>
+      <span fxFlex="1" fxShow.gt-sm></span>
+      <button type="button" (click)="openCorrectionDistributionDialog()">
+        {{ "STATISTICS.correction_distribution" | translate }}
+      </button>
+      <span fxFlex="1" fxShow.gt-sm></span>
+      <button type="button" (click)="openErrorDistributionDialog()">
+        {{ "STATISTICS.error_distribution" | translate }}
+      </button>
+    </div>
+  </div>
+</section>
+
+<!--<mat-card>
   <mat-card-header>
     <mat-card-title>
       <h1>{{ "TAG.statistics_title" | translate }}</h1>
@@ -51,3 +116,4 @@
     </button>
   </mat-card-actions>
 </mat-card>
+-->

@@ -122,7 +122,7 @@ export class AppComponent implements OnInit, OnDestroy {
           }
         }
 
-        document.getElementById('main').scrollIntoView();
+        document.getElementById('top').scrollIntoView();
       }
     });
   }
@@ -149,14 +149,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   goToTop(): void {
-    document.getElementById('main').scrollIntoView();
-  }
-
-  onScroll(e): void {
-    if (e.srcElement.scrollTop > 300) {
-      this.showGoToTop = true;
-    } else {
-      this.showGoToTop = false;
-    }
+    document.getElementById('top').scrollIntoView();
   }
 }

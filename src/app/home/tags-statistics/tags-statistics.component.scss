@@ -139,19 +139,3 @@
     background-color: var(--statistics-button-background3);
   }
 }
-
-//////////
-
-::ng-deep .mat-card-actions .mat-raised-button:first-child {
-  margin: 0 8px;
-}
-
-.mat-green{
-  background-color: darkolivegreen;
-  color: white;
-}
-
-.mobile-button {
-  width: 85%;
-  margin-bottom: 2% !important;
-}

@@ -65,12 +65,20 @@ const light: Theme = {
 
     // TABLE
     '--table-title': Colours._6,
+    '--table-subtitle': Colours._23,
     '--table-header1': Colours._6,
     '--table-header2': Colours._23,
     '--table-header-text': Colours._3,
     '--table-text': Colours._6,
+    '--table-hover': Colours._11,
     '--table-directory-name': Colours._4,
-    '--table-border': Colours._6
+    '--table-border': Colours._6,
+    '--table-pagination-text': Colours._6,
+    '--table-pagination-button-background': Colours._1,
+    '--table-pagination-button-text': Colours._6,
+    '--table-pagination-select-background': Colours._3,
+    '--table-pagination-select-text': Colours._6,
+    '--table-pagination-select-border': Colours._4,
   }
 };
 
@@ -108,12 +116,20 @@ const dark: Theme = {
 
     // TABLE
     '--table-title': Colours._9,
+    '--table-subtitle': Colours._9,
     '--table-header1': Colours._6,
     '--table-header2': Colours._23,
     '--table-header-text': Colours._9,
     '--table-text': Colours._3,
+    '--table-hover': Colours._7,
     '--table-directory-name': Colours._3,
-    '--table-border': Colours._20
+    '--table-border': Colours._20,
+    '--table-pagination-text': Colours._9,
+    '--table-pagination-button-background': Colours._10,
+    '--table-pagination-button-text': Colours._4,
+    '--table-pagination-select-background': Colours._8,
+    '--table-pagination-select-text': Colours._9,
+    '--table-pagination-select-border': Colours._10,
   }
 };
 
