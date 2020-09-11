@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorDistributionComponent } from './error-distribution.component';
+import { PracticesDistributionComponent } from './practices-distribution.component';
 
 describe('ErrorDistributionComponent', () => {
-  let component: ErrorDistributionComponent;
-  let fixture: ComponentFixture<ErrorDistributionComponent>;
+  let component: PracticesDistributionComponent;
+  let fixture: ComponentFixture<PracticesDistributionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorDistributionComponent ]
+      declarations: [ PracticesDistributionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ErrorDistributionComponent);
+    fixture = TestBed.createComponent(PracticesDistributionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

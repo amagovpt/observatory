@@ -1,4 +1,29 @@
-<main id="main" fxLayout="row" fxLayoutAlign="center center">
+<main fxLayout="column" fxLayoutAlign="center center">
+  <section>
+    <nav fxLayout="row">
+      <a href="https://www.acessibilidade.gov.pt/">Acessibilidade.gov.pt</a>
+      <span>></span>
+      <a routerLink="/">Observatório</a>
+      <span>></span>
+      <a [routerLink]="['/', 'directories']">Directories</a>
+      <span>></span>
+      <a [routerLink]="['/', 'directories', tag.id]">{{ tag.name }}</a>
+      <span>></span>
+      <a [routerLink]="['/', 'directories', tag.id, website.id]">{{ website.name }}</a>
+    </nav>
+  </section>
+  <section id="main" class="info">
+    <div class="observatory">{{ tag.name }}</div>
+    <h1>{{ website.name }}</h1>
+    <h2>{{ website.domain }}</h2>
+  </section>
+  <app-website-statistics [website]="website"></app-website-statistics>
+  <app-accessibility-plot [data]="accessibilityPlotData"></app-accessibility-plot>
+  <app-score-distribution [data]="scoreDistributionData"></app-score-distribution>
+  <app-practices-details [website]="website"></app-practices-details>
+</main>
+
+<!--<main id="main" fxLayout="row" fxLayoutAlign="center center">
   <section *ngIf="!loading && !error" fxLayout="column" fxLayoutAlign="center center" fxFlex.lt-md="95" fxFlex.md="80" fxFlex.lg="80" fxFlex.gt-lg="60">
     <mat-card class="mat-typography">
       <mat-card-header fxLayout="row" fxLayoutAlign="center center">
@@ -35,4 +60,5 @@
   <span *ngIf="error">
     <strong>{{ "MISC.website_error" | translate }}</strong>
   </span>
-</main>
+</main>-->
+

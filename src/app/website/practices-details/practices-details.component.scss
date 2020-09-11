@@ -1,0 +1,83 @@
+:host {
+  width: 87%;
+}
+
+.tabs {
+  width: 100%;
+  font-family: "Lato", sans-serif;
+
+  button {
+    cursor: pointer;
+  }
+}
+
+[role="tablist"] {
+  width: 100%;
+  margin: 0 0 -0.1em;
+  overflow: visible;
+}
+
+[role="tab"] {
+  font-size: 1em;
+  line-height: 3em;
+  color: var(--statistics-tabs-text);
+  background-color: var(--background);
+  font-weight: 700;
+  font-family: "Lato";
+  opacity: 1 !important;
+  border: none;
+  padding: 0.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin: 0;
+  font-size: 22px;
+  line-height: 48px;
+}
+
+[role="tab"][aria-selected="true"] {
+  border-bottom: 5px solid var(--statistics-tabs-text);
+}
+
+[role="tabpanel"] {
+  border: none;
+  margin-top: 3px;
+  background-color: var(--statistics-background);
+}
+
+[role="tab"]:hover,
+[role="tab"]:focus,
+[role="tab"]:active {
+  outline: none;
+}
+
+[role="tabpanel"].is-hidden {
+  display: none !important;
+}
+
+[role="tabpanel"]:focus {
+  outline: none;
+}
+
+.practices-wrapper {
+  width: 90%;
+
+  h1 {
+    font-size: 22px;
+    line-height: 30px;
+    color: var(--statistics-practices-titles);
+    font-weight: 700;
+    font-family: "Lato";
+  }
+
+  h2 {
+    font-size: 16px;
+    color: var(--statistics-text2);
+    font-weight: 400;
+    font-family: "Lato";
+  }
+}
+
+.divider {
+  display: block;
+  margin-bottom: 5em;
+}

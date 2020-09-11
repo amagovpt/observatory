@@ -1,0 +1,48 @@
+:host {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+thead tr {
+  background-color: var(--statistics-header2-background);
+}
+
+th {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "Lato";
+  text-align: right;
+  padding: 1em;
+  color: var(--statistics-header2-text);
+}
+
+th:first-child, th:nth-child(2), th:last-child {
+  text-align: left;
+}
+
+td {
+  font-size: 16px;
+  line-height: 25px;
+  font-weight: 400;
+  font-family: "Lato";
+  text-align: right;
+  padding: 1em;
+  color: var(--statistics-text);
+}
+
+td:first-child {
+  padding-left: 1em;
+}
+
+td:first-child, td:nth-child(2), td:last-child {
+  text-align: left;
+}
+
+th, td {
+  border-bottom: thin solid var(--statistics-border);
+}

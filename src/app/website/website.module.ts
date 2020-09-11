@@ -12,12 +12,14 @@ import { WebsiteRoutingModule } from './website-routing.module';
 import { WebsiteComponent } from './website.component';
 import { WebsiteStatisticsComponent } from './website-statistics/website-statistics.component';
 import { AccessibilityPlotComponent } from './accessibility-plot/accessibility-plot.component';
-import { AllErrorsListComponent } from './all-errors-list/all-errors-list.component';
-import { ErrorDistributionComponent } from './error-distribution/error-distribution.component';
+import { PracticesDetailsTableComponent } from './practices-details-table/practices-details-table.component';
+import { PracticesDistributionComponent } from './practices-distribution/practices-distribution.component';
 import { ScoreDistributionComponent } from './score-distribution/score-distribution.component';
+import { PracticesDetailsComponent } from './practices-details/practices-details.component';
+import { TopThreePracticesComponent } from './top-three-practices/top-three-practices.component';
 
 @NgModule({
-  declarations: [WebsiteComponent, WebsiteStatisticsComponent, AccessibilityPlotComponent, AllErrorsListComponent, ErrorDistributionComponent, ScoreDistributionComponent],
+  declarations: [WebsiteComponent, WebsiteStatisticsComponent, AccessibilityPlotComponent, PracticesDetailsTableComponent, PracticesDistributionComponent, ScoreDistributionComponent, PracticesDetailsComponent, TopThreePracticesComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,

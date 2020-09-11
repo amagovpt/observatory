@@ -1,0 +1,19 @@
+<table *ngFor="let lvl of ['A', 'AA', 'AAA']" [hidden]="getPractices(lvl).length === 0">
+  <thead>
+    <tr>
+      <th *ngIf="type === 'good'" colspan="3">3 melhores prácticas mais comuns de prioridade "{{ lvl }}"</th>
+      <th *ngIf="type === 'bad'" colspan="3">3 erros mais comuns de prioridade "{{ lvl }}"</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let practice of getPractices(lvl); let i = index;">
+      <td fxFlex=5>{{ i + 1 }}.</td>
+      <td fxFlex [innerHTML]="'RESULTS.' + practice.key | translate:{ value: practice.n_occurrences} | html"></td>
+      <td fxFlex=15>
+        <span *ngIf="type === 'good'">prática em</span>
+        <span *ngIf="type === 'bad'">erro em</span>
+        <span>{{ practice.n_pages }} páginas</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

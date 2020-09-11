@@ -33,9 +33,12 @@
     "element_correction_distribution": "Distribuição de correção por elemento",
     "pages_with_errors": "Páginas não conformes",
     "pages_without_errors": "Páginas conformes",
-    "pages_without_errors_a": "Conformes A: sem erros de nível A",
-    "pages_without_errors_a_aa": "Conformes AA: sem erros de nível A+AA",
-    "pages_without_errors_a_aa_aaa": "Conformes AAA: sem erros de nível A+AA+AAA"
+    "pages_without_errors_a": "Conformes A",
+    "pages_without_errors_a_aa": "Conformes AA",
+    "pages_without_errors_a_aa_aaa": "Conformes AAA",
+    "pages_without_errors_a_info": "sem erros de nível A",
+    "pages_without_errors_a_aa_info": "sem erros de nível A+AA",
+    "pages_without_errors_a_aa_aaa_info": "sem erros de nível A+AA+AAA"
   },
   "DIALOGS": {
     "element": "Tipo de elemento",

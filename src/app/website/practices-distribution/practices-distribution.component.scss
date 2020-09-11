@@ -1,24 +1,5 @@
 :host {
-  width: 87%;
-  background-color: var(--statistics-background);
-}
-
-.statistics-wrapper {
-  width: 90%;
-  padding: 1em;
-
-  div {
-    width: 100%;
-  }
-}
-
-h1 {
-  color: var(--statistics-text);
-  font-family: Lato;
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 40px;
+  width: 100%;
 }
 
 .tabs {
@@ -95,13 +76,10 @@ table thead tr th {
   color: var(--statistics-score-table-header-text);
   font-weight: 700;
   font-family: "Lato";
+  text-align: right;
 
-  &:first-child {
+  &:first-child, &:nth-child(2) {
     text-align: left;
-  }
-
-  &:not(:first-child) {
-    text-align: right;
   }
 }
 
@@ -112,17 +90,11 @@ table tbody tr td {
   font-weight: 400;
   font-family: "Lato";
   border-bottom: thin solid var(--statistics-score-table-border);
+  text-align: right;
+  padding-right: 1em;
 
-  &:first-child {
+  &:first-child, &:nth-child(2) {
     text-align: left;
     padding-left: 1em;
-  }
-
-  &:last-child {
-    padding-right: 1em;
-  }
-
-  &:not(:first-child) {
-    text-align: right;
   }
 }

@@ -6,8 +6,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: ':tag', loadChildren: () => import('./tag/tag.module').then(m => m.TagModule) },
-  { path: ':tag/:website', loadChildren: () => import('./website/website.module').then(m => m.WebsiteModule) },
+  { path: 'directories', loadChildren: () => import('./directories/directories.module').then(m => m.DirectoriesModule) },
+  { path: 'directories/:tag', loadChildren: () => import('./tag/tag.module').then(m => m.TagModule) },
+  { path: 'directories/:tag/:website', loadChildren: () => import('./website/website.module').then(m => m.WebsiteModule) },
   { path: '**', component: PageNotFoundComponent }
 ];
 

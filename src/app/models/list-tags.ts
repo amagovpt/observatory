@@ -15,7 +15,6 @@ export class ListTags {
   frequencies: Array<number>;
   errors: any;
   success: any;
-  tot: any;
   recentPage: Date;
   oldestPage: Date;
 
@@ -32,7 +31,6 @@ export class ListTags {
     this.frequencies = new Array<number>(9).fill(0);
     this.errors = {};
     this.success = {};
-    this.tot = {};
 
     let score = 0;
     const size = tags.length;
@@ -48,75 +46,39 @@ export class ListTags {
         return v + tag.frequencies[j];
       });
 
-      const perrors = tag.errors;
-      const tSuccess = tag.success;
+      const tagErrors = tag.errors;
 
-      for (const key in tag.tot || {}) {
-        const value = tag.tot[key];
-
-        if (Object.keys(this.tot).includes(key)) {
-          this.tot[key]['n_pages'] += value['n_pages'];
-          this.tot[key]['n_times'] += value['n_times'];
-          this.tot[key]['n_websites'] += value['n_websites'];
+      for (const error in tagErrors || {}) {
+        if (Object.keys(this.errors).includes(error)) {
+          this.errors[error]['n_occurrences'] += tagErrors[error]['n_occurrences'];
+          this.errors[error]['n_pages'] += tagErrors[error]['n_pages'];
+          this.errors[error]['n_websites'] += tagErrors[error]['n_websites'];
+          this.errors[error]['n_tags']++;
         } else {
-          this.tot[key] = {n_pages: value['n_pages'], n_websites: value['n_websites'], n_times: value['n_times'], elem: value['elem'], test: value['test'], result: value['result']};
+          this.errors[error] = {
+            n_occurrences: tagErrors[error]['n_occurrences'], 
+            n_pages: tagErrors[error]['n_pages'], 
+            n_websites: tagErrors[error]['n_websites'],
+            n_tags: 1
+          };
         }
+      }
 
-        const k = tests[key]['test'];
+      const tagSuccess = tag.success;
 
-        if (tests[key]['result'] === 'failed') {
-          if (k === 'a' || k === 'hx') {
-            if (perrors[key]) {
-              if (Object.keys(this.errors).includes(key)) {
-                this.errors[key]['n_elems']++;
-                this.errors[key]['n_pages']++;
-                this.errors[key]['n_websites']++;
-              } else {
-                this.errors[key] = {n_elems: 1, n_pages: 1, n_websites: 1};
-              }
-            }
-          } else {
-            if (perrors[key]) {
-              let n = 0;
-              if (k === 'langNo' || k === 'langCodeNo' || k === 'langExtra' || k === 'titleNo') {
-                n = 1;
-              } else {
-                n = parseInt(perrors[key]['n_elems'], 0);
-              }
-              if (Object.keys(this.errors).includes(key)) {
-                this.errors[key]['n_elems'] += n;
-                this.errors[key]['n_pages'] += perrors[key]['n_pages'];
-                this.errors[key]['n_websites'] += perrors[key]['n_websites'];
-              } else {
-                this.errors[key] = {
-                  n_elems: n,
-                  n_pages: perrors[key]['n_pages'],
-                  n_websites: perrors[key]['n_websites']
-                };
-              }
-            }
-          }
-        } else if (tests[key]['result'] === 'passed') {
-          if (k === 'a' || k === 'hx') {
-            if (tSuccess[key]) {
-              if (Object.keys(this.success).includes(key)) {
-                this.success[key]['n_pages']++;
-                this.success[key]['n_websites']++;
-              } else {
-                this.success[key] = {key: key, test: k, elem: tests[key]['elem'], n_pages: 1, n_websites: 1};
-              }
-            }
-          } else {
-            if (tSuccess[key]) {
-              const n = parseInt(tSuccess[key]['n_elems'], 0);
-              if (Object.keys(this.success).includes(key)) {
-                this.success[key]['n_pages'] += tSuccess[key]['n_pages'];
-                this.success[key]['n_websites']++;
-              } else {
-                this.success[key] = {key: key, test: k, elem: tests[key]['elem'], n_pages: tSuccess[key]['n_pages'], n_websites: 1};
-              }
-            }
-          }
+      for (const practice in tagSuccess || {}) {
+        if (Object.keys(this.success).includes(practice)) {
+          this.success[practice]['n_occurrences'] += tagSuccess[practice]['n_occurrences'];
+          this.success[practice]['n_pages'] += tagSuccess[practice]['n_pages'];
+          this.success[practice]['n_websites'] += tagSuccess[practice]['n_websites'];
+          this.success[practice]['n_tags']++;
+        } else {
+          this.success[practice] = {
+            n_occurrences: tagSuccess[practice]['n_occurrences'], 
+            n_pages: tagSuccess[practice]['n_pages'], 
+            n_websites: tagSuccess[practice]['n_websites'],
+            n_tags: 1 
+          };
         }
       }
 
@@ -145,46 +107,37 @@ export class ListTags {
   getTopTenErrors(): any {
     const errors = new Array<any>();
     for (const key in this.errors || {}) {
-      if (this.errors[key]) {
-        errors.push({
-          key,
-          n_elems: this.errors[key].n_elems,
-          n_pages: this.errors[key].n_pages,
-          n_websites: this.errors[key].n_websites
-        });
-      }
+      errors.push({
+        key,
+        n_occurrences: this.errors[key].n_occurrences,
+        n_pages: this.errors[key].n_pages,
+        n_websites: this.errors[key].n_websites
+      });
     }
 
-    return orderBy(errors, ['n_elems', 'n_pages', 'n_websites'], ['desc', 'desc', 'desc']).slice(0, 10);
+    return orderBy(errors, ['n_occurrences', 'n_pages', 'n_websites'], ['desc', 'desc', 'desc']).slice(0, 10);
   }
 
-  getPassedAndWarningOccurrenceByTag(occur: string): Array<number> {
+  getPassedAndWarningOccurrenceByTag(test: string): Array<number> {
     const occurrences = new Array<number>();
 
-    for (const t of this.tags) {
-      if (t.tot[occur] && (t.tot[occur]['result'] === 'passed' || t.tot[occur]['result'] === 'warning')) {
-        if (occur === 'langNo' || occur === 'langCodeNo' || occur === 'langExtra' || occur === 'titleNo' || occur === 'titleOk' || occur === 'lang' || occur === 'aSkipFirst') {
-          occurrences.push(1);
-        } else {
-          occurrences.push(t.tot[occur]['n_times']);
-        }
+    for (const tag of this.tags || []) {
+      if (tag.success[test] && tests[test]['result'] !== 'failed') {
+        occurrences.push(tag.success[test]['n_occurrences']);
       }
     }
     return occurrences;
   }
 
-  getErrorOccurrenceByTag(occur: string): Array<number> {
+  getErrorOccurrenceByTag(test: string): Array<number> {
     const occurrences = new Array<number>();
 
-    for (const t of this.tags) {
-      if (t.tot[occur] && t.tot[occur]['result'] === 'failed') {
-        if((occur === 'langNo' || occur === 'titleNo')){
-          occurrences.push(1);
-        } else {
-          occurrences.push(t.tot[occur]['n_times']);
-        }
+    for (const tag of this.tags || []) {
+      if (tag.errors[test] && tests[test]['result'] === 'failed') {
+        occurrences.push(tag.errors[test]['n_occurrences']);
       }
     }
+
     return occurrences;
   }
 

@@ -1,4 +1,13 @@
-<mat-card>
+<section fxLayout="row" fxLayoutAlign="center center">
+  <div class="statistics-wrapper">
+    <h1>{{ "WEBSITE.accessibility_plot.title" | translate }}</h1>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <canvas #accessibilityPlot fxFlex="70" fxFlex.lt-md="100"></canvas>
+    </div>
+  </div>
+</section>
+
+<!--<mat-card>
   <mat-card-header>
     <mat-card-title>
       <h1>{{ "WEBSITE.accessibility_plot.title" | translate }}</h1>
@@ -8,3 +17,4 @@
     <canvas #accessibilityPlot fxFlex="70" fxFlex.lt-md="100"></canvas>
   </mat-card-content>
 </mat-card>
+-->

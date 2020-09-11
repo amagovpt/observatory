@@ -1,4 +1,73 @@
-<mat-card>
+<section fxLayout="row" fxLayoutAlign="center center">
+  <div class="statistics-wrapper">
+    <h1>{{ "DIALOGS.scores.title" | translate }}</h1>
+    <div class="scoreTabs">
+      <div class="tabs">
+        <div role="tablist">
+          <button
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="graph_tab"
+            id="tab_graph"
+          >
+            {{ "DIALOGS.scores.chart_title" | translate }}
+          </button>
+          <span fxFlex="1"></span>
+          <button
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="table_tab"
+            id="tab_table"
+            tabindex="-1"
+          >
+          {{ 'DIALOGS.scores.table' | translate }}
+          </button>
+        </div>
+        <div
+          tabindex="0"
+          role="tabpanel"
+          id="graph_tab"
+          aria-labelledby="tab_graph"
+          fxLayout="row" fxLayoutAlign="center center">
+          <canvas #chartDomains></canvas>
+        </div>
+        <div
+          tabindex="0"
+          role="tabpanel"
+          id="table_tab"
+          aria-labelledby="tab_table"
+          class="is-hidden"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th>{{ "DIALOGS.scores.range" | translate }}</th>
+                <th>{{ "DIALOGS.scores.frequency" | translate }}</th>
+                <th>{{ "DIALOGS.scores.frequency" | translate }} (%)</th>
+                <th>{{ "DIALOGS.scores.cumulative" | translate }}</th>
+                <th>{{ "DIALOGS.scores.cumulative" | translate }} (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let lab of labels; let i = index">
+                <td>{{labels[i]}}</td>
+                <td>{{values[i]}}</td>
+                <td>{{percentageValues[i] | toFixed}}%</td>
+                <td>{{freq[i]}}</td>
+                <td>{{freqPer[i] | toFixed}}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--<mat-card>
   <mat-card-header>
     <mat-card-title>
       <h1>{{ "DIALOGS.scores.title" | translate }}</h1>
@@ -34,3 +103,4 @@
     </mat-tab-group>
   </mat-card-content>
 </mat-card>
+-->

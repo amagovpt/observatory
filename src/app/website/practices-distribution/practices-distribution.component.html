@@ -1,0 +1,100 @@
+<div id="{{ type }}" class="distributionTabs">
+  <div class="tabs">
+    <div role="tablist">
+      <button
+        type="button"
+        role="tab"
+        aria-selected="true"
+        attr.aria-controls="{{ color }}_practices_graph_tab"
+        id="tab_{{ color }}_practices_graph"
+      >
+        {{ "DIALOGS.scores.chart_title" | translate }}
+      </button>
+      <span fxFlex="1"></span>
+      <button
+        type="button"
+        role="tab"
+        aria-selected="false"
+        attr.aria-controls="{{ color }}_practices_table_tab"
+        id="tab_{{ color }}_practices_table"
+        tabindex="-1"
+      >
+      {{ 'DIALOGS.scores.table' | translate }}
+      </button>
+    </div>
+    <div
+      tabindex="0"
+      role="tabpanel"
+      id="{{ color }}_practices_graph_tab"
+      attr.aria-labelledby="tab_{{ color }}_practices_graph"
+      fxLayout="row" fxLayoutAlign="center center">
+      <canvas #chartPractices></canvas>
+    </div>
+    <div
+      tabindex="0"
+      role="tabpanel"
+      id="{{ color }}_practices_table_tab"
+      attr.aria-labelledby="tab_{{ color }}_practices_table"
+      class="is-hidden"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th>{{ "DIALOGS.errors.level" | translate }}</th>
+            <th>{{ "DIALOGS.errors.description" | translate }}</th>
+            <th *ngIf="isCat">{{ "DIALOGS.errors.websites" | translate }}</th>
+            <th>{{ "DIALOGS.errors.pages" | translate }}</th>
+            <th>{{ "DIALOGS.errors.situations" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of errors">
+            <td>{{tests[e["key"]]["level"].toUpperCase()}}</td>
+            <td innerHTML="{{ 'RESULTS.' + e['key'] | translate:{ value: e.n_occurrences }| html }}"></td>
+            <td *ngIf="isCat">{{e["n_websites"]}}</td>
+            <td>{{e["n_pages"]}}</td>
+            <td>{{e["n_occurrences"]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--<mat-card fxShow="errors.length !== 0">
+  <mat-card-header>
+    <mat-card-title>
+      <h1>{{ "DIALOGS.errors.title" | translate }}</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+    <mat-tab-group fxFlex="70" fxFlex.lt-md="100">
+      <mat-tab label="{{ 'DIALOGS.errors.chart_all_title' | translate }}">
+        <canvas #chartErrors></canvas>
+      </mat-tab>
+      <mat-tab label="{{ 'DIALOGS.errors.table_title' | translate }}">
+        <table>
+          <thead>
+            <tr>
+              <th>{{ "DIALOGS.errors.level" | translate }}</th>
+              <th>{{ "DIALOGS.errors.description" | translate }}</th>
+              <th *ngIf="isCat">{{ "DIALOGS.errors.websites" | translate }}</th>
+              <th>{{ "DIALOGS.errors.pages" | translate }}</th>
+              <th>{{ "DIALOGS.errors.situations" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let e of errors">
+              <td>{{tests[e["key"]]["level"].toUpperCase()}}</td>
+              <td innerHTML="{{ 'RESULTS.' + e['key'] | translate:{ value: e.n_occurrences }| html }}"></td>
+              <td *ngIf="isCat">{{e["n_websites"]}}</td>
+              <td>{{e["n_pages"]}}</td>
+              <td>{{e["n_occurrences"]}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
+-->

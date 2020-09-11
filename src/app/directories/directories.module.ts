@@ -7,10 +7,14 @@ import { NgxGaugeModule } from 'ngx-gauge';
 import { MaterialModule } from '../material/material.module';
 import { DialogModule } from './../dialog/dialog.module';
 import { PipesModule } from '../pipes/pipes.module';
-import { HomeComponent } from './home.component';
+import { SharedModule } from '../shared/shared.module';
+import { DirectoriesComponent } from './directories.component';
+import { DirectoriesRoutingModule } from './directories-routing.module';
+import { TagsStatisticsComponent } from './tags-statistics/tags-statistics.component';
+import { TagsListComponent } from './tags-list/tags-list.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [DirectoriesComponent, TagsStatisticsComponent, TagsListComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,
@@ -19,8 +23,10 @@ import { HomeComponent } from './home.component';
     TranslateModule,
     RouterModule,
     DialogModule,
-    PipesModule
+    PipesModule,
+    SharedModule,
+    DirectoriesRoutingModule
   ],
-  exports: [HomeComponent]
+  exports: [DirectoriesComponent]
 })
-export class HomeModule { }
+export class DirectoriesModule { }

@@ -33,9 +33,12 @@
     "element_correction_distribution": "Element correction distribution",
     "pages_with_errors": "Pages non-conforming",
     "pages_without_errors": "Pages conforming",
-    "pages_without_errors_a": "Conforming A: without errors of level A",
-    "pages_without_errors_a_aa": "Conforming AA: without errors of level A+AA",
-    "pages_without_errors_a_aa_aaa": "Conforming AAA: without errors of level A+AA+AAA"
+    "pages_without_errors_a": "Conforming A",
+    "pages_without_errors_a_aa": "Conforming AA",
+    "pages_without_errors_a_aa_aaa": "Conforming AAA",
+    "pages_without_errors_a_info": "without errors of level A",
+    "pages_without_errors_a_aa_info": "without errors of level A+AA",
+    "pages_without_errors_a_aa_aaa_info": "without errors of level A+AA+AAA"
   },
   "DIALOGS": {
     "element": "Type of element",
