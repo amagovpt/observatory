@@ -28,7 +28,10 @@ const Colours = {
   '_22': '#db2280',
   '_23': '#4D4D4D',
   '_24': '#008538',
-  '_25': '#C1130B'
+  '_25': '#C1130B',
+  '_26': '#d8d7f9',
+  '_27': '#e1e8ec',
+  '_28': '#dcdcdb'
 };
 
 const light: Theme = {
@@ -48,6 +51,20 @@ const light: Theme = {
 
     // FOOTER
     '--footer-background': Colours._11,
+
+    // HOME PAGE
+    '--first-half-background': Colours._3,
+    '--home-tabs-text': Colours._4,
+    '--home-tabs-border': Colours._28,
+    '--home-tabs-active-text': Colours._6,
+    '--home-tabs-active-border': Colours._4,
+    '--home-tabs-button-text': Colours._3,
+    '--home-tabs-button-background': Colours._4,
+    '--home-4all-background': Colours._26,
+    '--home-4all-text': Colours._6,
+    '--home-top5-text': Colours._6,
+    '--home-top5-list-text': Colours._4,
+    '--home-numbers-text': Colours._6,
 
     // DIRECTORIES PAGE
     '--info-observatory-background': Colours._4,
@@ -111,6 +128,20 @@ const dark: Theme = {
 
     // FOOTER
     '--footer-background': Colours._12,
+
+    // HOME PAGE
+    '--first-half-background': Colours._8,
+    '--home-tabs-text': Colours._9,
+    '--home-tabs-border': Colours._23,
+    '--home-tabs-active-text': Colours._9,
+    '--home-tabs-active-border': Colours._9,
+    '--home-tabs-button-text': Colours._7,
+    '--home-tabs-button-background': Colours._10,
+    '--home-4all-background': Colours._4,
+    '--home-4all-text': Colours._27,
+    '--home-top5-text': Colours._27,
+    '--home-top5-list-text': Colours._10,
+    '--home-numbers-text': Colours._27,
 
     // DIRECTORIES PAGE
     '--info-observatory-background': Colours._10,

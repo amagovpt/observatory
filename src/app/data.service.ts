@@ -14,7 +14,7 @@ import { Website } from './models/website';
 })
 export class DataService {
 
-  private server: string;
+  private readonly server: string;
 
   private listTags: ListTags;
 

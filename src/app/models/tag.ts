@@ -9,6 +9,7 @@ export class Tag {
   creationDate: Date;
   websites: Array<Website>;
   nPages: number;
+  nPagesWithoutErrors: number;
   entities: Array<string>;
   score: number;
   A: number;
@@ -27,6 +28,7 @@ export class Tag {
     this.creationDate = creationDate;
     this.websites = new Array<Website>();
     this.nPages = 0;
+    this.nPagesWithoutErrors = 0;
     this.entities = new Array<string>();
     this.score = 0;
     this.A = 0;
@@ -41,6 +43,8 @@ export class Tag {
     this.websites.push(website);
     this.nPages += website.pages.length;
     this.score += website.getScore();
+
+    this.nPagesWithoutErrors += website.AAA;
 
     if (website.AAA === website.pages.length) {
       this.AAA++;

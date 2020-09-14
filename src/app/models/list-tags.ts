@@ -8,6 +8,7 @@ export class ListTags {
   nEntities: number;
   nWebsites: number;
   nPages: number;
+  nPagesWithoutErrors: number;
   score: number;
   A: number;
   AA: number;
@@ -25,6 +26,7 @@ export class ListTags {
     }, 0);
     this.nWebsites = 0;
     this.nPages = 0;
+    this.nPagesWithoutErrors = 0;
     this.A = 0;
     this.AA = 0;
     this.AAA = 0;
@@ -39,6 +41,7 @@ export class ListTags {
       score += tag.getScore();
       this.nWebsites += tag.websites.length;
       this.nPages += tag.nPages;
+      this.nPagesWithoutErrors += tag.nPagesWithoutErrors;
       this.A += tag.A;
       this.AA += tag.AA;
       this.AAA += tag.AAA;
@@ -104,7 +107,7 @@ export class ListTags {
     return this.score;
   }
 
-  getTopTenErrors(): any {
+  getTopFiveErrors(): any {
     const errors = new Array<any>();
     for (const key in this.errors || {}) {
       errors.push({
@@ -115,8 +118,23 @@ export class ListTags {
       });
     }
 
-    return orderBy(errors, ['n_occurrences', 'n_pages', 'n_websites'], ['desc', 'desc', 'desc']).slice(0, 10);
+    return orderBy(errors, ['n_occurrences', 'n_pages', 'n_websites'], ['desc', 'desc', 'desc']).slice(0, 5);
   }
+
+  getTopFiveBestPractices(): any {
+    const practices = new Array<any>();
+    for (const key in this.success || {}) {
+      practices.push({
+        key,
+        n_occurrences: this.success[key].n_occurrences,
+        n_pages: this.success[key].n_pages,
+        n_websites: this.success[key].n_websites
+      });
+    }
+
+    return orderBy(practices, ['n_occurrences', 'n_pages', 'n_websites'], ['desc', 'desc', 'desc']).slice(0, 5);
+  }
+
 
   getPassedAndWarningOccurrenceByTag(test: string): Array<number> {
     const occurrences = new Array<number>();
