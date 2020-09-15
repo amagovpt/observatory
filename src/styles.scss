@@ -10,3 +10,8 @@ body {
   font-size: 16px;
   background-color: var(--background);
 }
+
+
+[role="dialog"] {
+  background-color: var(--statistics-background) !important;
+}

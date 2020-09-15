@@ -91,6 +91,8 @@ const light: Theme = {
     '--statistics-score-table-border': Colours._6,
     '--statistics-score-line': Colours._4,
     '--statistics-practices-titles': Colours._6,
+    '--statistics-close': Colours._4,
+    '--statistics-close-text': Colours._3,
 
     // TABLE
     '--table-title': Colours._6,
@@ -168,6 +170,8 @@ const dark: Theme = {
     '--statistics-score-table-border': Colours._23,
     '--statistics-score-line': Colours._10,
     '--statistics-practices-titles': Colours._9,
+    '--statistics-close': Colours._10,
+    '--statistics-close-text': Colours._8,
 
     // TABLE
     '--table-title': Colours._9,

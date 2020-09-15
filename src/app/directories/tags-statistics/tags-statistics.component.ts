@@ -16,7 +16,7 @@ import { CorrectionDistributionDialogComponent } from '../../dialog/correction-d
 export class TagsStatisticsComponent {
 
   @Input('listTags') listTags: ListTags;
-  dialogWidth: string;
+
   thresholdConfig: any;
 
   constructor(private readonly dialog: MatDialog) {
@@ -34,19 +34,17 @@ export class TagsStatisticsComponent {
         number: this.listTags.tags.length,
         frequency: this.listTags.frequencies
       },
-      width: this.dialogWidth
+      width: '60vw'
     });
   }
 
   openErrorDistributionDialog(): void {
     this.dialog.open(ErrorDistributionDialogComponent, {
       data: {
-        //errors: this.listTags.getTopTenErrors(),
         tags: this.listTags,
-        //isCat: true
         inTagsPage: true
       },
-      width: this.dialogWidth
+      width: '60vw'
     });
   }
   
@@ -56,17 +54,7 @@ export class TagsStatisticsComponent {
         tags: this.listTags,
         inTagsPage: true
       },
-      width: this.dialogWidth,
+      width: '60vw'
     });
   }
-
-  /*openElementCorrectionDistributionDialog(): void {
-    this.dialog.open(ElementCorrectionDistributionDialogComponent, {
-      data: {
-        tags: this.listTags,
-        inTagsPage: true
-      },
-      width: this.dialogWidth,
-    });
-  }*/
 }

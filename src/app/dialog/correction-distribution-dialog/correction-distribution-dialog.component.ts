@@ -3,8 +3,6 @@ import {TranslateService} from '@ngx-translate/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Chart} from 'chart.js';
 import tests from '../../tests'
-import {MatTableDataSource} from "@angular/material/table";
-import {MatSort} from "@angular/material/sort";
 import * as forEach from 'lodash.foreach';
 import * as slice from 'lodash.slice';
 import * as includes from 'lodash.includes';
@@ -49,19 +47,25 @@ export class CorrectionDistributionDialogComponent implements OnInit {
   };
 
   @ViewChild('chart', { static: true }) chartCorrections: any;
-  @ViewChild(MatSort, { static: true }) matSort: MatSort;
 
   chart: any;
   tests: any;
-  keys: any;
   tagsSuccess: {}[];
   nPages: number;
   inTagsPage: boolean;
   graphData: any;
-  dataSource: MatTableDataSource<CorrectionData>;
+  tableData: Array<CorrectionData>;
+  showTableData: Array<CorrectionData>;
   columnDefinitions: any[];
   columnDefinitionsMobile: any[];
   existingElemGroups: any;
+
+  tabs: HTMLElement[] = [];
+  panels: HTMLElement[] = [];
+  tablist: HTMLElement;
+
+  keys: any;
+  direction: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -91,21 +95,22 @@ export class CorrectionDistributionDialogComponent implements OnInit {
       { def: 'pages', hide: false}
     ];
 
-    const tableData: CorrectionData[] = [];
-    forEach(this.data.tags.tot, (v, key) => {
-      if (v['result'] === 'passed' || v['result'] === 'warning') {
-        let elem = v['elem'];
+    this.tableData = new Array<CorrectionData>();
+
+    forEach(this.data.tags.success, (v, key) => {
+      if (this.tests[key]['result'] === 'passed' || this.tests[key]['result'] === 'warning') {
+        let elem = this.tests[key]['elem'];
         let n_pages = v['n_pages'];
         let n_websites = v['n_websites'];
-        let result = v['result'];
+        let result = this.tests[key]['result'];
 
         let quartiles = calculateQuartiles(this.data, key);
-        if (!includes(this.existingElemGroups, this.elemGroups[v['elem']])) {
-          this.existingElemGroups.push(this.elemGroups[v['elem']]);
+        if (!includes(this.existingElemGroups, this.elemGroups[elem])) {
+          this.existingElemGroups.push(this.elemGroups[elem]);
         }
         // description, element name
         let translations: string[] = ["RESULTS." + key, "TEST_ELEMENTS." + elem];
-        tableData.push(this.addToTableData(key, v, translations, quartiles));
+        this.tableData.push(this.addToTableData(key, v, translations, quartiles));
         this.graphData.push({key, elem, n_pages, n_websites, result});
       }
     });
@@ -117,12 +122,11 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     
     // because we only want the top 10
     this.graphData = slice(this.graphData, 0, 10);
-    this.dataSource = new MatTableDataSource(tableData);
+
+    this.showTableData = clone(this.tableData);
   }
 
   ngOnInit(): void {
-    this.dataSource.sort = this.matSort;
-
     const translations = this.graphData.map((v, k) => {
       return 'RESULTS.' + v['key'];
     });
@@ -201,13 +205,36 @@ export class CorrectionDistributionDialogComponent implements OnInit {
         }
       });
     });
+
+    this.keys = {
+      end: 35,
+      home: 36,
+      left: 37,
+      up: 38,
+      right: 39,
+      down: 40,
+    };
+    this.direction = {
+      37: -1,
+      38: -1,
+      39: 1,
+      40: 1,
+    };
+    this.tablist = document.querySelectorAll<HTMLElement>(
+      '.practicesTabs [role="tablist"]'
+    )[0];
+
+    this.generateArrays();
+    this.bindListeners();
   }
 
-  applyFilter(filterValue: string) {
-    if(filterValue === null){
-      this.dataSource.filter = '';
+  applyFilter(event: any) {
+    if(event.target.value !== "null"){
+      this.showTableData = this.tableData.filter(td => {
+        return td.elemGroup === event.target.value.trim().toLowerCase();
+      });
     } else {
-      this.dataSource.filter = filterValue.trim().toLowerCase();
+      this.showTableData = this.tableData;
     }
   }
 
@@ -253,19 +280,19 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     let descr, elemName;
     this.translate.get(translations).subscribe((res: any) => {
       descr = res['RESULTS.' + key];
-      elemName = res['TEST_ELEMENTS.' + tot['elem']];
+      elemName = res['TEST_ELEMENTS.' + this.tests[key]['elem']];
     });
 
     return {
       level: (tests[key]['level']).toUpperCase(),
-      elem: tot['elem'],
+      elem: this.tests[key]['elem'],
       element: elemName,
       description: descr,
       websites: tot['n_websites'],
       pages: tot['n_pages'],
-      elems: tot['result'] === 'passed' ? -1 : tot['n_times'],
+      elems: this.tests[key]['result'] === 'passed' ? -1 : tot['n_occurrences'],
       quartiles: tot['result'] === 'passed' ? '-' : quartiles,
-      elemGroup: this.elemGroups[tot['elem']]
+      elemGroup: this.elemGroups[this.tests[key]['elem']]
     };
   }
 
@@ -274,6 +301,162 @@ export class CorrectionDistributionDialogComponent implements OnInit {
   }
   getDisplayedColumnsMobile() {
     return this.columnDefinitionsMobile.filter(cd=>!cd.hide).map(cd=>cd.def);
+  }
+
+  generateArrays() {
+    const tabs = document.querySelectorAll<HTMLElement>('.practicesTabs [role="tab"]');
+    tabs.forEach((tab) => this.tabs.push(tab));
+    const panels = document.querySelectorAll<HTMLElement>('.practicesTabs [role="tabpanel"]');
+    panels.forEach((panel) => this.panels.push(panel));
+  }
+
+  bindListeners() {
+    for (const tab of this.tabs) {
+      tab.addEventListener("click", this.clickEventListener.bind(this));
+      tab.addEventListener("keydown", this.keydownEventListener.bind(this));
+      tab.addEventListener("keyup", this.keyupEventListener.bind(this));
+    }
+  }
+
+  clickEventListener(event) {
+    const tab = event.target;
+    this.activateTab(tab, false);
+  }
+
+  keydownEventListener(event) {
+    const key = event.keyCode;
+
+    switch (key) {
+      case this.keys.end:
+        event.preventDefault();
+        // Activate last tab
+        this.activateTab(this.tabs[this.tabs.length - 1], true);
+        break;
+      case this.keys.home:
+        event.preventDefault();
+        // Activate first tab
+        this.activateTab(this.tabs[0], true);
+        break;
+
+      // Up and down are in keydown
+      // because we need to prevent page scroll >:)
+      case this.keys.up:
+      case this.keys.down:
+        this.determineOrientation(event);
+        break;
+    }
+  }
+
+  keyupEventListener(event) {
+    const key = event.keyCode;
+
+    switch (key) {
+      case this.keys.left:
+      case this.keys.right:
+        this.determineOrientation(event);
+        break;
+    }
+  }
+
+  determineOrientation(event) {
+    const key = event.keyCode;
+    const vertical =
+      this.tablist.getAttribute("aria-orientation") == "vertical";
+    let proceed = false;
+
+    if (vertical) {
+      if (key === this.keys.up || key === this.keys.down) {
+        event.preventDefault();
+        proceed = true;
+      }
+    } else {
+      if (key === this.keys.left || key === this.keys.right) {
+        proceed = true;
+      }
+    }
+    if (proceed) {
+      this.switchTabOnArrowPress(event);
+    }
+  }
+
+  switchTabOnArrowPress(event) {
+    const pressed = event.keyCode;
+
+    for (const tab of this.tabs) {
+      tab.addEventListener("focus", this.focusEventHandler.bind(this));
+    }
+
+    if (this.direction[pressed]) {
+      const target = event.target;
+      const index = this.tabs.indexOf(target);
+      if (index !== undefined) {
+        if (this.tabs[index + this.direction[pressed]]) {
+          this.tabs[index + this.direction[pressed]].focus();
+        } else if (pressed === this.keys.left || pressed === this.keys.up) {
+          this.focusLastTab();
+        } else if (pressed === this.keys.right || pressed === this.keys.down) {
+          this.focusFirstTab();
+        }
+      }
+    }
+  }
+
+  activateTab(tab: HTMLElement, setFocus: boolean) {
+    setFocus = setFocus || true;
+    // Deactivate all other tabs
+    this.deactivateTabs();
+
+    // Remove tabindex attribute
+    tab.removeAttribute("tabindex");
+
+    // Set the tab as selected
+    tab.setAttribute("aria-selected", "true");
+
+    // Get the value of aria-controls (which is an ID)
+    const controls = tab.getAttribute("aria-controls");
+
+    // Remove is-hidden class from tab panel to make it visible
+    document.getElementById(controls).classList.remove("is-hidden");
+
+    // Set focus when required
+    if (setFocus) {
+      tab.focus();
+    }
+  }
+
+  deactivateTabs() {
+    for (const tab of this.tabs) {
+      tab.setAttribute("tabindex", "-1");
+      tab.setAttribute("aria-selected", "false");
+      tab.removeEventListener("focus", this.focusEventHandler);
+    }
+
+    for (const panel of this.panels) {
+      panel.classList.add("is-hidden");
+    }
+  }
+
+  focusFirstTab() {
+    this.tabs[0].focus();
+  }
+
+  focusLastTab() {
+    this.tabs[this.tabs.length - 1].focus();
+  }
+
+  checkTabFocus(target) {
+    const focused = document.activeElement;
+
+    if (target === focused) {
+      this.activateTab(target, false);
+    }
+  }
+
+  focusEventHandler(event) {
+    const target = event.target;
+    const delay = 300;
+
+    setTimeout(this.checkTabFocus.bind(this), delay, target);
   }
 }
 

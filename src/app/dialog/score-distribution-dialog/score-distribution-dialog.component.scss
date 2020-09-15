@@ -1,43 +1,138 @@
-.chart {
-  height: 50vh;
-  overflow: hidden;
+h1 {
+  color: var(--statistics-text);
+  font-family: Lato;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 40px;
 }
 
-/*table {
-  width: 100%;
-  
-  th {
-    text-align: left;
+.dialog-title {
+  span {
+    color: var(--statistics-close);
+    font-family: Lato;
+    font-size: 16px;
     font-weight: bold;
+    letter-spacing: 0;
+    line-height: 48px;
   }
-
-  th, td {
-    padding: 0.5em;
-  }
-}*/
-
-.mat-header-cell {
-  font-size: 0.9em;
 }
 
-.mat-cell {
+.tabs {
+  width: 100%;
+  font-family: "Lato", sans-serif;
+
+  button {
+    cursor: pointer;
+  }
+}
+
+[role="tablist"] {
+  width: 100%;
+  margin: 0 0 -0.1em;
+  overflow: visible;
+  background-color: var(--background);
+}
+
+[role="tab"] {
   font-size: 1em;
+  line-height: 3em;
+  color: var(--statistics-tabs-text);
+  background-color: var(--background);
+  font-weight: 700;
+  font-family: "Lato";
+  opacity: 1 !important;
+  border: none;
+  padding: 0.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin: 0;
 }
 
-.mat-cell:not(.mat-column-description),
-.mat-header-cell:not(.mat-column-description) {
-  justify-content: center;
+[role="tab"][aria-selected="true"] {
+  border-bottom: 5px solid var(--statistics-tabs-text);
 }
 
-.mat-row:nth-child(2n) {
-  background-color: whitesmoke
+[role="tabpanel"] {
+  border: none;
 }
 
-mat-table {
-  width: max-content;
-  min-width: 100%;
+[role="tab"]:hover,
+[role="tab"]:focus,
+[role="tab"]:active {
+  outline: none;
 }
 
-[class*="mat-column-"]{
-  min-width: 100px !important;
+[role="tabpanel"].is-hidden {
+  display: none !important;
+}
+
+[role="tabpanel"]:focus {
+  outline: none;
+}
+
+canvas {
+  margin-top: 1em;
+}
+
+table {
+  margin-top: 1em;
+  width: 100%;
+  border-spacing: 0;
+}
+
+table thead {
+  background-color: var(--statistics-score-table-header-background);
+}
+
+table thead tr th {
+  padding: 1em;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--statistics-score-table-header-text);
+  font-weight: 700;
+  font-family: "Lato";
+
+  &:first-child {
+    text-align: left;
+  }
+
+  &:not(:first-child) {
+    text-align: right;
+  }
+}
+
+table tbody tr td {
+  font-size: 16px;
+  line-height: 50px;
+  color: var(--statistics-score-table-text);
+  font-weight: 400;
+  font-family: "Lato";
+  border-bottom: thin solid var(--statistics-score-table-border);
+
+  &:first-child {
+    text-align: left;
+    padding-left: 1em;
+  }
+
+  &:last-child {
+    padding-right: 1em;
+  }
+
+  &:not(:first-child) {
+    text-align: right;
+  }
+}
+
+.close {
+  border-radius: 50%;
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
+  color: var(--statistics-close-text);
+  background-color: var(--statistics-close);
+  border: none;
+  font-weight: 700;
+  font-family: Lato;
+  font-size: 18px;
 }
