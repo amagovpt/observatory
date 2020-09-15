@@ -18,7 +18,6 @@ import { LoadingComponent } from './loading/loading.component';
 import { ErrorComponent } from './error/error.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 import { HomeModule } from './home/home.module';
 import { TagModule } from './tag/tag.module';
@@ -36,8 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoadingComponent,
     ErrorComponent,
     HeaderComponent,
-    FooterComponent,
-    BreadcrumbsComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,

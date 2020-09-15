@@ -1,6 +1,6 @@
 <section fxLayout="row" fxLayoutAlign="center center">
   <div class="table-wrapper">
-    <h1>Diretórios</h1>
+    <h1>{{ "ALL_TAGS.table.title" | translate }}</h1>
     <table matSort matSortActive="rank" matSortDisableClear
       matSortDirection="asc" (matSortChange)="sortData($event)">
       <thead>
@@ -53,78 +53,3 @@
     </span>
   </div>
 </section>
-<!--<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      <h1>{{ "ALL_TAGS.table.title" | translate }}</h1>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <a class="show_websites_button" mat-raised-button type="button" color="warn" [disabled]="selection.selected.length === 0" [routerLink]="mergeTags()">
-      {{ "ALL_TAGS.show_websites" | translate }}
-    </a>
-    <table class="cats-table" matSort matSortActive="rank" matSortDisableClear
-      matSortDirection="asc" (matSortChange)="sortData($event)">
-      <thead>
-        <tr>
-          <th rowspan="2">
-            <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
-              [indeterminate]="selection.hasValue() && !isAllSelected()">
-            </mat-checkbox>
-          </th>
-          <th rowspan="2" fxHide.lt-md mat-sort-header="rank">
-            {{ "ALL_TAGS.table.rank" | translate }}
-          </th>
-          <th rowspan="2" width="60%" mat-sort-header="name">
-            {{ "ALL_TAGS.table.name" | translate }}
-          </th>
-          <th rowspan="2" mat-sort-header="score">
-            {{ "ALL_TAGS.table.score" | translate }}
-          </th>
-          <th rowspan="2" fxHide.lt-md mat-sort-header="websites">
-            {{ "ALL_TAGS.table.websites" | translate }}
-          </th>
-          <th rowspan="2" fxHide.lt-md mat-sort-header="pages">
-            {{ "ALL_TAGS.table.pages" | translate }}
-          </th>
-          <th colspan="3" fxHide.lt-sm>
-            {{ "ALL_TAGS.table.levels" | translate }}
-          </th>
-        </tr>
-        <tr>
-          <th fxHide.lt-sm mat-sort-header="A">
-            {{ "ALL_TAGS.table.A" | translate }}
-          </th>
-          <th fxHide.lt-sm mat-sort-header="AA">
-            {{ "ALL_TAGS.table.AA" | translate }}
-          </th>
-          <th fxHide.lt-sm mat-sort-header="AAA">
-            {{ "ALL_TAGS.table.AAA" | translate }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let tag of sortedData">
-          <td>
-            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(tag.name) : null"
-              [checked]="selection.isSelected(tag.name)">
-            </mat-checkbox>
-          </td>
-          <td fxHide.lt-md>{{ tag.rank }}</td>
-          <td>
-            <a [routerLink]="[tag.id]">{{ tag.name }}</a>
-          </td>
-          <td>{{ tag.getScore() | toFixed }}</td>
-          <td fxHide.lt-md>{{ tag.nPages }}</td>
-          <td fxHide.lt-md>{{ tag.websites.length }}</td>
-          <td fxHide.lt-sm>{{ tag.A }}</td>
-          <td fxHide.lt-sm>{{ tag.AA }}</td>
-          <td fxHide.lt-sm>{{ tag.AAA }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <span>
-      {{ "ALL_TAGS.table.note" | translate }}
-    </span>
-  </mat-card-content>
-</mat-card>-->

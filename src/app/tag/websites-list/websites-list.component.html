@@ -1,7 +1,7 @@
 <section fxLayout="row" fxLayoutAlign="center center">
   <div class="table-wrapper">
-    <h1>Sítios Web</h1>
-    <h2>Estatísticas do diretório Municípios</h2>
+    <h1>{{ "TAG.table.title" | translate }}</h1>
+    <h2>{{ "TAG.table.subtitle" | translate }} {{ tag.name }}</h2>
     <table matSort matSortActive="rank" matSortDisableClear
       matSortDirection="asc" (matSortChange)="sortData($event)">
       <thead>
@@ -51,17 +51,17 @@
     </table>
     <div class="pagination" fxLayout="row" fxLayoutAlign="space-between center">
       <div>
-        {{ indicator1 }} - {{ indicator2 }} de {{ websites.length }} itens
+        {{ indicator1 }} - {{ indicator2 }} {{ "TAG.table.paginator.of" | translate }} {{ websites.length }} {{ "TAG.table.paginator.items" | translate }}
       </div>
       <div>
-        Ver 
+        {{ "TAG.table.paginator.see" | translate }} 
         <select name="items" (change)="changeItemsPerPage($event)">
           <option value="1">1</option>
           <option value="2" selected>2</option>
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-        Itens por página
+        {{ "TAG.table.paginator.per_page" | translate }}
       </div>
       <div fxLayout="row" fxLayoutAlign="space-around center">
         <button type="button" (click)="firstPage()" [disabled]="indicator1 === 1"><<</button>
@@ -75,66 +75,3 @@
     </span>
   </div>
 </section>
-
-<!--<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      <h1>{{ "TAG.table.title" | translate }}</h1>
-    </mat-card-title>
-    <mat-card-subtitle>
-      <h2 *ngIf="!multi">{{ "TAG.table.subtitle" | translate }} {{ tag.name }}</h2>
-      <h2 *ngIf="multi">{{ "TAG.table.subtitle2" | translate }} {{ tag.name }}</h2>
-    </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <table class="table table-bordered cats-table" matSort matSortActive="rank" matSortDisableClear matSortDirection="asc" (matSortChange)="sortData($event)">
-      <thead>
-        <tr>
-          <th rowspan="2" fxHide.lt-md mat-sort-header="rank">
-            {{ "TAG.table.rank" | translate }}
-          </th>
-          <th rowspan="2" width="60%" mat-sort-header="name">
-            {{ "TAG.table.name" | translate }}
-          </th>
-          <th rowspan="2" mat-sort-header="score">
-            {{ "TAG.table.score" | translate }}
-          </th>
-          <th rowspan="2" fxHide.lt-md mat-sort-header="pages">
-            {{ "TAG.table.pages" | translate }}
-          </th>
-          <th colspan="3" fxHide.lt-sm>
-            {{ "TAG.table.levels" | translate }}
-          </th>
-        </tr>
-        <tr>
-          <th fxHide.lt-sm mat-sort-header="A">
-            {{ "TAG.table.A" | translate }}
-          </th>
-          <th fxHide.lt-sm mat-sort-header="AA">
-            {{ "TAG.table.AA" | translate }}
-          </th>
-          <th fxHide.lt-sm mat-sort-header="AAA">
-            {{ "TAG.table.AAA" | translate }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let website of sortedData">
-          <td fxHide.lt-md>{{ website.rank }}</td>
-          <td>
-            <a [routerLink]="[website.id]">{{ website.name }}</a>
-          </td>
-          <td>{{ website.getScore() | toFixed }}</td>
-          <td fxHide.lt-md>{{ website.pages.length }}</td>
-          <td fxHide.lt-sm>{{ website.A }}</td>
-          <td fxHide.lt-sm>{{ website.AA }}</td>
-          <td fxHide.lt-sm>{{ website.AAA }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <span>
-      {{ "TAG.table.note" | translate }}
-    </span>
-  </mat-card-content>
-</mat-card>
--->

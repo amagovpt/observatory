@@ -1,36 +1,31 @@
 {
   "HEADER": {
-    "text": "O Observatório da Acessibilidade na Administração Pública Portuguesa",
-    "NAV": {
-      "location": "You are in",
-      "ecosystem": "Ecosystem",
-      "home": "Observatory"
+    "title": {
+      "part1": "Portuguese Observatory",
+      "part2": "of Web Accessibility"
     },
-    "LOGO": {
-      "alt": "FCT access unit"
+    "text": "The Accessibility Observatory in Portuguese Public Administration",
+    "NAV": {
+      "location": "Acessibilidade.gov.pt",
+      "observatory": "Observatory",
+      "directories": "Directories"
     }
-  },
-  "SIDEBAR": {
-    "menu": "Menu",
-    "all_tags": "All categories",
-    "tag": "Category",
-    "website": "Website"
   },
   "STATISTICS": {
     "gauge": {
       "label": "Average score"
     },
-    "tags": "Nº of categories",
-    "websites": "Nº of websites",
-    "pages": "Nº of pages",
-    "score": "Score",
+    "tags": "Directories",
+    "entities": "Entities",
+    "websites": "Websites",
+    "pages": "Pages",
+    "score": "Average score",
     "newest_page_updated": "Most recently evaluated page",
     "oldest_page_updated": "Least recently evaluated page",
     "last_updated": "Statistics last updated",
     "score_distribution": "Score distribution",
-    "error_distribution": "Error distribution",
-    "correction_distribution": "Correction distribution",
-    "element_correction_distribution": "Element correction distribution",
+    "error_distribution": "Bad practices",
+    "correction_distribution": "Best practices",
     "pages_with_errors": "Pages non-conforming",
     "pages_without_errors": "Pages conforming",
     "pages_without_errors_a": "Conforming A",
@@ -102,15 +97,93 @@
     },
     "close": "Close"
   },
+  "HOME": {
+    "tabs": {
+      "_1": {
+        "title": "What is the Web Accessibility Observatory?",
+        "paragraph": "The Portuguese Observatory on the Accessibility of Websites and Mobile Applications, in compliance with the rules of the European Union:",
+        "bullet1": "Identifies and promotes the application of best practices on websites and mobile applications.",
+        "bullet2": "It aims to assess and make public sector websites and mobile applications more accessible to everyone and, in particular, people with disabilities.",
+        "button": "Consult the Observatory data"
+      },
+      "_2": {
+        "title": "What do we evaluate?",
+        "paragraph": "The Portuguese Observatory on the Accessibility of Websites and Mobile Applications, in compliance with the rules of the European Union:",
+        "bullet1": "Identifies and promotes the application of best practices on websites and mobile applications.",
+        "bullet2": "It aims to assess and make public sector websites and mobile applications more accessible to everyone and, in particular, people with disabilities.",
+        "button": "Consult the Observatory data"
+      },
+      "_3": {
+        "title": "How do we evaluate?",
+        "paragraph": "The Portuguese Observatory on the Accessibility of Websites and Mobile Applications, in compliance with the rules of the European Union:",
+        "bullet1": "Identifies and promotes the application of best practices on websites and mobile applications.",
+        "bullet2": "It aims to assess and make public sector websites and mobile applications more accessible to everyone and, in particular, people with disabilities.",
+        "button": "Consult the Observatory data"
+      }
+    },
+    "4all": {
+      "title": "Web accessibility for everyone",
+      "census": "Data: Census 2011",
+      "paragraph": {
+        "part1": "Did you know that any web user can, at any stage of their life, have degrees of impairment or visual, auditory, cognitive, physical or motor limitations?",
+        "part2": "In Portugal, it is estimated that there are approximately:"
+      },
+      "disabilities": {
+        "_1": {
+          "part1": "people with visual impairments,",
+          "part2": "hearing or temporary motor",
+          "part3": "or permanent"
+        },
+        "_2": {
+          "part1": "of the population with limitations",
+          "part2": "chronic physical or cognitive",
+          "part3": "or permanent"
+        },
+        "_3": {
+          "part1": "of the population between 15 and 64 years old,",
+          "part2": "with visual or hearing limitations,",
+          "part3": "even with auxiliaries"
+        },
+        "_4": {
+          "part1": "people over 65",
+          "part2": "with difficulty seeing,",
+          "part3": "even with glasses"
+        }
+      }
+    },
+    "top5": {
+      "title": "Top 5 Web Accessibility in AP",
+      "paragraph": {
+        "part1": "Know the websites with the best ranking of",
+        "part2": "Web accessibility in Public Administration, according to",
+        "part3": "WCAG 2.1 accessibility practice criteria."
+      },
+      "button": "Consult the Observatory data"
+    },
+    "summary": {
+      "title": "The Observatory in numbers",
+      "average": {
+        "part1": "Average rating on the websites of",
+        "part2": "the Public administration"
+      },
+      "websites": "Websites",
+      "entities": "Entities",
+      "pages": "Pages",
+      "pages_without_errors": "Pages without errors",
+      "best_practices_title": "Most frequent best practices",
+      "errors_title": "Most common errors",
+      "button": "Consult the Observatory data"
+    }
+  },
   "ALL_TAGS": {
-    "title": "Portuguese Observatory of Web Accessibility",
-    "subtitle": "List of categories",
+    "title": "Observatory",
+    "subtitle": "Directories",
     "statistics_title": "Statistics",
     "statistics_subtitle": "Metadata",
     "show_websites": "Show websites",
     "table": {
       "filter": "Filter",
-      "title": "Categories",
+      "title": "Directories",
       "subtitle": "See the accessibility of several institutions and government websites",
       "rank": "Rank",
       "name": "Designation",
@@ -126,16 +199,14 @@
     }
   },
   "TAG": {
-    "title": "Portuguese Observatory of Web Accessibility",
-    "subtitle": "Category:",
-    "subtitle2": "Categories:",
+    "title": "Directories",
+    "subtitle": "Directory:",
     "statistics_title": "Statistics",
     "statistics_subtitle": "Metadata",
     "table": {
       "filter": "Filter",
       "title": "Websites",
-      "subtitle": "Statistics from the category",
-      "subtitle2": "Statistics from the categories",
+      "subtitle": "Statistics from the directory",
       "rank": "Rank",
       "name": "Website",
       "entity": "Entity",
@@ -146,7 +217,13 @@
       "AA": "AA",
       "AAA": "AAA",
       "see_tooltip": "Go to website",
-      "note": "* conforming to WCAG 2.1 (W3C)"
+      "note": "* conforming to WCAG 2.1 (W3C)",
+      "paginator": {
+        "of": "of",
+        "items": "items",
+        "see": "Show",
+        "per_page": "items per page"
+      }
     }
   },
   "WEBSITE": {
@@ -154,33 +231,39 @@
     "subtitle": "Website:",
     "statistics_title": "Statistics",
     "statistics_subtitle": "Metadata",
-    "top_5_errors": {
-      "title": "Top 5 common errors for each of the 3 WCAG 2.1 levels (nº of pages)",
-      "errorA_title": "Top 5 errors from level \"A\"",
-      "errorAA_title": "Top 5 errors from level \"AA\"",
-      "errorAAA_title": "Top 5 errors from level \"AAA\"",
-      "message": {
-        "s": "<strong>Exists {{value}} page with the following error - </strong>",
-        "p": "<strong>Exists {{value}} pages with the following error - </strong>"
-      }
+    "tabs": {
+      "best_practices": "Best practices",
+      "bad_practices": "Bad practices"
     },
-    "top_5_best_practices": {
-      "title": "Top 5 best practices",
-      "message": {
-        "s": "<strong>Exists {{value}} page with the following best practice - </strong>",
-        "p": "<strong>Exists {{value}} pages with the following best practice - </strong>"
-      }
+    "top_10_best_practices_title": "10 most frequent best practices",
+    "top_10_bad_practices_title": "10 most frequent errors",
+    "top_3_bad_practices": {
+      "title": "3 most common errors by level of conformance",
+      "subtitle": "(Per nº of pages)",
+      "message": "3 most common errors of priority \"{{value}}\"",
+      "practice": "error in",
+      "page": "pages"
+    },
+    "top_3_best_practices": {
+      "title": "3 best practices by level of conformance",
+      "subtitle": "(Per nº of pages)",
+      "message": "3 most common best practices of priority \"{{value}}\"",
+      "practice": "practice in",
+      "page": "pages"
     },
     "accessibility_plot": {
       "title": "Accessibility plot",
       "label": "Score distribution"
     },
     "table": {
-      "title": "Detailed error distribution",
-      "error_label": "Error (description)",
-      "n_errors_label": "Nº of ocurrences",
+      "best_title": "Detailed best practices distribution",
+      "bad_title": "Detailed error distribution",
+      "practice_label": "Practice",
+      "error_label": "Error",
+      "n_errors_label": "Occurrences",
       "n_pages_label": "Nº of affected pages",
-      "details_label": "Exists",
+      "details_practice_label": "Practices per page",
+      "details_error_label": "Errors per page",
       "details": {
         "single_error": "error in",
         "multi_error": "errors in",

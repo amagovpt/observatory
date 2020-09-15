@@ -1,8 +1,10 @@
 <table>
   <thead>
     <tr>
-      <th>{{ "WEBSITE.table.error_label" | translate }}</th>
-      <th>{{ "WEBSITE.table.details_label" | translate }}</th>
+      <th *ngIf="type === 'good'">{{ "WEBSITE.table.practice_label" | translate }}</th>
+      <th *ngIf="type === 'bad'">{{ "WEBSITE.table.error_label" | translate }}</th>
+      <th *ngIf="type === 'good'">{{ "WEBSITE.table.details_practice_label" | translate }}</th>
+      <th *ngIf="type === 'bad'">{{ "WEBSITE.table.details_error_label" | translate }}</th>
       <th>{{ "WEBSITE.table.n_errors_label" | translate }}</th>
       <th>{{ "WEBSITE.table.n_pages_label" | translate }}</th>
       <th>{{ "WEBSITE.table.lvl_label" | translate }}</th>
@@ -65,80 +67,3 @@
     </tr>
   </tbody>
 </table>
-
-<!--<br *ngIf="practicesKeys.length > 0">
-<mat-card *ngIf="practicesKeys.length > 0">
-  <mat-card-header>
-    <mat-card-title>
-      <h1>{{ "WEBSITE.table.title" | translate }}</h1>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <table border="1" frame="void" rules="rows">
-      <thead>
-        <th>{{ "WEBSITE.table.error_label" | translate }}</th>
-        <th fxHide.xs>{{ "WEBSITE.table.n_errors_label" | translate }}</th>
-        <th fxHide.xs>{{ "WEBSITE.table.n_pages_label" | translate }}</th>
-        <th>{{ "WEBSITE.table.details_label" | translate }}</th>
-        <th fxHide.lt-md>{{ "WEBSITE.table.lvl_label" | translate }}</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let e of practices">
-          <td innerHTML="{{ 'RESULTS.' + e['key'] | translate | html }}"></td>
-          <td fxHide.xs>{{ e.n_occurrences }}</td>
-          <td fxHide.xs>{{ e.n_pages }}</td>
-          <td>
-            <span *ngFor="let q of e.quartiles" fxLayout="column">
-              <span *ngIf="q.int.lower === q.int.upper && q.int.lower === 1 && q.tot === 1">
-                {{ q.int.lower }}
-                {{ "WEBSITE.table.details.single_error" | translate }}
-                {{ q.tot }}
-                {{ "WEBSITE.table.details.single_page" | translate }}
-              </span>
-              <span *ngIf="q.int.lower === q.int.upper && q.int.lower === 1 && q.tot > 1">
-                {{ q.int.lower }}
-                {{ "WEBSITE.table.details.single_error" | translate }}
-                {{ q.tot }}
-                {{ "WEBSITE.table.details.multi_page" | translate }}
-              </span>
-
-              <span *ngIf="q.int.lower === q.int.upper && q.int.lower !== 1 && q.tot === 1">
-                {{ q.int.lower }}
-                {{ "WEBSITE.table.details.multi_error" | translate }}
-                {{ q.tot }}
-                {{ "WEBSITE.table.details.single_page" | translate }}
-              </span>
-              <span *ngIf="q.int.lower === q.int.upper && q.int.lower !== 1 && q.tot > 1">
-                {{ q.int.lower }}
-                {{ "WEBSITE.table.details.multi_error" | translate }}
-                {{ q.tot }}
-                {{ "WEBSITE.table.details.multi_page" | translate }}
-              </span>
-
-              <span *ngIf="q.int.lower !== q.int.upper && q.tot === 1">
-                {{ "WEBSITE.table.details.from" | translate }}
-                {{ q.int.lower }}
-                {{ "WEBSITE.table.details.to" | translate }}
-                {{ q.int.upper }}
-                {{ "WEBSITE.table.details.multi_error" | translate }}
-                {{ q.tot }}
-                {{ "WEBSITE.table.details.single_page" | translate }}
-              </span>
-              <span *ngIf="q.int.lower !== q.int.upper && q.tot > 1">
-                {{ "WEBSITE.table.details.from" | translate }}
-                {{ q.int.lower }}
-                {{ "WEBSITE.table.details.to" | translate }}
-                {{ q.int.upper }}
-                {{ "WEBSITE.table.details.multi_error" | translate }}
-                {{ q.tot }}
-                {{ "WEBSITE.table.details.multi_page" | translate }}
-              </span>
-            </span>
-          </td>
-          <td fxHide.lt-md>{{ e.lvl }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </mat-card-content>
-</mat-card>
--->

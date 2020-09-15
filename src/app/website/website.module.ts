@@ -7,7 +7,6 @@ import { NgxGaugeModule } from 'ngx-gauge';
 import { MaterialModule } from '../material/material.module';
 import { DialogModule } from './../dialog/dialog.module';
 import { PipesModule } from '../pipes/pipes.module';
-import { SharedModule } from '../shared/shared.module';
 import { WebsiteRoutingModule } from './website-routing.module';
 import { WebsiteComponent } from './website.component';
 import { WebsiteStatisticsComponent } from './website-statistics/website-statistics.component';
@@ -29,8 +28,7 @@ import { TopThreePracticesComponent } from './top-three-practices/top-three-prac
     RouterModule,
     DialogModule,
     PipesModule,
-    WebsiteRoutingModule,
-    SharedModule
+    WebsiteRoutingModule
   ],
   exports: [WebsiteComponent]
 })

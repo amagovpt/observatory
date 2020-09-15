@@ -32,19 +32,19 @@
         <div class="metadata" fxLayout="row" fxLayoutAlign="space-around center">
           <div>
             <span>{{ listTags.tags.length }}</span>
-            <span>Diretórios</span>
+            <span>{{ "STATISTICS.tags" | translate }}</span>
           </div>
           <div>
             <span>{{ listTags.nEntities }}</span>
-            <span>Entidades</span>
+            <span>{{ "STATISTICS.entities" | translate }}</span>
           </div>
           <div>
             <span>{{ listTags.nWebsites }}</span>
-            <span>Sitios web</span>
+            <span>{{ "STATISTICS.websites" | translate }}</span>
           </div>
           <div>
             <span>{{ listTags.nPages }}</span>
-            <span>Páginas</span>
+            <span>{{ "STATISTICS.pages" | translate }}</span>
           </div>
         </div>
       </div>
@@ -66,56 +66,3 @@
     </div>
   </div>
 </section>
-
-<!--<mat-card>
-  <mat-card-header>
-  </mat-card-header>
-  <mat-card-content fxLayout.gt-sm="row" fxLayout="column" fxLayoutAlign="space-around center">
-    <div>
-      <ngx-gauge
-        [type]="'semi'"
-        [thick]="'10'"
-        [value]="listTags.score | toFixed"
-        [label]="'STATISTICS.gauge.label' | translate"
-        [min]="0"
-        [max]="10"
-        [duration]="2000"
-        [thresholds]="thresholdConfig">
-      </ngx-gauge>
-    </div>
-    <div>
-      <mat-list>
-        <mat-list-item>
-          <span><strong>{{ "STATISTICS.tags" | translate }}:</strong> {{ listTags.tags.length }}</span>
-        </mat-list-item>
-        <mat-list-item>
-          <span><strong>{{ "STATISTICS.websites" | translate }}:</strong> {{ listTags.nWebsites }}</span>
-        </mat-list-item>
-        <mat-list-item>
-          <span><strong>{{ "STATISTICS.pages" | translate }}:</strong> {{ listTags.nPages }}</span>
-        </mat-list-item>
-        <mat-list-item>
-          <span *ngIf="listTags.recentPage"><strong>{{ "STATISTICS.newest_page_updated" | translate }}:</strong> {{ listTags.recentPage | date }}</span>
-          <span *ngIf="!listTags.recentPage"><strong>{{ "STATISTICS.newest_page_updated" | translate }}:</strong> -</span>
-        </mat-list-item>
-        <mat-list-item>
-          <span *ngIf="listTags.oldestPage"><strong>{{ "STATISTICS.oldest_page_updated" | translate }}:</strong> {{ listTags.oldestPage | date }}</span>
-          <span *ngIf="!listTags.oldestPage"><strong>{{ "STATISTICS.oldest_page_updated" | translate }}:</strong> -</span>
-        </mat-list-item>
-      </mat-list>
-    </div>
-  </mat-card-content>
-  <mat-card-actions *ngIf="listTags.tags.length > 0" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center">
-    <button mat-flat-button color="primary" ngClass.lt-sm='mobile-button' (click)="openScoreDistributionDialog()">
-      {{ "STATISTICS.score_distribution" | translate }}
-    </button>
-    <span fxFlex="1" fxShow.gt-sm></span>
-    <button mat-flat-button color="green" ngClass.lt-sm='mobile-button' (click)="openCorrectionDistributionDialog()">
-      {{ "STATISTICS.correction_distribution" | translate }}
-    </button>
-    <span fxFlex="1" fxShow.gt-sm></span>
-    <button mat-flat-button color="warn" ngClass.lt-sm='mobile-button' (click)="openErrorDistributionDialog()">
-      {{ "STATISTICS.error_distribution" | translate }}
-    </button>
-  </mat-card-actions>
-</mat-card>-->

@@ -1,11 +1,11 @@
 <main fxLayout="column" fxLayoutAlign="center center">
   <section>
     <nav fxLayout="row">
-      <a href="https://www.acessibilidade.gov.pt/">Acessibilidade.gov.pt</a>
+      <a href="https://www.acessibilidade.gov.pt/">{{ "HEADER.NAV.location" | translate }}</a>
       <span>></span>
-      <a routerLink="/">Observatório</a>
+      <a routerLink="/">{{ "HEADER.NAV.observatory" | translate }}</a>
       <span>></span>
-      <a [routerLink]="['/', 'directories']">Directories</a>
+      <a [routerLink]="['/', 'directories']">{{ "HEADER.NAV.directories" | translate }}</a>
       <span>></span>
       <a [routerLink]="['/', 'directories', tag.id]">{{ tag.name }}</a>
       <span>></span>
@@ -22,43 +22,3 @@
   <app-score-distribution [data]="scoreDistributionData"></app-score-distribution>
   <app-practices-details [website]="website"></app-practices-details>
 </main>
-
-<!--<main id="main" fxLayout="row" fxLayoutAlign="center center">
-  <section *ngIf="!loading && !error" fxLayout="column" fxLayoutAlign="center center" fxFlex.lt-md="95" fxFlex.md="80" fxFlex.lg="80" fxFlex.gt-lg="60">
-    <mat-card class="mat-typography">
-      <mat-card-header fxLayout="row" fxLayoutAlign="center center">
-        <mat-card-title>
-          <h1>{{ "WEBSITE.title" | translate }}</h1>
-        </mat-card-title>
-        <mat-card-subtitle>
-          <h2>{{ "WEBSITE.subtitle" | translate }} {{ website.name }}</h2>
-          <span>{{website.domain}}</span>
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-actions>
-        <a mat-icon-button [routerLink]="['/', tag.id]" matTooltip="{{ 'MISC.go_back' | translate }}">
-           <mat-icon aria-label="'MISC.go_back' | translate">arrow_back</mat-icon>
-        </a>
-        <span fxFlex></span>
-        <a mat-icon-button matTooltip="{{ 'MISC.open_webpage' | translate }}" href="{{website.domain}}"
-          target="_blank">
-          <mat-icon aria-label="'RESULTS.actions.open_webpage' | translate">open_in_new</mat-icon>
-        </a>
-      </mat-card-actions>
-    </mat-card>
-    <br>
-    <app-website-statistics [website]="website"></app-website-statistics>
-    <br>
-    <app-score-distribution [data]="scoreDistributionData"></app-score-distribution>
-    <app-error-distribution [data]="errorDistributionData"></app-error-distribution>
-    <app-top-five-errors [data]="topFiveErrorsData"></app-top-five-errors>
-    <app-top-five-best-practices [data]="topFiveBestPractices"></app-top-five-best-practices>
-    <br>
-    <app-accessibility-plot [data]="accessibilityPlotData"></app-accessibility-plot>
-    <app-all-errors-list [data]="tableData"></app-all-errors-list>
-  </section>
-  <span *ngIf="error">
-    <strong>{{ "MISC.website_error" | translate }}</strong>
-  </span>
-</main>-->
-

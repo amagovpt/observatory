@@ -61,6 +61,16 @@ table tbody tr td {
   border-bottom: thin solid var(--table-border);
 }
 
+table tbody tr:hover {
+  td {
+    background-color: var(--table-hover);
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
 table tbody tr td:not(.name) {
   color: var(--table-text);
   font-family: Lato;

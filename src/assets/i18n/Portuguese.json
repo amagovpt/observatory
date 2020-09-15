@@ -1,28 +1,24 @@
 {
   "HEADER": {
+    "title": {
+      "part1": "Observatorio Português",
+      "part2": "da Acessibilidade Web"
+    },
     "text": "O Observatório da Acessibilidade na Administração Pública Portuguesa",
     "NAV": {
-      "location": "Você está em",
-      "ecosystem": "Ecosistema",
-      "home": "Observatório"
-    },
-    "LOGO": {
-      "alt": "Unidade ACESSO da FCT"
+      "location": "Acessibilidade.gov.pt",
+      "observatory": "Observatório",
+      "directories": "Diretórios"
     }
-  },
-  "SIDEBAR": {
-    "menu": "Menu",
-    "all_tags": "Todas as categorias",
-    "tag": "Categoria",
-    "website": "Sítio web"
   },
   "STATISTICS": {
     "gauge": {
       "label": "Pontuação média"
     },
-    "tags": "Nº de categorias",
-    "websites": "Nº de sítios web",
-    "pages": "Nº de páginas",
+    "tags": "Diretórios",
+    "entities": "Entidades",
+    "websites": "Sítios web",
+    "pages": "Páginas",
     "score": "Pontuação",
     "newest_page_updated": "Avaliação mais recente duma página",
     "oldest_page_updated": "Avaliação mais antiga duma página",
@@ -30,7 +26,6 @@
     "score_distribution": "Distribuição de pontuações",
     "error_distribution": "Más práticas",
     "correction_distribution": "Boas práticas",
-    "element_correction_distribution": "Distribuição de correção por elemento",
     "pages_with_errors": "Páginas não conformes",
     "pages_without_errors": "Páginas conformes",
     "pages_without_errors_a": "Conformes A",
@@ -102,15 +97,93 @@
     },
     "close": "Fechar"
   },
+  "HOME": {
+    "tabs": {
+      "_1": {
+        "title": "O que é o Observatório da Acessibilidade Web?",
+        "paragraph": "O Observatório Português da Acessibilidade dos Sítios Web e das Aplicações Móveis, em cumprimento das regras da União Europeia:",
+        "bullet1": "Identifica e promove a aplicação das melhores práticas em sítios Web e aplicações móveis.",
+        "bullet2": "Visa avaliar e tornar mais acessíveis a todos e, em especial, a pessoas com deficiência, os sites da Internet e aplicações móveis do setor público.",
+        "button": "Consulte os dados do Observatório"
+      },
+      "_2": {
+        "title": "O que avaliamos?",
+        "paragraph": "O Observatório Português da Acessibilidade dos Sítios Web e das Aplicações Móveis, em cumprimento das regras da União Europeia:",
+        "bullet1": "Identifica e promove a aplicação das melhores práticas em sítios Web e aplicações móveis.",
+        "bullet2": "Visa avaliar e tornar mais acessíveis a todos e, em especial, a pessoas com deficiência, os sites da Internet e aplicações móveis do setor público.",
+        "button": "Consulte os dados do Observatório"
+      },
+      "_3": {
+        "title": "Como avaliamos?",
+        "paragraph": "O Observatório Português da Acessibilidade dos Sítios Web e das Aplicações Móveis, em cumprimento das regras da União Europeia:",
+        "bullet1": "Identifica e promove a aplicação das melhores práticas em sítios Web e aplicações móveis.",
+        "bullet2": "Visa avaliar e tornar mais acessíveis a todos e, em especial, a pessoas com deficiência, os sites da Internet e aplicações móveis do setor público.",
+        "button": "Consulte os dados do Observatório"
+      }
+    },
+    "4all": {
+      "title": "Acessibilidade Web para todos",
+      "census": "Dados: Census 2011",
+      "paragraph": {
+        "part1": "Sabia que qualquer utilizador web poderá, em qualquer fase da sua vida, ter graus de deficiência ou limitações visuais, auditivas, cognitivas, físicas ou motoras?",
+        "part2": "Em Portugal, estima-se haver, aproximadamente:"
+      },
+      "disabilities": {
+        "_1": {
+          "part1": "pessoas com limitações visuais,",
+          "part2": "auditivas ou motoras temporárias",
+          "part3": "ou permanentes"
+        },
+        "_2": {
+          "part1": "da população com limitações",
+          "part2": "físicas ou cognitivas crónicas",
+          "part3": "ou permanentes"
+        },
+        "_3": {
+          "part1": "da população entre  os 15 e os 64 anos,",
+          "part2": "com limitações visuais ou auditivas,",
+          "part3": "mesmo com auxiliares"
+        },
+        "_4": {
+          "part1": "pessoas com mais de de 65 anos",
+          "part2": "com dificuldade em ver,",
+          "part3": "mesmo com óculos"
+        }
+      }
+    },
+    "top5": {
+      "title": "Top 5 da Acessibilidade Web na AP",
+      "paragraph": {
+        "part1": "Conheça os websites com melhor classificação de",
+        "part2": "acessibilidade Web na Administração Pública, segundo",
+        "part3": "os critérios de práticas de acessibilidade WCAG 2.1."
+      },
+      "button": "Consulte os dados do Observatório"
+    },
+    "summary": {
+      "title": "O Observatório em números",
+      "average": {
+        "part1": "Média de classificação nos sites da",
+        "part2": "Administração Pública"
+      },
+      "websites": "Sítios Web",
+      "entities": "Entidades",
+      "pages": "Páginas",
+      "pages_without_errors": "Páginas sem erros",
+      "best_practices_title": "Boas práticas mais frequentes",
+      "errors_title": "Erros mais comuns",
+      "button": "Consulte os dados do Observatório"
+    }
+  },
   "ALL_TAGS": {
-    "title": "Observatório Português da Acessibilidade Web",
-    "subtitle": "Lista de categorias",
+    "title": "Observatório",
+    "subtitle": "Diretórios",
     "statistics_title": "Estatísticas",
     "statistics_subtitle": "Metadados",
     "show_websites": "Mostrar sítios web",
     "table": {
       "filter": "Filtro",
-      "title": "Categorias",
+      "title": "Diretórios",
       "subtitle": "Veja a acessibilidade dos sítios web de algumas instituições e do governo",
       "rank": "Rank",
       "name": "Designação",
@@ -126,16 +199,14 @@
     }
   },
   "TAG": {
-    "title": "Observatório Português da Acessibilidade Web",
-    "subtitle": "Categoria:",
-    "subtitle2": "Categorias:",
+    "title": "Diretórios",
+    "subtitle": "Diretório:",
     "statistics_title": "Estatísticas",
     "statistics_subtitle": "Metadados",
     "table": {
       "filter": "Filtro",
       "title": "Sítios web",
-      "subtitle": "Estatísticas da categoria",
-      "subtitle2": "Estatísticas da categorias",
+      "subtitle": "Estatísticas do diretório",
       "rank": "Rank",
       "name": "Sítio web",
       "entity": "Entidade",
@@ -146,7 +217,13 @@
       "AA": "AA",
       "AAA": "AAA",
       "see_tooltip": "Ver sítio web",
-      "note": "* conformidade com as WCAG 2.1 (W3C)"
+      "note": "* conformidade com as WCAG 2.1 (W3C)",
+      "paginator": {
+        "of": "de",
+        "items": "itens",
+        "see": "Ver",
+        "per_page": "itens por página"
+      }
     }
   },
   "WEBSITE": {
@@ -154,33 +231,39 @@
     "subtitle": "Sítio web",
     "statistics_title": "Estatísticas",
     "statistics_subtitle": "Metadados",
-    "top_5_errors": {
-      "title": "Top 5 de erros mais comuns por cada uma das 3 prioridades das WCAG 2.1 (Nº de páginas)",
-      "errorA_title": "O top dos 5 erros de prioridade \"A\" que afetam mais páginas",
-      "errorAA_title": "O top dos 5 erros de prioridade \"AA\" que afetam mais páginas",
-      "errorAAA_title": "O top dos 5 erros de prioridade \"AAA\" que afetam mais páginas",
-      "message": {
-        "s": "<strong>Existe {{value}} página com o seguinte erro - </strong>",
-        "p": "<strong>Existem {{value}} páginas com o seguinte erro - </strong>"
-      }
+    "tabs": {
+      "best_practices": "Boas práticas",
+      "bad_practices": "Más práticas"
     },
-    "top_5_best_practices": {
-      "title": "Top 5 melhores praticas",
-      "message": {
-        "s": "<strong>Existe {{value}} página com a seguinte boa prática - </strong>",
-        "p": "<strong>Existem {{value}} páginas com a seguinte boa prática - </strong>"
-      }
+    "top_10_best_practices_title": "10 melhores prácticas mais frequentes",
+    "top_10_bad_practices_title": "10 erros mais frequentes",
+    "top_3_bad_practices": {
+      "title": "3 erros mais comuns por nível de conformidade",
+      "subtitle": "(Por nº de páginas)",
+      "message": "3 erros mais comuns de prioridade \"{{value}}\"",
+      "practice": "erro em",
+      "pages": "pages"
+    },
+    "top_3_best_practices": {
+      "title": "3 melhores prácticas por nível de conformidade",
+      "subtitle": "(Por nº de páginas)",
+      "message": "3 melhores prácticas mais comuns de prioridade \"{{value}}\"",
+      "practice": "prática em",
+      "pages": "pages"
     },
     "accessibility_plot": {
       "title": "Mancha de acessibilidade",
       "label": "Distribuição de pontuações"
     },
     "table": {
-      "title": "Distribuição detalhada de erros",
-      "error_label": "Erro (descrição)",
-      "n_errors_label": "Nº de ocorrências",
+      "best_title": "Distribuição detalhada das melhores práticas",
+      "bad_title": "Distribuição detalhada de erros",
+      "practice_label": "Prática",
+      "error_label": "Erro",
+      "n_errors_label": "Ocorrências",
       "n_pages_label": "Nº de páginas afetadas",
-      "details_label": "Existem",
+      "details_practice_label": "Práticas por página",
+      "details_error_label": "Erros por página",
       "details": {
         "single_error": "erro em",
         "multi_error": "erros em",

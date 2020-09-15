@@ -3,37 +3,37 @@
     <div class="tabs">
       <div role="tablist">
         <button type="button" role="tab" aria-selected="true" aria-controls="good_tab" id="tab_good">
-          Boas práticas
+          {{ "WEBSITE.tabs.best_practices" | translate }}
         </button>
         <span fxFlex="1"></span>
         <button type="button" role="tab" aria-selected="false" aria-controls="bad_tab" id="tab_bad" tabindex="-1">
-          Más práticas
+          {{ "WEBSITE.tabs.bad_practices" | translate }}
         </button>
       </div>
       <div tabindex="0" role="tabpanel" id="good_tab" aria-labelledby="tab_good" fxLayout="row" fxLayoutAlign="center center">
         <div class="practices-wrapper">
-          <h1>10 melhores prácticas mais frequentes</h1>
+          <h1>{{ "WEBSITE.top_10_best_practices_title" | translate }}</h1>
           <app-practices-distribution [type]="'good'" [color]="'#15ac51'" [data]="practicesDistributionData"></app-practices-distribution>
           <span class="divider"></span>
-          <h1>3 melhores prácticas por nível de conformidade</h1>
-          <h2>(Por nº de páginas)</h2>
+          <h1>{{ "WEBSITE.top_3_best_practices.title" | translate }}</h1>
+          <h2>{{ "WEBSITE.top_3_best_practices.subtitle" | translate }}</h2>
           <app-top-three-practices [type]="'good'" [data]="website.success"></app-top-three-practices>
           <span class="divider"></span>
-          <h1>Distribuição detalhada das melhores práticas</h1>
+          <h1>{{ "WEBSITE.table.best_title" | translate }}</h1>
           <app-practices-details-table [type]="'good'" [website]="website"></app-practices-details-table>
           <span class="divider"></span>
         </div>
       </div>
       <div tabindex="0" role="tabpanel" id="bad_tab" aria-labelledby="tab_bad" class="is-hidden" fxLayout="row" fxLayoutAlign="center center">
         <div class="practices-wrapper">
-          <h1>10 erros mais frequentes</h1>
+          <h1>{{ "WEBSITE.top_10_bad_practices_title" | translate }}</h1>
           <app-practices-distribution [type]="'bad'" [color]="'#e90018'" [data]="errorDistributionData"></app-practices-distribution>
           <span class="divider"></span>
-          <h1>3 erros mais comuns por nível de conformidade</h1>
-          <h2>(Por nº de páginas)</h2>
+          <h1>{{ "WEBSITE.top_3_bad_practices.title" | translate }}</h1>
+          <h2>{{ "WEBSITE.top_3_bad_practices.subtitle" | translate }}</h2>
           <app-top-three-practices [type]="'bad'" [data]="website.errors"></app-top-three-practices>
           <span class="divider"></span>
-          <h1>Distribuição detalhada de erros</h1>
+          <h1>{{ "WEBSITE.table.bad_title" | translate }}</h1>
           <app-practices-details-table [type]="'bad'" [website]="website"></app-practices-details-table>
           <span class="divider"></span>
         </div>
