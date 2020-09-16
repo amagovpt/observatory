@@ -1,7 +1,7 @@
 .first-half {
   width: 100%;
   background-color: var(--first-half-background);
-  padding-bottom: 20em;
+  padding-bottom: 22em;
 }
 
 section {
@@ -25,20 +25,21 @@ section:first-child {
   margin: 0 0 -0.1em;
   overflow: visible;
   display: inline-block;
-  width: 30%;
 }
 
 [role="tab"] {
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 1.75em;
   color: var(--home-tabs-text);
   font-weight: 700;
   font-family: "Lato";
   opacity: 1 !important;
   border: none;
-  margin: 1.5em;
-  margin-left: 0.2em;
-  margin-right: 0em;
+  border-right: 5px solid transparent;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
   display: block;
   background-color: var(--first-half-background);
   text-align: left;
@@ -56,7 +57,7 @@ section:first-child {
 [role="tabpanel"] {
   border: none;
   display: inline-block;
-  margin-left: 15em;
+  margin-left: 126px;
 }
 
 [role="tab"]:hover,
@@ -81,7 +82,8 @@ section:first-child {
   font-family: "Lato";
 }
 
-[role="tabpanel"] p, [role="tabpanel"] ul {
+[role="tabpanel"] p,
+[role="tabpanel"] ul {
   font-size: 18px;
   line-height: 24px;
   color: var(--home-tabs-active-text);
@@ -108,7 +110,7 @@ section:first-child {
 }
 
 .directories-link {
-  font-size: 16px;
+  font-size: 1em;
   line-height: 20px;
   color: var(--home-tabs-button-text);
   background-color: var(--home-tabs-button-background);
@@ -139,7 +141,7 @@ section:first-child {
 }
 
 .disability_sections {
-  margin-top: 33em;
+  margin-top: 37em;
   position: absolute;
   background-color: var(--home-4all-background);
   color: var(--home-4all-text);
@@ -168,7 +170,9 @@ section:first-child {
     margin-bottom: 2em;
   }
 
-  svg path, svg circle, svg ellipse {
+  svg path,
+  svg circle,
+  svg ellipse {
     fill: var(--home-4all-text);
   }
 
@@ -198,7 +202,7 @@ section:first-child {
 }
 
 .second-half {
-  margin-top: 20em;
+  margin-top: 18em;
 }
 
 .second-half section:first-child {
