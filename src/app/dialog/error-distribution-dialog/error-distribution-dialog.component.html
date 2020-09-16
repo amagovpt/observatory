@@ -1,193 +1,147 @@
-<h1 mat-dialog-title>{{ "DIALOGS.errors.title" | translate }}</h1>
+<div class="dialog-title" fxLayout="row" fxLayoutAlign="start center">
+  <h1 mat-dialog-title>{{ "DIALOGS.errors.title" | translate }}</h1>
+  <span fxFlex></span>
+  <span fxFlex="5">{{ "DIALOGS.close" | translate }}</span>
+  <button class="close" type="button" mat-dialog-close fxLayout="row" fxLayoutAlign="center center">
+    X
+  </button>
+</div>
 <mat-dialog-content>
-  <mat-tab-group fxHide.lt-sm>
-    <mat-tab label='{{ "DIALOGS.errors.table_title" | translate }}'>
-
-      <mat-form-field>
-        <mat-select placeholder='{{"DIALOGS.table.select" | translate}}' (selectionChange)="applyFilter($event.value)">
-          <mat-option *ngFor="let typeElem of existingElemGroups" [value]="typeElem">
-            {{"ELEM_GROUPS." + typeElem | translate}}
-          </mat-option>
-          <mat-option [value]=null>{{"ELEM_GROUPS.all_types" | translate}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-table matSort
-        [dataSource]="dataSource"
-        [matSortDisableClear]="true"
-        matSortActive="elems"
-        matSortDirection="desc">
-        <ng-container matColumnDef="level">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>{{ "DIALOGS.table.level" | translate }}</mat-header-cell>
-          <mat-cell *matCellDef="let s">
-            <span>{{s['level']}}</span>
-          </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="element">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>{{ "DIALOGS.table.element" | translate }}</mat-header-cell>
-          <mat-cell *matCellDef="let s">
-            <span>{{s['element']}}</span>
-          </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="description">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>{{ "DIALOGS.table.description" | translate }}</mat-header-cell>
-          <mat-cell *matCellDef="let s">
-            <span>{{s['description']}}</span></mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="websites">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>{{ "DIALOGS.table.websites" | translate }}</mat-header-cell>
-          <mat-cell *matCellDef="let s">
-            <span>{{s['websites']}}</span>
-          </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="pages">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>{{ "DIALOGS.table.pages" | translate }}</mat-header-cell>
-          <mat-cell *matCellDef="let s">
-            <span>{{s['pages']}}</span>
-          </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="elems">
-          <mat-header-cell *matHeaderCellDef mat-sort-header>{{ "DIALOGS.table.elems" | translate }}</mat-header-cell>
-          <mat-cell *matCellDef="let s">
-            <span *ngIf=" s['elems'] >= 0">{{s['elems']}}</span>
-            <span *ngIf=" s['elems'] < 0">-</span>
-          </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="quartiles">
-          <mat-header-cell *matHeaderCellDef>{{ "DIALOGS.table.quartiles" | translate }}</mat-header-cell>
-          <mat-cell *matCellDef="let s">
-            <span *ngIf=" s['elems'] < 0">-</span>
-            <span *ngIf=" s['elems'] >= 0">
-              <span *ngFor="let q of s['quartiles']" fxLayout="column">
-                <span *ngIf="q.int.lower === q.int.upper && q.int.lower === 1 && q.tot === 1">
-                  {{ q.int.lower }}
-                  {{ "DIALOGS.table.occurrences.single_error" | translate }}
-                  {{ q.tot }}
-                  <span *ngIf="inTagsPage">
-                    {{ "DIALOGS.table.occurrences.single_page_listTags" | translate }}
-                  </span>
-                  <span *ngIf="!inTagsPage">
-                    {{ "DIALOGS.table.occurrences.single_page_tag" | translate }}
-                  </span>
-                </span>
-
-                <span *ngIf="q.int.lower === q.int.upper && q.int.lower === 1 && q.tot > 1">
-                  {{ q.int.lower }}
-                  {{ "DIALOGS.table.occurrences.single_error" | translate }}
-                  {{ q.tot }}
-                  <span *ngIf="inTagsPage">
-                    {{ "DIALOGS.table.occurrences.multi_page_listTags" | translate }}
-                  </span>
-                  <span *ngIf="!inTagsPage">
-                    {{ "DIALOGS.table.occurrences.multi_page_tag" | translate }}
-                  </span>
-                </span>
-
-                <span *ngIf="q.int.lower === q.int.upper && q.int.lower !== 1 && q.tot === 1">
-                  {{ q.int.lower }}
-                  {{ "DIALOGS.table.occurrences.multi_error" | translate }}
-                  {{ q.tot }}
-                  <span *ngIf="inTagsPage">
-                    {{ "DIALOGS.table.occurrences.single_page_listTags" | translate }}
-                  </span>
-                  <span *ngIf="!inTagsPage">
-                    {{ "DIALOGS.table.occurrences.single_page_tag" | translate }}
-                  </span>
-                </span>
-
-                <span *ngIf="q.int.lower === q.int.upper && q.int.lower !== 1 && q.tot > 1">
-                  {{ q.int.lower }}
-                  {{ "DIALOGS.table.occurrences.multi_error" | translate }}
-                  {{ q.tot }}
-                  <span *ngIf="inTagsPage">
-                    {{ "DIALOGS.table.occurrences.multi_page_listTags" | translate }}
-                  </span><span *ngIf="!inTagsPage">
-                    {{ "DIALOGS.table.occurrences.multi_page_tag" | translate }}
-                  </span>
-                </span>
-
-                <span *ngIf="q.int.lower !== q.int.upper && q.tot === 1">
-                  {{ "DIALOGS.table.occurrences.from" | translate }}
-                  {{ q.int.lower }}
-                  {{ "DIALOGS.table.occurrences.to" | translate }}
-                  {{ q.int.upper }}
-                  {{ "DIALOGS.table.occurrences.multi_error" | translate }}
-                  {{ q.tot }}
-                  <span *ngIf="inTagsPage">
-                    {{ "DIALOGS.table.occurrences.single_page_listTags" | translate }}
-                  </span>
-                  <span *ngIf="!inTagsPage">
-                    {{ "DIALOGS.table.occurrences.single_page_tag" | translate }}
-                  </span>
-                </span>
-
-                <span *ngIf="q.int.lower !== q.int.upper && q.tot > 1">
-                  {{ "DIALOGS.table.occurrences.from" | translate }}
-                  {{ q.int.lower }}
-                  {{ "DIALOGS.table.occurrences.to" | translate }}
-                  {{ q.int.upper }}
-                  {{ "DIALOGS.table.occurrences.multi_error" | translate }}
-                  {{ q.tot }}
-                  <span *ngIf="inTagsPage">
-                    {{ "DIALOGS.table.occurrences.multi_page_listTags" | translate }}
-                  </span>
-                  <span *ngIf="!inTagsPage">
-                    {{ "DIALOGS.table.occurrences.multi_page_tag" | translate }}
-                  </span>
-                </span>
-              </span>
-            </span>
-          </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="getDisplayedColumns(); sticky: true"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: getDisplayedColumns();"></mat-row>
-        
-      </mat-table>
-    </mat-tab>
-
-    <mat-tab label="{{ 'DIALOGS.errors.chart_title' | translate }}">
-      <div class="chart">
+  <div class="practicesTabs">
+    <div class="tabs">
+      <div role="tablist">
+        <button type="button" role="tab" aria-selected="true" aria-controls="graph_tab" id="tab_graph">
+          {{ "DIALOGS.scores.chart_title" | translate }}
+        </button>
+        <span fxFlex="1"></span>
+        <button type="button" role="tab" aria-selected="false" aria-controls="table_tab" id="tab_table" tabindex="-1">
+          {{ 'DIALOGS.scores.table' | translate }}
+        </button>
+      </div>
+      <div tabindex="0" role="tabpanel" id="graph_tab" aria-labelledby="tab_graph" fxLayout="row"
+        fxLayoutAlign="center center">
         <canvas #chartErrors></canvas>
       </div>
-    </mat-tab>
-  </mat-tab-group>
+      <div tabindex="0" role="tabpanel" id="table_tab" aria-labelledby="tab_table" class="is-hidden">
+        <div class="filter">
+          <label for="filter">{{"DIALOGS.table.select" | translate}}</label>
+          <select id="filter" (change)="applyFilter($event)">
+            <option *ngFor="let typeElem of existingElemGroups" value="{{ typeElem }}">
+              {{"ELEM_GROUPS." + typeElem | translate}}
+            </option>
+            <option value="null">{{"ELEM_GROUPS.all_types" | translate}}</option>
+          </select>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>{{ "DIALOGS.table.level" | translate }}</th>
+              <th>{{ "DIALOGS.table.element" | translate }}</th>
+              <th>{{ "DIALOGS.table.description" | translate }}</th>
+              <th>{{ "DIALOGS.table.websites" | translate }}</th>
+              <th>{{ "DIALOGS.table.pages" | translate }}</th>
+              <th>{{ "DIALOGS.table.elems" | translate }}</th>
+              <th>{{ "DIALOGS.table.quartiles" | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of showTableData">
+              <td>{{p['level']}}</td>
+              <td>{{p['element']}}</td>
+              <td>{{p['description']}}</td>
+              <td>{{p['websites']}}</td>
+              <td>{{p['pages']}}</td>
+              <td>
+                <span *ngIf="p['elems'] >= 0">{{p['elems']}}</span>
+                <span *ngIf="p['elems'] < 0">-</span>
+              </td>
+              <td>
+                <span *ngIf=" p['elems'] < 0">-</span>
+                <span *ngIf=" p['elems'] >= 0">
+                  <span *ngFor="let q of p['quartiles']" fxLayout="column">
+                    <span *ngIf="q.int.lower === q.int.upper && q.int.lower === 1 && q.tot === 1">
+                      {{ q.int.lower }}
+                      {{ "DIALOGS.table.occurrences.single_error" | translate }}
+                      {{ q.tot }}
+                      <span *ngIf="inTagsPage">
+                        {{ "DIALOGS.table.occurrences.single_page_listTags" | translate }}
+                      </span>
+                      <span *ngIf="!inTagsPage">
+                        {{ "DIALOGS.table.occurrences.single_page_tag" | translate }}
+                      </span>
+                    </span>
 
-  <mat-table fxHide.gt-xs matSort
-             [dataSource]="dataSource"
-             [matSortDisableClear]="true"
-             matSortActive="pages"
-             matSortDirection="desc">
-    <ng-container matColumnDef="level">
-      <mat-header-cell *matHeaderCellDef
-                       mat-sort-header>{{ "DIALOGS.table.level" | translate }}</mat-header-cell>
-      <mat-cell *matCellDef="let s"><span>{{s['level']}}</span>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef
-                       mat-sort-header>{{ "DIALOGS.table.description" | translate }}</mat-header-cell>
-      <mat-cell *matCellDef="let s"><span>{{s['description']}}</span></mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="websites">
-      <mat-header-cell *matHeaderCellDef
-                       mat-sort-header>{{ "DIALOGS.table.websites" | translate }}</mat-header-cell>
-      <mat-cell *matCellDef="let s"><span>{{s['websites']}}</span>
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="pages">
-      <mat-header-cell *matHeaderCellDef
-                       mat-sort-header>{{ "DIALOGS.table.pages" | translate }}</mat-header-cell>
-      <mat-cell *matCellDef="let s"><span>{{s['pages']}}</span>
-      </mat-cell>
-    </ng-container>
+                    <span *ngIf="q.int.lower === q.int.upper && q.int.lower === 1 && q.tot > 1">
+                      {{ q.int.lower }}
+                      {{ "DIALOGS.table.occurrences.single_error" | translate }}
+                      {{ q.tot }}
+                      <span *ngIf="inTagsPage">
+                        {{ "DIALOGS.table.occurrences.multi_page_listTags" | translate }}
+                      </span>
+                      <span *ngIf="!inTagsPage">
+                        {{ "DIALOGS.table.occurrences.multi_page_tag" | translate }}
+                      </span>
+                    </span>
 
-    <mat-header-row *matHeaderRowDef="getDisplayedColumnsMobile(); sticky: true"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: getDisplayedColumnsMobile();"></mat-row>
-  </mat-table>
+                    <span *ngIf="q.int.lower === q.int.upper && q.int.lower !== 1 && q.tot === 1">
+                      {{ q.int.lower }}
+                      {{ "DIALOGS.table.occurrences.multi_error" | translate }}
+                      {{ q.tot }}
+                      <span *ngIf="inTagsPage">
+                        {{ "DIALOGS.table.occurrences.single_page_listTags" | translate }}
+                      </span>
+                      <span *ngIf="!inTagsPage">
+                        {{ "DIALOGS.table.occurrences.single_page_tag" | translate }}
+                      </span>
+                    </span>
+
+                    <span *ngIf="q.int.lower === q.int.upper && q.int.lower !== 1 && q.tot > 1">
+                      {{ q.int.lower }}
+                      {{ "DIALOGS.table.occurrences.multi_error" | translate }}
+                      {{ q.tot }}
+                      <span *ngIf="inTagsPage">
+                        {{ "DIALOGS.table.occurrences.multi_page_listTags" | translate }}
+                      </span><span *ngIf="!inTagsPage">
+                        {{ "DIALOGS.table.occurrences.multi_page_tag" | translate }}
+                      </span>
+                    </span>
+
+                    <span *ngIf="q.int.lower !== q.int.upper && q.tot === 1">
+                      {{ "DIALOGS.table.occurrences.from" | translate }}
+                      {{ q.int.lower }}
+                      {{ "DIALOGS.table.occurrences.to" | translate }}
+                      {{ q.int.upper }}
+                      {{ "DIALOGS.table.occurrences.multi_error" | translate }}
+                      {{ q.tot }}
+                      <span *ngIf="inTagsPage">
+                        {{ "DIALOGS.table.occurrences.single_page_listTags" | translate }}
+                      </span>
+                      <span *ngIf="!inTagsPage">
+                        {{ "DIALOGS.table.occurrences.single_page_tag" | translate }}
+                      </span>
+                    </span>
+
+                    <span *ngIf="q.int.lower !== q.int.upper && q.tot > 1">
+                      {{ "DIALOGS.table.occurrences.from" | translate }}
+                      {{ q.int.lower }}
+                      {{ "DIALOGS.table.occurrences.to" | translate }}
+                      {{ q.int.upper }}
+                      {{ "DIALOGS.table.occurrences.multi_error" | translate }}
+                      {{ q.tot }}
+                      <span *ngIf="inTagsPage">
+                        {{ "DIALOGS.table.occurrences.multi_page_listTags" | translate }}
+                      </span>
+                      <span *ngIf="!inTagsPage">
+                        {{ "DIALOGS.table.occurrences.multi_page_tag" | translate }}
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </mat-dialog-content>
-
-<mat-dialog-actions fxLayout="row">
-  <span fxFlex></span>
-  <button mat-flat-button color="warn" mat-dialog-close>{{ "DIALOGS.close" | translate }}</button>
-</mat-dialog-actions>
