@@ -45,6 +45,7 @@ const light: Theme = {
 
     // HEADER
     '--top-header-background': Colours._1,
+    '--top-header-icon-color': Colours._4,
     '--header-background': Colours._2,
     '--header-title': Colours._4,
     '--header-text': Colours._6,
@@ -67,6 +68,7 @@ const light: Theme = {
     '--home-top5-text': Colours._6,
     '--home-top5-list-text': Colours._4,
     '--home-numbers-text': Colours._6,
+    '--home-header-text-2': Colours._6,
 
     // DIRECTORIES PAGE
     '--info-observatory-background': Colours._4,
@@ -126,12 +128,15 @@ const dark: Theme = {
 
     // HEADER
     '--top-header-background': Colours._12,
+    '--top-header-icon-color': Colours._13,
     '--header-background': Colours._4,
     '--header-title': Colours._13,
     '--header-text': Colours._9,
 
     // FOOTER
     '--footer-background': Colours._12,
+    '--footer-text': Colours._13,
+    '--footer-link-text': Colours._13,
 
     // HOME PAGE
     '--first-half-background': Colours._8,
@@ -146,6 +151,7 @@ const dark: Theme = {
     '--home-top5-text': Colours._27,
     '--home-top5-list-text': Colours._10,
     '--home-numbers-text': Colours._27,
+    '--home-header-text-2': Colours._9,
 
     // DIRECTORIES PAGE
     '--info-observatory-background': Colours._10,
