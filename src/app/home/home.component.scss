@@ -1,15 +1,14 @@
 .first-half {
   width: 100%;
   background-color: var(--first-half-background);
-  padding-bottom: 22em;
-}
 
-section {
-  width: 87%;
-}
+  section {
+    width: 87%;
+  }
 
-section:first-child {
-  margin-top: 5em;
+  section:first-child {
+    margin-top: 5em;
+  }
 }
 
 .tabs {
@@ -141,21 +140,34 @@ section:first-child {
 }
 
 .disability_sections {
-  margin-top: 37em;
-  position: absolute;
-  background-color: var(--home-4all-background);
-  color: var(--home-4all-text);
+  background-image: linear-gradient(
+    to bottom,
+    var(--first-half-background),
+    var(--first-half-background) 50%,
+    var(--background) 50%
+  );
+  padding-top: 96px;
+  padding-bottom: 96px;
+
+  .out_wrapper {
+    width: 87%;
+    background-color: var(--home-4all-background);
+    color: var(--home-4all-text);
+  }
+
+  .wrapper {
+    padding: 64px;
+  }
 
   h1 {
-    font-size: 32px;
-    line-height: 48px;
+    font-size: 2em;
     font-weight: 700;
     font-family: "Lato";
+    margin: 0;
   }
 
   .census {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 0.875em;
     font-weight: 400;
     font-family: "Lato";
     text-align: right;
@@ -163,8 +175,7 @@ section:first-child {
 
   p {
     width: 60%;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 1.125em;
     font-weight: 400;
     font-family: "Lato";
     margin-bottom: 2em;
@@ -202,7 +213,11 @@ section:first-child {
 }
 
 .second-half {
-  margin-top: 18em;
+
+  section {
+    width: 87%;
+  }
+
 }
 
 .second-half section:first-child {
