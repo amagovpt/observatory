@@ -61,8 +61,6 @@ export class TagStatisticsComponent {
   openErrorDistributionDialog(): void {
     this.dialog.open(ErrorDistributionDialogComponent, {
       data: {
-        //errors: this.tag.getTopTenErrors(),
-        //isCat: true
         tags: this.tag,
         inTagsPage: false
       },
@@ -79,14 +77,4 @@ export class TagStatisticsComponent {
       width: this.dialogWidth,
     });
   }
-
-  /*openElementCorrectionDistributionDialog(): void {
-    this.dialog.open(ElementCorrectionDistributionDialogComponent, {
-      data: {
-        tags: this.tag,
-        inTagsPage: false
-      },
-      width: this.dialogWidth,
-    });
-  }*/
 }

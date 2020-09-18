@@ -478,7 +478,7 @@ function calculateQuartiles(d: any, test: any): Array<any> {
   if (d.inTagsPage) {
     data = d.tags.getErrorOccurrenceByTag(test);
   } else {
-    data = d.tags.getErrorOccurrenceByWebsite(test);
+    data = d.tags.getErrorOccurrencesByWebsite(test);
   }
 
   const values = without(data, undefined).sort((a, b) => a - b);
