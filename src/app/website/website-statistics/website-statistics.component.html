@@ -1,65 +1,115 @@
 <section fxLayout="row" fxLayoutAlign="center center">
   <div class="statistics-wrapper">
-    <div class="first-row" fxLayout="row" fxLayoutAlign="space-between center">
-      <div>
+    <div gdRows="auto 1fr" gdColumns="300px 1fr">
+      <div class="first-row">
         <span>{{ "WEBSITE.statistics_title" | translate }}</span>
         <span>{{ "WEBSITE.statistics_subtitle" | translate }}</span>
       </div>
-      <div>
-        <span>{{ "STATISTICS.newest_page_updated" | translate }}</span>
-        <span>{{ website.recentPage | date }}</span>
+      <div
+        class="first-row"
+        fxAlign="row"
+        fxLayoutAlign="start center"
+        gdColumns="50% 50%"
+      >
+        <div>
+          <span>{{ "STATISTICS.newest_page_updated" | translate }}</span>
+          <span>{{ website.recentPage | date }}</span>
+        </div>
+        <div>
+          <span>{{ "STATISTICS.oldest_page_updated" | translate }}</span>
+          <span>{{ website.oldestPage | date }}</span>
+        </div>
       </div>
-      <div>
-        <span>{{ "STATISTICS.oldest_page_updated" | translate }}</span>
-        <span>{{ website.oldestPage | date }}</span>
-      </div>
-    </div>
-    <br>
-    <div class="second-row">
       <ngx-gauge
-        class="score"
-        [type]="'arch'" 
-        [thick]="'10'" 
+        class="score second-row"
+        [type]="'arch'"
+        [thick]="'10'"
         [cap]="'round'"
         [value]="website.getScore() | toFixed"
         [label]="'STATISTICS.gauge.label' | translate"
         [min]="0"
         [max]="10"
         [duration]="2000"
-        [thresholds]="thresholdConfig">
+        [thresholds]="thresholdConfig"
+      >
       </ngx-gauge>
-      <div fxLayout="row" fxLayoutAlign="center center" fxFlex>
-        <div class="metadata" fxLayout="column" fxLayoutAlign="center center">
-          <div class="upper-row" fxLayout="row" fxLayoutAlign="space-between center">
-            <div>
-              <span>{{ website.pages.length }}</span>
-              <span>{{ "STATISTICS.pages" | translate }}</span>
-            </div>
-            <div>
-              <span>{{ pagesWithoutErrors }} <span class="percentage">{{ pagesWithoutErrorsPercentage }}</span></span>
-              <span>{{ "STATISTICS.pages_without_errors" | translate }}</span>
-            </div>
-            <div>
-              <span>{{ pagesWithErrors }} <span class="percentage">{{ pagesWithErrorsPercentage }}</span></span>
-              <span>{{ "STATISTICS.pages_with_errors" | translate }}</span>
-            </div>
+      <div
+        class="metadata second-row"
+        fxLayout="column"
+        fxLayoutAlign="space-around center"
+      >
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-around center"
+          class="upper-row"
+        >
+          <div>
+            <span>{{ website.pages.length }}</span>
+            <span>{{ "STATISTICS.pages" | translate }}</span>
           </div>
-          <div class="lower-row" fxLayout="row" fxLayoutAlign="space-between center">
-            <div>
-              <span>{{ pagesWithoutErrorsA }} <span class="percentage">{{ pagesWithoutErrorsAPercentage }}</span></span>
-              <span>{{ "STATISTICS.pages_without_errors_a" | translate }}</span>
-              <span>{{ "STATISTICS.pages_without_errors_a_info" | translate }}</span>
-            </div>
-            <div>
-              <span>{{ pagesWithoutErrorsAA }} <span class="percentage">{{ pagesWithoutErrorsAAPercentage }}</span></span>
-              <span>{{ "STATISTICS.pages_without_errors_a_aa" | translate }}</span>
-              <span>{{ "STATISTICS.pages_without_errors_a_aa_info" | translate }}</span>
-            </div>
-            <div>
-              <span>{{ pagesWithoutErrorsAAA }} <span class="percentage">{{ pagesWithoutErrorsAAAPercentage }}</span></span>
-              <span>{{ "STATISTICS.pages_without_errors_a_aa_aaa" | translate }}</span>
-              <span>{{ "STATISTICS.pages_without_errors_a_aa_aaa_info" | translate }}</span>
-            </div>
+          <div>
+            <span
+              >{{ pagesWithoutErrors }}
+              <span class="percentage">{{
+                pagesWithoutErrorsPercentage
+              }}</span></span
+            >
+            <span>{{ "STATISTICS.pages_without_errors" | translate }}</span>
+          </div>
+          <div>
+            <span
+              >{{ pagesWithErrors }}
+              <span class="percentage">{{
+                pagesWithErrorsPercentage
+              }}</span></span
+            >
+            <span>{{ "STATISTICS.pages_with_errors" | translate }}</span>
+          </div>
+        </div>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-around center"
+          class="lower-row"
+        >
+          <div>
+            <span
+              >{{ pagesWithoutErrorsA }}
+              <span class="percentage">{{
+                pagesWithoutErrorsAPercentage
+              }}</span></span
+            >
+            <span>{{ "STATISTICS.pages_without_errors_a" | translate }}</span>
+            <span>{{
+              "STATISTICS.pages_without_errors_a_info" | translate
+            }}</span>
+          </div>
+          <div>
+            <span
+              >{{ pagesWithoutErrorsAA }}
+              <span class="percentage">{{
+                pagesWithoutErrorsAAPercentage
+              }}</span></span
+            >
+            <span>{{
+              "STATISTICS.pages_without_errors_a_aa" | translate
+            }}</span>
+            <span>{{
+              "STATISTICS.pages_without_errors_a_aa_info" | translate
+            }}</span>
+          </div>
+          <div>
+            <span
+              >{{ pagesWithoutErrorsAAA }}
+              <span class="percentage">{{
+                pagesWithoutErrorsAAAPercentage
+              }}</span></span
+            >
+            <span>{{
+              "STATISTICS.pages_without_errors_a_aa_aaa" | translate
+            }}</span>
+            <span>{{
+              "STATISTICS.pages_without_errors_a_aa_aaa_info" | translate
+            }}</span>
           </div>
         </div>
       </div>

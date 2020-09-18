@@ -9,7 +9,10 @@
       "location": "Acessibilidade.gov.pt",
       "observatory": "Observatory",
       "directories": "Directories"
-    }
+    },
+    "dark_mode": "Dark mode",
+    "light_mode": "Light mode",
+    "language_en": "Em português"
   },
   "STATISTICS": {
     "gauge": {

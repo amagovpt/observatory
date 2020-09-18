@@ -1,15 +1,14 @@
 .first-half {
   width: 100%;
   background-color: var(--first-half-background);
-  padding-bottom: 20em;
-}
 
-section {
-  width: 87%;
-}
+  section {
+    width: 87%;
+  }
 
-section:first-child {
-  margin-top: 5em;
+  section:first-child {
+    margin-top: 5em;
+  }
 }
 
 .tabs {
@@ -25,20 +24,21 @@ section:first-child {
   margin: 0 0 -0.1em;
   overflow: visible;
   display: inline-block;
-  width: 30%;
 }
 
 [role="tab"] {
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 1.75em;
   color: var(--home-tabs-text);
   font-weight: 700;
   font-family: "Lato";
   opacity: 1 !important;
   border: none;
-  margin: 1.5em;
-  margin-left: 0.2em;
-  margin-right: 0em;
+  border-right: 5px solid transparent;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
   display: block;
   background-color: var(--first-half-background);
   text-align: left;
@@ -56,7 +56,7 @@ section:first-child {
 [role="tabpanel"] {
   border: none;
   display: inline-block;
-  margin-left: 15em;
+  margin-left: 126px;
 }
 
 [role="tab"]:hover,
@@ -73,7 +73,7 @@ section:first-child {
   outline: none;
 }
 
-[role="tabpanel"] h1 {
+[role="tabpanel"] h2 {
   font-size: 42px;
   line-height: 48px;
   color: var(--home-tabs-active-text);
@@ -81,7 +81,8 @@ section:first-child {
   font-family: "Lato";
 }
 
-[role="tabpanel"] p, [role="tabpanel"] ul {
+[role="tabpanel"] p,
+[role="tabpanel"] ul {
   font-size: 18px;
   line-height: 24px;
   color: var(--home-tabs-active-text);
@@ -108,7 +109,7 @@ section:first-child {
 }
 
 .directories-link {
-  font-size: 16px;
+  font-size: 1em;
   line-height: 20px;
   color: var(--home-tabs-button-text);
   background-color: var(--home-tabs-button-background);
@@ -139,21 +140,34 @@ section:first-child {
 }
 
 .disability_sections {
-  margin-top: 33em;
-  position: absolute;
-  background-color: var(--home-4all-background);
-  color: var(--home-4all-text);
+  background-image: linear-gradient(
+    to bottom,
+    var(--first-half-background),
+    var(--first-half-background) 50%,
+    var(--background) 50%
+  );
+  padding-top: 96px;
+  padding-bottom: 96px;
 
-  h1 {
-    font-size: 32px;
-    line-height: 48px;
+  .out_wrapper {
+    width: 87%;
+    background-color: var(--home-4all-background);
+    color: var(--home-4all-text);
+  }
+
+  .wrapper {
+    padding: 64px;
+  }
+
+  h2 {
+    font-size: 2em;
     font-weight: 700;
     font-family: "Lato";
+    margin: 0;
   }
 
   .census {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 0.875em;
     font-weight: 400;
     font-family: "Lato";
     text-align: right;
@@ -161,14 +175,15 @@ section:first-child {
 
   p {
     width: 60%;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 1.125em;
     font-weight: 400;
     font-family: "Lato";
     margin-bottom: 2em;
   }
 
-  svg path, svg circle, svg ellipse {
+  svg path,
+  svg circle,
+  svg ellipse {
     fill: var(--home-4all-text);
   }
 
@@ -198,14 +213,18 @@ section:first-child {
 }
 
 .second-half {
-  margin-top: 20em;
+
+  section {
+    width: 87%;
+  }
+
 }
 
 .second-half section:first-child {
   margin-bottom: 8em;
   color: var(--home-top5-text);
 
-  h1 {
+  h2 {
     font-size: 32px;
     line-height: 48px;
     font-weight: 700;
@@ -265,7 +284,7 @@ section:first-child {
   background-color: var(--first-half-background);
   fill: var(--home-numbers-text);
 
-  h1 {
+  h2 {
     font-size: 32px;
     line-height: 48px;
     font-weight: 700;
@@ -323,12 +342,12 @@ section:first-child {
     margin-bottom: 3em;
   }
 
-  .topsFive h1 {
+  .topsFive h2 {
     font-size: 24px;
     line-height: 48px;
     font-weight: 700;
     font-family: "Lato";
-    margin-left: 1em;
+    margin-left: 12px;
   }
 
   ul {
