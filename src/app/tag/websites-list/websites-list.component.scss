@@ -6,23 +6,28 @@
 .table-wrapper {
   width: 90%;
   padding: 1em;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 h1 {
   color: var(--table-title);
   font-family: Lato;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 0;
-  line-height: 48px;
+  margin: 0;
+  padding-bottom: 4px;
 }
 
 h2 {
   color: var(--table-subtitle);
   font-family: Lato;
   font-size: 16px;
+  font-weight: 400;
   letter-spacing: 0;
-  line-height: 48px;
+  margin: 0;
+  padding-bottom: 24px;
 }
 
 table {
@@ -41,6 +46,11 @@ table thead tr:first-child {
 table thead tr:last-child {
   background-color: var(--table-header2);
   opacity: 0.9;
+
+  th {
+    text-align: right;
+    padding-right: 16px;
+  }
 }
 
 table thead tr th {
@@ -50,7 +60,27 @@ table thead tr th {
   letter-spacing: 0;
   line-height: 22px;
   padding: 1em;
+}
+
+.aright {
+  text-align: right !important;
+  padding-left: 0;
+}
+
+table thead tr th:nth-child(1),
+table thead tr th:nth-child(2) {
+  text-align: left;
+}
+
+table thead tr th:nth-child(3) {
   text-align: center;
+}
+
+table thead tr th:nth-child(4),
+table thead tr th:nth-child(5),
+table thead tr th:nth-child(6),
+table thead tr th:nth-child(7) {
+  text-align: right;
 }
 
 ::ng-deep .mat-sort-header-stem {
@@ -62,7 +92,7 @@ table thead tr th {
 }
 
 .name {
-  width: 55%;
+  width: 50%;
 }
 
 table tbody tr td {
@@ -79,10 +109,6 @@ table tbody tr td:not(.name) {
   text-align: center;
 }
 
-table thead th.name {
-  text-align: left !important;
-}
-
 td.name a {
   color: var(--table-directory-name);
   text-decoration: none;
@@ -95,8 +121,22 @@ td.name a {
   margin-left: 1em;
 }
 
+table tbody tr td:nth-child(1) {
+  text-align: left;
+  padding-left: 16px;
+}
+
 table tbody tr td:nth-child(3) {
   font-size: 18px;
+  text-align: center;
+}
+
+table tbody tr td:nth-child(4),
+table tbody tr td:nth-child(5),
+table tbody tr td:nth-child(6),
+table tbody tr td:nth-child(7) {
+  text-align: right;
+  padding-right: 16px;
 }
 
 table tbody tr:hover {
@@ -141,4 +181,8 @@ select {
 
 .note {
   color: var(--table-text);
+}
+
+.flip-image {
+  transform: scaleX(-1);
 }

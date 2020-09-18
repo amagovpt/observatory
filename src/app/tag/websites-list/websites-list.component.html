@@ -2,8 +2,13 @@
   <div class="table-wrapper">
     <h1>{{ "TAG.table.title" | translate }}</h1>
     <h2>{{ "TAG.table.subtitle" | translate }} {{ tag.name }}</h2>
-    <table matSort matSortActive="rank" matSortDisableClear
-      matSortDirection="asc" (matSortChange)="sortData($event)">
+    <table
+      matSort
+      matSortActive="rank"
+      matSortDisableClear
+      matSortDirection="asc"
+      (matSortChange)="sortData($event)"
+    >
       <thead>
         <tr>
           <th mat-sort-header="rank">
@@ -24,13 +29,13 @@
         </tr>
         <tr>
           <th colspan="4"></th>
-          <th>
+          <th class="aright">
             {{ "ALL_TAGS.table.A" | translate }}
           </th>
-          <th>
+          <th class="aright">
             {{ "ALL_TAGS.table.AA" | translate }}
           </th>
-          <th>
+          <th class="aright">
             {{ "ALL_TAGS.table.AAA" | translate }}
           </th>
         </tr>
@@ -51,23 +56,65 @@
     </table>
     <div class="pagination" fxLayout="row" fxLayoutAlign="space-between center">
       <div>
-        {{ indicator1 }} - {{ indicator2 }} {{ "TAG.table.paginator.of" | translate }} {{ websites.length }} {{ "TAG.table.paginator.items" | translate }}
+        {{ indicator1 }} - {{ indicator2 }}
+        {{ "TAG.table.paginator.of" | translate }} {{ websites.length }}
+        {{ "TAG.table.paginator.items" | translate }}
       </div>
       <div>
-        {{ "TAG.table.paginator.see" | translate }} 
+        {{ "TAG.table.paginator.see" | translate }}
+        &nbsp;
         <select name="items" (change)="changeItemsPerPage($event)">
           <option value="1">1</option>
           <option value="2" selected>2</option>
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
+        &nbsp;
         {{ "TAG.table.paginator.per_page" | translate }}
       </div>
       <div fxLayout="row" fxLayoutAlign="space-around center">
-        <button type="button" (click)="firstPage()" [disabled]="indicator1 === 1"><<</button>
-        <button type="button" (click)="previousPage()" [disabled]="indicator1 === 1"><</button>
-        <button type="button" (click)="nextPage()" [disabled]="indicator2 === websites.length">></button>
-        <button type="button" (click)="lastPage()" [disabled]="indicator2 === websites.length">>></button>
+        <button
+          type="button"
+          (click)="firstPage()"
+          [disabled]="indicator1 === 1"
+        >
+          <img
+            src="../../../assets/icons/icon_pages_last-page-arrow.svg"
+            alt="primeira página"
+            class="flip-image"
+          />
+        </button>
+        <button
+          type="button"
+          (click)="previousPage()"
+          [disabled]="indicator1 === 1"
+        >
+          <img
+            src="../../../assets/icons/icon_pages_next.svg"
+            alt="página anterior"
+            class="flip-image"
+          />
+        </button>
+        <button
+          type="button"
+          (click)="nextPage()"
+          [disabled]="indicator2 === websites.length"
+        >
+          <img
+            src="../../../assets/icons/icon_pages_next.svg"
+            alt="próxima página"
+          />
+        </button>
+        <button
+          type="button"
+          (click)="lastPage()"
+          [disabled]="indicator2 === websites.length"
+        >
+          <img
+            src="../../../assets/icons/icon_pages_last-page-arrow.svg"
+            alt="última página"
+          />
+        </button>
       </div>
     </div>
     <span class="note">
