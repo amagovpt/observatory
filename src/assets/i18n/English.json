@@ -242,14 +242,14 @@
       "subtitle": "(Per nº of pages)",
       "message": "3 most common errors of priority \"{{value}}\"",
       "practice": "error in",
-      "page": "pages"
+      "pages": "pages"
     },
     "top_3_best_practices": {
       "title": "3 best practices by level of conformance",
       "subtitle": "(Per nº of pages)",
       "message": "3 most common best practices of priority \"{{value}}\"",
       "practice": "practice in",
-      "page": "pages"
+      "pages": "pages"
     },
     "accessibility_plot": {
       "title": "Accessibility plot",

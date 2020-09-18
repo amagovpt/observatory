@@ -242,14 +242,14 @@
       "subtitle": "(Por nº de páginas)",
       "message": "3 erros mais comuns de prioridade \"{{value}}\"",
       "practice": "erro em",
-      "pages": "pages"
+      "pages": "páginas"
     },
     "top_3_best_practices": {
       "title": "3 melhores prácticas por nível de conformidade",
       "subtitle": "(Por nº de páginas)",
       "message": "3 melhores prácticas mais comuns de prioridade \"{{value}}\"",
       "practice": "prática em",
-      "pages": "pages"
+      "pages": "páginas"
     },
     "accessibility_plot": {
       "title": "Mancha de acessibilidade",
