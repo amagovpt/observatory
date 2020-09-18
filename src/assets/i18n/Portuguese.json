@@ -9,7 +9,10 @@
       "location": "Acessibilidade.gov.pt",
       "observatory": "Observatório",
       "directories": "Diretórios"
-    }
+    },
+    "dark_mode": "Ver em modo escuro",
+    "light_mode": "Ver em modo claro",
+    "language_en": "In english"
   },
   "STATISTICS": {
     "gauge": {
@@ -205,13 +208,13 @@
     "statistics_subtitle": "Metadados",
     "table": {
       "filter": "Filtro",
-      "title": "Sítios web",
+      "title": "Sítios Web",
       "subtitle": "Estatísticas do diretório",
       "rank": "Rank",
       "name": "Sítio web",
       "entity": "Entidade",
       "score": "Pontuação",
-      "pages": "Nº de páginas",
+      "pages": "Páginas",
       "levels": "Páginas em conformidade*",
       "A": "A",
       "AA": "AA",
@@ -261,7 +264,7 @@
       "practice_label": "Prática",
       "error_label": "Erro",
       "n_errors_label": "Ocorrências",
-      "n_pages_label": "Nº de páginas afetadas",
+      "n_pages_label": "Páginas",
       "details_practice_label": "Práticas por página",
       "details_error_label": "Erros por página",
       "details": {

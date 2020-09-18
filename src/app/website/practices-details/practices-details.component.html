@@ -12,28 +12,28 @@
       </div>
       <div tabindex="0" role="tabpanel" id="good_tab" aria-labelledby="tab_good" fxLayout="row" fxLayoutAlign="center center">
         <div class="practices-wrapper">
-          <h1>{{ "WEBSITE.top_10_best_practices_title" | translate }}</h1>
+          <h3>{{ "WEBSITE.top_10_best_practices_title" | translate }}</h3>
           <app-practices-distribution [type]="'good'" [color]="'#15ac51'" [data]="practicesDistributionData"></app-practices-distribution>
           <span class="divider"></span>
-          <h1>{{ "WEBSITE.top_3_best_practices.title" | translate }}</h1>
-          <h2>{{ "WEBSITE.top_3_best_practices.subtitle" | translate }}</h2>
+          <h3 class="no-margin">{{ "WEBSITE.top_3_best_practices.title" | translate }}</h3>
+          <h4 class="no-margin">{{ "WEBSITE.top_3_best_practices.subtitle" | translate }}</h4>
           <app-top-three-practices [type]="'good'" [data]="website.success"></app-top-three-practices>
           <span class="divider"></span>
-          <h1>{{ "WEBSITE.table.best_title" | translate }}</h1>
+          <h3>{{ "WEBSITE.table.best_title" | translate }}</h3>
           <app-practices-details-table [type]="'good'" [website]="website"></app-practices-details-table>
           <span class="divider"></span>
         </div>
       </div>
       <div tabindex="0" role="tabpanel" id="bad_tab" aria-labelledby="tab_bad" class="is-hidden" fxLayout="row" fxLayoutAlign="center center">
         <div class="practices-wrapper">
-          <h1>{{ "WEBSITE.top_10_bad_practices_title" | translate }}</h1>
+          <h3>{{ "WEBSITE.top_10_bad_practices_title" | translate }}</h3>
           <app-practices-distribution [type]="'bad'" [color]="'#e90018'" [data]="errorDistributionData"></app-practices-distribution>
           <span class="divider"></span>
-          <h1>{{ "WEBSITE.top_3_bad_practices.title" | translate }}</h1>
-          <h2>{{ "WEBSITE.top_3_bad_practices.subtitle" | translate }}</h2>
+          <h3>{{ "WEBSITE.top_3_bad_practices.title" | translate }}</h3>
+          <h4>{{ "WEBSITE.top_3_bad_practices.subtitle" | translate }}</h4>
           <app-top-three-practices [type]="'bad'" [data]="website.errors"></app-top-three-practices>
           <span class="divider"></span>
-          <h1>{{ "WEBSITE.table.bad_title" | translate }}</h1>
+          <h3>{{ "WEBSITE.table.bad_title" | translate }}</h3>
           <app-practices-details-table [type]="'bad'" [website]="website"></app-practices-details-table>
           <span class="divider"></span>
         </div>

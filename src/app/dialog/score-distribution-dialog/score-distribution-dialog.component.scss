@@ -1,21 +1,35 @@
-h1 {
+h2 {
   color: var(--statistics-text);
   font-family: Lato;
-  font-size: 22px;
+  font-size: 1.375em;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 40px;
+  margin: 0;
 }
 
 .dialog-title {
+  margin-bottom: 16px;
+  
   span {
     color: var(--statistics-close);
     font-family: Lato;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: bold;
     letter-spacing: 0;
     line-height: 48px;
+    padding-right: 32px;
   }
+}
+
+.diag_wrapper {
+  padding: 0px 24px;
+}
+
+mat-dialog-content{
+  margin: 0;
+  padding: 0;
+  height: auto;
 }
 
 .tabs {
@@ -43,7 +57,6 @@ h1 {
   font-family: "Lato";
   opacity: 1 !important;
   border: none;
-  padding: 0.5em;
   padding-left: 2em;
   padding-right: 2em;
   margin: 0;
@@ -73,10 +86,11 @@ h1 {
 
 canvas {
   margin-top: 1em;
+  padding-bottom: 32px;
 }
 
 table {
-  margin-top: 1em;
+  margin-top: 3px;
   width: 100%;
   border-spacing: 0;
 }
@@ -87,7 +101,7 @@ table thead {
 
 table thead tr th {
   padding: 1em;
-  font-size: 16px;
+  font-size: 1em;
   line-height: 20px;
   color: var(--statistics-score-table-header-text);
   font-weight: 700;
@@ -103,7 +117,8 @@ table thead tr th {
 }
 
 table tbody tr td {
-  font-size: 16px;
+  padding-right: 1em;
+  font-size: 1em;
   line-height: 50px;
   color: var(--statistics-score-table-text);
   font-weight: 400;

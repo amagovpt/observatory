@@ -1,12 +1,22 @@
-<div class="dialog-title" fxLayout="row" fxLayoutAlign="start center">
-  <h1 mat-dialog-title>{{ "DIALOGS.scores.title" | translate }}</h1>
-  <span fxFlex></span>
-  <span fxFlex="5">{{ "DIALOGS.close" | translate }}</span>
-  <button class="close" type="button" mat-dialog-close fxLayout="row" fxLayoutAlign="center center">
-    X
-  </button>
-</div>
-<mat-dialog-content>
+<div class="diag_wrapper">
+  <div
+    class="dialog-title"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    gdColumns="87% 8% 5%"
+  >
+    <h2 mat-dialog-title>{{ "DIALOGS.scores.title" | translate }}</h2>
+    <span>{{ "DIALOGS.close" | translate }}</span>
+    <button
+      class="close"
+      type="button"
+      mat-dialog-close
+      fxLayout="row"
+      fxLayoutAlign="center center"
+    >
+      X
+    </button>
+  </div>
   <div class="scoreTabs">
     <div class="tabs">
       <div role="tablist">
@@ -28,45 +38,53 @@
           id="tab_table"
           tabindex="-1"
         >
-        {{ 'DIALOGS.scores.table' | translate }}
+          {{ "DIALOGS.scores.table" | translate }}
         </button>
-      </div>
-      <div
-        tabindex="0"
-        role="tabpanel"
-        id="graph_tab"
-        aria-labelledby="tab_graph"
-        fxLayout="row" fxLayoutAlign="center center">
-        <canvas #chartDomains></canvas>
-      </div>
-      <div
-        tabindex="0"
-        role="tabpanel"
-        id="table_tab"
-        aria-labelledby="tab_table"
-        class="is-hidden"
-      >
-        <table>
-          <thead>
-            <tr>
-              <th>{{ "DIALOGS.scores.range" | translate }}</th>
-              <th>{{ "DIALOGS.scores.frequency" | translate }}</th>
-              <th>{{ "DIALOGS.scores.frequency" | translate }} (%)</th>
-              <th>{{ "DIALOGS.scores.cumulative" | translate }}</th>
-              <th>{{ "DIALOGS.scores.cumulative" | translate }} (%)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let lab of labels; let i = index">
-              <td>{{labels[i]}}</td>
-              <td>{{values[i]}}</td>
-              <td>{{percentageValues[i] | toFixed}}%</td>
-              <td>{{freq[i]}}</td>
-              <td>{{freqPer[i] | toFixed}}%</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
-</mat-dialog-content>
+  <mat-dialog-content>
+    <div class="scoreTabs">
+      <div class="tabs">
+        <div
+          tabindex="0"
+          role="tabpanel"
+          id="graph_tab"
+          aria-labelledby="tab_graph"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
+          <canvas #chartDomains></canvas>
+        </div>
+        <div
+          tabindex="0"
+          role="tabpanel"
+          id="table_tab"
+          aria-labelledby="tab_table"
+          class="is-hidden"
+        >
+          <table>
+            <thead>
+              <tr>
+                <th>{{ "DIALOGS.scores.range" | translate }}</th>
+                <th>{{ "DIALOGS.scores.frequency" | translate }}</th>
+                <th>{{ "DIALOGS.scores.frequency" | translate }} (%)</th>
+                <th>{{ "DIALOGS.scores.cumulative" | translate }}</th>
+                <th>{{ "DIALOGS.scores.cumulative" | translate }} (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let lab of labels; let i = index">
+                <td>{{ labels[i] }}</td>
+                <td>{{ values[i] }}</td>
+                <td>{{ percentageValues[i] | toFixed }}%</td>
+                <td>{{ freq[i] }}</td>
+                <td>{{ freqPer[i] | toFixed }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>
