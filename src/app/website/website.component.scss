@@ -34,7 +34,9 @@ nav a {
   font-weight: 700;
   font-family: "Lato";
   height: 31px;
-  width: auto;
+  width: fit-content;
+  padding-left: 1em;
+  padding-right: 1em;
   text-align: center;
   display: flex;
   align-items: center;
