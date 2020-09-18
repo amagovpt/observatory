@@ -10,22 +10,47 @@
 
 .first-row {
   margin-top: 2em;
-}
+  margin-bottom: 3em;
 
-.first-row div:first-child span:first-child {
-  color: var(--statistics-text);
-  font-family: Lato;
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 40px;
-}
+  span {
+    display: block;
+  }
 
-.first-row div:first-child span:nth-child(2) {
-  color: var(--statistics-text2);
-  font-family: Lato;
-  font-size: 16px;
-  letter-spacing: 0;
+  span:first-child {
+    color: var(--statistics-text);
+    font-family: Lato;
+    font-size: 1.375em;
+    font-weight: bold;
+    letter-spacing: 0;
+  }
+
+  span:nth-child(2) {
+    color: var(--statistics-text2);
+    font-family: Lato;
+    font-size: 1em;
+    letter-spacing: 0;
+  }
+
+  div {
+    span:first-child {
+      color: var(--statistics-text);
+      font-family: Lato;
+      font-size: 1em;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 20px;
+      padding-left: 16px;
+    }
+
+    span:nth-child(2) {
+      color: var(--statistics-text);
+      font-family: Lato;
+      font-size: 1em;
+      letter-spacing: 0;
+      line-height: 20px;
+      padding-left: 16px;
+    }
+  }
 }
 
 ::ng-deep .reading-block {
@@ -41,101 +66,83 @@
   color: var(--statistics-text);
 }
 
-.first-row {
-  margin-bottom: 3em;
-}
-
-.first-row div span {
-  display: block;
-}
-
-.first-row div span:first-child {
-  color: var(--statistics-text);
-  font-family: Lato;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 20px;
-}
-
-.first-row div span:nth-child(2) {
-  color: var(--statistics-text);
-  font-family: Lato;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: 20px;
-}
-
 .second-row {
-  margin-bottom: 2em;
-}
+  margin-bottom: 3em;
 
-.second-row div {
-  background-color: var(--background);
-}
+  div {
+    width: 100%;
+  }
 
-.second-row > div:nth-child(2) {
-  margin-left: 5em;
+  &:not(ngx-gauge) {
+    background-color: var(--statistics-header-background);
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
 
 .metadata {
-  width: 90%;
-}
+  .percentage {
+    display: inline-block !important;
+    color: var(--statistics-text);
+    font-family: "Lato Black";
+    font-size: 18px !important;
+    letter-spacing: 0;
+    line-height: 20px;
+    text-align: center;
+  }
 
-.metadata div span {
-  display: block;
-  text-align: center;
-}
+  div {
+    div {
+      span {
+        display: block;
+        text-align: center;
+      }
 
-.metadata div span:first-child {
-  height: 26px;
-  color: var(--statistics-text);
-  font-family: "Lato";
-  font-size: 36px;
-  letter-spacing: 0;
-  font-weight: bold;
-  line-height: 20px;
-  padding: 0.2em;
-}
+      span:first-child {
+        height: 26px;
+        color: var(--statistics-text);
+        font-family: "Lato";
+        font-size: 2.25em;
+        letter-spacing: 0;
+        font-weight: 700;
+        line-height: 20px;
+        padding: 0.2em;
+      }
 
-.metadata div span:nth-child(2) {
-  height: 11px;
-  color: var(--statistics-text);
-  font-family: Lato;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 0;
-  line-height: 20px;
-  padding: 0.2em;
-}
+      span:nth-child(2) {
+        height: 11px;
+        color: var(--statistics-text);
+        font-family: Lato;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 20px;
+        padding: 0.2em;
+      }
 
-.metadata div span:last-child {
-  height: 11px;
-  color: var(--statistics-text);
-  font-family: Lato;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: 20px;
-  padding: 0.3em;
-}
+      span:last-child {
+        height: 11px;
+        color: var(--statistics-text);
+        font-family: Lato;
+        font-size: 1em;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 20px;
+        padding: 0.3em;
+      }
+    }
+  }
 
-.metadata .upper-row, .metadata .lower-row {
-  width: 100%;
-  padding: 2em;
-  padding-top: 4em;
-  padding-bottom: 4em;
-}
+  .upper-row,
+  .lower-row {
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
 
-.metadata .upper-row {
-  border-bottom: thin solid var(--statistics-border);
-}
-
-.percentage {
-  display: inline-block !important;
-  color: var(--statistics-text);
-  font-family: "Lato Black";
-  font-size: 18px;
-  letter-spacing: 0;
-  line-height: 20px;
-  text-align: center;
+  .upper-row {
+    border-bottom: thin solid var(--background);
+  }
 }
