@@ -73,7 +73,7 @@
   outline: none;
 }
 
-[role="tabpanel"] h1 {
+[role="tabpanel"] h2 {
   font-size: 42px;
   line-height: 48px;
   color: var(--home-tabs-active-text);
@@ -159,7 +159,7 @@
     padding: 64px;
   }
 
-  h1 {
+  h2 {
     font-size: 2em;
     font-weight: 700;
     font-family: "Lato";
@@ -224,7 +224,7 @@
   margin-bottom: 8em;
   color: var(--home-top5-text);
 
-  h1 {
+  h2 {
     font-size: 32px;
     line-height: 48px;
     font-weight: 700;
@@ -284,7 +284,7 @@
   background-color: var(--first-half-background);
   fill: var(--home-numbers-text);
 
-  h1 {
+  h2 {
     font-size: 32px;
     line-height: 48px;
     font-weight: 700;
@@ -342,12 +342,12 @@
     margin-bottom: 3em;
   }
 
-  .topsFive h1 {
+  .topsFive h2 {
     font-size: 24px;
     line-height: 48px;
     font-weight: 700;
     font-family: "Lato";
-    margin-left: 1em;
+    margin-left: 12px;
   }
 
   ul {

@@ -264,7 +264,7 @@
       "practice_label": "Prática",
       "error_label": "Erro",
       "n_errors_label": "Ocorrências",
-      "n_pages_label": "Nº de páginas afetadas",
+      "n_pages_label": "Páginas",
       "details_practice_label": "Práticas por página",
       "details_error_label": "Erros por página",
       "details": {
