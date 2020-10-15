@@ -22,6 +22,11 @@ nav a {
   cursor: pointer;
 }
 
+nav span:last-child {
+  color: var(--breadcrumbs-text2);
+  cursor: default;
+}
+
 .info {
   margin-bottom: 2em;
 }

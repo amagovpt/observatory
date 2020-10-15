@@ -42,6 +42,7 @@ const light: Theme = {
     '--go-to-top-background': Colours._4,
     '--go-to-top-icon': Colours._3,
     '--breadcrumbs-text': Colours._4,
+    '--breadcrumbs-text2': Colours._6,
 
     // HEADER
     '--top-header-background': Colours._1,
@@ -125,6 +126,7 @@ const dark: Theme = {
     '--go-to-top-background': Colours._10,
     '--go-to-top-icon': Colours._7,
     '--breadcrumbs-text': Colours._10,
+    '--breadcrumbs-text2': Colours._10,
 
     // HEADER
     '--top-header-background': Colours._12,

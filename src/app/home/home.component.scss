@@ -11,6 +11,30 @@
   }
 }
 
+nav {
+  padding-bottom: 3em;
+}
+
+nav span {
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
+nav span,
+nav a {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: "Lato";
+  color: var(--breadcrumbs-text);
+  cursor: pointer;
+}
+
+nav span:last-child {
+  color: var(--breadcrumbs-text2);
+  cursor: default;
+}
+
 .tabs {
   width: 100%;
   font-family: "Lato", sans-serif;
