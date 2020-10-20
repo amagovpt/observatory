@@ -1,5 +1,6 @@
 {
   "HEADER": {
+    "tool": "Uma ferramenta do ecossistema do",
     "title": {
       "part1": "Observatorio Português",
       "part2": "da Acessibilidade Web"
@@ -8,11 +9,37 @@
     "NAV": {
       "location": "Acessibilidade.gov.pt",
       "observatory": "Observatório",
+      "numbers": "O Observatório em números",
       "directories": "Diretórios"
     },
-    "dark_mode": "Ver em modo escuro",
-    "light_mode": "Ver em modo claro",
-    "language_en": "In english"
+    "dark_mode": "Modo escuro",
+    "light_mode": "Modo claro",
+    "language_en": "In english",
+    "DROPDOWN": {
+      "ecosystem": "Ecosistema",
+      "text": "Os sítios e as ferramentas de apoio à acessibilidade e à usabilidade, para garantir a promoção das boas práticas e melhorar a experiência de utilização dos serviços digitais.",
+      "external_link": "hiperligação externa",
+      "accessibility": {
+        "text": "Divulgação, partilha e promoção das melhores práticas de acessibilidade para conteúdos Web e aplicações móveis.",
+        "link1": "DL n.º 83/2018 – acessibilidade da Web e das aplicações móveis",
+        "link2": "Gerar a Declaração de acessibilidade",
+        "link3": "Validador AccessMonitor"
+      },
+      "usability": {
+        "text": "Recursos, ferramentas e boas práticas para melhorar a usabilidade e a experiência de utilização dos serviços digitais.",
+        "link1": "Guia de usabilidade",
+        "link2": "Lista de verificação",
+        "link3": "Componentes",
+        "link4": "Templates"
+      },
+      "badge": {
+        "text": "Selo de excelência que premeia as boas práticas de acessibilidade e usabilidade nos sítios Web dos serviços públicos.",
+        "link1": "Como obter o selo",
+        "link2": "Kit de apoio",
+        "link3": "Candidatura",
+        "link4": "Declaração de acessibilidade e usabilidade"
+      }
+    }
   },
   "STATISTICS": {
     "gauge": {
@@ -161,6 +188,7 @@
         "part2": "acessibilidade Web na Administração Pública, segundo",
         "part3": "os critérios de práticas de acessibilidade WCAG 2.1."
       },
+      "numbers_link": "Mais números do Observatório",
       "button": "Consulte os dados do Observatório"
     },
     "summary": {
@@ -279,8 +307,12 @@
     }
   },
   "FOOTER": {
-    "language": "Língua",
-    "link": "Agência para a Modernização Administrativa",
+    "accessibility": "Acessibilidade",
+    "terms": "Termos e Condições",
+    "privacy": "Política de privacidade",
+    "options": "Opções de visualização",
+    "glossary": "Glossário",
+    "link": "Agência para a Modernização Administrativa, I.P.",
     "rights": "Todos os Direitos Reservados."
   },
   "LANGUAGES": {

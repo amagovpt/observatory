@@ -47,9 +47,12 @@ const light: Theme = {
     // HEADER
     '--top-header-background': Colours._1,
     '--top-header-icon-color': Colours._4,
+    '--top-header-text': Colours._6,
+    '--top-header-links': Colours._4,
     '--header-background': Colours._2,
     '--header-title': Colours._4,
     '--header-text': Colours._6,
+    '--home-header-background': Colours._1,
 
     // FOOTER
     '--footer-background': Colours._11,
@@ -127,13 +130,17 @@ const dark: Theme = {
     '--go-to-top-icon': Colours._7,
     '--breadcrumbs-text': Colours._10,
     '--breadcrumbs-text2': Colours._10,
+    '--home-content-background': Colours._8,
 
     // HEADER
     '--top-header-background': Colours._12,
     '--top-header-icon-color': Colours._13,
+    '--top-header-text': Colours._10,
+    '--top-header-links': Colours._10,
     '--header-background': Colours._4,
     '--header-title': Colours._13,
     '--header-text': Colours._9,
+    '--home-header-background': Colours._4,
 
     // FOOTER
     '--footer-background': Colours._12,

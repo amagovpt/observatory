@@ -15,3 +15,9 @@ body {
 [role="dialog"] {
   background-color: var(--statistics-background) !important;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: unset;
+}

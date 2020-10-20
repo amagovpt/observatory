@@ -7,7 +7,7 @@
   }
 
   section:first-child {
-    margin-top: 5em;
+    margin-top: 3em;
   }
 }
 
@@ -28,6 +28,10 @@ nav a {
   font-family: "Lato";
   color: var(--breadcrumbs-text);
   cursor: pointer;
+}
+
+nav a {
+  text-decoration: underline;
 }
 
 nav span:last-child {
@@ -132,7 +136,7 @@ nav span:last-child {
   margin-right: 0.5em;
 }
 
-.directories-link {
+.directories-link, .numbers-link {
   font-size: 1em;
   line-height: 20px;
   color: var(--home-tabs-button-text);
@@ -149,6 +153,12 @@ nav span:last-child {
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
   }
+}
+
+.numbers-link {
+  margin-top: 3em;
+  display: block;
+  width: auto;
 }
 
 @keyframes check-observatory {
@@ -170,8 +180,9 @@ nav span:last-child {
     var(--first-half-background) 50%,
     var(--background) 50%
   );
-  padding-top: 96px;
-  padding-bottom: 96px;
+
+  padding-top: 50px;
+  padding-bottom: 6em;
 
   .out_wrapper {
     width: 87%;
@@ -245,7 +256,7 @@ nav span:last-child {
 }
 
 .second-half section:first-child {
-  margin-bottom: 8em;
+  margin-bottom: 6em;
   color: var(--home-top5-text);
 
   h2 {
@@ -303,12 +314,15 @@ nav span:last-child {
   }
 }
 
+
 .numbers_section {
   color: var(--home-numbers-text);
   background-color: var(--first-half-background);
   fill: var(--home-numbers-text);
 
   h2 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     font-size: 32px;
     line-height: 48px;
     font-weight: 700;

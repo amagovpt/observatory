@@ -1,0 +1,51 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+  <section>
+    <nav fxLayout="row">
+      <a href="https://www.acessibilidade.gov.pt/">{{ "HEADER.NAV.location" | translate }}</a>
+      <span>></span>
+      <a routerLink="/">{{ "HEADER.NAV.observatory" | translate }}</a>
+      <span>></span>
+      <span>{{ "HEADER.NAV.numbers" | translate }}</span>
+    </nav>
+  </section>
+  <section id="main" class="info">
+    <div class="observatory">{{ "ALL_TAGS.title" | translate }}</div>
+    <h2>{{ "HEADER.NAV.numbers" | translate }}</h2>
+  </section>
+  <section class="numbers_section" fxLayout="row" fxLayoutAlign="center center">
+    <div class="wrapper">
+      <div class="summary">
+        <div fxLayout="row">
+          <div fxFlex>
+            <h2>Sítios Web no Observatório</h2>
+            <p>blablabla</p>
+          </div>
+          
+        </div>
+      </div>
+      <div class="declaration">
+        <div fxLayout="row">
+          <div fxFlex>
+            <h2>Declaração de Acessibilidade e Usabilidade</h2>
+            <p>blablabla</p>
+          </div>
+          
+        </div>
+      </div>
+      <div class="stamp">
+        <div fxLayout="row">
+          <div fxFlex>
+            <h2>Selo de Usabilidade</h2>
+            <p>blablabla</p>
+          </div>
+          
+        </div>
+      </div>
+      <div fxLayout="row">
+        <a class="directories-link" routerLink="/directories">{{
+          "HOME.summary.button" | translate
+        }}</a>
+      </div>
+    </div>
+  </section>
+</div>

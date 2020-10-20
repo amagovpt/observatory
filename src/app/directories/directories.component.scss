@@ -3,7 +3,7 @@ section {
 }
 
 nav {
-  padding-top: 5em;
+  padding-top: 3em;
   padding-bottom: 3em;
 }
 
@@ -20,6 +20,10 @@ nav a {
   font-family: "Lato";
   color: var(--breadcrumbs-text);
   cursor: pointer;
+}
+
+nav a {
+  text-decoration: underline;
 }
 
 nav span:last-child {
@@ -57,5 +61,5 @@ nav span:last-child {
 
 
 app-tags-statistics {
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }

@@ -1,0 +1,112 @@
+section {
+  width: 87%;
+}
+
+nav {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+nav span {
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
+nav span,
+nav a {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: "Lato";
+  color: var(--breadcrumbs-text);
+  cursor: pointer;
+}
+
+nav a {
+  text-decoration: underline;
+}
+
+nav span:last-child {
+  color: var(--breadcrumbs-text2);
+  cursor: default;
+}
+
+.info {
+  margin-bottom: 2em;
+}
+
+.info .observatory {
+  font-size: 19px;
+  line-height: 48px;
+  color: var(--info-observatory-text);
+  background-color: var(--info-observatory-background);
+  font-weight: 700;
+  font-family: "Lato";
+  height: 31px;
+  width: 157px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info h2 {
+  font-size: 2.6em;
+  color: var(--info-title);
+  font-weight: 900;
+  font-family: "Lato";
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+.wrapper {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  width: 90%;
+}
+
+.numbers_section {
+  color: var(--home-numbers-text);
+  background-color: var(--first-half-background);
+
+  h2 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 700;
+    font-family: "Lato";
+  }
+}
+
+.directories-link {
+  font-size: 1em;
+  line-height: 20px;
+  color: var(--home-tabs-button-text);
+  background-color: var(--home-tabs-button-background);
+  font-weight: 700;
+  font-family: "Lato";
+  text-decoration: none;
+  padding: 1em;
+  border-radius: 30px;
+  border: 2px solid var(--home-tabs-button-background);
+  display: block;
+
+  &:hover {
+    animation-name: check-observatory;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes check-observatory {
+  0% {
+    background-color: var(--home-tabs-button-background);
+    color: var(--home-tabs-button-text);
+  }
+
+  100% {
+    background-color: var(--home-tabs-button-text);
+    color: var(--home-tabs-button-background);
+  }
+}
