@@ -206,6 +206,47 @@
       "button": "Consulte os dados do Observatório"
     }
   },
+  "NUMBERS": {
+    "summary": {
+      "title": "Sítios Web no Observatório",
+      "paragraph": "O Observatório da Acessibilidade na Administração pública Portuguesa.",
+      "average": {
+        "part1": "Média de classificação nos sítios web da",
+        "part2": "Administração Pública"
+      },
+      "websites": {
+        "part1": "Sítios web analisados no",
+        "part2": "Observatório"
+      },
+      "entities": "Entidades",
+      "tags": "Diretórios",
+      "pages": "Páginas",
+      "pages_without_errors": "Páginas sem erros",
+      "best_practices_title": "Boas práticas mais frequentes",
+      "errors_title": "Erros mais comuns",
+      "button": "Consulte os dados do Observatório"
+    },
+    "declaration": {
+      "title": "Declaração de Acessibilidade e Usabilidade",
+      "paragraph": "A Declaração de Acessibilidade e Usabilidade",
+      "subtitle1": "Sítios web e aplicações web com Declaração de Acessibilidade",
+      "subtitle2": "Sítios web com Declaração de Acessibilidade",
+      "subtitle3": "Aplicações web com Declaração de Acessibilidade",
+      "conform": "Plenamente conformes",
+      "partial": "Parcialmente conformes",
+      "non_conform": "Não conformes"
+    },
+    "badge": {
+      "title": "Selo de Usabilidade",
+      "paragraph": "O Selo de Usabilidade",
+      "subtitle1": "Sítios web e aplicações web com Selo de Usabilidade",
+      "subtitle2": "Sítios web com Selo de Usabilidade",
+      "subtitle3": "Aplicações web com Selo de Usabilidade",
+      "gold": "Selo de Ouro",
+      "silver": "Selo de Prata",
+      "bronze": "Selo de Bronze"
+    }
+  },
   "ALL_TAGS": {
     "title": "Observatório",
     "subtitle": "Diretórios",

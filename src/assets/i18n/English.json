@@ -206,6 +206,47 @@
       "button": "Consult the Observatory data"
     }
   },
+  "NUMBERS": {
+    "summary": {
+      "title": "Websites in the Observatory",
+      "paragraph": " The Observatory of Accessibility in the Portuguese Public Administration.",
+      "average": {
+        "part1": "Average rating on the websites of",
+        "part2": "the Public administration"
+      },
+      "websites": {
+        "part1": "Websites analyzed in the",
+        "part2": "Observatory"
+      },
+      "entities": "Entities",
+      "tags": "Directories",
+      "pages": "Pages",
+      "pages_without_errors": "Pages without errors",
+      "best_practices_title": "Most frequent best practices",
+      "errors_title": "Most common errors",
+      "button": "Consult the Observatory data"
+    },
+    "declaration": {
+      "title": "Accessibility and Usability Statement",
+      "paragraph": "The Accessibility and Usability Statement",
+      "subtitle1": "Web sites and web applications with Declaration of Accessibility",
+      "subtitle2": "Websites with Declaration of Accessibility",
+      "subtitle3": "Web applications with Accessibility Declaration",
+      "conform": "Fully compliant",
+      "partial": "Partially compliant",
+      "non_conform": "Non compliant"
+    },
+    "badge": {
+      "title": "Usability badge",
+      "paragraph": "The Usability Badge",
+      "subtitle1": "Websites and web applications with Usability Badge",
+      "subtitle2": "Websites with Usability Badge",
+      "subtitle3": "Web Applications with Usability Badge",
+      "gold": "Gold badge",
+      "silver": "Silver badge",
+      "bronze": "Bronze badge"
+    }
+  },
   "ALL_TAGS": {
     "title": "Observatory",
     "subtitle": "Directories",

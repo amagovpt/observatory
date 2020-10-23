@@ -4,8 +4,6 @@ import { GetConformPipe } from './get-conform.pipe';
 import { ToFixedPipe } from './to-fixed.pipe';
 import { HtmlPipe } from './html.pipe';
 
-
-
 @NgModule({
   declarations: [GetConformPipe, ToFixedPipe, HtmlPipe],
   providers: [GetConformPipe, ToFixedPipe, HtmlPipe],

@@ -244,7 +244,6 @@ nav span:last-child {
 .wrapper {
   padding: 1em;
   width: 90%;
-  margin-bottom: 3em;
 }
 
 .second-half {
@@ -319,6 +318,7 @@ nav span:last-child {
   color: var(--home-numbers-text);
   background-color: var(--first-half-background);
   fill: var(--home-numbers-text);
+  padding-bottom: 2em;
 
   h2 {
     margin-top: 0.5em;
@@ -330,7 +330,7 @@ nav span:last-child {
   }
 
   .summary {
-    background-color: var(--background);
+    background-color: var(--home-top5-background);
   }
 
   .global-score {

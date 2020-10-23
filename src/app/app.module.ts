@@ -20,9 +20,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { HomeModule } from './home/home.module';
+import { ObservatoryNumbersModule } from './observatory-numbers/observatory-numbers.module';
 import { TagModule } from './tag/tag.module';
 import { WebsiteModule } from './website/website.module';
-import { ObservatoryNumbersComponent } from './observatory-numbers/observatory-numbers.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -36,8 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoadingComponent,
     ErrorComponent,
     HeaderComponent,
-    FooterComponent,
-    ObservatoryNumbersComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FlexLayoutModule,
     HttpClientModule,
     HomeModule,
+    ObservatoryNumbersModule,
     TagModule,
     WebsiteModule
   ],

@@ -77,6 +77,16 @@ nav span:last-child {
     font-weight: 700;
     font-family: "Lato";
   }
+
+  svg path,
+  svg circle,
+  svg ellipse {
+    fill: var(--home-4all-text);
+  }
+
+  svg {
+    width: 6em;
+  }
 }
 
 .directories-link {
@@ -109,4 +119,156 @@ nav span:last-child {
     background-color: var(--home-tabs-button-text);
     color: var(--home-tabs-button-background);
   }
+}
+
+.summary, .declaration {
+  margin-bottom: 2em;
+}
+
+.stamp {
+  margin-bottom: 3em;
+}
+
+.data {
+  width: 100%;
+  background-color: var(--home-top5-background);
+}
+
+.data-wrapper {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  width: 90%;
+}
+
+.global-score {
+  padding: 2em;
+}
+
+.global-score span:first-child, .subtitle-number {
+  font-size: 76px;
+  line-height: 78px;
+  font-weight: 900;
+  font-family: "Lato";
+  text-align: center;
+  display: inline-block;
+}
+
+.global-score span:last-child {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  font-family: "Lato";
+  display: inline-block;
+  margin-left: 1em;
+}
+
+.metadata {
+  padding: 2em;
+}
+
+.metadata span:first-child, .quantity {
+  font-size: 36px;
+  line-height: 48px;
+  font-weight: 900;
+  font-family: "Lato";
+  text-align: center;
+}
+
+.metadata span:last-child, .subtitle, .quantity-text {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  font-family: "Lato";
+  text-align: center;
+}
+
+.divider {
+  border-top: thin solid var(--home-tabs-border);
+}
+
+.conform:not(:last-child) {
+  margin-bottom: 2em;
+}
+
+.subtitle {
+  font-size: 18px;
+}
+
+.subtitle, .subtitle-number {
+  text-align: left;
+}
+
+.quantity {
+  width: 3em;
+  text-align: right;
+  padding-right: 0.5em;
+}
+
+.quantity-text {
+  padding-left: 1em;
+  padding-right: 2em;
+}
+
+.green {
+  border-left: solid 4px #15ac51;
+}
+
+.yellow {
+  border-left: solid 4px #f3d609;
+}
+
+.red {
+  border-left: solid 4px #e90018;
+}
+
+.bar {
+  height: 1em;
+  width: 15em;
+}
+
+.bar1 {
+  margin-bottom: 0.5em;
+  width: 12em;
+}
+
+.bar-green {
+  background-color: #15ac51;
+}
+
+.bar-yellow {
+  background-color:#f3d609;
+}
+
+.bar-red {
+  background-color: #e90018;
+}
+
+.years {
+  margin-left: 2em;
+  opacity: 0.5;
+  font-family: "Lato";
+}
+
+.gold {
+  border-left: solid 4px #a87d00;
+}
+
+.silver {
+  border-left: solid 4px #75797b;
+}
+
+.bronze {
+  border-left: solid 4px #bc7448;
+}
+
+.bar-gold {
+  background-color: #a87d00;
+}
+
+.bar-silver {
+  background-color:#75797b;
+}
+
+.bar-bronze {
+  background-color: #bc7448;
 }
