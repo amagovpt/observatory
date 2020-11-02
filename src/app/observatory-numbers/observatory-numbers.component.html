@@ -79,6 +79,7 @@
             </div>
           </div>
         </div>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ listTags.recentPage | date }}</span>
       </div>
       <div class="declaration">
         <div fxLayout="row">
@@ -90,167 +91,244 @@
         </div>
         <div class="data" fxLayout="row" fxLayoutAlign="center center">
           <div class="data-wrapper" fxLayout="column">
-            <div fxLayout="row">
+            <div  fxLayout="row">
               <div fxLayout="column" fxFlex="50">
                 <span class="subtitle">{{ "NUMBERS.declaration.subtitle1" | translate }}</span>
                 <br>
-                <span class="subtitle-number">316</span>
+                <span class="subtitle-number">
+                  {{ 
+                    declarations.currentYear.websites.conform + declarations.currentYear.websites.partial + declarations.currentYear.websites.not_conform +
+                    declarations.currentYear.apps.conform + declarations.currentYear.apps.partial + declarations.currentYear.apps.not_conform
+                  }}
+                </span>
+                <br>
+                <span>
+                  +
+                  {{
+                    declarations.currentYear.websites.conform - declarations.previousYear.websites.conform +
+                    declarations.currentYear.websites.partial - declarations.previousYear.websites.partial +
+                    declarations.currentYear.websites.not_conform - declarations.previousYear.websites.not_conform +
+                    declarations.currentYear.apps.conform - declarations.previousYear.apps.conform +
+                    declarations.currentYear.apps.partial - declarations.previousYear.apps.partial +
+                    declarations.currentYear.apps.not_conform - declarations.previousYear.apps.not_conform
+                  }}
+                  {{ "NUMBERS.last_year" | translate }}
+                </span>
               </div>
               <div fxLayout="column" fxFlex>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">86</span>
-                  <span class="quantity-text green" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.declaration.conform" | translate }}
+                  <span class="quantity">
+                    {{ declarations.currentYear.websites.conform + declarations.currentYear.apps.conform }}
+                  </span>
+                  <span class="quantity-text green" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.declaration.conform" | translate }}</span>
+                    <span class="difference">+ {{ 
+                      declarations.currentYear.websites.conform - declarations.previousYear.websites.conform +
+                      declarations.currentYear.apps.conform - declarations.previousYear.apps.conform 
+                    }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-green"></span>
                     <span class="bar bar2 bar-green"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">168</span>
-                  <span class="quantity-text yellow" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.declaration.partial" | translate }}
+                  <span class="quantity">
+                    {{ declarations.currentYear.websites.partial + declarations.currentYear.apps.partial }}
+                  </span>
+                  <span class="quantity-text yellow" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.declaration.partial" | translate }}</span>
+                    <span class="difference">+ {{ 
+                      declarations.currentYear.websites.partial - declarations.previousYear.websites.partial +
+                      declarations.currentYear.apps.partial - declarations.previousYear.apps.partial 
+                    }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-yellow"></span>
                     <span class="bar bar2 bar-yellow"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">62</span>
-                  <span class="quantity-text red" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.declaration.non_conform" | translate }}
+                  <span class="quantity">
+                    {{ declarations.currentYear.websites.not_conform + declarations.currentYear.apps.not_conform }}
+                  </span>
+                  <span class="quantity-text red" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.declaration.non_conform" | translate }}</span>
+                    <span class="difference">+ {{ 
+                      declarations.currentYear.websites.not_conform - declarations.previousYear.websites.not_conform +
+                      declarations.currentYear.apps.not_conform - declarations.previousYear.apps.not_conform 
+                    }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-red"></span>
                     <span class="bar bar2 bar-red"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
               </div>
             </div>
             <br>
-            <span class="divider" fxFlex></span>
+            <span  class="divider" fxFlex></span>
             <br>
             <div>
               <div fxLayout="column" fxFlex="50">
                 <span class="subtitle">{{ "NUMBERS.declaration.subtitle2" | translate }}</span>
                 <br>
-                <span class="subtitle-number">278</span>
+                <span class="subtitle-number">
+                  {{ declarations.currentYear.websites.conform + declarations.currentYear.websites.partial + declarations.currentYear.websites.not_conform }}
+                </span>
+                <br>
+                <span>
+                  +
+                  {{
+                    declarations.currentYear.websites.conform - declarations.previousYear.websites.conform +
+                    declarations.currentYear.websites.partial - declarations.previousYear.websites.partial +
+                    declarations.currentYear.websites.not_conform - declarations.previousYear.websites.not_conform
+                  }}
+                  {{ "NUMBERS.last_year" | translate }}
+                </span>
               </div>
               <div fxLayout="column" fxFlex>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">78</span>
-                  <span class="quantity-text green" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.declaration.conform" | translate }}
+                  <span class="quantity">
+                    {{ declarations.currentYear.websites.conform }}
+                  </span>
+                  <span class="quantity-text green" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.declaration.conform" | translate }}</span>
+                    <span class="difference">+ {{ declarations.currentYear.websites.conform - declarations.previousYear.websites.conform }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-green"></span>
                     <span class="bar bar2 bar-green"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">149</span>
-                  <span class="quantity-text yellow" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.declaration.partial" | translate }}
+                  <span class="quantity">
+                    {{ declarations.currentYear.websites.partial }}
+                  </span>
+                  <span class="quantity-text yellow" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.declaration.partial" | translate }}</span>
+                    <span class="difference">+ {{ declarations.currentYear.websites.partial - declarations.previousYear.websites.partial }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-yellow"></span>
                     <span class="bar bar2 bar-yellow"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">51</span>
-                  <span class="quantity-text red" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.declaration.non_conform" | translate }}
+                  <span class="quantity">
+                    {{ declarations.currentYear.websites.not_conform }}
+                  </span>
+                  <span class="quantity-text red" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.declaration.non_conform" | translate }}</span>
+                    <span class="difference">+ {{ declarations.currentYear.websites.not_conform - declarations.previousYear.websites.not_conform }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-red"></span>
                     <span class="bar bar2 bar-red"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
               </div>
             </div>
             <br>
-            <span class="divider" fxFlex></span>
-            <br>
-            <div>
+            <span  class="divider" fxFlex></span>
+            <br >
+            <div >
               <div fxLayout="column" fxFlex="50">
                 <span class="subtitle">{{ "NUMBERS.declaration.subtitle3" | translate }}</span>
                 <br>
-                <span class="subtitle-number">39</span>
+                <span class="subtitle-number">
+                  {{ declarations.currentYear.apps.conform + declarations.currentYear.apps.partial + declarations.currentYear.apps.not_conform }}
+                </span>
+                <br>
+                <span>
+                  +
+                  {{
+                    declarations.currentYear.apps.conform - declarations.previousYear.apps.conform +
+                    declarations.currentYear.apps.partial - declarations.previousYear.apps.partial +
+                    declarations.currentYear.apps.not_conform - declarations.previousYear.apps.not_conform
+                  }}
+                  {{ "NUMBERS.last_year" | translate }}
+                </span>
               </div>
               <div fxLayout="column" fxFlex>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">8</span>
-                  <span class="quantity-text green" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.declaration.conform" | translate }}
+                  <span class="quantity">{{ declarations.currentYear.apps.conform }}</span>
+                  <span class="quantity-text green" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.declaration.conform" | translate }}</span>
+                    <span class="difference">+ {{ declarations.currentYear.apps.conform - declarations.previousYear.apps.conform }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-green"></span>
                     <span class="bar bar2 bar-green"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">19</span>
-                  <span class="quantity-text yellow" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.declaration.partial" | translate }}
+                  <span class="quantity">
+                    {{ declarations.currentYear.apps.partial }}
+                  </span>
+                  <span class="quantity-text yellow" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.declaration.partial" | translate }}</span>
+                    <span class="difference">+ {{ declarations.currentYear.apps.partial - declarations.previousYear.apps.partial }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-yellow"></span>
                     <span class="bar bar2 bar-yellow"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">11</span>
-                  <span class="quantity-text red" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.declaration.non_conform" | translate }}
+                  <span class="quantity">
+                    {{ declarations.currentYear.apps.not_conform }}
+                  </span>
+                  <span class="quantity-text red" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.declaration.non_conform" | translate }}</span>
+                    <span class="difference">+ {{ declarations.currentYear.apps.not_conform - declarations.previousYear.apps.not_conform }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-red"></span>
                     <span class="bar bar2 bar-red"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} 02/11/2020</span>
       </div>
       <div class="stamp">
         <div fxLayout="row">
@@ -262,167 +340,231 @@
         </div>
         <div class="data" fxLayout="row" fxLayoutAlign="center center">
           <div class="data-wrapper" fxLayout="column">
-            <div fxLayout="row">
+            <div  fxLayout="row">
               <div fxLayout="column" fxFlex="50">
                 <span class="subtitle">{{ "NUMBERS.badge.subtitle1" | translate }}</span>
                 <br>
-                <span class="subtitle-number">316</span>
+                <span class="subtitle-number">
+                  {{ 
+                    badges.currentYear.websites.gold + badges.currentYear.websites.silver + badges.currentYear.websites.bronze +
+                    badges.currentYear.apps.gold + badges.currentYear.apps.silver + badges.currentYear.apps.bronze
+                  }}
+                </span>
+                <br>
+                <span>+
+                  {{ 
+                    badges.currentYear.websites.gold - badges.previousYear.websites.gold +
+                    badges.currentYear.websites.silver - badges.previousYear.websites.silver +
+                    badges.currentYear.websites.bronze - badges.previousYear.websites.bronze +
+                    badges.currentYear.apps.gold - badges.previousYear.apps.gold +
+                    badges.currentYear.apps.silver - badges.previousYear.apps.silver +
+                    badges.currentYear.apps.bronze - badges.previousYear.apps.bronze
+                  }} {{ "NUMBERS.last_year" | translate }}
+                </span>
               </div>
               <div fxLayout="column" fxFlex>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">86</span>
-                  <span class="quantity-text gold" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.badge.gold" | translate }}
+                  <span class="quantity">
+                    {{ badges.currentYear.websites.gold + badges.currentYear.apps.gold }}
+                  </span>
+                  <span class="quantity-text gold" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.badge.gold" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.websites.gold - badges.previousYear.websites.gold + badges.currentYear.apps.gold - badges.previousYear.apps.gold }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-gold"></span>
                     <span class="bar bar2 bar-gold"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">168</span>
-                  <span class="quantity-text silver" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.badge.silver" | translate }}
+                  <span class="quantity">
+                    {{ badges.currentYear.websites.silver + badges.currentYear.apps.silver }}
+                  </span>
+                  <span class="quantity-text silver" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.badge.silver" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.websites.silver - badges.previousYear.websites.silver + badges.currentYear.apps.silver - badges.previousYear.apps.silver }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-silver"></span>
                     <span class="bar bar2 bar-silver"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">62</span>
-                  <span class="quantity-text bronze" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.badge.bronze" | translate }}
+                  <span class="quantity">
+                    {{ badges.currentYear.websites.bronze + badges.currentYear.apps.bronze }}
+                  </span>
+                  <span class="quantity-text bronze" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.badge.bronze" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.websites.bronze - badges.previousYear.websites.bronze + badges.currentYear.apps.bronze - badges.previousYear.apps.bronze }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-bronze"></span>
                     <span class="bar bar2 bar-bronze"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
               </div>
             </div>
-            <br>
+            <br >
             <span class="divider" fxFlex></span>
             <br>
             <div>
               <div fxLayout="column" fxFlex="50">
                 <span class="subtitle">{{ "NUMBERS.badge.subtitle2" | translate }}</span>
                 <br>
-                <span class="subtitle-number">278</span>
+                <span class="subtitle-number">
+                  {{ badges.currentYear.websites.gold + badges.currentYear.websites.silver + badges.currentYear.websites.bronze }}
+                </span>
+                <br>
+                <span>+
+                  {{ 
+                    badges.currentYear.websites.gold - badges.previousYear.websites.gold +
+                    badges.currentYear.websites.silver - badges.previousYear.websites.silver +
+                    badges.currentYear.websites.bronze - badges.previousYear.websites.bronze
+                  }} {{ "NUMBERS.last_year" | translate }}
+                </span>
               </div>
               <div fxLayout="column" fxFlex>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">78</span>
-                  <span class="quantity-text gold" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.badge.gold" | translate }}
+                  <span class="quantity">
+                    {{ badges.currentYear.websites.gold }}
+                  </span>
+                  <span class="quantity-text gold" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.badge.gold" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.websites.gold - badges.previousYear.websites.gold }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-gold"></span>
                     <span class="bar bar2 bar-gold"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">149</span>
-                  <span class="quantity-text silver" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.badge.silver" | translate }}
+                  <span class="quantity">
+                    {{ badges.currentYear.websites.silver }}
+                  </span>
+                  <span class="quantity-text silver" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.badge.silver" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.websites.silver - badges.previousYear.websites.silver }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-silver"></span>
                     <span class="bar bar2 bar-silver"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">51</span>
-                  <span class="quantity-text bronze" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.badge.bronze" | translate }}
+                  <span class="quantity">
+                    {{ badges.currentYear.websites.bronze }}
+                  </span>
+                  <span class="quantity-text bronze" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.badge.bronze" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.websites.bronze - badges.previousYear.websites.bronze }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-bronze"></span>
                     <span class="bar bar2 bar-bronze"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
               </div>
             </div>
             <br>
             <span class="divider" fxFlex></span>
-            <br>
-            <div>
+            <br >
+            <div >
               <div fxLayout="column" fxFlex="50">
                 <span class="subtitle">{{ "NUMBERS.badge.subtitle3" | translate }}</span>
                 <br>
-                <span class="subtitle-number">39</span>
+                <span class="subtitle-number">
+                  {{ badges.currentYear.apps.gold + badges.currentYear.apps.silver + badges.currentYear.apps.bronze }}
+                </span>
+                <br>
+                <span>+
+                  {{ 
+                    badges.currentYear.apps.gold - badges.previousYear.apps.gold +
+                    badges.currentYear.apps.silver - badges.previousYear.apps.silver +
+                    badges.currentYear.apps.bronze - badges.previousYear.apps.bronze
+                  }} {{ "NUMBERS.last_year" | translate }}
+                </span>
               </div>
               <div fxLayout="column" fxFlex>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">8</span>
-                  <span class="quantity-text gold" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.badge.gold" | translate }}
+                  <span class="quantity">
+                    {{ badges.currentYear.apps.gold }}
+                  </span>
+                  <span class="quantity-text gold" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.badge.gold" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.apps.gold - badges.previousYear.apps.gold }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-gold"></span>
                     <span class="bar bar2 bar-gold"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">19</span>
-                  <span class="quantity-text silver" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.badge.silver" | translate }}
+                  <span class="quantity">
+                    {{ badges.currentYear.apps.silver }}
+                  </span>
+                  <span class="quantity-text silver" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.badge.silver" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.apps.silver - badges.previousYear.apps.silver }}  {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-silver"></span>
                     <span class="bar bar2 bar-silver"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
                 <div fxLayout="row" class="conform">
-                  <span class="quantity">11</span>
-                  <span class="quantity-text bronze" fxLayout="row" fxLayoutAlign="start center" fxFlex>
-                    {{ "NUMBERS.badge.bronze" | translate }}
+                  <span class="quantity">
+                    {{ badges.currentYear.apps.bronze }}
+                  </span>
+                  <span class="quantity-text bronze" fxLayout="column" fxLayoutAlign="center start" fxFlex>
+                    <span>{{ "NUMBERS.badge.bronze" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.apps.bronze - badges.previousYear.apps.bronze }}  {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-bronze"></span>
                     <span class="bar bar2 bar-bronze"></span>
                   </span>
                   <span class="years" fxLayout="column">
-                    <span class="year1">2019</span>
-                    <span class="year2">2020</span>
+                    <span class="year1">{{ previousYear }}</span>
+                    <span class="year2">{{ currentYear }}</span>
                   </span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} 02/11/2020</span>
       </div>
       <div fxLayout="row">
         <a class="directories-link" routerLink="/directories">{{

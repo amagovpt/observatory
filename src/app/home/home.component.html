@@ -53,6 +53,7 @@
           <ul>
             <li>{{ "HOME.tabs._1.bullet1" | translate }}</li>
             <li>{{ "HOME.tabs._1.bullet2" | translate }}</li>
+            <li>{{ "HOME.tabs._1.bullet3" | translate }}</li>
           </ul>
           <a class="directories-link" routerLink="directories">{{
             "HOME.tabs._1.button" | translate
@@ -70,6 +71,7 @@
           <ul>
             <li>{{ "HOME.tabs._2.bullet1" | translate }}</li>
             <li>{{ "HOME.tabs._2.bullet2" | translate }}</li>
+            <li>{{ "HOME.tabs._2.bullet3" | translate }}</li>
           </ul>
           <a class="directories-link" routerLink="directories">{{
             "HOME.tabs._2.button" | translate
@@ -87,6 +89,7 @@
           <ul>
             <li>{{ "HOME.tabs._3.bullet1" | translate }}</li>
             <li>{{ "HOME.tabs._3.bullet2" | translate }}</li>
+            <li>{{ "HOME.tabs._3.bullet3" | translate }}</li>
           </ul>
           <a class="directories-link" routerLink="directories">{{
             "HOME.tabs._3.button" | translate
@@ -243,7 +246,7 @@
               d="M80.24,46.7H78.43a3.25,3.25,0,0,0-3.36-3H47.84a3.54,3.54,0,0,0-2.14.71,3.54,3.54,0,0,0-2.14-.71H29.68a1.13,1.13,0,1,0,0,2.26H43.55a.88.88,0,0,1,.92.84v33a.88.88,0,0,1-.92.84H16.32a.88.88,0,0,1-.92-.84v-33a.88.88,0,0,1,.92-.84h9a1.13,1.13,0,1,0,0-2.26h-9a3.25,3.25,0,0,0-3.36,3H11.15a2.77,2.77,0,0,0-2.87,2.65V83.7a4.07,4.07,0,0,0,4.22,3.88H50.91a1.13,1.13,0,1,0,0-2.26H12.5a1.71,1.71,0,0,1-1.78-1.62V49.35a.41.41,0,0,1,.43-.39H13v30.8a3.24,3.24,0,0,0,3.36,3.1H43.55a3.54,3.54,0,0,0,2.14-.71,3.54,3.54,0,0,0,2.14.71H75.07a3.24,3.24,0,0,0,3.36-3.1V49h1.81a.41.41,0,0,1,.43.39V83.7a1.71,1.71,0,0,1-1.78,1.62H55.3a1.13,1.13,0,1,0,0,2.26h23.6a4.07,4.07,0,0,0,4.22-3.88V49.35A2.77,2.77,0,0,0,80.24,46.7Zm-33.32.05a.88.88,0,0,1,.92-.84H75.07a.88.88,0,0,1,.92.84v33a.88.88,0,0,1-.92.84H47.84a.88.88,0,0,1-.92-.84Z"
             />
           </svg>
-          <span class="disability">24.8%</span>
+          <span class="disability">24,8%</span>
           <span
             >{{ "HOME.4all.disabilities._3.part1" | translate }}<br />{{
               "HOME.4all.disabilities._3.part2" | translate
@@ -285,10 +288,11 @@
     fxLayout="row"
     fxLayoutAlign="space-around center"
   >
-    <div>
+    <div fxLayout="column" fxLayoutAlign="start start">
       <h2>{{ "HOME.top5.title" | translate }}</h2>
+      <span class="top-5-last-updated">{{ "HOME.top5.last_updated" | translate }} {{ listTags.recentPage | date }}</span>
       <p>
-        {{ "HOME.top5.paragraph.part1" | translate }}<br />{{
+        {{ "HOME.top5.paragraph.part1" | translate }} {{
           "HOME.top5.paragraph.part2" | translate
         }}<br />{{ "HOME.top5.paragraph.part3" | translate }}
       </p>
@@ -315,7 +319,7 @@
       <h2>{{ "HOME.summary.title" | translate }}</h2>
       <div class="summary" fxLayout="row" fxLayoutAlign="center center">
         <div class="wrapper" fxLayout="column">
-          <div fxLayout="row" fxLayoutAlign="center center">
+          <div fxLayout="row" fxLayoutAlign="space-around center">
             <div class="global-score">
               <span>{{ listTags.getScore() | toFixed }}</span>
               <span
@@ -323,6 +327,14 @@
                   "HOME.summary.average.part2" | translate
                 }}</span
               >
+            </div>
+            <div class="metadata" fxLayout="column">
+              <span>28</span>
+              <span>{{ "HOME.summary.declarations" | translate }}</span>
+            </div>
+            <div class="metadata" fxLayout="column">
+              <span>6</span>
+              <span>{{ "HOME.summary.badges" | translate }}</span>
             </div>
           </div>
           <span class="divider" fxFlex></span>
@@ -334,6 +346,7 @@
             >
               <span>{{ listTags.nWebsites }}</span>
               <span>{{ "HOME.summary.websites" | translate }}</span>
+              <span class="last-year">+ {{ listTags.nWebsites }} {{ "HOME.summary.last_year" | translate }}</span>
             </div>
             <div
               class="metadata"
@@ -342,6 +355,7 @@
             >
               <span>{{ listTags.nEntities }}</span>
               <span>{{ "HOME.summary.entities" | translate }}</span>
+              <span class="last-year">+ {{ listTags.nEntities }} {{ "HOME.summary.last_year" | translate }}</span>
             </div>
             <div
               class="metadata"
@@ -350,6 +364,7 @@
             >
               <span>{{ listTags.nPages }}</span>
               <span>{{ "HOME.summary.pages" | translate }}</span>
+              <span class="last-year">+ {{ listTags.nPages }} {{ "HOME.summary.last_year" | translate }}</span>
             </div>
             <div
               class="metadata"
@@ -358,6 +373,7 @@
             >
               <span>{{ listTags.nPagesWithoutErrors }}</span>
               <span>{{ "HOME.summary.pages_without_errors" | translate }}</span>
+              <span class="last-year">+ {{ listTags.nPagesWithoutErrors }} {{ "HOME.summary.last_year" | translate }}</span>
             </div>
           </div>
         </div>

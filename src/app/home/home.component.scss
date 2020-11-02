@@ -367,12 +367,16 @@ nav span:last-child {
     text-align: center;
   }
 
-  .metadata span:last-child {
+  .metadata span:nth-child(2) {
     font-size: 16px;
     line-height: 22px;
     font-weight: 700;
     font-family: "Lato";
     text-align: center;
+  }
+
+  .metadata span:last-child {
+    font-size: 0.9em;
   }
 
   .topsFive {
@@ -418,4 +422,8 @@ nav span:last-child {
     font-family: "Lato";
     width: 100%;
   }
+}
+
+.top-5-last-updated {
+  margin-bottom: 1em;
 }

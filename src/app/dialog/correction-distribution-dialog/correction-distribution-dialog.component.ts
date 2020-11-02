@@ -186,8 +186,7 @@ export class CorrectionDistributionDialogComponent implements OnInit {
                 beginAtZero: true,
                 steps: 1,
                 stepValue: 1,
-                max: this.nPages,
-                maxTicksLimit: this.nPages + 1
+                max: this.calculateMax(Math.max(...values))
               },
               scaleLabel: {
                 display: true,
@@ -236,6 +235,11 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     } else {
       this.showTableData = this.tableData;
     }
+  }
+
+  private calculateMax(max: number): number {
+    const t = max + (max / 4);
+    return Math.ceil(t);
   }
 
   private formatLabel(str: string, maxwidth: number): any {

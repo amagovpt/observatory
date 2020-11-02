@@ -209,6 +209,11 @@ nav span:last-child {
   padding-right: 2em;
 }
 
+.difference {
+  font-weight: normal;
+  font-size: 0.9em;
+}
+
 .green {
   border-left: solid 4px #15ac51;
 }
@@ -228,7 +233,11 @@ nav span:last-child {
 
 .bar1 {
   margin-bottom: 0.5em;
-  width: 12em;
+  //width: 12em;
+}
+
+.bar2 {
+  margin-bottom: 0.5em;
 }
 
 .bar-green {
@@ -271,4 +280,10 @@ nav span:last-child {
 
 .bar-bronze {
   background-color: #bc7448;
+}
+
+.last_updated {
+  opacity: 0.8;
+  margin-top: 0.2em;
+  font-family: "Lato";
 }

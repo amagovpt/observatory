@@ -23,22 +23,22 @@
         <button
           type="button"
           role="tab"
+          aria-selected="true"
+          aria-controls="graph_tab"
+          id="tab_graph"
+        >
+          {{ "DIALOGS.corrections.chart_title" | translate }}
+        </button>
+        <span fxFlex="1"></span>
+        <button
+          type="button"
+          role="tab"
           aria-selected="false"
           aria-controls="table_tab"
           id="tab_table"
           tabindex="-1"
         >
           {{ "DIALOGS.corrections.table_title" | translate }}
-        </button>
-        <span fxFlex="1"></span>
-        <button
-          type="button"
-          role="tab"
-          aria-selected="true"
-          aria-controls="graph_tab"
-          id="tab_graph"
-        >
-          {{ "DIALOGS.corrections.chart_title" | translate }}
         </button>
       </div>
     </div>
@@ -258,6 +258,7 @@
               </tr>
             </tbody>
           </table>
+          <span>{{ "ALL_TAGS.table.note" | translate }}</span>
         </div>
       </div>
     </div>
