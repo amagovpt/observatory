@@ -1,4 +1,18 @@
 {
+  "MONTHS": {
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  },
   "HEADER": {
     "tool": "A tool of the ecosystem from",
     "title": {
@@ -50,8 +64,8 @@
     "websites": "Websites",
     "pages": "Pages",
     "score": "Average score",
-    "newest_page_updated": "Most recently evaluated page",
-    "oldest_page_updated": "Least recently evaluated page",
+    "newest_page_updated": "Most recently evaluated page:",
+    "oldest_page_updated": "Least recently evaluated page:",
     "last_updated": "Statistics last updated",
     "score_distribution": "Score distribution",
     "error_distribution": "Bad practices",

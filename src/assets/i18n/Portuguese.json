@@ -1,4 +1,18 @@
 {
+  "MONTHS": {
+    "1": "Janeiro",
+    "2": "Fevereiro",
+    "3": "Março",
+    "4": "Abril",
+    "5": "Maio",
+    "6": "Junho",
+    "7": "Julho",
+    "8": "Agosto",
+    "9": "Setembro",
+    "10": "Outubro",
+    "11": "Novembro",
+    "12": "Dezembro"
+  },
   "HEADER": {
     "tool": "Uma ferramenta do ecossistema do",
     "title": {
@@ -50,8 +64,8 @@
     "websites": "Sítios Web",
     "pages": "Páginas",
     "score": "Pontuação",
-    "newest_page_updated": "Avaliação mais recente de uma página",
-    "oldest_page_updated": "Avaliação mais antiga de uma página",
+    "newest_page_updated": "Avaliação mais recente de uma página:",
+    "oldest_page_updated": "Avaliação mais antiga de uma página:",
     "last_updated": "Última atualização das estatísticas",
     "score_distribution": "Distribuição de pontuações",
     "error_distribution": "Más práticas",
@@ -148,7 +162,7 @@
       "_3": {
         "title": "Como avaliamos?",
         "paragraph": "Através de um conjunto de ferramentas do ecossistema de Experiência Digital, complementadas por análises periciais e testes com utilizadores, de acordo com as normas, as diretrizes e a legislação nacional e internacional, sendo que:",
-        "bullet1": "Avaliamos de forma automática com o validador accessMonitor (bateria de cerca de 100 testes) e com o validador sintaxe de HTML do W3C, que analisa cada uma das páginas e indica o número de erros;",
+        "bullet1": "Avaliamos de forma automática com o validador accessMonitor (bateria de cerca de 100 testes) e com o validador de sintaxe de HTML do W3C, que analisa cada uma das páginas e indica o número de erros;",
         "bullet2": "Avaliamos de modo manual e pericial, utilizando ferramentas e tecnologias de apoio em resposta a três listas de verificação de requisitos baseados nas normas e melhores práticas;",
         "bullet3": "Realizamos de testes de usabilidade com utilizadores, incluindo cidadãos com necessidades especiais, e produzimos relatórios que identificam correções e melhorias.",
         "button": "Consulte os dados do Observatório"
@@ -165,22 +179,22 @@
         "_1": {
           "part1": "pessoas com limitações visuais,",
           "part2": "auditivas ou motoras temporárias",
-          "part3": "ou permanentes"
+          "part3": "ou permanentes."
         },
         "_2": {
           "part1": "da população com limitações",
           "part2": "físicas ou cognitivas crónicas",
-          "part3": "ou permanentes"
+          "part3": "ou permanentes."
         },
         "_3": {
           "part1": "da população entre  os 15 e os 64 anos",
           "part2": "com limitações visuais ou auditivas,",
-          "part3": "mesmo com auxiliares"
+          "part3": "mesmo com auxiliares."
         },
         "_4": {
           "part1": "pessoas com mais de 65 anos",
           "part2": "com dificuldade em ver,",
-          "part3": "mesmo com óculos"
+          "part3": "mesmo com óculos."
         }
       }
     },
@@ -362,8 +376,8 @@
     "privacy": "Política de privacidade",
     "options": "Opções de visualização",
     "glossary": "Glossário",
-    "link": "Agência para a Modernização Administrativa, I.P.",
-    "rights": "Todos os Direitos Reservados."
+    "link": "Agência para a Modernização Administrativa, I. P.",
+    "rights": "Todos os direitos reservados."
   },
   "LANGUAGES": {
     "Portuguese": "Português",

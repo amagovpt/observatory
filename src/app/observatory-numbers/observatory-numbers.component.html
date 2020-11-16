@@ -79,7 +79,7 @@
             </div>
           </div>
         </div>
-        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ listTags.recentPage | date }}</span>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ listTags.recentPage | date | customDate }}</span>
       </div>
       <div class="declaration">
         <div fxLayout="row">
@@ -328,7 +328,7 @@
             </div>
           </div>
         </div>
-        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} 02/11/2020</span>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} 02 {{ "MONTHS.11" | translate }} 2020</span>
       </div>
       <div class="stamp">
         <div fxLayout="row">
@@ -532,7 +532,7 @@
                   </span>
                   <span class="quantity-text silver" fxLayout="column" fxLayoutAlign="center start" fxFlex>
                     <span>{{ "NUMBERS.badge.silver" | translate }}</span>
-                    <span class="difference">+ {{ badges.currentYear.apps.silver - badges.previousYear.apps.silver }}  {{ "NUMBERS.last_year" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.apps.silver - badges.previousYear.apps.silver }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-silver"></span>
@@ -549,7 +549,7 @@
                   </span>
                   <span class="quantity-text bronze" fxLayout="column" fxLayoutAlign="center start" fxFlex>
                     <span>{{ "NUMBERS.badge.bronze" | translate }}</span>
-                    <span class="difference">+ {{ badges.currentYear.apps.bronze - badges.previousYear.apps.bronze }}  {{ "NUMBERS.last_year" | translate }}</span>
+                    <span class="difference">+ {{ badges.currentYear.apps.bronze - badges.previousYear.apps.bronze }} {{ "NUMBERS.last_year" | translate }}</span>
                   </span>
                   <span fxLayout="column" fxLayoutAlign="center start">
                     <span class="bar bar1 bar-bronze"></span>
@@ -564,7 +564,7 @@
             </div>
           </div>
         </div>
-        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} 02/11/2020</span>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} 02 {{ "MONTHS.11" | translate }} 2020</span>
       </div>
       <div fxLayout="row">
         <a class="directories-link" routerLink="/directories">{{

@@ -51,9 +51,9 @@
           <h2>{{ "HOME.tabs._1.title" | translate }}</h2>
           <p>{{ "HOME.tabs._1.paragraph" | translate }}</p>
           <ul>
-            <li>{{ "HOME.tabs._1.bullet1" | translate }}</li>
-            <li>{{ "HOME.tabs._1.bullet2" | translate }}</li>
-            <li>{{ "HOME.tabs._1.bullet3" | translate }}</li>
+            <li fxLayout="row" fxLayoutAlign="start start">{{ "HOME.tabs._1.bullet1" | translate }}</li>
+            <li fxLayout="row" fxLayoutAlign="start start">{{ "HOME.tabs._1.bullet2" | translate }}</li>
+            <li fxLayout="row" fxLayoutAlign="start start">{{ "HOME.tabs._1.bullet3" | translate }}</li>
           </ul>
           <a class="directories-link" routerLink="directories">{{
             "HOME.tabs._1.button" | translate
@@ -69,9 +69,9 @@
           <h2>{{ "HOME.tabs._2.title" | translate }}</h2>
           <p>{{ "HOME.tabs._2.paragraph" | translate }}</p>
           <ul>
-            <li>{{ "HOME.tabs._2.bullet1" | translate }}</li>
-            <li>{{ "HOME.tabs._2.bullet2" | translate }}</li>
-            <li>{{ "HOME.tabs._2.bullet3" | translate }}</li>
+            <li fxLayout="row" fxLayoutAlign="start start">{{ "HOME.tabs._2.bullet1" | translate }}</li>
+            <li fxLayout="row" fxLayoutAlign="start start">{{ "HOME.tabs._2.bullet2" | translate }}</li>
+            <li fxLayout="row" fxLayoutAlign="start start">{{ "HOME.tabs._2.bullet3" | translate }}</li>
           </ul>
           <a class="directories-link" routerLink="directories">{{
             "HOME.tabs._2.button" | translate
@@ -87,9 +87,9 @@
           <h2>{{ "HOME.tabs._3.title" | translate }}</h2>
           <p>{{ "HOME.tabs._3.paragraph" | translate }}</p>
           <ul>
-            <li>{{ "HOME.tabs._3.bullet1" | translate }}</li>
-            <li>{{ "HOME.tabs._3.bullet2" | translate }}</li>
-            <li>{{ "HOME.tabs._3.bullet3" | translate }}</li>
+            <li fxLayout="row" fxLayoutAlign="start start">{{ "HOME.tabs._3.bullet1" | translate }}</li>
+            <li fxLayout="row" fxLayoutAlign="start start">{{ "HOME.tabs._3.bullet2" | translate }}</li>
+            <li fxLayout="row" fxLayoutAlign="start start">{{ "HOME.tabs._3.bullet3" | translate }}</li>
           </ul>
           <a class="directories-link" routerLink="directories">{{
             "HOME.tabs._3.button" | translate
@@ -378,6 +378,7 @@
           </div>
         </div>
       </div>
+      <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ listTags.recentPage | date | customDate }}</span>
       <div fxLayout="row">
         <a class="numbers-link" routerLink="numbers">{{
           "HOME.top5.numbers_link" | translate

@@ -134,6 +134,7 @@ nav span:last-child {
   font-weight: bold;
   font-size: 1.5em;
   margin-right: 0.5em;
+  display: inline-block;
 }
 
 .directories-link, .numbers-link {
@@ -426,4 +427,10 @@ nav span:last-child {
 
 .top-5-last-updated {
   margin-bottom: 1em;
+}
+
+.last_updated {
+  opacity: 0.8;
+  margin-top: 0.2em;
+  font-family: "Lato";
 }

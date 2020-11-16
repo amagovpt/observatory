@@ -8,11 +8,11 @@
       <div class="first-row" fxAlign="row" fxLayoutAlign="start center" gdColumns="50% 50%">
         <div>
           <span>{{ "STATISTICS.newest_page_updated" | translate }}</span>
-          <span>{{ listTags.recentPage | date }}</span>
+          <span>{{ listTags.recentPage | date | customDate }}</span>
         </div>
         <div>
           <span>{{ "STATISTICS.oldest_page_updated" | translate }}</span>
-          <span>{{ listTags.oldestPage | date }}</span>
+          <span>{{ listTags.oldestPage | date | customDate }}</span>
         </div>
       </div>
       <ngx-gauge
