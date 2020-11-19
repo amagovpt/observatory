@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
-import { of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators/';
-import clone from 'lodash.clone';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs/internal/Observable";
+import { of } from "rxjs";
+import { map, catchError } from "rxjs/operators/";
+import clone from "lodash.clone";
 
-import { ListTags } from './models/list-tags';
-import { Tag } from './models/tag';
-import { Website } from './models/website';
+import { ListTags } from "./models/list-tags";
+import { Tag } from "./models/tag";
+import { Website } from "./models/website";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class DataService {
-
   private readonly server: string;
 
   private listTags: ListTags;
@@ -21,33 +20,35 @@ export class DataService {
   constructor(private readonly http: HttpClient) {
     const host = location.hostname;
 
-    if (host === 'localhost') {
-      this.server = 'http://localhost:3000';
+    if (host === "localhost") {
+      this.server = "http://localhost:3000";
     } else {
-      this.server = '/api';
+      this.server = "/api";
     }
   }
 
   getObservatoryData(): Observable<boolean> {
-    return this.http.get<any>(this.server + '/observatory', {observe: 'response'}).pipe(
-      map(res => {
-        const response = res.body;
-        const tags = new Array<Tag>();
-        const tmpTags = this.createTemporaryTags(response);
+    return this.http
+      .get<any>(this.server + "/observatory", { observe: "response" })
+      .pipe(
+        map((res) => {
+          const response = res.body;
+          const tags = new Array<Tag>();
+          const tmpTags = this.createTemporaryTags(response);
 
-        for (const tag of tmpTags || []) {
-          const newTag = this.createTag(tag, clone(response));
-          tags.push(newTag);
-        }
-        
-        this.listTags = new ListTags(tags);
-        return true;
-      }),
-      catchError((err: any) => {
-        console.log(err);
-        return of(false);
-      })
-    );
+          for (const tag of tmpTags || []) {
+            const newTag = this.createTag(tag, clone(response));
+            tags.push(newTag);
+          }
+
+          this.listTags = new ListTags(tags);
+          return true;
+        }),
+        catchError((err: any) => {
+          console.log(err);
+          return of(false);
+        })
+      );
   }
 
   getListTags(): ListTags {
@@ -60,10 +61,14 @@ export class DataService {
     response.result.map((tag: any) => {
       if (!tmpTagsIds.includes(tag.TagId)) {
         tmpTagsIds.push(tag.TagId);
-        tmpTags.push({ id: tag.TagId, name: tag.Tag_Name, creation_date: tag.Tag_Creation_Date });
+        tmpTags.push({
+          id: tag.TagId,
+          name: tag.Tag_Name,
+          creation_date: tag.Tag_Creation_Date,
+        });
       }
     });
-    
+
     return tmpTags;
   }
 
@@ -79,11 +84,11 @@ export class DataService {
           entity: wb.Entity_Name,
           name: wb.Website_Name,
           domain: wb.Url,
-          creation_date: wb.Website_Creation_Date
+          creation_date: wb.Website_Creation_Date,
         });
       }
     }
-    
+
     for (const website of websites || []) {
       const newWebsite = this.createWebsite(website, tag, response);
       newTag.addWebsite(newWebsite);
@@ -116,7 +121,7 @@ export class DataService {
           A: p.A,
           AA: p.AA,
           AAA: p.AAA,
-          evaluation_date: p.Evaluation_Date
+          evaluation_date: p.Evaluation_Date,
         });
       }
     });

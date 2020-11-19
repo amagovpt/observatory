@@ -139,7 +139,8 @@
       },
       "select": "Type of element"
     },
-    "close": "Close"
+    "close": "Close",
+    "close_dialog": "Close dialog"
   },
   "HOME": {
     "tabs": {
@@ -287,10 +288,10 @@
       "levels": "Websites conforming*",
       "A": "A",
       "AA": "AA",
-      "AAA": "AAA", 
+      "AAA": "AAA",
       "pages": "N.º of Pages",
       "see_tooltip": "Go to category",
-      "note": "* conforming to WCAG 2.1 (W3C)"
+      "note": "* Conforming to WCAG 2.1 (W3C)"
     }
   },
   "TAG": {
@@ -330,19 +331,19 @@
       "best_practices": "Best practices",
       "bad_practices": "Bad practices"
     },
-    "top_10_best_practices_title": "10 most frequent best practices",
-    "top_10_bad_practices_title": "10 most frequent errors",
+    "top_10_best_practices_title": "The 10 most frequent best practices",
+    "top_10_bad_practices_title": "The 10 most frequent bad practices",
     "top_3_bad_practices": {
-      "title": "3 most common errors by level of conformance",
+      "title": "The 3 bad practices by level of conformance",
       "subtitle": "(Per n.º of pages)",
-      "message": "3 most common errors of priority \"{{value}}\"",
+      "message": "The 3 bad practices of level \"{{value}}\"",
       "practice": "error in",
       "pages": "pages"
     },
     "top_3_best_practices": {
-      "title": "3 best practices by level of conformance",
+      "title": "The 3 best practices by level of conformance",
       "subtitle": "(Per n.º of pages)",
-      "message": "3 most common best practices of priority \"{{value}}\"",
+      "message": "The 3 best practices of level \"{{value}}\"",
       "practice": "practice in",
       "pages": "pages"
     },
@@ -360,10 +361,13 @@
       "details_practice_label": "Practices per page",
       "details_error_label": "Errors per page",
       "details": {
+        "single_practice": "occurrence in",
+        "multi_practices": "occurrences in",
         "single_error": "error in",
         "multi_error": "errors in",
         "single_page": "page",
         "multi_page": "pages",
+        "all_pages": "all pages",
         "from": "",
         "to": "to"
       },

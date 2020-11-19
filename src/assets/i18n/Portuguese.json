@@ -89,7 +89,7 @@
       "percentage": "Percentagem (n.º de páginas)",
       "percentage_label": "Percentagem (%)",
       "range": "Intervalo",
-      "cumulative": "Frequência cumulativa"
+      "cumulative": "Frequência acumulada"
     },
     "errors": {
       "title": "Más práticas",
@@ -139,7 +139,8 @@
       },
       "select": "Tipo de elemento"
     },
-    "close": "Fechar"
+    "close": "Fechar",
+    "close_dialog": "Fechar modal"
   },
   "HOME": {
     "tabs": {
@@ -290,7 +291,7 @@
       "AAA": "AAA",
       "pages": "N.º de Páginas",
       "see_tooltip": "Ver categoria",
-      "note": "* conformidade com WCAG 2.1 (W3C)"
+      "note": "* Conformidade com WCAG 2.1 (W3C)"
     }
   },
   "TAG": {
@@ -330,19 +331,19 @@
       "best_practices": "Boas práticas",
       "bad_practices": "Más práticas"
     },
-    "top_10_best_practices_title": "10 melhores prácticas mais frequentes",
-    "top_10_bad_practices_title": "10 erros mais frequentes",
+    "top_10_best_practices_title": "As 10 melhores prácticas mais frequentes",
+    "top_10_bad_practices_title": "As 10 piores práticas mais frequentes",
     "top_3_bad_practices": {
-      "title": "3 erros mais comuns por nível de conformidade",
+      "title": "As 3 piores práticas por nível de conformidade",
       "subtitle": "(Por n.º de páginas)",
-      "message": "3 erros mais comuns de prioridade \"{{value}}\"",
+      "message": "As 3 piores práticas de nível \"{{value}}\"",
       "practice": "erro em",
       "pages": "páginas"
     },
     "top_3_best_practices": {
-      "title": "3 melhores prácticas por nível de conformidade",
+      "title": "As 3 melhores prácticas por nível de conformidade",
       "subtitle": "(Por n.º de páginas)",
-      "message": "3 melhores prácticas mais comuns de prioridade \"{{value}}\"",
+      "message": "As 3 melhores prácticas de nível \"{{value}}\"",
       "practice": "prática em",
       "pages": "páginas"
     },
@@ -352,7 +353,7 @@
     },
     "table": {
       "best_title": "Distribuição detalhada das melhores práticas",
-      "bad_title": "Distribuição detalhada de erros",
+      "bad_title": "Distribuição detalhada das piores práticas",
       "practice_label": "Prática",
       "error_label": "Erro",
       "n_errors_label": "Ocorrências",
@@ -360,10 +361,13 @@
       "details_practice_label": "Práticas por página",
       "details_error_label": "Erros por página",
       "details": {
+        "single_practice": "ocorrência em",
+        "multi_practices": "ocorrências em",
         "single_error": "erro em",
         "multi_error": "erros em",
         "single_page": "página",
         "multi_page": "páginas",
+        "all_pages": "todas as páginas",
         "from": "de",
         "to": "a"
       },

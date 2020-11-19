@@ -1,6 +1,6 @@
 <a class="skip-to-main" [routerLink]="[]" fragment="main" title="{{ 'MISC.skip_to_main' | translate }}">{{ "MISC.skip_to_main" | translate }}</a>
 <div id="top" class="wrapper">
-  <app-header *ngIf="!loading && !error"></app-header>
+  <app-header></app-header>
   <router-outlet *ngIf="!loading && !error"></router-outlet>
   <app-loading *ngIf="loading"></app-loading>
   <app-error *ngIf="error"></app-error>

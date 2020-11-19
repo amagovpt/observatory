@@ -1,22 +1,29 @@
-import { Component, OnInit, AfterViewInit, Input, ViewChild } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { Chart } from 'chart.js';
-import _tests from '../../tests';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  Input,
+  ViewChild,
+} from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
+import { Chart } from "chart.js";
+import { Website } from "src/app/models/website";
+import _tests from "../../tests";
 
 @Component({
-  selector: 'app-practices-distribution',
-  templateUrl: './practices-distribution.component.html',
-  styleUrls: ['./practices-distribution.component.scss']
+  selector: "app-practices-distribution",
+  templateUrl: "./practices-distribution.component.html",
+  styleUrls: ["./practices-distribution.component.scss"],
 })
 export class PracticesDistributionComponent implements OnInit, AfterViewInit {
-
   tests: any;
 
-  @Input('type') type: string;
-  @Input('color') color: string;
-  @Input('data') data: any;
+  @Input("type") type: string;
+  @Input("color") color: string;
+  @Input("website") website: Website;
+  @Input("data") data: any;
 
-  @ViewChild('chartPractices', { static: true }) chartPractices: any;
+  @ViewChild("chartPractices", { static: true }) chartPractices: any;
   chart: any;
 
   errors: any;
@@ -38,87 +45,113 @@ export class PracticesDistributionComponent implements OnInit, AfterViewInit {
     this.isCat = this.data.isCat;
     this.errors = this.data.errors;
 
-    const translations = {}; 
-    
+    const translations = {};
+
     this.errors.map((k: any) => {
-      translations['RESULTS.' + k['key']] = this.translate.instant('RESULTS.' + k['key'], { value: k['n_occurrences']});
+      translations["RESULTS." + k["key"]] = this.translate.instant(
+        "RESULTS." + k["key"],
+        { value: k["n_occurrences"] }
+      );
     });
 
-    translations['DIALOGS.errors.common_errors2'] = this.translate.instant('DIALOGS.errors.common_errors2');
-    translations['DIALOGS.errors.tests_label'] = this.translate.instant('DIALOGS.errors.tests_label');
-    translations['DIALOGS.errors.situations_label2'] = this.translate.instant('DIALOGS.errors.situations_label2');
+    translations["DIALOGS.errors.common_errors"] = this.translate.instant(
+      "DIALOGS.errors.common_errors"
+    );
+    translations["DIALOGS.errors.tests_label"] = this.translate.instant(
+      "DIALOGS.errors.tests_label"
+    );
+    translations["DIALOGS.errors.situations_label"] = this.translate.instant(
+      "DIALOGS.errors.situations_label"
+    );
 
-    const label = translations['DIALOGS.errors.common_errors2'];
-    const testsLabel = translations['DIALOGS.errors.tests_label'];
-    const situationsLabel = translations['DIALOGS.errors.situations_label2'];
-    delete translations['DIALOGS.errors.common_errors2'];
-    delete translations['DIALOGS.errors.tests_label'];
-    delete translations['DIALOGS.errors.situations_label2'];
+    const label = translations["DIALOGS.errors.common_errors"];
+    const testsLabel = translations["DIALOGS.errors.tests_label"];
+    const situationsLabel = translations["DIALOGS.errors.situations_label"];
+    delete translations["DIALOGS.errors.common_errors"];
+    delete translations["DIALOGS.errors.tests_label"];
+    delete translations["DIALOGS.errors.situations_label"];
 
     const labels = Object.values(translations).map((s: string) => {
-      s = s.replace(new RegExp('<code>', 'g'), '');
-      s = s.replace(new RegExp('</code>', 'g'), '');
-      s = s.replace(new RegExp('<mark>', 'g'), '');
-      s = s.replace(new RegExp('</mark>', 'g'), '');
-      s = s.length > 100 ? String(s).substr(0, 50) + '...' : s;
+      s = s.replace(new RegExp("<code>", "g"), "");
+      s = s.replace(new RegExp("</code>", "g"), "");
+      s = s.replace(new RegExp("<mark>", "g"), "");
+      s = s.replace(new RegExp("</mark>", "g"), "");
+      s = s.length > 100 ? String(s).substr(0, 50) + "..." : s;
       return this.formatLabel(s, 50);
     });
 
     const labelsTooltips = Object.values(translations).map((s: string) => {
-      s = s.replace(new RegExp('<code>', 'g'), '');
-      s = s.replace(new RegExp('</code>', 'g'), '');
-      s = s.replace(new RegExp('<mark>', 'g'), '');
-      s = s.replace(new RegExp('</mark>', 'g'), '');
+      s = s.replace(new RegExp("<code>", "g"), "");
+      s = s.replace(new RegExp("</code>", "g"), "");
+      s = s.replace(new RegExp("<mark>", "g"), "");
+      s = s.replace(new RegExp("</mark>", "g"), "");
       return s;
     });
 
-    const values = this.errors.map((error: any) => error.n_occurrences);
+    const values = this.errors
+      .map((error: any) => error.n_pages)
+      .sort((a, b) => b - a);
 
     this.chart = new Chart(this.chartPractices.nativeElement, {
-      type: 'horizontalBar',
+      type: "horizontalBar",
       data: {
         labels,
         datasets: [
           {
             label,
             data: values,
-            backgroundColor: this.color
-          }
-        ]
+            backgroundColor: this.color,
+          },
+        ],
       },
       options: {
         tooltips: {
           callbacks: {
             // to make the title appear entirely
-            title: function(tooltipItem, data){
-              return labelsTooltips[tooltipItem[0]['index']];
-            }
-          }
+            title: function (tooltipItem, data) {
+              return labelsTooltips[tooltipItem[0]["index"]];
+            },
+          },
+        },
+        legend: {
+          labels: {
+            fontFamily: "Lato",
+          },
         },
         scales: {
-          xAxes: [{
-            display: true,
-            ticks: {
-              beginAtZero: true,
-              steps: 1,
-              stepValue: 1,
-              max: this.calculateMax(Math.max(...values)),
-              maxTicksLimit: this.calculateMax(Math.max(...values)) + 1
+          xAxes: [
+            {
+              display: true,
+              ticks: {
+                beginAtZero: true,
+                steps: 1,
+                stepValue: 1,
+                max: this.website.pages.length,
+                //maxTicksLimit: this.calculateMax(Math.max(...values)) + 1,
+                fontFamily: "Lato",
+              },
+              scaleLabel: {
+                display: true,
+                labelString: situationsLabel,
+                fontFamily: "Lato",
+              },
             },
-            scaleLabel: {
+          ],
+          yAxes: [
+            {
               display: true,
-              labelString: situationsLabel
-            }
-          }],
-          yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: testsLabel
-            }
-          }]
-        }
-      }
+              ticks: {
+                fontFamily: "Lato",
+              },
+              scaleLabel: {
+                display: true,
+                labelString: testsLabel,
+                fontFamily: "Lato",
+              },
+            },
+          ],
+        },
+      },
     });
 
     this.keys = {
@@ -139,7 +172,7 @@ export class PracticesDistributionComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.tablist = document.querySelector<HTMLElement>(
-      '#' + this.type + '.distributionTabs [role="tablist"]'
+      "#" + this.type + '.distributionTabs [role="tablist"]'
     );
 
     this.generateArrays();
@@ -147,24 +180,24 @@ export class PracticesDistributionComponent implements OnInit, AfterViewInit {
   }
 
   private calculateMax(max: number): number {
-    const t = max + (max / 3);
+    const t = max + max / 3;
     return Math.ceil(t);
   }
 
   private formatLabel(str: string, maxwidth: number): any {
     const sections = [];
-    const words = str.split(' ');
-    let temp = '';
+    const words = str.split(" ");
+    let temp = "";
 
     words.forEach((item: any, index: number) => {
       if (temp.length > 0) {
-        const concat = temp + ' ' + item;
+        const concat = temp + " " + item;
 
         if (concat.length > maxwidth) {
           sections.push(temp);
-          temp = '';
+          temp = "";
         } else {
-          if (index === (words.length - 1)) {
+          if (index === words.length - 1) {
             sections.push(concat);
             return;
           } else {
@@ -174,7 +207,7 @@ export class PracticesDistributionComponent implements OnInit, AfterViewInit {
         }
       }
 
-      if (index === (words.length - 1)) {
+      if (index === words.length - 1) {
         sections.push(item);
         return;
       }
@@ -190,9 +223,13 @@ export class PracticesDistributionComponent implements OnInit, AfterViewInit {
   }
 
   generateArrays() {
-    const tabs = document.querySelectorAll<HTMLElement>('#' + this.type + '.distributionTabs [role="tab"]');
+    const tabs = document.querySelectorAll<HTMLElement>(
+      "#" + this.type + '.distributionTabs [role="tab"]'
+    );
     tabs.forEach((tab) => this.tabs.push(tab));
-    const panels = document.querySelectorAll<HTMLElement>('#' + this.type + '.distributionTabs [role="tabpanel"]');
+    const panels = document.querySelectorAll<HTMLElement>(
+      "#" + this.type + '.distributionTabs [role="tabpanel"]'
+    );
     panels.forEach((panel) => this.panels.push(panel));
   }
 

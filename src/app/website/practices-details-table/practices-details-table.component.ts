@@ -1,18 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-import orderBy from 'lodash.orderby';
-import clone from 'lodash.clone';
-import _tests from '../../tests';
-import { Website } from 'src/app/models/website';
+import { Component, OnInit, Input } from "@angular/core";
+import orderBy from "lodash.orderby";
+import clone from "lodash.clone";
+import _tests from "../../tests";
+import { Website } from "src/app/models/website";
 
 @Component({
-  selector: 'app-practices-details-table',
-  templateUrl: './practices-details-table.component.html',
-  styleUrls: ['./practices-details-table.component.scss']
+  selector: "app-practices-details-table",
+  templateUrl: "./practices-details-table.component.html",
+  styleUrls: ["./practices-details-table.component.scss"],
 })
 export class PracticesDetailsTableComponent implements OnInit {
-
-  @Input('type') type: string;
-  @Input('website') website: Website;
+  @Input("type") type: string;
+  @Input("website") website: Website;
 
   practices: any;
   practicesKeys: any;
@@ -23,7 +22,8 @@ export class PracticesDetailsTableComponent implements OnInit {
 
   ngOnInit() {
     const practices = new Array<any>();
-    const iterable = this.type === 'good' ? this.website.success : this.website.errors;
+    const iterable =
+      this.type === "good" ? this.website.success : this.website.errors;
 
     for (const key in iterable || {}) {
       if (iterable[key]) {
@@ -32,17 +32,27 @@ export class PracticesDetailsTableComponent implements OnInit {
           n_occurrences: iterable[key].n_occurrences,
           n_pages: iterable[key].n_pages,
           lvl: _tests[key].level.toUpperCase(),
-          quartiles: this.calculateQuartiles(this.type === 'good' ? this.website.getPassedAndWarningOccurrencesByPage(key) : this.website.getErrorOccurrencesByPage(key))
+          quartiles: this.calculateQuartiles(
+            this.type === "good"
+              ? this.website.getPassedOccurrencesByPage(key)
+              : this.website.getErrorOccurrencesByPage(key)
+          ),
         });
       }
     }
 
-    this.practices = orderBy(practices, ['n_pages', 'n_occurrences'], ['desc', 'desc']);
+    this.practices = orderBy(
+      practices,
+      ["n_pages", "n_occurrences"],
+      ["desc", "desc"]
+    );
     this.practicesKeys = Object.keys(this.practices);
   }
 
   private calculateQuartiles(practices: any): Array<any> {
-    const values = practices.filter((e: any) => e !== undefined).sort((a: number, b: number) => a - b);
+    const values = practices
+      .filter((e: any) => e !== undefined)
+      .sort((a: number, b: number) => a - b);
 
     let q1: number;
     let q2: number;
@@ -52,7 +62,7 @@ export class PracticesDetailsTableComponent implements OnInit {
     q1 = values[Math.round(0.25 * (values.length + 1)) - 1];
 
     if (values.length % 2 === 0) {
-      q2 = (values[(values.length / 2) - 1] + values[(values.length / 2)]) / 2;
+      q2 = (values[values.length / 2 - 1] + values[values.length / 2]) / 2;
     } else {
       q2 = values[(values.length + 1) / 2];
     }
@@ -64,21 +74,21 @@ export class PracticesDetailsTableComponent implements OnInit {
       q1: new Array<number>(),
       q2: new Array<number>(),
       q3: new Array<number>(),
-      q4: new Array<number>()
+      q4: new Array<number>(),
     };
 
     let q: string;
     for (const v of values || []) {
       if (v <= q1) {
-        q = 'q1';
+        q = "q1";
       } else {
         if (v <= q2) {
-          q = 'q2';
+          q = "q2";
         } else {
           if (v <= q3) {
-            q = 'q3';
+            q = "q3";
           } else {
-            q = 'q4';
+            q = "q4";
           }
         }
       }
@@ -98,8 +108,8 @@ export class PracticesDetailsTableComponent implements OnInit {
             por: Math.round((sum * 100) / values.length),
             int: {
               lower: v[0],
-              upper: v[sum - 1]
-            }
+              upper: v[sum - 1],
+            },
           };
 
           final.push(clone(test));

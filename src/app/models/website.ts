@@ -1,6 +1,6 @@
-import { Page } from './page';
-import tests from '../tests';
-import orderBy from 'lodash.orderby';
+import { Page } from "./page";
+import tests from "../tests";
+import orderBy from "lodash.orderby";
 
 export class Website {
   id: number;
@@ -20,7 +20,13 @@ export class Website {
   oldestPage: Date;
   success: any;
 
-  constructor(id: number, entity: string, name: string, domain: string, creationDate: Date) {
+  constructor(
+    id: number,
+    entity: string,
+    name: string,
+    domain: string,
+    creationDate: Date
+  ) {
     this.id = id;
     this.rank = -1;
     this.entity = entity;
@@ -37,12 +43,32 @@ export class Website {
     this.success = {};
   }
 
-  addPage(pageId: number, uri: string, creationDate: Date, evaluationId: number,
-          title: string, score: number, errors: any, tot: any, A: number, AA: number, AAA: number,
-          evaluationDate: Date): void {
-
+  addPage(
+    pageId: number,
+    uri: string,
+    creationDate: Date,
+    evaluationId: number,
+    title: string,
+    score: number,
+    errors: any,
+    tot: any,
+    A: number,
+    AA: number,
+    AAA: number,
+    evaluationDate: Date
+  ): void {
     const page = new Page(pageId, uri, creationDate);
-    page.addEvaluation(evaluationId, title, score, errors, tot, A, AA, AAA, evaluationDate);
+    page.addEvaluation(
+      evaluationId,
+      title,
+      score,
+      errors,
+      tot,
+      A,
+      AA,
+      AAA,
+      evaluationDate
+    );
     this.pages.push(page);
 
     this.score += score;
@@ -58,47 +84,50 @@ export class Website {
         this.A++;
       }
     }
-    
+
     const floor = Math.floor(score);
-    this.frequencies[ floor >= 2 ? floor === 10 ? floor - 2 : floor - 1 : 0 ]++;
+    this.frequencies[floor >= 2 ? (floor === 10 ? floor - 2 : floor - 1) : 0]++;
 
     const pageErrors = page.evaluation.errors;
-    
+
     for (const key in page.evaluation.tot.results || {}) {
-      const test = tests[key]['test'];
-      const elem = tests[key]['elem'];
-      const occurrences = pageErrors[test] === undefined || pageErrors[test] < 1 ? 1 : pageErrors[test];
-      const result = tests[key]['result'];
-      
-      if (result === 'failed') {
+      const test = tests[key]["test"];
+      const elem = tests[key]["elem"];
+      const occurrences =
+        pageErrors[test] === undefined || pageErrors[test] < 1
+          ? 1
+          : pageErrors[test];
+      const result = tests[key]["result"];
+
+      if (result === "failed") {
         if (Object.keys(this.errors).includes(key)) {
-          this.errors[key]['n_occurrences'] += occurrences;
-          this.errors[key]['n_pages']++;
+          this.errors[key]["n_occurrences"] += occurrences;
+          this.errors[key]["n_pages"]++;
         } else {
           this.errors[key] = {
             n_pages: 1,
             n_occurrences: occurrences,
             elem,
             test,
-            result
+            result,
           };
         }
-      } else {
+      } else if (result === "passed") {
         if (Object.keys(this.success).includes(key)) {
-          this.success[key]['n_occurrences'] += occurrences;
-          this.success[key]['n_pages']++;
+          this.success[key]["n_occurrences"] += occurrences;
+          this.success[key]["n_pages"]++;
         } else {
           this.success[key] = {
             n_pages: 1,
             n_occurrences: occurrences,
             elem,
             test,
-            result
+            result,
           };
         }
       }
     }
-    
+
     if (!this.recentPage) {
       this.recentPage = evaluationDate;
     }
@@ -131,8 +160,12 @@ export class Website {
         n_pages: this.success[key].n_pages,
       });
     }
-    
-    return orderBy(practices, ['n_occurrences', 'n_pages'], ['desc', 'desc']).slice(0, 10);
+
+    return orderBy(
+      practices,
+      ["n_occurrences", "n_pages"],
+      ["desc", "desc"]
+    ).slice(0, 10);
   }
 
   getTopTenErrors(): any {
@@ -145,18 +178,25 @@ export class Website {
       });
     }
 
-    return orderBy(errors, ['n_occurrences', 'n_pages'], ['desc', 'desc']).slice(0, 10);
+    return orderBy(
+      errors,
+      ["n_occurrences", "n_pages"],
+      ["desc", "desc"]
+    ).slice(0, 10);
   }
 
-  getPassedAndWarningOccurrencesByPage(test: string): Array<number> {
+  getPassedOccurrencesByPage(test: string): Array<number> {
     const occurrences = new Array<number>();
     for (const page of this.pages || []) {
-      const error = page.evaluation.tot.elems[tests[test]['test']];
-      if (page.evaluation.tot.results[test] && tests[test]['result'] !== 'failed') {
-        if (!error) {
+      const practice = page.evaluation.tot.elems[tests[test]["test"]];
+      if (
+        page.evaluation.tot.results[test] &&
+        tests[test]["result"] === "passed"
+      ) {
+        if (!practice) {
           occurrences.push(1);
         } else {
-          occurrences.push(error);
+          occurrences.push(practice);
         }
       }
     }
@@ -165,10 +205,13 @@ export class Website {
 
   getErrorOccurrencesByPage(test: string): Array<number> {
     const occurrences = new Array<number>();
-    
+
     for (const page of this.pages || []) {
-      const error = page.evaluation.tot.elems[tests[test]['test']];
-      if (page.evaluation.tot.results[test] && tests[test]['result'] === 'failed') {
+      const error = page.evaluation.tot.elems[tests[test]["test"]];
+      if (
+        page.evaluation.tot.results[test] &&
+        tests[test]["result"] === "failed"
+      ) {
         if (!error) {
           occurrences.push(1);
         } else {

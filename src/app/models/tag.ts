@@ -1,5 +1,5 @@
-import orderBy from 'lodash.orderby';
-import { Website } from './website';
+import orderBy from "lodash.orderby";
+import { Website } from "./website";
 import tests from "../tests";
 
 export class Tag {
@@ -62,14 +62,15 @@ export class Tag {
 
     for (const error in websiteErrors || {}) {
       if (Object.keys(this.errors).includes(error)) {
-        this.errors[error]['n_occurrences'] += websiteErrors[error]['n_occurrences'];
-        this.errors[error]['n_pages'] += websiteErrors[error]['n_pages'];
-        this.errors[error]['n_websites']++;
+        this.errors[error]["n_occurrences"] +=
+          websiteErrors[error]["n_occurrences"];
+        this.errors[error]["n_pages"] += websiteErrors[error]["n_pages"];
+        this.errors[error]["n_websites"]++;
       } else {
         this.errors[error] = {
-          n_occurrences: websiteErrors[error]['n_occurrences'], 
-          n_pages: websiteErrors[error]['n_pages'], 
-          n_websites: 1
+          n_occurrences: websiteErrors[error]["n_occurrences"],
+          n_pages: websiteErrors[error]["n_pages"],
+          n_websites: 1,
         };
       }
     }
@@ -78,14 +79,16 @@ export class Tag {
 
     for (const practice in websiteSuccess || {}) {
       if (Object.keys(this.success).includes(practice)) {
-        this.success[practice]['n_occurrences'] += websiteSuccess[practice]['n_occurrences'];
-        this.success[practice]['n_pages'] += websiteSuccess[practice]['n_pages'];
-        this.success[practice]['n_websites']++;
+        this.success[practice]["n_occurrences"] +=
+          websiteSuccess[practice]["n_occurrences"];
+        this.success[practice]["n_pages"] +=
+          websiteSuccess[practice]["n_pages"];
+        this.success[practice]["n_websites"]++;
       } else {
         this.success[practice] = {
-          n_occurrences: websiteSuccess[practice]['n_occurrences'], 
-          n_pages: websiteSuccess[practice]['n_pages'], 
-          n_websites: 1
+          n_occurrences: websiteSuccess[practice]["n_occurrences"],
+          n_pages: websiteSuccess[practice]["n_pages"],
+          n_websites: 1,
         };
       }
     }
@@ -120,19 +123,23 @@ export class Tag {
         key,
         n_occurrences: this.errors[key].n_occurrences,
         n_pages: this.errors[key].n_pages,
-        n_websites: this.errors[key].n_websites
+        n_websites: this.errors[key].n_websites,
       });
     }
 
-    return orderBy(errors, ['n_occurrences', 'n_pages', 'n_websites'], ['desc', 'desc', 'desc']).slice(0, 10);
+    return orderBy(
+      errors,
+      ["n_occurrences", "n_pages", "n_websites"],
+      ["desc", "desc", "desc"]
+    ).slice(0, 10);
   }
 
-  getPassedAndWarningOccurrenceByWebsite(test: string): Array<number> {
+  getPassedOccurrenceByWebsite(test: string): Array<number> {
     const occurrences = new Array<number>();
 
     for (const website of this.websites || []) {
-      if (website.success[test] && tests[test]['result'] !== 'failed') {
-        occurrences.push(website.success[test]['n_occurrences']);
+      if (website.success[test] && tests[test]["result"] === "passed") {
+        occurrences.push(website.success[test]["n_occurrences"]);
       }
     }
     return occurrences;
@@ -140,10 +147,10 @@ export class Tag {
 
   getErrorOccurrencesByWebsite(test: string): Array<number> {
     const occurrences = new Array<number>();
-    
+
     for (const website of this.websites || []) {
-      if (website.errors[test] && tests[test]['result'] === 'failed') {
-        occurrences.push(website.errors[test]['n_occurrences']);
+      if (website.errors[test] && tests[test]["result"] === "failed") {
+        occurrences.push(website.errors[test]["n_occurrences"]);
       }
     }
     return occurrences;

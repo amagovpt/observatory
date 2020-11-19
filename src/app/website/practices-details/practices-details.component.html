@@ -13,7 +13,7 @@
       <div tabindex="0" role="tabpanel" id="good_tab" aria-labelledby="tab_good" fxLayout="row" fxLayoutAlign="center center">
         <div class="practices-wrapper">
           <h3>{{ "WEBSITE.top_10_best_practices_title" | translate }}</h3>
-          <app-practices-distribution [type]="'good'" [color]="'#15ac51'" [data]="practicesDistributionData"></app-practices-distribution>
+          <app-practices-distribution [type]="'good'" [color]="'#15ac51'" [website]="website" [data]="practicesDistributionData"></app-practices-distribution>
           <span class="divider"></span>
           <h3 class="no-margin">{{ "WEBSITE.top_3_best_practices.title" | translate }}</h3>
           <h4 class="no-margin">{{ "WEBSITE.top_3_best_practices.subtitle" | translate }}</h4>
@@ -27,7 +27,7 @@
       <div tabindex="0" role="tabpanel" id="bad_tab" aria-labelledby="tab_bad" class="is-hidden" fxLayout="row" fxLayoutAlign="center center">
         <div class="practices-wrapper">
           <h3>{{ "WEBSITE.top_10_bad_practices_title" | translate }}</h3>
-          <app-practices-distribution [type]="'bad'" [color]="'#e90018'" [data]="errorDistributionData"></app-practices-distribution>
+          <app-practices-distribution [type]="'bad'" [color]="'#e90018'" [website]="website" [data]="errorDistributionData"></app-practices-distribution>
           <span class="divider"></span>
           <h3>{{ "WEBSITE.top_3_bad_practices.title" | translate }}</h3>
           <h4>{{ "WEBSITE.top_3_bad_practices.subtitle" | translate }}</h4>

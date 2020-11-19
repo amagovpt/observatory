@@ -232,6 +232,7 @@ nav span:last-child {
 }
 
 .bar1 {
+  margin-top: 0.3em;
   margin-bottom: 0.5em;
   //width: 12em;
 }
@@ -256,6 +257,10 @@ nav span:last-child {
   margin-left: 2em;
   opacity: 0.5;
   font-family: "Lato";
+}
+
+.years span:last-child {
+  margin-bottom: 0.5em;
 }
 
 .gold {

@@ -1,16 +1,15 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Chart } from 'chart.js';
+import { Component, OnInit, Inject, ViewChild } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Chart } from "chart.js";
 
 @Component({
-  selector: 'app-score-distribution-dialog',
-  templateUrl: './score-distribution-dialog.component.html',
-  styleUrls: ['./score-distribution-dialog.component.scss']
+  selector: "app-score-distribution-dialog",
+  templateUrl: "./score-distribution-dialog.component.html",
+  styleUrls: ["./score-distribution-dialog.component.scss"],
 })
 export class ScoreDistributionDialogComponent implements OnInit {
-
-	@ViewChild('chartDomains', { static: true }) chartDomains: any;
+  @ViewChild("chartDomains", { static: true }) chartDomains: any;
   chart: any;
 
   values: number[] = [];
@@ -19,23 +18,23 @@ export class ScoreDistributionDialogComponent implements OnInit {
   freqPer: number[] = [];
 
   displayedColumns: string[] = [
-    'range',
-    'freq',
-    'freqPer',
-    'cumuFreq',
-    'cumuFreqPer'
+    "range",
+    "freq",
+    "freqPer",
+    "cumuFreq",
+    "cumuFreqPer",
   ];
 
   labels: string[] = [
-    '[1 - 2[',
-    '[2 - 3[',
-    '[3 - 4[',
-    '[4 - 5[',
-    '[5 - 6[',
-    '[6 - 7[',
-    '[7 - 8[',
-    '[8 - 9[',
-    '[9 - 10]'
+    "[1 - 2[",
+    "[2 - 3[",
+    "[3 - 4[",
+    "[4 - 5[",
+    "[5 - 6[",
+    "[6 - 7[",
+    "[7 - 8[",
+    "[8 - 9[",
+    "[9 - 10]",
   ];
 
   tabs: HTMLElement[] = [];
@@ -45,7 +44,10 @@ export class ScoreDistributionDialogComponent implements OnInit {
   keys: any;
   direction: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private translate: TranslateService) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private translate: TranslateService
+  ) {
     this.values = this.data.frequency;
     const total = this.values.reduce((sum: number, value: number) => {
       return sum + value;
@@ -56,140 +58,181 @@ export class ScoreDistributionDialogComponent implements OnInit {
     });
 
     let tmp = 0;
-    for (let i = 0 ; i < 10 ; i++) {
+    for (let i = 0; i < 10; i++) {
       this.freq[i] = tmp += this.values[i];
     }
 
     let tmpPer = 0;
-    for (let i = 0 ; i < 10 ; i++) {
+    for (let i = 0; i < 10; i++) {
       this.freqPer[i] = tmpPer += this.percentageValues[i];
     }
   }
 
   ngOnInit() {
-    this.translate.get(['DIALOGS.scores.percentage', 'DIALOGS.scores.frequency', 'DIALOGS.scores.percentage_label', 'DIALOGS.scores.range'])
-      .subscribe(res => {
+    this.translate
+      .get([
+        "DIALOGS.scores.percentage",
+        "DIALOGS.scores.frequency",
+        "DIALOGS.scores.percentage_label",
+        "DIALOGS.scores.range",
+      ])
+      .subscribe((res) => {
+        this.values = this.data.frequency;
+        const total = this.values.reduce(
+          (sum: number, value: number) => sum + value,
+          0
+        );
 
-      this.values = this.data.frequency;
-      const total = this.values.reduce((sum: number, value: number) => sum + value, 0);
+        this.percentageValues = this.values.map((v: number) => {
+          return (v / total) * 100;
+        });
 
-      this.percentageValues = this.values.map((v: number) => {
-        return (v / total) * 100;
-      });
-
-      let tmp = 0;
-      for (let i = 0 ; i < 10 ; i++) {
-        this.freq[i] = tmp += this.values[i];
-      }
-
-      let tmpPer = 0;
-      for (let i = 0 ; i < 10 ; i++) {
-        this.freqPer[i] = tmpPer += this.percentageValues[i];
-      }
-
-      this.chart = new Chart(this.chartDomains.nativeElement, {
-        type: 'bar',
-        responsive: true,
-        data: {
-          labels: this.labels,
-          datasets: [
-            {
-              label: res['DIALOGS.scores.percentage'],
-              data: this.freqPer,
-              type: 'line',
-              lineTension: 0,
-              fill: false,
-              pointBackgroundColor: '#e90018',
-              pointBorderColor: '#e90018',
-              borderColor: getComputedStyle(document.documentElement).getPropertyValue('--statistics-score-line')
-            },
-            {
-              label: res['DIALOGS.scores.frequency'],
-              data: this.percentageValues,
-              backgroundColor: [
-                '#e90018',
-                '#e90018',
-                '#f38e10',
-                '#f38e10',
-                '#f3d609',
-                '#f3d609',
-                '#f3d609',
-                '#15ac51',
-                '#15ac51',
-                '#15ac51'
-              ]
-            }
-          ]
-        },
-        options: {
-          maintainAspectRatio: true,
-          legend: {
-            labels: {
-              // This more specific font property overrides the global property
-              fontColor: getComputedStyle(document.documentElement).getPropertyValue('--statistics-text')
-            },
-          },
-          scales: {
-            yAxes: [{
-              display: true,
-              ticks: {
-                beginAtZero: true,
-                steps: 1,
-                stepValue: 1,
-                max: 100
-              },
-              scaleLabel: {
-                display: true,
-                labelString: res['DIALOGS.scores.percentage_label'],
-                fontColor: getComputedStyle(document.documentElement).getPropertyValue('--statistics-text')
-              }
-            }],
-            xAxes: [{
-              display: true,
-              scaleLabel: {
-                display: true,
-                labelString: res['DIALOGS.scores.range'],
-                fontColor: getComputedStyle(document.documentElement).getPropertyValue('--statistics-text')
-              }
-            }]
-          },
-          tooltips: {
-            callbacks: {
-              label: (tooltipItem) => {
-                return [res['DIALOGS.scores.percentage'] + ': ' + tooltipItem.yLabel.toFixed(1) + '%', res['DIALOGS.scores.frequency'] + ': ' + this.values[tooltipItem.index]];
-              }
-            }
-          }
+        let tmp = 0;
+        for (let i = 0; i < 10; i++) {
+          this.freq[i] = tmp += this.values[i];
         }
-      });
 
-      this.keys = {
-        end: 35,
-        home: 36,
-        left: 37,
-        up: 38,
-        right: 39,
-        down: 40,
-      };
-      this.direction = {
-        37: -1,
-        38: -1,
-        39: 1,
-        40: 1,
-      };
-      this.tablist = document.querySelectorAll<HTMLElement>(
-        '.scoreTabs [role="tablist"]'
-      )[0];
-  
-      this.generateArrays();
-      this.bindListeners();
-    });
+        let tmpPer = 0;
+        for (let i = 0; i < 10; i++) {
+          this.freqPer[i] = tmpPer += this.percentageValues[i];
+        }
+
+        this.chart = new Chart(this.chartDomains.nativeElement, {
+          type: "bar",
+          responsive: true,
+          data: {
+            labels: this.labels,
+            datasets: [
+              {
+                label: res["DIALOGS.scores.percentage"],
+                data: this.freqPer,
+                type: "line",
+                lineTension: 0,
+                fill: false,
+                pointBackgroundColor: "#e90018",
+                pointBorderColor: "#e90018",
+                borderColor: getComputedStyle(
+                  document.documentElement
+                ).getPropertyValue("--statistics-score-line"),
+              },
+              {
+                label: res["DIALOGS.scores.frequency"],
+                data: this.percentageValues,
+                backgroundColor: [
+                  "#e90018",
+                  "#e90018",
+                  "#f38e10",
+                  "#f38e10",
+                  "#f3d609",
+                  "#f3d609",
+                  "#f3d609",
+                  "#15ac51",
+                  "#15ac51",
+                  "#15ac51",
+                ],
+              },
+            ],
+          },
+          options: {
+            maintainAspectRatio: true,
+            legend: {
+              labels: {
+                // This more specific font property overrides the global property
+                fontColor: getComputedStyle(
+                  document.documentElement
+                ).getPropertyValue("--statistics-text"),
+                fontFamily: "Lato",
+              },
+            },
+            scales: {
+              yAxes: [
+                {
+                  display: true,
+                  ticks: {
+                    beginAtZero: true,
+                    steps: 1,
+                    stepValue: 1,
+                    max: 100,
+                    fontFamily: "Lato",
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: res["DIALOGS.scores.percentage_label"],
+                    fontColor: getComputedStyle(
+                      document.documentElement
+                    ).getPropertyValue("--statistics-text"),
+                    fontFamily: "Lato",
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  display: true,
+                  ticks: {
+                    fontFamily: "Lato",
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: res["DIALOGS.scores.range"],
+                    fontColor: getComputedStyle(
+                      document.documentElement
+                    ).getPropertyValue("--statistics-text"),
+                    fontFamily: "Lato",
+                  },
+                },
+              ],
+            },
+            tooltips: {
+              callbacks: {
+                label: (tooltipItem: any) => {
+                  return [
+                    res["DIALOGS.scores.percentage"] +
+                      ": " +
+                      tooltipItem.yLabel.toFixed(1) +
+                      "%",
+                    res["DIALOGS.scores.frequency"] +
+                      ": " +
+                      (tooltipItem.datasetIndex === 0
+                        ? this.freq[tooltipItem.index]
+                        : this.values[tooltipItem.index]),
+                  ];
+                },
+              },
+            },
+          },
+        });
+
+        this.keys = {
+          end: 35,
+          home: 36,
+          left: 37,
+          up: 38,
+          right: 39,
+          down: 40,
+        };
+        this.direction = {
+          37: -1,
+          38: -1,
+          39: 1,
+          40: 1,
+        };
+        this.tablist = document.querySelectorAll<HTMLElement>(
+          '.scoreTabs [role="tablist"]'
+        )[0];
+
+        this.generateArrays();
+        this.bindListeners();
+      });
   }
 
   generateArrays() {
-    const tabs = document.querySelectorAll<HTMLElement>('.scoreTabs [role="tab"]');
+    const tabs = document.querySelectorAll<HTMLElement>(
+      '.scoreTabs [role="tab"]'
+    );
     tabs.forEach((tab) => this.tabs.push(tab));
-    const panels = document.querySelectorAll<HTMLElement>('.scoreTabs [role="tabpanel"]');
+    const panels = document.querySelectorAll<HTMLElement>(
+      '.scoreTabs [role="tabpanel"]'
+    );
     panels.forEach((panel) => this.panels.push(panel));
   }
 
