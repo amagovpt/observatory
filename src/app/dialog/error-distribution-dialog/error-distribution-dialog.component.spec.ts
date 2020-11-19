@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ErrorDistributionDialogComponent } from './error-distribution-dialog.component';
 
@@ -6,7 +6,7 @@ describe('ErrorDistributionDialogComponent', () => {
   let component: ErrorDistributionDialogComponent;
   let fixture: ComponentFixture<ErrorDistributionDialogComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ErrorDistributionDialogComponent ]
     })
