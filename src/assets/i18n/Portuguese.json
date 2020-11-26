@@ -1,17 +1,17 @@
 {
   "MONTHS": {
-    "1": "Janeiro",
-    "2": "Fevereiro",
-    "3": "Março",
-    "4": "Abril",
-    "5": "Maio",
-    "6": "Junho",
-    "7": "Julho",
-    "8": "Agosto",
-    "9": "Setembro",
-    "10": "Outubro",
-    "11": "Novembro",
-    "12": "Dezembro"
+    "1": "de Janeiro",
+    "2": "de Fevereiro",
+    "3": "de Março",
+    "4": "de Abril",
+    "5": "de Maio",
+    "6": "de Junho",
+    "7": "de Julho",
+    "8": "de Agosto",
+    "9": "de Setembro",
+    "10": "de Outubro",
+    "11": "de Novembro",
+    "12": "de Dezembro"
   },
   "HEADER": {
     "tool": "Uma ferramenta do ecossistema do",
@@ -200,7 +200,7 @@
       }
     },
     "top5": {
-      "title": "Top 5 da Acessibilidade Web na Admininstração Pública",
+      "title": "Top 5 da Acessibilidade Web na Administração Pública",
       "last_updated": "Última atualização:",
       "paragraph": {
         "part1": "Conheça os sítios Web com melhor classificação de",
@@ -231,7 +231,7 @@
   "NUMBERS": {
     "summary": {
       "title": "Sítios Web no Observatório",
-      "paragraph": "O Observatório da Acessibilidade na Administração pública Portuguesa.",
+      "paragraph": "O Observatório regista, monitoriza e apresenta informação estatística sobre o estado e a evolução da acessibilidade Web.",
       "average": {
         "part1": "Média de classificação nos sítios Web da",
         "part2": "Administração Pública"

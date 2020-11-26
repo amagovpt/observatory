@@ -1,17 +1,17 @@
 {
   "MONTHS": {
-    "1": "January",
-    "2": "February",
-    "3": "March",
-    "4": "April",
-    "5": "May",
-    "6": "June",
-    "7": "July",
-    "8": "August",
-    "9": "September",
-    "10": "October",
-    "11": "November",
-    "12": "December"
+    "1": "of January",
+    "2": "of February",
+    "3": "of March",
+    "4": "of April",
+    "5": "of May",
+    "6": "of June",
+    "7": "of July",
+    "8": "of August",
+    "9": "of September",
+    "10": "of October",
+    "11": "of November",
+    "12": "of December"
   },
   "HEADER": {
     "tool": "A tool of the ecosystem from",
@@ -231,7 +231,7 @@
   "NUMBERS": {
     "summary": {
       "title": "Websites in the Observatory",
-      "paragraph": " The Observatory of Accessibility in the Portuguese Public Administration.",
+      "paragraph": "The Observatory records, monitors and presents statistical information on the status and evolution of Web accessibility.",
       "average": {
         "part1": "Average rating on the websites of",
         "part2": "the Public administration"

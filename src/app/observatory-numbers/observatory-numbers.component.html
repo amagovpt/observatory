@@ -33,13 +33,16 @@
                   }}</span
                 >
               </div>
-              <div class="global-score">
+              <div class="number-websites" fxLayout="row">
                 <span>{{ listTags.nWebsites }}</span>
-                <span
-                  >{{ "NUMBERS.summary.websites.part1" | translate }}<br />{{
-                    "NUMBERS.summary.websites.part2" | translate
-                  }}</span
-                >
+                <div fxLayout="column" fxLayoutAlign="center stretch">
+                  <span
+                    >{{ "NUMBERS.summary.websites.part1" | translate }}<br />{{
+                      "NUMBERS.summary.websites.part2" | translate
+                    }}
+                  </span>
+                  <span class="last-year">+ {{ listTags.nWebsites }} {{ "HOME.summary.last_year" | translate }}</span>
+                </div>
               </div>
             </div>
             <span class="divider" fxFlex></span>
@@ -51,6 +54,7 @@
               >
                 <span>{{ listTags.nEntities }}</span>
                 <span>{{ "NUMBERS.summary.entities" | translate }}</span>
+                <span class="last-year">+ {{ listTags.nEntities }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
               <div
                 class="metadata"
@@ -59,6 +63,7 @@
               >
                 <span>{{ listTags.tags.length }}</span>
                 <span>{{ "NUMBERS.summary.tags" | translate }}</span>
+                <span class="last-year">+ {{ listTags.tags.length }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
               <div
                 class="metadata"
@@ -67,6 +72,7 @@
               >
                 <span>{{ listTags.nPages }}</span>
                 <span>{{ "NUMBERS.summary.pages" | translate }}</span>
+                <span class="last-year">+ {{ listTags.nPages }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
               <div
                 class="metadata"
@@ -75,6 +81,7 @@
               >
                 <span>{{ listTags.nPagesWithoutErrors }}</span>
                 <span>{{ "NUMBERS.summary.pages_without_errors" | translate }}</span>
+                <span class="last-year">+ {{ listTags.nPagesWithoutErrors }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
             </div>
           </div>

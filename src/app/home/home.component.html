@@ -290,7 +290,7 @@
   >
     <div fxLayout="column" fxLayoutAlign="start start">
       <h2>{{ "HOME.top5.title" | translate }}</h2>
-      <span class="top-5-last-updated">{{ "HOME.top5.last_updated" | translate }} {{ listTags.recentPage | date }}</span>
+      <span class="top-5-last-updated">{{ "HOME.top5.last_updated" | translate }} {{ listTags.recentPage | date | customDate }}</span>
       <p>
         {{ "HOME.top5.paragraph.part1" | translate }} {{
           "HOME.top5.paragraph.part2" | translate

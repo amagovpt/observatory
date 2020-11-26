@@ -144,7 +144,7 @@ nav span:last-child {
   padding: 2em;
 }
 
-.global-score span:first-child, .subtitle-number {
+.global-score span:first-child, .subtitle-number, .number-websites span:first-child {
   font-size: 76px;
   line-height: 78px;
   font-weight: 900;
@@ -153,13 +153,20 @@ nav span:last-child {
   display: inline-block;
 }
 
-.global-score span:last-child {
+.global-score span:last-child,
+.number-websites div span:first-child {
   font-size: 16px;
   line-height: 22px;
   font-weight: 700;
   font-family: "Lato";
   display: inline-block;
   margin-left: 1em;
+  text-align: left;
+}
+
+.number-websites div span:last-child {
+  margin-left: 1em;
+  text-align: left;
 }
 
 .metadata {
@@ -174,12 +181,16 @@ nav span:last-child {
   text-align: center;
 }
 
-.metadata span:last-child, .subtitle, .quantity-text {
+.metadata span:nth-child(2), .subtitle, .quantity-text {
   font-size: 16px;
   line-height: 22px;
   font-weight: 700;
   font-family: "Lato";
   text-align: center;
+}
+
+.metadata span:last-child {
+  font-size: 0.9em;
 }
 
 .divider {

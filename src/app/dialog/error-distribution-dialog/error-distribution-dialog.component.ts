@@ -140,6 +140,8 @@ export class ErrorDistributionDialogComponent implements OnInit {
     translations.push("DIALOGS.errors.tests_label");
     translations.push("DIALOGS.errors.situations_label");
 
+    const values = this.graphData.map((error: any) => error.n_pages);
+
     this.translate.get(translations).subscribe((res: any) => {
       const label = res["DIALOGS.errors.common_errors"];
       const testsLabel = res["DIALOGS.errors.tests_label"];
@@ -151,6 +153,9 @@ export class ErrorDistributionDialogComponent implements OnInit {
       const labels = Object.values(res).map((s: string) => {
         s = s.replace(new RegExp("<code>", "g"), '"');
         s = s.replace(new RegExp("</code>", "g"), '"');
+        s = s.replace(new RegExp("<mark>", "g"), "");
+        s = s.replace(new RegExp("</mark>", "g"), "");
+        //s = s.replace(new RegExp("{{value}}", "g"), "X");
         s = s.length > 100 ? String(s).substr(0, 97) + "..." : s;
         return this.formatLabel(s, 50);
       });
@@ -158,10 +163,11 @@ export class ErrorDistributionDialogComponent implements OnInit {
       const labelsTooltips = Object.values(res).map((s: string) => {
         s = s.replace(new RegExp("<code>", "g"), '"');
         s = s.replace(new RegExp("</code>", "g"), '"');
+        s = s.replace(new RegExp("<mark>", "g"), "");
+        s = s.replace(new RegExp("</mark>", "g"), "");
+        //s = s.replace(new RegExp("{{value}}", "g"), "X");
         return s;
       });
-
-      const values = this.graphData.map((error: any) => error.n_pages);
 
       this.chart = new Chart(this.chartErrors.nativeElement, {
         type: "horizontalBar",
