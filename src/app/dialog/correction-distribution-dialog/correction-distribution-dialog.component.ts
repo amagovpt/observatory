@@ -200,7 +200,7 @@ export class CorrectionDistributionDialogComponent implements OnInit {
                   beginAtZero: true,
                   steps: 1,
                   stepValue: 1,
-                  max: this.calculateMax(Math.max(...values)),
+                  max: this.nPages, //this.calculateMax(Math.max(...values)),
                   fontFamily: "Lato",
                 },
                 scaleLabel: {
@@ -503,7 +503,7 @@ function calculateQuartiles(d: any, test: any): Array<any> {
   if (d.inTagsPage) {
     data = d.tags.getPassedAndWarningOccurrenceByTag(test);
   } else {
-    data = d.tags.getPassedAndWarningOccurrenceByWebsite(test);
+    data = d.tags.getPassedOccurrenceByWebsite(test);
   }
 
   const values = without(data, undefined).sort((a, b) => a - b);

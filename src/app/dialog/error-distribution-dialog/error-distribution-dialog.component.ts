@@ -50,6 +50,7 @@ export class ErrorDistributionDialogComponent implements OnInit {
   chart: any;
   errors: any;
   tests: any;
+  nPages: number;
   inTagsPage: boolean;
   isCat: boolean;
 
@@ -75,6 +76,7 @@ export class ErrorDistributionDialogComponent implements OnInit {
     this.inTagsPage = this.data.inTagsPage;
     this.isCat = this.data.isCat;
     this.errors = this.data.errors;
+    this.nPages = this.data.tags.nPages;
 
     this.existingElemGroups = [];
 
@@ -195,7 +197,7 @@ export class ErrorDistributionDialogComponent implements OnInit {
                   beginAtZero: true,
                   steps: 1,
                   stepValue: 1,
-                  max: this.calculateMax(Math.max(...values)),
+                  max: this.nPages, //this.calculateMax(Math.max(...values)),
                   fontFamily: "Lato",
                 },
                 scaleLabel: {
