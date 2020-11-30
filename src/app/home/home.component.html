@@ -412,11 +412,9 @@
               <span fxLayout="row" fxLayoutAlign="center center">{{
                 i + 1
               }}</span>
-              <span>{{
-                "RESULTS." + p.key
+              <span [innerHTML]="'RESULTS.' + p.key
                   | translate: { value: p.n_occurrences }
-                  | html
-              }}</span>
+                  | html"></span>
             </li>
           </ul>
         </div>
@@ -447,11 +445,9 @@
               <span fxLayout="row" fxLayoutAlign="center center">{{
                 i + 1
               }}</span>
-              <span>{{
-                "RESULTS." + e.key
+              <span [innerHTML]="'RESULTS.' + e.key
                   | translate: { value: e.n_occurrences }
-                  | html
-              }}</span>
+                  | html"></span>
             </li>
           </ul>
         </div>

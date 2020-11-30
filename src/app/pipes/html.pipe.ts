@@ -11,7 +11,7 @@ export class HtmlPipe implements PipeTransform {
     value = value.replace(new RegExp("</code>", "g"), "");
     value = value.replace(new RegExp("<mark>", "g"), "");
     value = value.replace(new RegExp("</mark>", "g"), "");
-    //value = value.replace(/</g, '&#60;').replace(/>/g, '&#62;');
+    value = value.replace(/</g, "&#60;").replace(/>/g, "&#62;");
     return value;
   }
 }
