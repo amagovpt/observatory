@@ -321,7 +321,7 @@
         <div class="wrapper" fxLayout="column">
           <div fxLayout="row" fxLayoutAlign="space-around center">
             <div class="global-score">
-              <span>{{ listTags.getScore() | toFixed }}</span>
+              <span>{{ listTags.getScore() | toFixed:{ comma: true } }}</span>
               <span
                 >{{ "HOME.summary.average.part1" | translate }}<br />{{
                   "HOME.summary.average.part2" | translate

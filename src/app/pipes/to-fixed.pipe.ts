@@ -1,11 +1,18 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name: 'toFixed'
+  name: "toFixed",
 })
 export class ToFixedPipe implements PipeTransform {
-
   transform(value: any, args?: any): any {
-    return parseFloat(value).toFixed(args ? args.places : 1);
+    value = parseFloat(value)
+      .toFixed(args?.places ? args.places : 1)
+      .toString();
+
+    if (args?.comma) {
+      value = value.replace(".", ",");
+    }
+
+    return value;
   }
 }
