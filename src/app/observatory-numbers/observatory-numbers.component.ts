@@ -34,9 +34,9 @@ export class ObservatoryNumbersComponent implements OnInit {
       },
       currentYear: {
         websites: {
-          conform: 14,
-          partial: 7,
-          not_conform: 7,
+          conform: 16,
+          partial: 8,
+          not_conform: 8,
         },
         apps: {
           conform: 0,
@@ -61,7 +61,7 @@ export class ObservatoryNumbersComponent implements OnInit {
       currentYear: {
         websites: {
           gold: 4,
-          silver: 3,
+          silver: 7,
           bronze: 0,
         },
         apps: {
