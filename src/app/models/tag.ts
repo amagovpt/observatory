@@ -11,6 +11,8 @@ export class Tag {
   nPages: number;
   nPagesWithoutErrors: number;
   entities: Array<string>;
+  declarations: number;
+  stamps: number;
   score: number;
   A: number;
   AA: number;
@@ -30,6 +32,8 @@ export class Tag {
     this.nPages = 0;
     this.nPagesWithoutErrors = 0;
     this.entities = new Array<string>();
+    this.declarations = 0;
+    this.stamps = 0;
     this.score = 0;
     this.A = 0;
     this.AA = 0;
@@ -43,6 +47,14 @@ export class Tag {
     this.websites.push(website);
     this.nPages += website.pages.length;
     this.score += website.getScore();
+
+    if (website.declaration) {
+      this.declarations++;
+    }
+
+    if (website.stamp) {
+      this.stamps++;
+    }
 
     this.nPagesWithoutErrors += website.AAA;
 

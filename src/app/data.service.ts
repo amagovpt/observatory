@@ -83,6 +83,8 @@ export class DataService {
           id: wb.WebsiteId,
           entity: wb.Entity_Name,
           name: wb.Website_Name,
+          declaration: wb.Website_Declaration,
+          stamp: wb.Website_Stamp,
           domain: wb.Url,
           creation_date: wb.Website_Creation_Date,
         });
@@ -102,6 +104,8 @@ export class DataService {
       website.id,
       website.entity,
       website.name,
+      website.declaration,
+      website.stamp,
       website.domain,
       website.creation_date
     );

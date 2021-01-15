@@ -34,7 +34,7 @@ export class WebsitesListComponent implements OnInit {
         rank++;
         return w;
       });
-
+    console.log(this.websites);
     this.pageSize = 10;
 
     this.sortedData = this.websites.slice(0, this.pageSize);

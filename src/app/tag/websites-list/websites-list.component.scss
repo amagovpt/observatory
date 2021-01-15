@@ -68,18 +68,21 @@ table thead tr th {
 }
 
 table thead tr th:nth-child(1),
-table thead tr th:nth-child(2) {
+table thead tr th:nth-child(2),
+table tbody tr td:nth-child(3),
+table tbody tr td:nth-child(4) {
   text-align: left;
 }
 
-table thead tr th:nth-child(3) {
+
+table tbody tr td:nth-child(5) {
   text-align: center;
 }
 
-table thead tr th:nth-child(4),
-table thead tr th:nth-child(5),
 table thead tr th:nth-child(6),
-table thead tr th:nth-child(7) {
+table thead tr th:nth-child(7),
+table thead tr th:nth-child(8),
+table thead tr th:nth-child(9) {
   text-align: right;
 }
 
@@ -121,20 +124,22 @@ td.name a {
   margin-left: 1em;
 }
 
-table tbody tr td:nth-child(1) {
+table tbody tr td:nth-child(1),
+table tbody tr td:nth-child(3),
+table tbody tr td:nth-child(4) {
   text-align: left;
   padding-left: 16px;
 }
 
-table tbody tr td:nth-child(3) {
+table tbody tr td:nth-child(5) {
   font-size: 18px;
   text-align: center;
 }
 
-table tbody tr td:nth-child(4),
-table tbody tr td:nth-child(5),
 table tbody tr td:nth-child(6),
-table tbody tr td:nth-child(7) {
+table tbody tr td:nth-child(7),
+table tbody tr td:nth-child(8),
+table tbody tr td:nth-child(9) {
   text-align: right;
   padding-right: 16px;
 }

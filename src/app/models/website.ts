@@ -7,6 +7,8 @@ export class Website {
   rank: number;
   entity: string;
   name: string;
+  declaration: number | null;
+  stamp: number | null;
   domain: string;
   creationDate: Date;
   pages: Array<Page>;
@@ -24,6 +26,8 @@ export class Website {
     id: number,
     entity: string,
     name: string,
+    declaration: number | null,
+    stamp: number | null,
     domain: string,
     creationDate: Date
   ) {
@@ -31,6 +35,8 @@ export class Website {
     this.rank = -1;
     this.entity = entity;
     this.name = name;
+    this.declaration = declaration;
+    this.stamp = stamp;
     this.domain = domain;
     this.creationDate = creationDate;
     this.pages = new Array<Page>();
