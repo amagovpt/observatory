@@ -22,9 +22,9 @@ export class ObservatoryNumbersComponent implements OnInit {
     this.declarations = {
       previousYear: {
         websites: {
-          conform: 1,
-          partial: 0,
-          not_conform: 0,
+          conform: 17,
+          partial: 8,
+          not_conform: 8,
         },
         apps: {
           conform: 0,
@@ -34,9 +34,9 @@ export class ObservatoryNumbersComponent implements OnInit {
       },
       currentYear: {
         websites: {
-          conform: 16,
-          partial: 8,
-          not_conform: 8,
+          conform: 0,
+          partial: 0,
+          not_conform: 0,
         },
         apps: {
           conform: 0,
@@ -48,8 +48,8 @@ export class ObservatoryNumbersComponent implements OnInit {
     this.badges = {
       previousYear: {
         websites: {
-          gold: 0,
-          silver: 1,
+          gold: 4,
+          silver: 8,
           bronze: 0,
         },
         apps: {
@@ -60,8 +60,8 @@ export class ObservatoryNumbersComponent implements OnInit {
       },
       currentYear: {
         websites: {
-          gold: 4,
-          silver: 7,
+          gold: 0,
+          silver: 0,
           bronze: 0,
         },
         apps: {

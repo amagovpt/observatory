@@ -94,7 +94,7 @@
     "errors": {
       "title": "Más práticas",
       "table_title": "Tabela",
-      "chart_all_title": "Gráfico de más prácticas",
+      "chart_all_title": "Gráfico de más práticas",
       "chart_title": "Gráfico do top 10",
       "common_errors": "N.º de páginas",
       "common_errors2": "N.º de ocorrências",
@@ -305,7 +305,15 @@
       "subtitle": "Estatísticas do diretório",
       "rank": "Classificação",
       "name": "Sítio Web",
-      "entity": "Entidade",
+      "entity": "Sítio web da entidade",
+      "declaration": "Com declaração de acessibilidade e usabilidade",
+      "declaration_not_conform": "Declaração não conforme",
+      "declaration_partial_conform": "Declaração parcialmente conforme",
+      "declaration_conform": "Declaração conforme",
+      "stamp": "Com selo de acessibilidade e usabilidade",
+      "stamp_bronze": "Selo Bronze",
+      "stamp_silver": "Selo Prata",
+      "stamp_gold": "Selo Ouro",
       "score": "Pontuação",
       "pages": "Páginas",
       "levels": "Páginas em conformidade*",
@@ -331,7 +339,7 @@
       "best_practices": "Boas práticas",
       "bad_practices": "Más práticas"
     },
-    "top_10_best_practices_title": "As 10 melhores prácticas mais frequentes",
+    "top_10_best_practices_title": "As 10 melhores práticas mais frequentes",
     "top_10_bad_practices_title": "As 10 piores práticas mais frequentes",
     "top_3_bad_practices": {
       "title": "As 3 piores práticas por nível de conformidade",
@@ -341,9 +349,9 @@
       "pages": "páginas"
     },
     "top_3_best_practices": {
-      "title": "As 3 melhores prácticas por nível de conformidade",
+      "title": "As 3 melhores práticas por nível de conformidade",
       "subtitle": "(Por n.º de páginas)",
-      "message": "As 3 melhores prácticas de nível \"{{value}}\"",
+      "message": "As 3 melhores práticas de nível \"{{value}}\"",
       "practice": "prática em",
       "pages": "páginas"
     },

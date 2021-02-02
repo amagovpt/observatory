@@ -4,6 +4,8 @@ import { Sort } from "@angular/material/sort";
 import { Tag } from "../../models/tag";
 import { Website } from "../../models/website";
 
+import orderBy from "lodash.orderby";
+
 @Component({
   selector: "app-websites-list",
   templateUrl: "./websites-list.component.html",
@@ -25,17 +27,22 @@ export class WebsitesListComponent implements OnInit {
 
   ngOnInit(): void {
     let rank = 1;
-    this.websites = this.tag.websites
-      .slice()
-      .sort((w: Website, w2: Website) => w.getScore() - w2.getScore())
-      .reverse()
-      .map((w: Website) => {
-        w.rank = rank;
-        rank++;
-        return w;
-      });
-    console.log(this.websites);
-    this.pageSize = 10;
+    this.websites = this.tag.websites.slice().map((w: Website) => {
+      w.score = w.getScore();
+      return w;
+    });
+
+    this.websites = orderBy(
+      this.websites,
+      ["score", "AAA", "AA", "A", "name"],
+      ["desc", "desc", "desc", "desc", "asc"]
+    ).map((w: Website) => {
+      w.rank = rank;
+      rank++;
+      return w;
+    });
+
+    this.pageSize = 50;
 
     this.sortedData = this.websites.slice(0, this.pageSize);
 
@@ -108,7 +115,51 @@ export class WebsitesListComponent implements OnInit {
       } else {
         this.websites = this.websites.sort((a, b) => b.rank - a.rank).slice();
       }
-    } else {
+    } else if (sort.active === "declaration") {
+      if (sort.direction === "asc") {
+        this.websites = this.websites
+          .sort((a, b) => a.declaration - b.declaration)
+          .slice();
+      } else {
+        this.websites = this.websites
+          .sort((a, b) => b.declaration - a.declaration)
+          .slice();
+      }
+    } else if (sort.active === "stamp") {
+      if (sort.direction === "asc") {
+        this.websites = this.websites.sort((a, b) => a.stamp - b.stamp).slice();
+      } else {
+        this.websites = this.websites.sort((a, b) => b.stamp - a.stamp).slice();
+      }
+    } else if (sort.active === "pages") {
+      if (sort.direction === "asc") {
+        this.websites = this.websites
+          .sort((a, b) => a.pages.length - b.pages.length)
+          .slice();
+      } else {
+        this.websites = this.websites
+          .sort((a, b) => b.pages.length - a.pages.length)
+          .slice();
+      }
+    } else if (sort.active === "A") {
+      if (sort.direction === "asc") {
+        this.websites = this.websites.sort((a, b) => a.A - b.A).slice();
+      } else {
+        this.websites = this.websites.sort((a, b) => b.A - a.A).slice();
+      }
+    } else if (sort.active === "AA") {
+      if (sort.direction === "asc") {
+        this.websites = this.websites.sort((a, b) => a.AA - b.AA).slice();
+      } else {
+        this.websites = this.websites.sort((a, b) => b.AA - a.AA).slice();
+      }
+    } else if (sort.active === "AAA") {
+      if (sort.direction === "asc") {
+        this.websites = this.websites.sort((a, b) => a.AAA - b.AAA).slice();
+      } else {
+        this.websites = this.websites.sort((a, b) => b.AAA - a.AAA).slice();
+      }
+    } else if (sort.active === "name") {
       if (sort.direction === "asc") {
         this.websites = this.websites.sort((a, b) => {
           if (a.name.toLowerCase() < b.name.toLowerCase()) {

@@ -201,8 +201,8 @@ export class ErrorDistributionDialogComponent implements OnInit {
                 display: true,
                 ticks: {
                   beginAtZero: true,
-                  steps: 1,
-                  stepValue: 1,
+                  maxTicksLimit: this.nPages === 1 ? 1 : 11,
+                  min: 0,
                   max: this.nPages, //this.calculateMax(Math.max(...values)),
                   fontFamily: "Lato",
                 },

@@ -140,7 +140,7 @@ table tbody tr td:nth-child(6),
 table tbody tr td:nth-child(7),
 table tbody tr td:nth-child(8),
 table tbody tr td:nth-child(9) {
-  text-align: right;
+  
   padding-right: 16px;
 }
 
@@ -190,4 +190,13 @@ select {
 
 .flip-image {
   transform: scaleX(-1);
+}
+
+::ng-deep .tooltip-stamp-declaration {
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 22px;
+  color: var(--table-header-text);
 }

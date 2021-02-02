@@ -124,8 +124,8 @@ export class PracticesDistributionComponent implements OnInit, AfterViewInit {
               display: true,
               ticks: {
                 beginAtZero: true,
-                steps: 1,
-                stepValue: 1,
+                maxTicksLimit: this.website.pages.length === 1 ? 1 : 11,
+                min: 0,
                 max: this.website.pages.length,
                 //maxTicksLimit: this.calculateMax(Math.max(...values)) + 1,
                 fontFamily: "Lato",
