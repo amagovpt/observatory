@@ -452,9 +452,20 @@
           </ul>
         </div>
       </div>
-      <a class="directories-link" routerLink="directories">{{
-        "HOME.summary.button" | translate
-      }}</a>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <a class="directories-link" routerLink="directories">{{
+          "HOME.summary.button" | translate
+        }}</a>
+        <span fxFlex></span>
+        <span fxLayout="column" fxLayoutAlign="end end">
+          <span [innerHTML]="'HOME.summary.wai_tools.sentence1' | translate"></span>
+          <span>{{ "HOME.summary.wai_tools.sentence2" | translate }}</span>
+          <span>{{ "HOME.summary.wai_tools.sentence3" | translate }}</span>
+          <span>{{ "HOME.summary.wai_tools.sentence4" | translate }}</span>
+        </span>
+        <span fxFlex="2"></span>
+        <img class="eu-logo" src="assets/images/eu.svg">
+      </div>
     </div>
   </section>
 </div>

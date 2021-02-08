@@ -95,6 +95,7 @@ table thead tr th:nth-child(9) {
 }
 
 .name {
+  letter-spacing: 1.5em;
   width: 50%;
 }
 
@@ -190,6 +191,10 @@ select {
 
 .flip-image {
   transform: scaleX(-1);
+}
+
+.caption {
+  visibility: hidden;
 }
 
 ::ng-deep .tooltip-stamp-declaration {

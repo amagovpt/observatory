@@ -225,7 +225,13 @@
       "pages_without_errors": "Páginas sem erros",
       "best_practices_title": "Boas práticas mais frequentes",
       "errors_title": "Erros mais comuns",
-      "button": "Consulte os dados do Observatório"
+      "button": "Consulte os dados do Observatório",
+      "wai_tools": {
+        "sentence1": "O Observatório é um demonstrador do projeto <a target='_blank' title='Sítio web do projeto WAI-Tools' href='https://www.w3.org/WAI/about/projects/wai-tools/'>WAI-Tools</a>",
+        "sentence2": "Projeto co-financiado pela Comissão Europeia",
+        "sentence3": "programa Horizon 2020 - Innovation Action",
+        "sentence4": "GA 780057"
+      }
     }
   },
   "NUMBERS": {
@@ -306,11 +312,11 @@
       "rank": "Classificação",
       "name": "Sítio Web",
       "entity": "Sítio web da entidade",
-      "declaration": "Com declaração de acessibilidade e usabilidade",
+      "declaration": "Com declaração de usabilidade e acessibilidade",
       "declaration_not_conform": "Declaração não conforme",
       "declaration_partial_conform": "Declaração parcialmente conforme",
-      "declaration_conform": "Declaração conforme",
-      "stamp": "Com selo de acessibilidade e usabilidade",
+      "declaration_conform": "Declaração plenamente conforme",
+      "stamp": "Com selo de usabilidade e acessibilidade",
       "stamp_bronze": "Selo Bronze",
       "stamp_silver": "Selo Prata",
       "stamp_gold": "Selo Ouro",

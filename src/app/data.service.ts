@@ -41,7 +41,19 @@ export class DataService {
             tags.push(newTag);
           }
 
-          this.listTags = new ListTags(tags);
+          const nEntities = response.result
+            .map((r) => r.Entity_Name)
+            .filter((v, i, self) => self.indexOf(v) === i).length;
+
+          const nWebsites = response.result
+            .map((r) => r.Website_Name)
+            .filter((v, i, self) => self.indexOf(v) === i).length;
+
+          const nPages = response.result
+            .map((r) => r.Uri)
+            .filter((v, i, self) => self.indexOf(v) === i).length;
+
+          this.listTags = new ListTags(tags, nEntities, nWebsites, nPages);
           return true;
         }),
         catchError((err: any) => {

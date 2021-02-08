@@ -143,3 +143,16 @@ table tbody tr td:nth-child(9) {
 .note {
   color: var(--table-text);
 }
+
+caption {
+  visibility: hidden;
+}
+
+::ng-deep .tooltip-stamp-declaration {
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 22px;
+  color: var(--table-header-text);
+}

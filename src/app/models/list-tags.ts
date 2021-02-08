@@ -19,13 +19,16 @@ export class ListTags {
   recentPage: Date;
   oldestPage: Date;
 
-  constructor(tags: Array<Tag>) {
+  constructor(
+    tags: Array<Tag>,
+    nEntities: number,
+    nWebsites: number,
+    nPages: number
+  ) {
     this.tags = tags;
-    this.nEntities = tags.reduce((n: number, t: Tag) => {
-      return n + t.entities.length;
-    }, 0);
-    this.nWebsites = 0;
-    this.nPages = 0;
+    this.nEntities = nEntities;
+    this.nWebsites = nWebsites;
+    this.nPages = nPages;
     this.nPagesWithoutErrors = 0;
     this.A = 0;
     this.AA = 0;
@@ -39,8 +42,6 @@ export class ListTags {
 
     for (const tag of tags || []) {
       score += tag.getScore();
-      this.nWebsites += tag.websites.length;
-      this.nPages += tag.nPages;
       this.nPagesWithoutErrors += tag.nPagesWithoutErrors;
       this.A += tag.A;
       this.AA += tag.AA;
