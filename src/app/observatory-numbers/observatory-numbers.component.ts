@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
-import { ListTags } from "../models/list-tags";
+import { ListDirectories } from "../models/list-directories";
 
 @Component({
   selector: "app-observatory-numbers",
@@ -8,7 +8,7 @@ import { ListTags } from "../models/list-tags";
   styleUrls: ["./observatory-numbers.component.scss"],
 })
 export class ObservatoryNumbersComponent implements OnInit {
-  listTags: ListTags;
+  listDirectories: ListDirectories;
 
   currentYear: number;
   declarations: any;
@@ -72,7 +72,7 @@ export class ObservatoryNumbersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listTags = this.data.getListTags();
+    this.listDirectories = this.data.getListDirectories();
 
     const totalDeclarations =
       this.declarations.total.websites.conform +

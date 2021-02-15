@@ -1,21 +1,20 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs";
 
-import { DataService } from '../data.service';
+import { DataService } from "../data.service";
 
-import { Tag } from '../models/tag';
-import { Website } from '../models/website';
+import { Directory } from "../models/directory";
+import { Website } from "../models/website";
 
 @Component({
-  selector: 'app-website',
-  templateUrl: './website.component.html',
-  styleUrls: ['./website.component.scss']
+  selector: "app-website",
+  templateUrl: "./website.component.html",
+  styleUrls: ["./website.component.scss"],
 })
 export class WebsiteComponent implements OnInit, OnDestroy {
-
   sub: Subscription;
-  tag: Tag;
+  directory: Directory;
   website: Website;
 
   scoreDistributionData: any;
@@ -38,34 +37,26 @@ export class WebsiteComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loading = true;
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      const listTags = this.data.getListTags();
+    this.sub = this.activatedRoute.params.subscribe((params) => {
+      const listDirectories = this.data.getListDirectories();
 
-      const multi = params.tag.includes('+');
-      if (multi) {
-        const tags = params.tag.split('+');
-        let websiteExists = true;
-        for (const id of tags || []) {
-          websiteExists = websiteExists && listTags.getTag(parseInt(id, 0)) ? true : false;
-        }
-        if (websiteExists) {
-          this.tag = listTags.getTag(parseInt(tags[0], 0));
-        }
-      } else {
-        this.tag = listTags.getTag(parseInt(params.tag, 0));
-      }
+      this.directory = listDirectories.getDirectory(
+        parseInt(params.directory, 0)
+      );
 
-      if (this.tag) {
-        this.website = this.tag.websites.find((w: Website) => w.id === parseInt(params.website, 0));
-        
+      if (this.directory) {
+        this.website = this.directory.websites.find(
+          (w: Website) => w.id === parseInt(params.website, 0)
+        );
+
         if (this.website) {
-          this.scoreDistributionData =  {
+          this.scoreDistributionData = {
             number: this.website.pages.length,
-            frequency: this.website.frequencies
+            frequency: this.website.frequencies,
           };
           this.errorDistributionData = {
             errors: this.website.getTopTenErrors(),
-            isCat: false
+            isCat: false,
           };
           this.topFiveErrorsData = this.website.errors;
           this.topFiveBestPractices = this.website.success;

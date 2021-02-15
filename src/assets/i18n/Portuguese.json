@@ -59,7 +59,7 @@
     "gauge": {
       "label": "Pontuação média"
     },
-    "tags": "Diretórios",
+    "directories": "Diretórios",
     "entities": "Entidades",
     "websites": "Sítios Web",
     "pages": "Páginas",
@@ -130,10 +130,10 @@
       "occurrences": {
         "single_error": "aviso em",
         "multi_error": "avisos em",
-        "single_page_tag": "sítio Web",
-        "single_page_listTags": "tag",
-        "multi_page_tag": "sítios Web",
-        "multi_page_listTags": "tags",
+        "single_page_directory": "sítio Web",
+        "single_page_listDirectories": "diretório",
+        "multi_page_directory": "sítios Web",
+        "multi_page_listDirectories": "diretórios",
         "from": "De",
         "to": "a"
       },
@@ -247,7 +247,7 @@
         "part2": "Observatório"
       },
       "entities": "Entidades",
-      "tags": "Diretórios",
+      "directories": "Diretórios",
       "pages": "Páginas",
       "pages_without_errors": "Páginas sem erros",
       "best_practices_title": "Boas práticas mais frequentes",
@@ -277,7 +277,7 @@
     "last_year": "no último ano",
     "last_updated": "Última atualização:"
   },
-  "ALL_TAGS": {
+  "DIRECTORIES": {
     "title": "Observatório",
     "subtitle": "Diretórios",
     "statistics_title": "Estatísticas",
@@ -300,7 +300,7 @@
       "note": "* Conformidade com WCAG 2.1 (W3C)"
     }
   },
-  "TAG": {
+  "DIRECTORY": {
     "title": "Diretórios",
     "subtitle": "Diretório:",
     "statistics_title": "Estatísticas",
@@ -408,7 +408,7 @@
     "message_close": "Fechar",
     "unexpected_error": "Ocorreu um erro inesperado. Por favor tente aceder mais tarde.",
     "error_contact": "Se o problema persistir, contacte-nos...",
-    "tag_error": "A categoria que tentou aceder não existe",
+    "directory_error": "O diretório que tentou aceder não existe",
     "website_error": "O sítio Web que tentou aceder não existe",
     "go_to_top": "Ir para o topo",
     "go_back": "Voltar",

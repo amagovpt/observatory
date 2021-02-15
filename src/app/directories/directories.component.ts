@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { ListTags } from '../models/list-tags';
+import { Component, OnInit } from "@angular/core";
+import { DataService } from "../data.service";
+import { ListDirectories } from "../models/list-directories";
 
 @Component({
-  selector: 'app-directories',
-  templateUrl: './directories.component.html',
-  styleUrls: ['./directories.component.scss']
+  selector: "app-directories",
+  templateUrl: "./directories.component.html",
+  styleUrls: ["./directories.component.scss"],
 })
 export class DirectoriesComponent implements OnInit {
+  listDirectories: ListDirectories;
 
-  listTags: ListTags;
-
-  constructor(private readonly data: DataService) { }
+  constructor(private readonly data: DataService) {}
 
   ngOnInit(): void {
-    this.listTags = this.data.getListTags();
+    this.listDirectories = this.data.getListDirectories();
   }
 }

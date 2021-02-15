@@ -5,8 +5,8 @@ import { of } from "rxjs";
 import { map, catchError } from "rxjs/operators/";
 import clone from "lodash.clone";
 
-import { ListTags } from "./models/list-tags";
-import { Tag } from "./models/tag";
+import { ListDirectories } from "./models/list-directories";
+import { Directory } from "./models/directory";
 import { Website } from "./models/website";
 
 @Injectable({
@@ -15,7 +15,7 @@ import { Website } from "./models/website";
 export class DataService {
   private readonly server: string;
 
-  private listTags: ListTags;
+  private listDirectories: ListDirectories;
 
   constructor(private readonly http: HttpClient) {
     const host = location.hostname;
@@ -33,27 +33,21 @@ export class DataService {
       .pipe(
         map((res) => {
           const response = res.body;
-          const tags = new Array<Tag>();
-          const tmpTags = this.createTemporaryTags(response);
+          const directories = new Array<Directory>();
+          const tmpDirectories = this.createTemporaryDirectories(response);
 
-          for (const tag of tmpTags || []) {
-            const newTag = this.createTag(tag, clone(response));
-            tags.push(newTag);
+          for (const directory of tmpDirectories || []) {
+            const newDirectory = this.createDirectory(
+              directory,
+              clone(response)
+            );
+            directories.push(newDirectory);
           }
 
-          const nEntities = response.result
-            .map((r) => r.Entity_Name)
-            .filter((v, i, self) => self.indexOf(v) === i).length;
-
-          const nWebsites = response.result
-            .map((r) => r.Website_Name)
-            .filter((v, i, self) => self.indexOf(v) === i).length;
-
-          const nPages = response.result
-            .map((r) => r.Uri)
-            .filter((v, i, self) => self.indexOf(v) === i).length;
-
-          this.listTags = new ListTags(tags, nEntities, nWebsites, nPages);
+          this.listDirectories = new ListDirectories(
+            response.result,
+            directories
+          );
           return true;
         }),
         catchError((err: any) => {
@@ -63,33 +57,40 @@ export class DataService {
       );
   }
 
-  getListTags(): ListTags {
-    return this.listTags;
+  getListDirectories(): ListDirectories {
+    return this.listDirectories;
   }
 
-  private createTemporaryTags(response: any): Array<any> {
-    const tmpTagsIds = new Array<number>();
-    const tmpTags = new Array<any>();
-    response.result.map((tag: any) => {
-      if (!tmpTagsIds.includes(tag.TagId)) {
-        tmpTagsIds.push(tag.TagId);
-        tmpTags.push({
-          id: tag.TagId,
-          name: tag.Tag_Name,
-          creation_date: tag.Tag_Creation_Date,
+  private createTemporaryDirectories(response: any): Array<any> {
+    const tmpDirectoriesIds = new Array<number>();
+    const tmpDirectories = new Array<any>();
+    response.result.map((directory: any) => {
+      if (!tmpDirectoriesIds.includes(directory.DirectoryId)) {
+        tmpDirectoriesIds.push(directory.DirectoryId);
+        tmpDirectories.push({
+          id: directory.DirectoryId,
+          name: directory.Directory_Name,
+          creation_date: directory.Directory_Creation_Date,
         });
       }
     });
 
-    return tmpTags;
+    return tmpDirectories;
   }
 
-  private createTag(tag: any, response: any): Tag {
-    const newTag = new Tag(tag.id, tag.name, tag.creation_date);
+  private createDirectory(directory: any, response: any): Directory {
+    const newDirectory = new Directory(
+      directory.id,
+      directory.name,
+      directory.creation_date
+    );
     const tmpWebsitesIds = new Array<number>();
     const websites = new Array<any>();
     for (const wb of response.result || []) {
-      if (wb.TagId === tag.id && !tmpWebsitesIds.includes(wb.WebsiteId)) {
+      if (
+        wb.DirectoryId === directory.id &&
+        !tmpWebsitesIds.includes(wb.WebsiteId)
+      ) {
         tmpWebsitesIds.push(wb.WebsiteId);
         websites.push({
           id: wb.WebsiteId,
@@ -104,14 +105,14 @@ export class DataService {
     }
 
     for (const website of websites || []) {
-      const newWebsite = this.createWebsite(website, tag, response);
-      newTag.addWebsite(newWebsite);
+      const newWebsite = this.createWebsite(website, directory, response);
+      newDirectory.addWebsite(newWebsite);
     }
 
-    return newTag;
+    return newDirectory;
   }
 
-  private createWebsite(website: any, tag: any, response: any): Website {
+  private createWebsite(website: any, directory: any, response: any): Website {
     const newWebsite = new Website(
       website.id,
       website.entity,
@@ -124,7 +125,7 @@ export class DataService {
 
     const pages = new Array<any>();
     response.result.map((p: any) => {
-      if (p.Website_Name === website.name && p.TagId === tag.id) {
+      if (p.Website_Name === website.name && p.DirectoryId === directory.id) {
         pages.push({
           pageId: p.PageId,
           uri: p.Uri,

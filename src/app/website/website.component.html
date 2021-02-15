@@ -7,13 +7,13 @@
       <span>></span>
       <a [routerLink]="['/', 'directories']">{{ "HEADER.NAV.directories" | translate }}</a>
       <span>></span>
-      <a [routerLink]="['/', 'directories', tag.id]">{{ tag.name }}</a>
+      <a [routerLink]="['/', 'directories', directory.id]">{{ directory.name }}</a>
       <span>></span>
       <span>{{ website.name }}</span>
     </nav>
   </section>
   <section id="main" class="info">
-    <div class="observatory">{{ tag.name }}</div>
+    <div class="observatory">{{ directory.name }}</div>
     <h2>{{ website.name }}</h2>
     <h3>{{ website.domain }}</h3>
   </section>

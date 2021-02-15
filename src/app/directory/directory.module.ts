@@ -5,30 +5,31 @@ import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { NgxGaugeModule } from "ngx-gauge";
 import { MaterialModule } from "../material/material.module";
-import { DialogModule } from "./../dialog/dialog.module";
+import { DialogModule } from "../dialog/dialog.module";
 import { PipesModule } from "../pipes/pipes.module";
-import { DirectoriesComponent } from "./directories.component";
-import { DirectoriesRoutingModule } from "./directories-routing.module";
-import { DirectoriesStatisticsComponent } from "./directories-statistics/directories-statistics.component";
-import { DirectoriesListComponent } from "./directories-list/directories-list.component";
+import { DirectoryRoutingModule } from "./directory-routing.module";
+import { DirectoryComponent } from "./directory.component";
+import { DirectoryStatisticsComponent } from "./directory-statistics/directory-statistics.component";
+import { WebsitesListComponent } from "./websites-list/websites-list.component";
 
 @NgModule({
   declarations: [
-    DirectoriesComponent,
-    DirectoriesStatisticsComponent,
-    DirectoriesListComponent,
+    DirectoryComponent,
+    DirectoryStatisticsComponent,
+    WebsitesListComponent,
   ],
   imports: [
     CommonModule,
     FlexLayoutModule,
     NgxGaugeModule,
     MaterialModule,
+    CommonModule,
     TranslateModule,
     RouterModule,
     DialogModule,
     PipesModule,
-    DirectoriesRoutingModule,
+    DirectoryRoutingModule,
   ],
-  exports: [DirectoriesComponent],
+  exports: [DirectoryComponent],
 })
-export class DirectoriesModule {}
+export class DirectoryModule {}

@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { ListTags } from '../models/list-tags';
-import { Tag } from '../models/tag';
+import { Component, OnInit } from "@angular/core";
+import { DataService } from "../data.service";
+import { ListDirectories } from "../models/list-directories";
+import { Directory } from "../models/directory";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-
-  listTags: ListTags;
+  listDirectories: ListDirectories;
 
   tabs: HTMLElement[] = [];
   panels: HTMLElement[] = [];
@@ -19,10 +18,10 @@ export class HomeComponent implements OnInit {
   keys: any;
   direction: any;
 
-  constructor(private readonly data: DataService) { }
+  constructor(private readonly data: DataService) {}
 
   ngOnInit(): void {
-    this.listTags = this.data.getListTags();
+    this.listDirectories = this.data.getListDirectories();
 
     this.keys = {
       end: 35,
@@ -46,17 +45,21 @@ export class HomeComponent implements OnInit {
     this.bindListeners();
   }
 
-  getTopFiveTags(): Array<Tag> {
-    return this.listTags.tags
+  getTopFiveDirectories(): Array<Directory> {
+    return this.listDirectories.directories
       .slice()
-      .sort((a: Tag, b: Tag) => b.getScore() - a.getScore())
+      .sort((a: Directory, b: Directory) => b.getScore() - a.getScore())
       .slice(0, 5);
   }
 
   generateArrays() {
-    const tabs = document.querySelectorAll<HTMLElement>('.homeTabs [role="tab"]');
+    const tabs = document.querySelectorAll<HTMLElement>(
+      '.homeTabs [role="tab"]'
+    );
     tabs.forEach((tab) => this.tabs.push(tab));
-    const panels = document.querySelectorAll<HTMLElement>('.homeTabs [role="tabpanel"]');
+    const panels = document.querySelectorAll<HTMLElement>(
+      '.homeTabs [role="tabpanel"]'
+    );
     panels.forEach((panel) => this.panels.push(panel));
   }
 

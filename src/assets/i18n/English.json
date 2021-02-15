@@ -59,7 +59,7 @@
     "gauge": {
       "label": "Average score"
     },
-    "tags": "Directories",
+    "directories": "Directories",
     "entities": "Entities",
     "websites": "Websites",
     "pages": "Pages",
@@ -130,10 +130,10 @@
       "occurrences": {
         "single_error": "warning in",
         "multi_error": "warnings in",
-        "single_page_tag": "website",
-        "single_page_listTags": "tag",
-        "multi_page_tag": "websites",
-        "multi_page_listTags": "tags",
+        "single_page_directory": "website",
+        "single_page_listDirectory": "directory",
+        "multi_page_directory": "websites",
+        "multi_page_listDirectories": "directories",
         "from": "",
         "to": "to"
       },
@@ -247,7 +247,7 @@
         "part2": "Observatory"
       },
       "entities": "Entities",
-      "tags": "Directories",
+      "directories": "Directories",
       "pages": "Pages",
       "pages_without_errors": "Pages without errors",
       "best_practices_title": "Most frequent best practices",
@@ -277,7 +277,7 @@
     "last_year": "in the last year",
     "last_updated": "Last updated:"
   },
-  "ALL_TAGS": {
+  "DIRECTORIES": {
     "title": "Observatory",
     "subtitle": "Directories",
     "statistics_title": "Statistics",
@@ -300,7 +300,7 @@
       "note": "* Conforming to WCAG 2.1 (W3C)"
     }
   },
-  "TAG": {
+  "DIRECTORY": {
     "title": "Directories",
     "subtitle": "Directory:",
     "statistics_title": "Statistics",
@@ -408,7 +408,7 @@
     "message_close": "Close",
     "unexpected_error": "An unexpected error has ocurred. Please try again later.",
     "error_contact": "If the problem persists, please contact us...",
-    "tag_error": "The category you tried to access doesn't exist",
+    "directory_error": "The directory you tried to access doesn't exist",
     "website_error": "The website you tried to access doesn't exist",
     "go_to_top": "Go to top",
     "go_back": "Go back",

@@ -9,9 +9,9 @@
     </nav>
   </section>
   <section id="main" class="info">
-    <div class="observatory">{{ "ALL_TAGS.title" | translate }}</div>
-    <h2>{{ "ALL_TAGS.subtitle" | translate }}</h2>
+    <div class="observatory">{{ "DIRECTORIES.title" | translate }}</div>
+    <h2>{{ "DIRECTORIES.subtitle" | translate }}</h2>
   </section>
-  <app-tags-statistics [listTags]="listTags"></app-tags-statistics>
-  <app-tags-list *ngIf="listTags.tags.length > 0" [listTags]="listTags"></app-tags-list>
+  <app-directories-statistics [listDirectories]="listDirectories"></app-directories-statistics>
+  <app-directories-list *ngIf="listDirectories.directories.length > 0" [listDirectories]="listDirectories"></app-directories-list>
 </main>

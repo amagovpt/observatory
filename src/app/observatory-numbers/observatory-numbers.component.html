@@ -9,7 +9,7 @@
     </nav>
   </section>
   <section id="main" class="info">
-    <div class="observatory">{{ "ALL_TAGS.title" | translate }}</div>
+    <div class="observatory">{{ "DIRECTORIES.title" | translate }}</div>
     <h2>{{ "HEADER.NAV.numbers" | translate }}</h2>
   </section>
   <section class="numbers_section" fxLayout="row" fxLayoutAlign="center center">
@@ -26,7 +26,7 @@
           <div class="data-wrapper" fxLayout="column">
             <div fxLayout="row" fxLayoutAlign="space-around center">
               <div class="global-score">
-                <span>{{ listTags.getScore() | toFixed }}</span>
+                <span>{{ listDirectories.getScore() | toFixed }}</span>
                 <span
                   >{{ "NUMBERS.summary.average.part1" | translate }}<br />{{
                     "NUMBERS.summary.average.part2" | translate
@@ -34,14 +34,14 @@
                 >
               </div>
               <div class="number-websites" fxLayout="row">
-                <span>{{ listTags.nWebsites }}</span>
+                <span>{{ listDirectories.nWebsites }}</span>
                 <div fxLayout="column" fxLayoutAlign="center stretch">
                   <span
                     >{{ "NUMBERS.summary.websites.part1" | translate }}<br />{{
                       "NUMBERS.summary.websites.part2" | translate
                     }}
                   </span>
-                  <span class="last-year">+ {{ listTags.nWebsites }} {{ "HOME.summary.last_year" | translate }}</span>
+                  <span class="last-year">+ {{ listDirectories.nWebsites }} {{ "HOME.summary.last_year" | translate }}</span>
                 </div>
               </div>
             </div>
@@ -52,41 +52,41 @@
                 fxLayout="column"
                 fxLayoutAlign="center center"
               >
-                <span>{{ listTags.nEntities }}</span>
+                <span>{{ listDirectories.nEntities }}</span>
                 <span>{{ "NUMBERS.summary.entities" | translate }}</span>
-                <span class="last-year">+ {{ listTags.nEntities }} {{ "HOME.summary.last_year" | translate }}</span>
+                <span class="last-year">+ {{ listDirectories.nEntities }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
               <div
                 class="metadata"
                 fxLayout="column"
                 fxLayoutAlign="center center"
               >
-                <span>{{ listTags.tags.length }}</span>
-                <span>{{ "NUMBERS.summary.tags" | translate }}</span>
-                <span class="last-year">+ {{ listTags.tags.length }} {{ "HOME.summary.last_year" | translate }}</span>
+                <span>{{ listDirectories.directories.length }}</span>
+                <span>{{ "NUMBERS.summary.directories" | translate }}</span>
+                <span class="last-year">+ {{ listDirectories.directories.length }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
               <div
                 class="metadata"
                 fxLayout="column"
                 fxLayoutAlign="center center"
               >
-                <span>{{ listTags.nPages }}</span>
+                <span>{{ listDirectories.nPages }}</span>
                 <span>{{ "NUMBERS.summary.pages" | translate }}</span>
-                <span class="last-year">+ {{ listTags.nPages }} {{ "HOME.summary.last_year" | translate }}</span>
+                <span class="last-year">+ {{ listDirectories.nPages }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
               <div
                 class="metadata"
                 fxLayout="column"
                 fxLayoutAlign="center center"
               >
-                <span>{{ listTags.nPagesWithoutErrors }}</span>
+                <span>{{ listDirectories.nPagesWithoutErrors }}</span>
                 <span>{{ "NUMBERS.summary.pages_without_errors" | translate }}</span>
-                <span class="last-year">+ {{ listTags.nPagesWithoutErrors }} {{ "HOME.summary.last_year" | translate }}</span>
+                <span class="last-year">+ {{ listDirectories.nPagesWithoutErrors }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
             </div>
           </div>
         </div>
-        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ listTags.recentPage | date | customDate }}</span>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ listDirectories.recentPage | date | customDate }}</span>
       </div>
       <div class="declaration">
         <div fxLayout="row">

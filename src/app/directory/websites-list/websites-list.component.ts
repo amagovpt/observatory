@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Sort } from "@angular/material/sort";
 
-import { Tag } from "../../models/tag";
+import { Directory } from "../../models/directory";
 import { Website } from "../../models/website";
 
 import orderBy from "lodash.orderby";
@@ -12,7 +12,7 @@ import orderBy from "lodash.orderby";
   styleUrls: ["./websites-list.component.scss"],
 })
 export class WebsitesListComponent implements OnInit {
-  @Input() tag: Tag;
+  @Input() directory: Directory;
   @Input() multi: boolean;
 
   sortedData: Array<Website>;
@@ -27,7 +27,7 @@ export class WebsitesListComponent implements OnInit {
 
   ngOnInit(): void {
     let rank = 1;
-    this.websites = this.tag.websites.slice().map((w: Website) => {
+    this.websites = this.directory.websites.slice().map((w: Website) => {
       w.score = w.getScore();
       return w;
     });

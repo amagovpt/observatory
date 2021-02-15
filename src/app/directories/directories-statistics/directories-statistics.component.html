@@ -1,23 +1,18 @@
 <section fxLayout="row" fxLayoutAlign="center center">
   <div class="statistics-wrapper">
-    <div gdRows="auto 1fr" gdColumns="300px 1fr">
+    <div gdRows="auto 1fr" gdColumns="300px 1fr" >
       <div class="first-row">
-        <span>{{ "ALL_TAGS.statistics_title" | translate }}</span>
-        <span>{{ "ALL_TAGS.statistics_subtitle" | translate }}</span>
+        <span>{{ "DIRECTORIES.statistics_title" | translate }}</span>
+        <span>{{ "DIRECTORIES.statistics_subtitle" | translate }}</span>
       </div>
-      <div
-        class="first-row"
-        fxAlign="row"
-        fxLayoutAlign="start center"
-        gdColumns="50% 50%"
-      >
+      <div class="first-row" fxAlign="row" fxLayoutAlign="start center" gdColumns="50% 50%">
         <div>
           <span>{{ "STATISTICS.oldest_page_updated" | translate }}</span>
-          <span>{{ tag.oldestPage | date | customDate }}</span>
+          <span>{{ listDirectories.oldestPage | date | customDate }}</span>
         </div>
         <div>
           <span>{{ "STATISTICS.newest_page_updated" | translate }}</span>
-          <span>{{ tag.recentPage | date | customDate }}</span>
+          <span>{{ listDirectories.recentPage | date | customDate }}</span>
         </div>
       </div>
       <ngx-gauge
@@ -25,7 +20,7 @@
         [type]="'arch'"
         [thick]="'10'"
         [cap]="'round'"
-        [value]="tag.getScore() | toFixed"
+        [value]="listDirectories.score | toFixed"
         [label]="'STATISTICS.gauge.label' | translate"
         [min]="0"
         [max]="10"
@@ -33,21 +28,21 @@
         [thresholds]="thresholdConfig"
       >
       </ngx-gauge>
-      <div
-        class="metadata second-row"
-        fxLayout="row"
-        fxLayoutAlign="space-around center"
-      >
+      <div class="metadata second-row" fxLayout="row" fxLayoutAlign="space-around center">
         <div>
-          <span>{{ tag.entities.length }}</span>
+          <span>{{ listDirectories.directories.length }}</span>
+          <span>{{ "STATISTICS.directories" | translate }}</span>
+        </div>
+        <div>
+          <span>{{ listDirectories.nEntities }}</span>
           <span>{{ "STATISTICS.entities" | translate }}</span>
         </div>
         <div>
-          <span>{{ tag.websites.length }}</span>
+          <span>{{ listDirectories.nWebsites }}</span>
           <span>{{ "STATISTICS.websites" | translate }}</span>
         </div>
         <div>
-          <span>{{ tag.nPages }}</span>
+          <span>{{ listDirectories.nPages }}</span>
           <span>{{ "STATISTICS.pages" | translate }}</span>
         </div>
       </div>

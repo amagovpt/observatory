@@ -2,7 +2,7 @@ import orderBy from "lodash.orderby";
 import { Website } from "./website";
 import tests from "../tests";
 
-export class Tag {
+export class Directory {
   id: number;
   rank: number;
   name: string;

@@ -51,7 +51,7 @@ export class ErrorDistributionDialogComponent implements OnInit {
   errors: any;
   tests: any;
   nPages: number;
-  inTagsPage: boolean;
+  inDirectoriesPage: boolean;
   isCat: boolean;
 
   graphData: any;
@@ -73,10 +73,10 @@ export class ErrorDistributionDialogComponent implements OnInit {
     private translate: TranslateService
   ) {
     this.tests = tests;
-    this.inTagsPage = this.data.inTagsPage;
+    this.inDirectoriesPage = this.data.inDirectoriesPage;
     this.isCat = this.data.isCat;
     this.errors = this.data.errors;
-    this.nPages = this.data.tags.nPages;
+    this.nPages = this.data.directories.nPages;
 
     this.existingElemGroups = [];
 
@@ -84,7 +84,7 @@ export class ErrorDistributionDialogComponent implements OnInit {
       { def: "level", hide: false },
       { def: "element", hide: false },
       { def: "description", hide: false },
-      { def: "websites", hide: !this.inTagsPage },
+      { def: "websites", hide: !this.inDirectoriesPage },
       { def: "pages", hide: false },
       { def: "elems", hide: false },
       { def: "quartiles", hide: false },
@@ -93,14 +93,14 @@ export class ErrorDistributionDialogComponent implements OnInit {
     this.columnDefinitionsMobile = [
       { def: "level", hide: false },
       { def: "description", hide: false },
-      { def: "websites", hide: !this.inTagsPage },
+      { def: "websites", hide: !this.inDirectoriesPage },
       { def: "pages", hide: false },
     ];
 
     this.graphData = [];
     this.tableData = new Array<ErrorData>();
 
-    forEach(this.data.tags.errors, (v, k) => {
+    forEach(this.data.directories.errors, (v, k) => {
       if (this.tests[k]["result"] === "failed") {
         let key = k;
         let elem = this.tests[key]["elem"];
@@ -506,10 +506,10 @@ export class ErrorDistributionDialogComponent implements OnInit {
 
 function calculateQuartiles(d: any, test: any): Array<any> {
   let data;
-  if (d.inTagsPage) {
-    data = d.tags.getErrorOccurrenceByTag(test);
+  if (d.inDirectoriesPage) {
+    data = d.directories.getErrorOccurrenceByDirectory(test);
   } else {
-    data = d.tags.getErrorOccurrencesByWebsite(test);
+    data = d.directories.getErrorOccurrencesByWebsite(test);
   }
 
   const values = without(data, undefined).sort((a, b) => a - b);

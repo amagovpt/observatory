@@ -49,9 +49,9 @@ export class CorrectionDistributionDialogComponent implements OnInit {
 
   chart: any;
   tests: any;
-  tagsSuccess: {}[];
+  directoriesSuccess: {}[];
   nPages: number;
-  inTagsPage: boolean;
+  inDirectoriesPage: boolean;
   graphData: any;
   tableData: Array<CorrectionData>;
   showTableData: Array<CorrectionData>;
@@ -71,9 +71,9 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     private translate: TranslateService
   ) {
     this.tests = tests;
-    this.inTagsPage = this.data.inTagsPage;
-    this.nPages = this.data.tags.nPages;
-    this.tagsSuccess = [];
+    this.inDirectoriesPage = this.data.inDirectoriesPage;
+    this.nPages = this.data.directories.nPages;
+    this.directoriesSuccess = [];
     this.graphData = [];
     this.existingElemGroups = [];
 
@@ -81,7 +81,7 @@ export class CorrectionDistributionDialogComponent implements OnInit {
       { def: "level", hide: false },
       { def: "element", hide: false },
       { def: "description", hide: false },
-      { def: "websites", hide: !this.inTagsPage },
+      { def: "websites", hide: !this.inDirectoriesPage },
       { def: "pages", hide: false },
       { def: "elems", hide: false },
       { def: "quartiles", hide: false },
@@ -90,13 +90,13 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     this.columnDefinitionsMobile = [
       { def: "level", hide: false },
       { def: "description", hide: false },
-      { def: "websites", hide: !this.inTagsPage },
+      { def: "websites", hide: !this.inDirectoriesPage },
       { def: "pages", hide: false },
     ];
 
     this.tableData = new Array<CorrectionData>();
 
-    forEach(this.data.tags.success, (v, key) => {
+    forEach(this.data.directories.success, (v, key) => {
       if (
         this.tests[key]["result"] === "passed" ||
         this.tests[key]["result"] === "warning"
@@ -500,10 +500,10 @@ export class CorrectionDistributionDialogComponent implements OnInit {
 
 function calculateQuartiles(d: any, test: any): Array<any> {
   let data;
-  if (d.inTagsPage) {
-    data = d.tags.getPassedAndWarningOccurrenceByTag(test);
+  if (d.inDirectoriesPage) {
+    data = d.directories.getPassedAndWarningOccurrenceByDirectory(test);
   } else {
-    data = d.tags.getPassedOccurrenceByWebsite(test);
+    data = d.directories.getPassedOccurrenceByWebsite(test);
   }
 
   const values = without(data, undefined).sort((a, b) => a - b);
