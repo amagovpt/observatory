@@ -12,6 +12,7 @@ export class Website {
   domain: string;
   creationDate: Date;
   pages: Array<Page>;
+  calculatedScore: number;
   score: number;
   A: number;
   AA: number;
@@ -40,6 +41,7 @@ export class Website {
     this.domain = domain;
     this.creationDate = creationDate;
     this.pages = new Array<Page>();
+    this.calculatedScore = 0;
     this.score = 0;
     this.A = 0;
     this.AA = 0;
@@ -76,7 +78,6 @@ export class Website {
       evaluationDate
     );
     this.pages.push(page);
-
     this.score += score;
 
     if (A === 0) {
