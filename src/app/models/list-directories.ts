@@ -38,8 +38,10 @@ export class ListDirectories {
       .filter((v, i, self) => self.indexOf(v) === i).length;
 
     this.nPages = result
-      .map((r) => r.Uri)
-      .filter((v, i, self) => self.indexOf(v) === i).length;
+      .map((r) => r.Url)
+      .filter((v, i, self) => {
+        return self.indexOf(v) === i;
+      }).length;
 
     let score = 0;
     const size = directories.length;
@@ -115,6 +117,20 @@ export class ListDirectories {
 
   getScore(): number {
     return this.score;
+  }
+
+  getWebsites(): Array<Website> {
+    const websites = new Array<Website>();
+    const alreadyInList = new Array<number>();
+    this.directories.map((dir: Directory) => {
+      dir.websites.map((w: Website) => {
+        if (!alreadyInList.includes(w.id)) {
+          websites.push(w);
+        }
+      });
+    });
+
+    return websites;
   }
 
   getTopFiveErrors(): any {

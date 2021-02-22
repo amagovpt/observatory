@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DataService } from "../data.service";
 import { ListDirectories } from "../models/list-directories";
 import { Directory } from "../models/directory";
+import { Website } from "../models/website";
 
 @Component({
   selector: "app-home",
@@ -49,6 +50,14 @@ export class HomeComponent implements OnInit {
     return this.listDirectories.directories
       .slice()
       .sort((a: Directory, b: Directory) => b.getScore() - a.getScore())
+      .slice(0, 5);
+  }
+
+  getTopFiveWebsites(): Array<Website> {
+    return this.listDirectories
+      .getWebsites()
+      .slice()
+      .sort((a: Website, b: Website) => b.getScore() - a.getScore())
       .slice(0, 5);
   }
 
