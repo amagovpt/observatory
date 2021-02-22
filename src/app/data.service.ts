@@ -22,6 +22,7 @@ export class DataService {
 
     if (host === "localhost") {
       this.server = "http://localhost:3000";
+      this.server = "http://10.55.37.16/api";
     } else {
       this.server = "/api";
     }

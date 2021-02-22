@@ -109,7 +109,7 @@ export class WebsitesListComponent implements OnInit {
   }
 
   sortData(sort: Sort): void {
-    if (sort.active === "rank") {
+    if (sort.active === "rank" || sort.active === "score") {
       if (sort.direction === "asc") {
         this.websites = this.websites.sort((a, b) => a.rank - b.rank).slice();
       } else {

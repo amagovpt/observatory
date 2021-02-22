@@ -303,12 +303,12 @@
     <div fxLayout="row" fxLayoutAlign="start center">
       <ul>
         <li
-          *ngFor="let d of getTopFiveDirectories(); let i = index"
+          *ngFor="let d of getTopFiveWebsites(); let i = index"
           fxLayout="row"
           fxLayoutAlign="start center"
         >
           <span fxLayout="row" fxLayoutAlign="center center">{{ i + 1 }}</span>
-          <span>{{ d.name }}</span>
+          <span fxFlex>{{ d.name }}</span>
           <span>{{ d.getScore() | toFixed }}</span>
         </li>
       </ul>
