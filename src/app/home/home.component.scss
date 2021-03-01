@@ -299,7 +299,11 @@ nav span:last-child {
   ul li span:nth-child(2) {
     font-size: 18px;
     line-height: 50px;
-    color: var(--home-top5-list-text);
+    
+    a {
+      color: var(--home-top5-list-text);
+    }
+
     font-weight: 700;
     font-family: "Lato";
     margin-right: 1.5em;
@@ -437,4 +441,13 @@ nav span:last-child {
 
 .eu-logo {
   width: 5em;
+}
+
+::ng-deep .tooltip-entity {
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 22px;
+  color: var(--table-header-text);
 }

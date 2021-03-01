@@ -15,7 +15,7 @@
   <section id="main" class="info">
     <div class="observatory">{{ directory.name }}</div>
     <h2>{{ website.name }}</h2>
-    <h3>{{ website.domain }}</h3>
+    <h3><a href="{{ website.domain }}" target="_blank">{{ website.domain }}</a></h3>
   </section>
   <app-website-statistics [website]="website"></app-website-statistics>
   <app-accessibility-plot [data]="accessibilityPlotData"></app-accessibility-plot>

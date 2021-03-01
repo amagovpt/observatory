@@ -119,8 +119,16 @@ export class Directory {
       this.oldestPage = website.oldestPage;
     }
 
-    if (website.entity && !this.entities.includes(website.entity)) {
-      this.entities.push(website.entity);
+    if (website.entity) {
+      if (website.entity.includes(",")) {
+        for (const entity of website.entity.split(",")) {
+          if (!this.entities.includes(entity.trim())) {
+            this.entities.push(entity.trim());
+          }
+        }
+      } else if (!this.entities.includes(website.entity)) {
+        this.entities.push(website.entity);
+      }
     }
   }
 
