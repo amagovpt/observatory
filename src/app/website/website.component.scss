@@ -62,7 +62,11 @@ nav span:last-child {
 }
 
 .info h3 {
-  color: var(--info-subtitle);
+  
+  a {
+    color: var(--info-subtitle);
+  }
+
   font-family: Lato;
   font-size: 24px;
   font-weight: bold;

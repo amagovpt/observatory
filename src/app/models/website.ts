@@ -8,7 +8,9 @@ export class Website {
   entity: string;
   name: string;
   declaration: number | null;
+  declarationDate: Date | null;
   stamp: number | null;
+  stampDate: Date | null;
   domain: string;
   creationDate: Date;
   pages: Array<Page>;
@@ -27,7 +29,9 @@ export class Website {
     entity: string,
     name: string,
     declaration: number | null,
+    declarationDate: Date | null,
     stamp: number | null,
+    stampDate: Date | null,
     domain: string,
     creationDate: Date
   ) {
@@ -36,7 +40,9 @@ export class Website {
     this.entity = entity;
     this.name = name;
     this.declaration = declaration;
+    this.declarationDate = declarationDate ? new Date(declarationDate) : null;
     this.stamp = stamp;
+    this.stampDate = stampDate ? new Date(stampDate) : null;
     this.domain = domain;
     this.creationDate = creationDate;
     this.pages = new Array<Page>();

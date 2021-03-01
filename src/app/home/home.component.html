@@ -303,13 +303,14 @@
     <div fxLayout="row" fxLayoutAlign="start center">
       <ul>
         <li
-          *ngFor="let d of getTopFiveWebsites(); let i = index"
+          *ngFor="let w of getTopFiveWebsites(); let i = index"
           fxLayout="row"
           fxLayoutAlign="start center"
         >
           <span fxLayout="row" fxLayoutAlign="center center">{{ i + 1 }}</span>
-          <span fxFlex>{{ d.name }}</span>
-          <span>{{ d.getScore() | toFixed }}</span>
+          <span *ngIf="w.entity" matTooltip="{{ 'DIRECTORY.table.entity' | translate }} {{ w.entity }}" matTooltipClass="tooltip-entity" [matTooltipPosition]="'above'" fxFlex><a [routerLink]="['directories', w.DirectoryId, w.id]">{{ w.name }}</a></span>
+          <span *ngIf="!w.entity" fxFlex><a [routerLink]="['directories', w.DirectoryId, w.id]">{{ w.name }}</a></span>
+          <span>{{ w.getScore() | toFixed }}</span>
         </li>
       </ul>
     </div>

@@ -125,6 +125,7 @@ export class ListDirectories {
     this.directories.map((dir: Directory) => {
       dir.websites.map((w: Website) => {
         if (!alreadyInList.includes(w.id)) {
+          w["DirectoryId"] = dir.id;
           websites.push(w);
         }
       });

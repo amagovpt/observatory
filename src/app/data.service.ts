@@ -22,7 +22,7 @@ export class DataService {
 
     if (host === "localhost") {
       this.server = "http://localhost:3000";
-      this.server = "http://10.55.37.16/api";
+      //this.server = "http://10.55.37.16/api";
     } else {
       this.server = "/api";
     }
@@ -98,7 +98,9 @@ export class DataService {
           entity: wb.Entity_Name,
           name: wb.Website_Name,
           declaration: wb.Website_Declaration,
+          declarationDate: wb.Declaration_Date,
           stamp: wb.Website_Stamp,
+          stampDate: wb.Stamp_Date,
           domain: wb.Url,
           creation_date: wb.Website_Creation_Date,
         });
@@ -119,7 +121,9 @@ export class DataService {
       website.entity,
       website.name,
       website.declaration,
+      website.declarationDate,
       website.stamp,
+      website.stampDate,
       website.domain,
       website.creation_date
     );
