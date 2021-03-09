@@ -13,5 +13,7 @@
     <h2>{{ "DIRECTORIES.subtitle" | translate }}</h2>
   </section>
   <app-directories-statistics [listDirectories]="listDirectories"></app-directories-statistics>
+  <br>
+  <br>
   <app-directories-list *ngIf="listDirectories.directories.length > 0" [listDirectories]="listDirectories"></app-directories-list>
 </main>
