@@ -38,7 +38,7 @@ export class ListDirectories {
       .filter((v, i, self) => self.indexOf(v) === i).length;
 
     this.nPages = result
-      .map((r) => r.Url)
+      .map((r) => r.Uri)
       .filter((v, i, self) => {
         return self.indexOf(v) === i;
       }).length;
@@ -175,6 +175,17 @@ export class ListDirectories {
 
     for (const directory of this.directories || []) {
       if (directory.success[test] && tests[test]["result"] !== "failed") {
+        occurrences.push(directory.success[test]["n_occurrences"]);
+      }
+    }
+    return occurrences;
+  }
+
+  getPassedOccurrenceByDirectory(test: string): Array<number> {
+    const occurrences = new Array<number>();
+
+    for (const directory of this.directories || []) {
+      if (directory.success[test] && tests[test]["result"] === "passed") {
         occurrences.push(directory.success[test]["n_occurrences"]);
       }
     }

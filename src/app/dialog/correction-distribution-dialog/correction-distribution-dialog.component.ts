@@ -98,8 +98,9 @@ export class CorrectionDistributionDialogComponent implements OnInit {
 
     forEach(this.data.directories.success, (v, key) => {
       if (
-        this.tests[key]["result"] === "passed" ||
-        this.tests[key]["result"] === "warning"
+        this.tests[key]["result"] ===
+        "passed" /*||
+        this.tests[key]["result"] === "warning"*/
       ) {
         let elem = this.tests[key]["elem"];
         let n_pages = v["n_pages"];
@@ -501,7 +502,8 @@ export class CorrectionDistributionDialogComponent implements OnInit {
 function calculateQuartiles(d: any, test: any): Array<any> {
   let data;
   if (d.inDirectoriesPage) {
-    data = d.directories.getPassedAndWarningOccurrenceByDirectory(test);
+    //data = d.directories.getPassedAndWarningOccurrenceByDirectory(test);
+    data = d.directories.getPassedOccurrenceByDirectory(test);
   } else {
     data = d.directories.getPassedOccurrenceByWebsite(test);
   }
