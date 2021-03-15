@@ -801,7 +801,7 @@ const tests = {
     ref: "G146",
     scs: "1.4.4",
     dis: "15222",
-    result: "failed",
+    result: "passed",
   },
   color_02: {
     type: "decr",
