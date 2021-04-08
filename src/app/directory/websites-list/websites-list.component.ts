@@ -28,13 +28,13 @@ export class WebsitesListComponent implements OnInit {
   ngOnInit(): void {
     let rank = 1;
     this.websites = this.directory.websites.slice().map((w: Website) => {
-      w.score = w.getScore();
+      w.calculatedScore = w.getScore();
       return w;
     });
 
     this.websites = orderBy(
       this.websites,
-      ["score", "AAA", "AA", "A", "name"],
+      ["calculatedScore", "AAA", "AA", "A", "name"],
       ["desc", "desc", "desc", "desc", "asc"]
     ).map((w: Website) => {
       w.rank = rank;
