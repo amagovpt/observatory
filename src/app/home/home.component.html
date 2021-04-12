@@ -330,11 +330,21 @@
               >
             </div>
             <div class="metadata" fxLayout="column">
-              <span>32</span>
+              <span>
+                {{ 
+                  declarations.total.websites.conform + declarations.total.websites.partial + declarations.total.websites.not_conform +
+                  declarations.total.apps.conform + declarations.total.apps.partial + declarations.total.apps.not_conform
+                }}
+              </span>
               <span>{{ "HOME.summary.declarations" | translate }}</span>
             </div>
             <div class="metadata" fxLayout="column">
-              <span>11</span>
+              <span>
+                {{ 
+                  badges.total.websites.gold + badges.total.websites.silver + badges.total.websites.bronze +
+                  badges.total.apps.gold + badges.total.apps.silver + badges.total.apps.bronze
+                }}
+              </span>
               <span>{{ "HOME.summary.badges" | translate }}</span>
             </div>
           </div>

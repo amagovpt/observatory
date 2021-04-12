@@ -11,6 +11,8 @@ import { Website } from "../models/website";
 })
 export class HomeComponent implements OnInit {
   listDirectories: ListDirectories;
+  declarations: any;
+  badges: any;
 
   tabs: HTMLElement[] = [];
   panels: HTMLElement[] = [];
@@ -23,6 +25,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.listDirectories = this.data.getListDirectories();
+    this.declarations = this.data.declarations;
+    this.badges = this.data.badges;
 
     this.keys = {
       end: 35,

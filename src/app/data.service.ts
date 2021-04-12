@@ -16,6 +16,9 @@ export class DataService {
   private readonly server: string;
 
   private listDirectories: ListDirectories;
+  public declarations: any;
+  public badges: any;
+  private currentYear: number;
 
   constructor(private readonly http: HttpClient) {
     const host = location.hostname;
@@ -25,6 +28,61 @@ export class DataService {
     } else {
       this.server = "/api";
     }
+
+    this.declarations = {
+      total: {
+        websites: {
+          conform: 0,
+          partial: 0,
+          not_conform: 0,
+        },
+        apps: {
+          conform: 0,
+          partial: 0,
+          not_conform: 0,
+        },
+      },
+      currentYear: {
+        websites: {
+          conform: 0,
+          partial: 0,
+          not_conform: 0,
+        },
+        apps: {
+          conform: 0,
+          partial: 0,
+          not_conform: 0,
+        },
+      },
+    };
+    this.badges = {
+      total: {
+        websites: {
+          gold: 0,
+          silver: 0,
+          bronze: 0,
+        },
+        apps: {
+          gold: 0,
+          silver: 0,
+          bronze: 0,
+        },
+      },
+      currentYear: {
+        websites: {
+          gold: 0,
+          silver: 0,
+          bronze: 0,
+        },
+        apps: {
+          gold: 0,
+          silver: 0,
+          bronze: 0,
+        },
+      },
+    };
+
+    this.currentYear = new Date().getFullYear();
   }
 
   getObservatoryData(): Observable<boolean> {
@@ -48,6 +106,9 @@ export class DataService {
             response.result,
             directories
           );
+
+          this.countDeclarationsAndStamps();
+
           return true;
         }),
         catchError((err: any) => {
@@ -169,5 +230,79 @@ export class DataService {
       page.AAA,
       page.evaluation_date
     );
+  }
+
+  private countDeclarationsAndStamps(): void {
+    const websitesDeclarationsInList = new Array<number>();
+    const websitesStampsInList = new Array<number>();
+
+    for (const directory of this.listDirectories.directories) {
+      for (const website of directory.websites) {
+        if (
+          !websitesDeclarationsInList.includes(website.id) &&
+          website.declaration &&
+          website.declarationDate
+        ) {
+          switch (website.declaration) {
+            case 1:
+              this.declarations.total.websites.not_conform++;
+              break;
+            case 2:
+              this.declarations.total.websites.partial++;
+              break;
+            case 3:
+              this.declarations.total.websites.conform++;
+              break;
+          }
+
+          if (website.declarationDate.getFullYear() === this.currentYear) {
+            switch (website.declaration) {
+              case 1:
+                this.declarations.currentYear.websites.not_conform++;
+                break;
+              case 2:
+                this.declarations.currentYear.websites.partial++;
+                break;
+              case 3:
+                this.declarations.currentYear.websites.conform++;
+                break;
+            }
+          }
+          websitesDeclarationsInList.push(website.id);
+        }
+        if (
+          !websitesStampsInList.includes(website.id) &&
+          website.stamp &&
+          website.stampDate
+        ) {
+          switch (website.stamp) {
+            case 1:
+              this.badges.total.websites.bronze++;
+              break;
+            case 2:
+              this.badges.total.websites.silver++;
+              break;
+            case 3:
+              this.badges.total.websites.gold++;
+              break;
+          }
+
+          if (website.stampDate.getFullYear() === this.currentYear) {
+            switch (website.declaration) {
+              case 1:
+                this.badges.currentYear.websites.bronze++;
+                break;
+              case 2:
+                this.badges.currentYear.websites.silver++;
+                break;
+              case 3:
+                this.badges.currentYear.websites.gold++;
+                break;
+            }
+          }
+          websitesStampsInList.push(website.id);
+        }
+      }
+    }
   }
 }
