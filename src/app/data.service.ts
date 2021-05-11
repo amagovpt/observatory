@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
 import { of } from "rxjs";
 import { map, catchError } from "rxjs/operators/";
-import clone from "lodash.clone";
+import clone from "lodash.clonedeep";
 
 import { ListDirectories } from "./models/list-directories";
 import { Directory } from "./models/directory";
@@ -25,6 +25,7 @@ export class DataService {
 
     if (host === "localhost") {
       this.server = "http://localhost:3000";
+      this.server = "http://10.55.37.16/api";
     } else {
       this.server = "/api";
     }
@@ -92,7 +93,7 @@ export class DataService {
         map((res) => {
           const response = res.body;
           const directories = new Array<Directory>();
-          const tmpDirectories = this.createTemporaryDirectories(response);
+          const tmpDirectories = this.createTemporaryDirectories(response);          
 
           for (const directory of tmpDirectories || []) {
             const newDirectory = this.createDirectory(

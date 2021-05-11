@@ -32,6 +32,7 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^3.8.1",
     "lodash.clone": "^4.5.0",
+    "lodash.clonedeep": "^4.5.0",
     "lodash.foreach": "^4.5.0",
     "lodash.includes": "^4.3.0",
     "lodash.orderby": "^4.6.0",
