@@ -92,7 +92,7 @@ export class DataService {
         map((res) => {
           const response = res.body;
           const directories = new Array<Directory>();
-          const tmpDirectories = this.createTemporaryDirectories(response);          
+          const tmpDirectories = this.createTemporaryDirectories(response);
 
           for (const directory of tmpDirectories || []) {
             const newDirectory = this.createDirectory(
