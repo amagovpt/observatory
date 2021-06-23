@@ -8,11 +8,11 @@
       <div class="first-row" fxAlign="row" fxLayoutAlign="start center" gdColumns="50% 50%">
         <div>
           <span>{{ "STATISTICS.oldest_page_updated" | translate }}</span>
-          <span>{{ listDirectories.oldestPage | date | customDate }}</span>
+          <span>{{ globalData.oldestPage | date | customDate }}</span>
         </div>
         <div>
           <span>{{ "STATISTICS.newest_page_updated" | translate }}</span>
-          <span>{{ listDirectories.recentPage | date | customDate }}</span>
+          <span>{{ globalData.recentPage | date | customDate }}</span>
         </div>
       </div>
       <ngx-gauge
@@ -20,7 +20,7 @@
         [type]="'arch'"
         [thick]="'10'"
         [cap]="'round'"
-        [value]="listDirectories.score | toFixed"
+        [value]="globalData.score | toFixed"
         [label]="'STATISTICS.gauge.label' | translate"
         [min]="0"
         [max]="10"
@@ -30,19 +30,19 @@
       </ngx-gauge>
       <div class="metadata second-row" fxLayout="row" fxLayoutAlign="space-around center">
         <div>
-          <span>{{ listDirectories.directories.length }}</span>
+          <span>{{ globalData.nDirectories }}</span>
           <span>{{ "STATISTICS.directories" | translate }}</span>
         </div>
         <div>
-          <span>{{ listDirectories.nEntities }}</span>
+          <span>{{ globalData.nEntities }}</span>
           <span>{{ "STATISTICS.entities" | translate }}</span>
         </div>
         <div>
-          <span>{{ listDirectories.nWebsites }}</span>
+          <span>{{ globalData.nWebsites }}</span>
           <span>{{ "STATISTICS.websites" | translate }}</span>
         </div>
         <div>
-          <span>{{ listDirectories.nPages }}</span>
+          <span>{{ globalData.nPages }}</span>
           <span>{{ "STATISTICS.pages" | translate }}</span>
         </div>
       </div>

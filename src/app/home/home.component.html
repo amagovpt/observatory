@@ -290,7 +290,7 @@
   >
     <div fxLayout="column" fxLayoutAlign="start start">
       <h2>{{ "HOME.top5.title" | translate }}</h2>
-      <span class="top-5-last-updated">{{ "HOME.top5.last_updated" | translate }} {{ listDirectories.recentPage | date | customDate }}</span>
+      <span class="top-5-last-updated">{{ "HOME.top5.last_updated" | translate }} {{ globalData.recentPage | date | customDate }}</span>
       <p>
         {{ "HOME.top5.paragraph.part1" | translate }} {{
           "HOME.top5.paragraph.part2" | translate
@@ -310,7 +310,7 @@
           <span fxLayout="row" fxLayoutAlign="center center">{{ i + 1 }}</span>
           <span *ngIf="w.entity" matTooltip="{{ 'DIRECTORY.table.entity' | translate }} {{ w.entity }}" matTooltipClass="tooltip-entity" [matTooltipPosition]="'above'" fxFlex><a [routerLink]="['directories', w.DirectoryId, w.id]">{{ w.name }}</a></span>
           <span *ngIf="!w.entity" fxFlex><a [routerLink]="['directories', w.DirectoryId, w.id]">{{ w.name }}</a></span>
-          <span>{{ w.getScore() | toFixed }}</span>
+          <span>{{ w.score | toFixed }}</span>
         </li>
       </ul>
     </div>
@@ -322,7 +322,7 @@
         <div class="wrapper" fxLayout="column">
           <div fxLayout="row" fxLayoutAlign="space-around center">
             <div class="global-score">
-              <span>{{ listDirectories.getScore() | toFixed:{ comma: true } }}</span>
+              <span>{{ globalData.score | toFixed:{ comma: true } }}</span>
               <span
                 >{{ "HOME.summary.average.part1" | translate }}<br />{{
                   "HOME.summary.average.part2" | translate
@@ -355,41 +355,41 @@
               fxLayout="column"
               fxLayoutAlign="center center"
             >
-              <span>{{ listDirectories.nWebsites }}</span>
+              <span>{{ globalData.nWebsites }}</span>
               <span>{{ "HOME.summary.websites" | translate }}</span>
-              <span class="last-year">+ {{ listDirectories.nWebsites }} {{ "HOME.summary.last_year" | translate }}</span>
+              <span class="last-year">+ {{ globalData.nWebsites }} {{ "HOME.summary.last_year" | translate }}</span>
             </div>
             <div
               class="metadata"
               fxLayout="column"
               fxLayoutAlign="center center"
             >
-              <span>{{ listDirectories.nEntities }}</span>
+              <span>{{ globalData.nEntities }}</span>
               <span>{{ "HOME.summary.entities" | translate }}</span>
-              <span class="last-year">+ {{ listDirectories.nEntities }} {{ "HOME.summary.last_year" | translate }}</span>
+              <span class="last-year">+ {{ globalData.nEntities }} {{ "HOME.summary.last_year" | translate }}</span>
             </div>
             <div
               class="metadata"
               fxLayout="column"
               fxLayoutAlign="center center"
             >
-              <span>{{ listDirectories.nPages }}</span>
+              <span>{{ globalData.nPages }}</span>
               <span>{{ "HOME.summary.pages" | translate }}</span>
-              <span class="last-year">+ {{ listDirectories.nPages }} {{ "HOME.summary.last_year" | translate }}</span>
+              <span class="last-year">+ {{ globalData.nPages }} {{ "HOME.summary.last_year" | translate }}</span>
             </div>
             <div
               class="metadata"
               fxLayout="column"
               fxLayoutAlign="center center"
             >
-              <span>{{ listDirectories.nPagesWithoutErrors }}</span>
+              <span>{{ globalData.nPagesWithoutErrors }}</span>
               <span>{{ "HOME.summary.pages_without_errors" | translate }}</span>
-              <span class="last-year">+ {{ listDirectories.nPagesWithoutErrors }} {{ "HOME.summary.last_year" | translate }}</span>
+              <span class="last-year">+ {{ globalData.nPagesWithoutErrors }} {{ "HOME.summary.last_year" | translate }}</span>
             </div>
           </div>
         </div>
       </div>
-      <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ listDirectories.recentPage | date | customDate }}</span>
+      <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ globalData.recentPage | date | customDate }}</span>
       <div fxLayout="row">
         <a class="numbers-link" routerLink="numbers">{{
           "HOME.top5.numbers_link" | translate
@@ -414,7 +414,7 @@
           <ul>
             <li
               *ngFor="
-                let p of listDirectories.getTopFiveBestPractices();
+                let p of globalData.topFiveBestPractices;
                 let i = index
               "
               fxLayout="row"
@@ -449,7 +449,7 @@
           </div>
           <ul>
             <li
-              *ngFor="let e of listDirectories.getTopFiveErrors(); let i = index"
+              *ngFor="let e of globalData.topFiveErrors; let i = index"
               fxLayout="row"
               fxLayoutAlign="start center"
             >

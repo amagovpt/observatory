@@ -11,7 +11,7 @@ import { Website } from "src/app/models/website";
 })
 export class PracticesDetailsTableComponent implements OnInit {
   @Input("type") type: string;
-  @Input("website") website: Website;
+  @Input("website") website: any;
 
   practices: any;
   practicesKeys: any;
@@ -21,32 +21,13 @@ export class PracticesDetailsTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    const practices = new Array<any>();
     const iterable =
-      this.type === "good" ? this.website.success : this.website.errors;
+      this.type === "good"
+        ? this.website.successDetailsTable
+        : this.website.errorsDetailsTable;
 
-    for (const key in iterable || {}) {
-      if (iterable[key]) {
-        practices.push({
-          key,
-          n_occurrences: iterable[key].n_occurrences,
-          n_pages: iterable[key].n_pages,
-          lvl: _tests[key].level.toUpperCase(),
-          quartiles: this.calculateQuartiles(
-            this.type === "good"
-              ? this.website.getPassedOccurrencesByPage(key)
-              : this.website.getErrorOccurrencesByPage(key)
-          ),
-        });
-      }
-    }
-
-    this.practices = orderBy(
-      practices,
-      ["n_pages", "n_occurrences"],
-      ["desc", "desc"]
-    );
-    this.practicesKeys = Object.keys(this.practices);
+    this.practices = iterable.practicesData;
+    this.practicesKeys = iterable.practicesKeys;
   }
 
   private calculateQuartiles(practices: any): Array<any> {

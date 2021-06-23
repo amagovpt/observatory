@@ -25,7 +25,7 @@
         [type]="'arch'"
         [thick]="'10'"
         [cap]="'round'"
-        [value]="directory.getScore() | toFixed"
+        [value]="directory.score | toFixed"
         [label]="'STATISTICS.gauge.label' | translate"
         [min]="0"
         [max]="10"
@@ -39,11 +39,11 @@
         fxLayoutAlign="space-around center"
       >
         <div>
-          <span>{{ directory.entities.length }}</span>
+          <span>{{ directory.nEntities }}</span>
           <span>{{ "STATISTICS.entities" | translate }}</span>
         </div>
         <div>
-          <span>{{ directory.websites.length }}</span>
+          <span>{{ directory.nWebsites }}</span>
           <span>{{ "STATISTICS.websites" | translate }}</span>
         </div>
         <div>

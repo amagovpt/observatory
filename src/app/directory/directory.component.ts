@@ -13,7 +13,7 @@ import { Directory } from "../models/directory";
 })
 export class DirectoryComponent implements OnInit, OnDestroy {
   sub: Subscription;
-  directory: Directory;
+  directory: any;
 
   loading: boolean;
   error: boolean;
@@ -32,9 +32,7 @@ export class DirectoryComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loading = true;
     this.sub = this.activatedRoute.params.subscribe((params) => {
-      this.directory = this.data
-        .getListDirectories()
-        .getDirectory(parseInt(params.directory, 0));
+      this.directory = this.data.getGlobalData().directories[params.directory];
 
       if (!this.directory) {
         this.error = true;

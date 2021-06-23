@@ -1,14 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Website } from '../../models/website';
+import { Component, OnInit, Input } from "@angular/core";
+import { Website } from "../../models/website";
 
 @Component({
-  selector: 'app-practices-details',
-  templateUrl: './practices-details.component.html',
-  styleUrls: ['./practices-details.component.scss']
+  selector: "app-practices-details",
+  templateUrl: "./practices-details.component.html",
+  styleUrls: ["./practices-details.component.scss"],
 })
 export class PracticesDetailsComponent implements OnInit {
-
-  @Input('website') website: Website;
+  @Input("website") website: any;
 
   errorDistributionData: any;
   practicesDistributionData: any;
@@ -20,17 +19,17 @@ export class PracticesDetailsComponent implements OnInit {
   keys: any;
   direction: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.errorDistributionData = {
-      errors: this.website.getTopTenErrors(),
-      isCat: false
+      errors: this.website.errorsDistribution,
+      isCat: false,
     };
 
     this.practicesDistributionData = {
-      errors: this.website.getTopTenBestPractices(),
-      isCat: false
+      errors: this.website.bestPracticesDistribution,
+      isCat: false,
     };
 
     this.keys = {
@@ -56,9 +55,13 @@ export class PracticesDetailsComponent implements OnInit {
   }
 
   generateArrays() {
-    const tabs = document.querySelectorAll<HTMLElement>('.practicesTabs > .tabs > [role="tablist"] > [role="tab"]');
+    const tabs = document.querySelectorAll<HTMLElement>(
+      '.practicesTabs > .tabs > [role="tablist"] > [role="tab"]'
+    );
     tabs.forEach((tab) => this.tabs.push(tab));
-    const panels = document.querySelectorAll<HTMLElement>('.practicesTabs > .tabs > [role="tabpanel"]');
+    const panels = document.querySelectorAll<HTMLElement>(
+      '.practicesTabs > .tabs > [role="tabpanel"]'
+    );
     panels.forEach((panel) => this.panels.push(panel));
   }
 

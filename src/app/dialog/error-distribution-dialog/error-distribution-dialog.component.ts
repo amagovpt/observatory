@@ -76,7 +76,7 @@ export class ErrorDistributionDialogComponent implements OnInit {
     this.inDirectoriesPage = this.data.inDirectoriesPage;
     this.isCat = this.data.isCat;
     this.errors = this.data.errors;
-    this.nPages = this.data.directories.nPages;
+    this.nPages = this.data.nPages;
 
     this.existingElemGroups = [];
 
@@ -97,10 +97,10 @@ export class ErrorDistributionDialogComponent implements OnInit {
       { def: "pages", hide: false },
     ];
 
-    this.graphData = [];
-    this.tableData = new Array<ErrorData>();
+    /*this.graphData = [];
+    this.tableData = new Array<ErrorData>();d
 
-    forEach(this.data.directories.errors, (v, k) => {
+    forEach(this.data.errors, (v, k) => {
       if (this.tests[k]["result"] === "failed") {
         let key = k;
         let elem = this.tests[key]["elem"];
@@ -129,7 +129,20 @@ export class ErrorDistributionDialogComponent implements OnInit {
     // because we only want the top 10
     this.graphData = slice(this.graphData, 0, 10);
 
-    this.showTableData = clone(this.tableData);
+    this.showTableData = clone(this.tableData);*/
+
+    this.graphData = this.errors.graphData;
+
+    for (const d of this.errors.showTableData) {
+      if (!includes(this.existingElemGroups, this.elemGroups[d.elem])) {
+        this.existingElemGroups.push(this.elemGroups[d.elem]);
+      }
+
+      d.element = this.translate.instant("TEST_ELEMENTS." + d.elem);
+      d.description = this.translate.instant("RESULTS." + d.key);
+    }
+
+    this.showTableData = this.tableData = this.errors.showTableData;
   }
 
   ngOnInit(): void {

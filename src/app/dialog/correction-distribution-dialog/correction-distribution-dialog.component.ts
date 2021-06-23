@@ -65,6 +65,7 @@ export class CorrectionDistributionDialogComponent implements OnInit {
 
   keys: any;
   direction: any;
+  success: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -72,10 +73,11 @@ export class CorrectionDistributionDialogComponent implements OnInit {
   ) {
     this.tests = tests;
     this.inDirectoriesPage = this.data.inDirectoriesPage;
-    this.nPages = this.data.directories.nPages;
+    this.nPages = this.data.nPages;
     this.directoriesSuccess = [];
     this.graphData = [];
     this.existingElemGroups = [];
+    this.success = this.data.success;
 
     this.columnDefinitions = [
       { def: "level", hide: false },
@@ -94,13 +96,12 @@ export class CorrectionDistributionDialogComponent implements OnInit {
       { def: "pages", hide: false },
     ];
 
-    this.tableData = new Array<CorrectionData>();
+    /*this.tableData = new Array<CorrectionData>();
 
-    forEach(this.data.directories.success, (v, key) => {
+    forEach(this.data.success, (v, key) => {
       if (
-        this.tests[key]["result"] ===
-        "passed" /*||
-        this.tests[key]["result"] === "warning"*/
+        this.tests[key]["result"] === "passed" /*||
+        this.tests[key]["result"] === "warning"
       ) {
         let elem = this.tests[key]["elem"];
         let n_pages = v["n_pages"];
@@ -133,7 +134,20 @@ export class CorrectionDistributionDialogComponent implements OnInit {
     // because we only want the top 10
     this.graphData = slice(this.graphData, 0, 10);
 
-    this.showTableData = clone(this.tableData);
+    this.showTableData = clone(this.tableData);*/
+
+    this.graphData = this.success.graphData;
+
+    for (const d of this.success.showTableData) {
+      if (!includes(this.existingElemGroups, this.elemGroups[d.elem])) {
+        this.existingElemGroups.push(this.elemGroups[d.elem]);
+      }
+
+      d.element = this.translate.instant("TEST_ELEMENTS." + d.elem);
+      d.description = this.translate.instant("RESULTS." + d.key);
+    }
+
+    this.showTableData = this.tableData = this.success.showTableData;
   }
 
   ngOnInit(): void {

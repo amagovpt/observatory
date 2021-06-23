@@ -16,6 +16,7 @@ export class DataService {
   private readonly server: string;
 
   private listDirectories: ListDirectories;
+  private globalData: any;
   public declarations: any;
   public badges: any;
   private currentYear: number;
@@ -83,6 +84,7 @@ export class DataService {
     };
 
     this.currentYear = new Date().getFullYear();
+    this.globalData = {};
   }
 
   getObservatoryData(): Observable<boolean> {
@@ -91,7 +93,7 @@ export class DataService {
       .pipe(
         map((res) => {
           const response = res.body;
-          const directories = new Array<Directory>();
+          /*const directories = new Array<Directory>();
           const tmpDirectories = this.createTemporaryDirectories(response);
 
           for (const directory of tmpDirectories || []) {
@@ -107,7 +109,9 @@ export class DataService {
             directories
           );
 
-          this.countDeclarationsAndStamps();
+          this.countDeclarationsAndStamps();*/
+
+          this.globalData = response.result;
 
           return true;
         }),
@@ -120,6 +124,10 @@ export class DataService {
 
   getListDirectories(): ListDirectories {
     return this.listDirectories;
+  }
+
+  getGlobalData(): any {
+    return this.globalData;
   }
 
   private createTemporaryDirectories(response: any): Array<any> {

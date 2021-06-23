@@ -25,7 +25,7 @@
         [type]="'arch'"
         [thick]="'10'"
         [cap]="'round'"
-        [value]="website.getScore() | toFixed"
+        [value]="website.score | toFixed"
         [label]="'STATISTICS.gauge.label' | translate"
         [min]="0"
         [max]="10"
@@ -44,7 +44,7 @@
           class="upper-row"
         >
           <div>
-            <span>{{ website.pages.length }}</span>
+            <span>{{ website.nPages }}</span>
             <span>{{ "STATISTICS.pages" | translate }}</span>
           </div>
           <div>

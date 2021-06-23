@@ -128,8 +128,8 @@
       "situations_label": "N.º de páginas",
       "quartiles": "Ocorrências",
       "occurrences": {
-        "single_error": "aviso em",
-        "multi_error": "avisos em",
+        "single_error": "erro em",
+        "multi_error": "erros em",
         "single_page_directory": "sítio Web",
         "single_page_listDirectories": "diretório",
         "multi_page_directory": "sítios Web",

@@ -12,8 +12,8 @@
     <div class="observatory">{{ "DIRECTORIES.title" | translate }}</div>
     <h2>{{ "DIRECTORIES.subtitle" | translate }}</h2>
   </section>
-  <app-directories-statistics [listDirectories]="listDirectories"></app-directories-statistics>
+  <app-directories-statistics [globalData]="globalData"></app-directories-statistics>
   <br>
   <br>
-  <app-directories-list *ngIf="listDirectories.directories.length > 0" [listDirectories]="listDirectories"></app-directories-list>
+  <app-directories-list *ngIf="globalData.nDirectories > 0" [globalData]="globalData"></app-directories-list>
 </main>

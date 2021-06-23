@@ -12,11 +12,11 @@ import orderBy from "lodash.orderby";
   styleUrls: ["./websites-list.component.scss"],
 })
 export class WebsitesListComponent implements OnInit {
-  @Input() directory: Directory;
+  @Input() directory: any;
   @Input() multi: boolean;
 
-  sortedData: Array<Website>;
-  websites: Array<Website>;
+  sortedData: Array<any>;
+  websites: Array<any>;
 
   indicator1: number;
   indicator2: number;
@@ -26,21 +26,7 @@ export class WebsitesListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    let rank = 1;
-    this.websites = this.directory.websites.slice().map((w: Website) => {
-      w.calculatedScore = w.getScore();
-      return w;
-    });
-
-    this.websites = orderBy(
-      this.websites,
-      ["calculatedScore", "AAA", "AA", "A", "name"],
-      ["desc", "desc", "desc", "desc", "asc"]
-    ).map((w: Website) => {
-      w.rank = rank;
-      rank++;
-      return w;
-    });
+    this.websites = this.directory.websitesList;
 
     this.pageSize = 50;
 
@@ -134,11 +120,11 @@ export class WebsitesListComponent implements OnInit {
     } else if (sort.active === "pages") {
       if (sort.direction === "asc") {
         this.websites = this.websites
-          .sort((a, b) => a.pages.length - b.pages.length)
+          .sort((a, b) => a.nPages - b.nPages)
           .slice();
       } else {
         this.websites = this.websites
-          .sort((a, b) => b.pages.length - a.pages.length)
+          .sort((a, b) => b.nPages - a.nPages)
           .slice();
       }
     } else if (sort.active === "A") {

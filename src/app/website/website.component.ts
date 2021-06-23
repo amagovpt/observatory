@@ -14,8 +14,8 @@ import { Website } from "../models/website";
 })
 export class WebsiteComponent implements OnInit, OnDestroy {
   sub: Subscription;
-  directory: Directory;
-  website: Website;
+  directory: any;
+  website: any;
 
   scoreDistributionData: any;
   errorDistributionData: any;
@@ -38,29 +38,19 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loading = true;
     this.sub = this.activatedRoute.params.subscribe((params) => {
-      const listDirectories = this.data.getListDirectories();
+      const globalData = this.data.getGlobalData();
 
-      this.directory = listDirectories.getDirectory(
-        parseInt(params.directory, 0)
-      );
+      this.directory = globalData.directories[params.directory];
 
       if (this.directory) {
-        this.website = this.directory.websites.find(
-          (w: Website) => w.id === parseInt(params.website, 0)
-        );
+        this.website = this.directory.websites[params.website];
 
         if (this.website) {
           this.scoreDistributionData = {
-            number: this.website.pages.length,
-            frequency: this.website.frequencies,
+            number: this.website.nPages,
+            frequency: this.website.scoreDistributionFrequency,
           };
-          this.errorDistributionData = {
-            errors: this.website.getTopTenErrors(),
-            isCat: false,
-          };
-          this.topFiveErrorsData = this.website.errors;
-          this.topFiveBestPractices = this.website.success;
-          this.accessibilityPlotData = this.website.getAllScores();
+          this.accessibilityPlotData = this.website.accessibilityPlotData;
           this.tableData = this.website;
         } else {
           this.error = true;

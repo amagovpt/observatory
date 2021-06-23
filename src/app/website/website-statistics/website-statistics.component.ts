@@ -1,14 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Website } from '../../models/website';
+import { Component, OnInit, Input } from "@angular/core";
+import { Website } from "../../models/website";
 
 @Component({
-  selector: 'app-website-statistics',
-  templateUrl: './website-statistics.component.html',
-  styleUrls: ['./website-statistics.component.scss']
+  selector: "app-website-statistics",
+  templateUrl: "./website-statistics.component.html",
+  styleUrls: ["./website-statistics.component.scss"],
 })
 export class WebsiteStatisticsComponent implements OnInit {
-
-  @Input() website: Website;
+  @Input() website: any;
 
   thresholdConfig: any;
 
@@ -25,10 +24,10 @@ export class WebsiteStatisticsComponent implements OnInit {
 
   constructor() {
     this.thresholdConfig = {
-      0: {color: 'red'},
-      2.5: {color: 'orange'},
-      5: {color: 'yellow'},
-      7.5: {color: 'green'}
+      0: { color: "red" },
+      2.5: { color: "orange" },
+      5: { color: "yellow" },
+      7.5: { color: "green" },
     };
 
     this.pagesWithErrors = 0;
@@ -38,30 +37,25 @@ export class WebsiteStatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const pages = this.website.pages;
-    const size = pages.length;
-    for (let i = 0 ; i < size ; i++) {
-      if (pages[i].evaluation.A === 0) {
-        if (pages[i].evaluation.AA === 0) {
-          if (pages[i].evaluation.AAA === 0) {
-            this.pagesWithoutErrorsAAA++;
-          } else {
-            this.pagesWithoutErrorsAA++;
-          }
-        } else {
-          this.pagesWithoutErrorsA++;
-        }
-      } else {
-        this.pagesWithErrors++;
-      }
-    }
+    const size = this.website.nPages;
 
-    this.pagesWithoutErrors = size - this.pagesWithErrors;
+    this.pagesWithErrors = this.website.pagesWithErrors;
 
-    this.pagesWithErrorsPercentage = ((this.pagesWithErrors / size) * 100).toFixed(1) + '%';
-    this.pagesWithoutErrorsPercentage = ((this.pagesWithoutErrors / size) * 100).toFixed(1) + '%';
-    this.pagesWithoutErrorsAPercentage = ((this.pagesWithoutErrorsA / size) * 100).toFixed(1) + '%';
-    this.pagesWithoutErrorsAAPercentage = ((this.pagesWithoutErrorsAA / size) * 100).toFixed(1) + '%';
-    this.pagesWithoutErrorsAAAPercentage = ((this.pagesWithoutErrorsAAA / size) * 100).toFixed(1) + '%';
+    this.pagesWithoutErrorsA = this.website.pagesWithoutErrorsA;
+    this.pagesWithoutErrorsAA = this.website.pagesWithoutErrorsAA;
+    this.pagesWithoutErrorsAAA = this.website.pagesWithoutErrorsAAA;
+
+    this.pagesWithoutErrors = this.website.pagesWithErrors;
+
+    this.pagesWithErrorsPercentage =
+      ((this.pagesWithErrors / size) * 100).toFixed(1) + "%";
+    this.pagesWithoutErrorsPercentage =
+      ((this.pagesWithoutErrors / size) * 100).toFixed(1) + "%";
+    this.pagesWithoutErrorsAPercentage =
+      ((this.pagesWithoutErrorsA / size) * 100).toFixed(1) + "%";
+    this.pagesWithoutErrorsAAPercentage =
+      ((this.pagesWithoutErrorsAA / size) * 100).toFixed(1) + "%";
+    this.pagesWithoutErrorsAAAPercentage =
+      ((this.pagesWithoutErrorsAAA / size) * 100).toFixed(1) + "%";
   }
 }

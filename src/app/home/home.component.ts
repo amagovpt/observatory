@@ -10,7 +10,7 @@ import { Website } from "../models/website";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  listDirectories: ListDirectories;
+  globalData: any;
   declarations: any;
   badges: any;
 
@@ -24,9 +24,9 @@ export class HomeComponent implements OnInit {
   constructor(private readonly data: DataService) {}
 
   ngOnInit(): void {
-    this.listDirectories = this.data.getListDirectories();
-    this.declarations = this.data.declarations;
-    this.badges = this.data.badges;
+    this.globalData = this.data.getGlobalData();
+    this.declarations = this.globalData.declarations;
+    this.badges = this.globalData.badges;
 
     this.keys = {
       end: 35,
@@ -50,19 +50,8 @@ export class HomeComponent implements OnInit {
     this.bindListeners();
   }
 
-  getTopFiveDirectories(): Array<Directory> {
-    return this.listDirectories.directories
-      .slice()
-      .sort((a: Directory, b: Directory) => b.getScore() - a.getScore())
-      .slice(0, 5);
-  }
-
-  getTopFiveWebsites(): Array<Website> {
-    return this.listDirectories
-      .getWebsites()
-      .slice()
-      .sort((a: Website, b: Website) => b.getScore() - a.getScore())
-      .slice(0, 5);
+  getTopFiveWebsites(): Array<any> {
+    return this.globalData.topFiveWebsites;
   }
 
   generateArrays() {

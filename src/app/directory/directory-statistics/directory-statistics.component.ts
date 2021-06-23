@@ -14,7 +14,7 @@ import { CorrectionDistributionDialogComponent } from "../../dialog/correction-d
   styleUrls: ["./directory-statistics.component.scss"],
 })
 export class DirectoryStatisticsComponent {
-  @Input() directory: Directory;
+  @Input() directory: any;
 
   dialogWidth: string;
 
@@ -51,7 +51,7 @@ export class DirectoryStatisticsComponent {
     this.dialog.open(ScoreDistributionDialogComponent, {
       data: {
         number: this.directory.websites.length,
-        frequency: this.directory.frequencies,
+        frequency: this.directory.scoreDistributionFrequency,
       },
       width: this.dialogWidth,
     });
@@ -60,7 +60,8 @@ export class DirectoryStatisticsComponent {
   openErrorDistributionDialog(): void {
     this.dialog.open(ErrorDistributionDialogComponent, {
       data: {
-        directories: this.directory,
+        nPages: this.directory.nPages,
+        errors: this.directory.errorDistribution,
         inDirectoriesPage: false,
       },
       width: this.dialogWidth,
@@ -70,7 +71,8 @@ export class DirectoryStatisticsComponent {
   openCorrectionDistributionDialog(): void {
     this.dialog.open(CorrectionDistributionDialogComponent, {
       data: {
-        directories: this.directory,
+        nPages: this.directory.nPages,
+        success: this.directory.bestPracticesDistribution,
         inDirectoriesPage: false,
       },
       width: this.dialogWidth,

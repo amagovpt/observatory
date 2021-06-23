@@ -128,8 +128,8 @@
       "situations_label": "N.º of pages",
       "quartiles": "Occurrences",
       "occurrences": {
-        "single_error": "warning in",
-        "multi_error": "warnings in",
+        "single_error": "error in",
+        "multi_error": "errors in",
         "single_page_directory": "website",
         "single_page_listDirectory": "directory",
         "multi_page_directory": "websites",

@@ -20,7 +20,7 @@ export class PracticesDistributionComponent implements OnInit, AfterViewInit {
 
   @Input("type") type: string;
   @Input("color") color: string;
-  @Input("website") website: Website;
+  @Input("website") website: any;
   @Input("data") data: any;
 
   @ViewChild("chartPractices", { static: true }) chartPractices: any;
@@ -124,9 +124,9 @@ export class PracticesDistributionComponent implements OnInit, AfterViewInit {
               display: true,
               ticks: {
                 beginAtZero: true,
-                maxTicksLimit: this.website.pages.length === 1 ? 1 : 11,
+                maxTicksLimit: this.website.nPages === 1 ? 1 : 11,
                 min: 0,
-                max: this.website.pages.length,
+                max: this.website.nPages,
                 //maxTicksLimit: this.calculateMax(Math.max(...values)) + 1,
                 fontFamily: "Lato",
               },
