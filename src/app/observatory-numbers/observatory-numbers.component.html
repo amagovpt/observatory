@@ -26,7 +26,7 @@
           <div class="data-wrapper" fxLayout="column">
             <div fxLayout="row" fxLayoutAlign="space-around center">
               <div class="global-score">
-                <span>{{ listDirectories.getScore() | toFixed }}</span>
+                <span>{{ globalData.score | toFixed }}</span>
                 <span
                   >{{ "NUMBERS.summary.average.part1" | translate }}<br />{{
                     "NUMBERS.summary.average.part2" | translate
@@ -34,14 +34,14 @@
                 >
               </div>
               <div class="number-websites" fxLayout="row">
-                <span>{{ listDirectories.nWebsites }}</span>
+                <span>{{ globalData.nWebsites }}</span>
                 <div fxLayout="column" fxLayoutAlign="center stretch">
                   <span
                     >{{ "NUMBERS.summary.websites.part1" | translate }}<br />{{
                       "NUMBERS.summary.websites.part2" | translate
                     }}
                   </span>
-                  <span class="last-year">+ {{ listDirectories.nWebsites }} {{ "HOME.summary.last_year" | translate }}</span>
+                  <span class="last-year">+ {{ globalData.nWebsites }} {{ "HOME.summary.last_year" | translate }}</span>
                 </div>
               </div>
             </div>
@@ -52,41 +52,41 @@
                 fxLayout="column"
                 fxLayoutAlign="center center"
               >
-                <span>{{ listDirectories.nEntities }}</span>
+                <span>{{ globalData.nEntities }}</span>
                 <span>{{ "NUMBERS.summary.entities" | translate }}</span>
-                <span class="last-year">+ {{ listDirectories.nEntities }} {{ "HOME.summary.last_year" | translate }}</span>
+                <span class="last-year">+ {{ globalData.nEntities }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
               <div
                 class="metadata"
                 fxLayout="column"
                 fxLayoutAlign="center center"
               >
-                <span>{{ listDirectories.directories.length }}</span>
+                <span>{{ globalData.nDirectories }}</span>
                 <span>{{ "NUMBERS.summary.directories" | translate }}</span>
-                <span class="last-year">+ {{ listDirectories.directories.length }} {{ "HOME.summary.last_year" | translate }}</span>
+                <span class="last-year">+ {{ globalData.nDirectories }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
               <div
                 class="metadata"
                 fxLayout="column"
                 fxLayoutAlign="center center"
               >
-                <span>{{ listDirectories.nPages }}</span>
+                <span>{{ globalData.nPages }}</span>
                 <span>{{ "NUMBERS.summary.pages" | translate }}</span>
-                <span class="last-year">+ {{ listDirectories.nPages }} {{ "HOME.summary.last_year" | translate }}</span>
+                <span class="last-year">+ {{ globalData.nPages }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
               <div
                 class="metadata"
                 fxLayout="column"
                 fxLayoutAlign="center center"
               >
-                <span>{{ listDirectories.nPagesWithoutErrors }}</span>
+                <span>{{ globalData.nPagesWithoutErrors }}</span>
                 <span>{{ "NUMBERS.summary.pages_without_errors" | translate }}</span>
-                <span class="last-year">+ {{ listDirectories.nPagesWithoutErrors }} {{ "HOME.summary.last_year" | translate }}</span>
+                <span class="last-year">+ {{ globalData.nPagesWithoutErrors }} {{ "HOME.summary.last_year" | translate }}</span>
               </div>
             </div>
           </div>
         </div>
-        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ listDirectories.recentPage | date | customDate }}</span>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ globalData.recentPage | date | customDate }}</span>
       </div>
       <div class="declaration">
         <div fxLayout="row">

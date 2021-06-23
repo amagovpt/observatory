@@ -9,6 +9,7 @@ import { ListDirectories } from "../models/list-directories";
 })
 export class ObservatoryNumbersComponent implements OnInit {
   listDirectories: ListDirectories;
+  globalData: any;
 
   currentYear: number;
   declarations: any;
@@ -21,7 +22,8 @@ export class ObservatoryNumbersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listDirectories = this.data.getListDirectories();
+    //this.listDirectories = this.data.getListDirectories();
+    this.globalData = this.data.getGlobalData();
 
     const totalDeclarations =
       this.declarations.total.websites.conform +
