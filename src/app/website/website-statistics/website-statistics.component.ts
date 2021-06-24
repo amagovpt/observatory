@@ -45,7 +45,7 @@ export class WebsiteStatisticsComponent implements OnInit {
     this.pagesWithoutErrorsAA = this.website.pagesWithoutErrorsAA;
     this.pagesWithoutErrorsAAA = this.website.pagesWithoutErrorsAAA;
 
-    this.pagesWithoutErrors = this.website.pagesWithErrors;
+    this.pagesWithoutErrors = this.website.pagesWithoutErrors;
 
     this.pagesWithErrorsPercentage =
       ((this.pagesWithErrors / size) * 100).toFixed(1) + "%";
