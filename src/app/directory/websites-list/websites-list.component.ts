@@ -26,7 +26,7 @@ export class WebsitesListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.websites = this.directory.websitesList;
+    this.websites = this.directory.websitesList.slice();
 
     this.pageSize = 50;
 

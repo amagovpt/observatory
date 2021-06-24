@@ -1,8 +1,7 @@
-<section fxLayout="row" fxLayoutAlign="center center">
+<section *ngIf="globalData" fxLayout="row" fxLayoutAlign="center center">
   <div class="table-wrapper">
     <h2>{{ "DIRECTORIES.table.title" | translate }}</h2>
-    <table matSort matSortActive="rank" matSortDisableClear
-      matSortDirection="asc" (matSortChange)="sortData($event)">
+    <table matSort matSortActive="rank" matSortDisableClear (matSortChange)="sortData($event)">
       <caption>{{ "DIRECTORIES.table.title" | translate }}</caption>
       <thead>
         <tr>

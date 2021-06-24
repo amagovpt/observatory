@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Sort } from "@angular/material/sort";
-import { SelectionModel } from "@angular/cdk/collections";
-
-import { ListDirectories } from "../../models/list-directories";
 import { Directory } from "../../models/directory";
 
 @Component({
@@ -14,14 +11,11 @@ export class DirectoriesListComponent implements OnInit {
   @Input() globalData: any;
 
   sortedData: Array<Directory>;
-  selection: SelectionModel<string>;
 
-  constructor() {
-    this.selection = new SelectionModel<string>(true, []);
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    this.sortedData = this.globalData.directoriesList;
+    this.sortedData = this.globalData.directoriesList.slice();
   }
 
   sortData(sort: Sort): void {
