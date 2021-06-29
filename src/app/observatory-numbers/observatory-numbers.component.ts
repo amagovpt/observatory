@@ -17,13 +17,13 @@ export class ObservatoryNumbersComponent implements OnInit {
 
   constructor(private readonly data: DataService) {
     this.currentYear = new Date().getFullYear();
-    this.declarations = this.data.declarations;
-    this.badges = this.data.badges;
   }
 
   ngOnInit(): void {
     //this.listDirectories = this.data.getListDirectories();
     this.globalData = this.data.getGlobalData();
+    this.declarations = this.globalData.declarations;
+    this.badges = this.globalData.badges;
 
     const totalDeclarations =
       this.declarations.total.websites.conform +
