@@ -1241,6 +1241,30 @@ const tests = {
     dis: "43353",
     result: "warning",
   },
+  heading_01: {
+    type: "true",
+    elem: "all",
+    test: "hxHasAName",
+    score: 10,
+    level: "A",
+    trust: "1",
+    ref: "H42",
+    scs: "1.3.1",
+    dis: "43353",
+    result: "passed",
+  },
+  heading_02: {
+    type: "prop",
+    elem: "all",
+    test: "hxWithoutAName",
+    score: 3,
+    level: "A",
+    trust: "1",
+    ref: "H42",
+    scs: "1.3.1",
+    dis: "43353",
+    result: "fail",
+  },
 };
 
 export default tests;
