@@ -168,7 +168,7 @@ export class ErrorDistributionDialogComponent implements OnInit {
         s = s.replace(new RegExp("</code>", "g"), '"');
         s = s.replace(new RegExp("<mark>", "g"), "");
         s = s.replace(new RegExp("</mark>", "g"), "");
-        //s = s.replace(new RegExp("{{value}}", "g"), "X");
+        s = s.replace(new RegExp("{{value}}", "g"), "");
         s = s.length > 100 ? String(s).substr(0, 97) + "..." : s;
         return this.formatLabel(s, 50);
       });
