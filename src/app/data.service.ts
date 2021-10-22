@@ -2,8 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
 import { of } from "rxjs";
-import { map, catchError } from "rxjs/operators/";
-import clone from "lodash.clonedeep";
+import { map, catchError } from "rxjs";
 
 import { ListDirectories } from "./models/list-directories";
 import { Directory } from "./models/directory";
