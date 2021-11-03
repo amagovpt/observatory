@@ -352,14 +352,16 @@
       "subtitle": "(Por n.º de páginas)",
       "message": "As 3 piores práticas de nível \"{{value}}\"",
       "practice": "erro em",
-      "pages": "páginas"
+      "pages": "páginas",
+      "page": "página"
     },
     "top_3_best_practices": {
       "title": "As 3 melhores práticas por nível de conformidade",
       "subtitle": "(Por n.º de páginas)",
       "message": "As 3 melhores práticas de nível \"{{value}}\"",
       "practice": "prática em",
-      "pages": "páginas"
+      "pages": "páginas",
+      "page": "página"
     },
     "accessibility_plot": {
       "title": "Mancha de acessibilidade",

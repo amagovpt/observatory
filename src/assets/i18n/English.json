@@ -352,14 +352,16 @@
       "subtitle": "(Per n.º of pages)",
       "message": "The 3 bad practices of level \"{{value}}\"",
       "practice": "error in",
-      "pages": "pages"
+      "pages": "pages",
+      "page": "page"
     },
     "top_3_best_practices": {
       "title": "The 3 best practices by level of conformance",
       "subtitle": "(Per n.º of pages)",
       "message": "The 3 best practices of level \"{{value}}\"",
       "practice": "practice in",
-      "pages": "pages"
+      "pages": "pages",
+      "page": "page"
     },
     "accessibility_plot": {
       "title": "Accessibility plot",

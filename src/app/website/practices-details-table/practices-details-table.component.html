@@ -37,7 +37,7 @@
             {{ "WEBSITE.table.details.multi_practices" | translate }}
             {{ "WEBSITE.table.details.all_pages" | translate }}
           </span>
-          <span *ngIf="q.int.lower === q.int.upper && q.int.lower !== 1">
+          <span *ngIf="q.int.lower === q.int.upper && q.int.lower !== 1 && q.tot !== website.nPages">
             {{ q.int.lower }}
             {{ "WEBSITE.table.details.multi_practices" | translate }}
             {{ q.tot }}

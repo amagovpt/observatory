@@ -12,7 +12,8 @@
       <td fxFlex=15>
         <span *ngIf="type === 'good'">{{ "WEBSITE.top_3_best_practices.practice" | translate }}</span>
         <span *ngIf="type === 'bad'">{{ "WEBSITE.top_3_bad_practices.practice" | translate }}</span>
-        <span>{{ practice.n_pages }} {{ "WEBSITE.top_3_best_practices.pages" | translate }}</span>
+        <span *ngIf="practice.n_pages > 1">{{ practice.n_pages }} {{ "WEBSITE.top_3_best_practices.pages" | translate }}</span>
+        <span *ngIf="practice.n_pages === 1">{{ practice.n_pages }} {{ "WEBSITE.top_3_best_practices.page" | translate }}</span>
       </td>
     </tr>
   </tbody>
