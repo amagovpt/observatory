@@ -283,6 +283,14 @@
     "statistics_title": "Statistics",
     "statistics_subtitle": "Metadata",
     "show_websites": "Show websites",
+    "search": {
+      "label": "Search:",
+      "placeholder": "Search websites by name or url",
+      "directory": "Directory",
+      "website": "Website",
+      "score": "Score",
+      "n_pages": "Nº of pages"
+    },
     "table": {
       "filter": "Filter",
       "title": "Directories",

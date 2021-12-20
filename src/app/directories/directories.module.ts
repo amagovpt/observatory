@@ -11,12 +11,14 @@ import { DirectoriesComponent } from "./directories.component";
 import { DirectoriesRoutingModule } from "./directories-routing.module";
 import { DirectoriesStatisticsComponent } from "./directories-statistics/directories-statistics.component";
 import { DirectoriesListComponent } from "./directories-list/directories-list.component";
+import { WebsiteSearchComponent } from './website-search/website-search.component';
 
 @NgModule({
   declarations: [
     DirectoriesComponent,
     DirectoriesStatisticsComponent,
     DirectoriesListComponent,
+    WebsiteSearchComponent,
   ],
   imports: [
     CommonModule,

@@ -283,6 +283,14 @@
     "statistics_title": "Estatísticas",
     "statistics_subtitle": "Metadados",
     "show_websites": "Mostrar sítios Web",
+    "search": {
+      "label": "Pesquisa:",
+      "placeholder": "Pesquise sitios web por nome ou url",
+      "directory": "Diretório",
+      "website": "Sítio web",
+      "score": "Pontuação",
+      "n_pages": "Nº de páginas"
+    },
     "table": {
       "filter": "Filtro",
       "title": "Diretórios",
