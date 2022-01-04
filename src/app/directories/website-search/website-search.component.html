@@ -57,5 +57,8 @@
         </tr>
       </tbody>
     </table>
+    <span class="no-results" *ngIf="noResults">
+      {{ "DIRECTORIES.search.no_results" | translate }}
+    </span>
   </div>
 </section>

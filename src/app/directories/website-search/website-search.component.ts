@@ -10,9 +10,11 @@ export class WebsiteSearchComponent implements OnInit {
   @Input("globalData") globalData: any;
 
   searchResults: any;
+  noResults: boolean;
 
   constructor() {
     this.searchResults = new Array<any>();
+    this.noResults = false;
   }
 
   ngOnInit(): void {}
@@ -25,7 +27,16 @@ export class WebsiteSearchComponent implements OnInit {
         const directory = this.globalData.directories[directoryId];
         for (const websiteId in directory.websites ?? {}) {
           const website = directory.websites[websiteId];
-          if (website.name.includes(text) || website.domain.includes(text)) {
+          if (
+            website.name
+              .toLowerCase()
+              .normalize("NFD")
+              .includes(text.toLowerCase().normalize("NFD")) ||
+            website.domain
+              .toLowerCase()
+              .normalize("NFD")
+              .includes(text.toLowerCase().normalize("NFD"))
+          ) {
             const data = directory.websitesList.find(
               (w: any) => w.id === website.id
             );
@@ -43,6 +54,11 @@ export class WebsiteSearchComponent implements OnInit {
           }
         }
       }
+      if (this.searchResults.length === 0) {
+        this.noResults = true;
+      }
+    } else {
+      this.noResults = false;
     }
   }
 

@@ -284,12 +284,13 @@
     "statistics_subtitle": "Metadata",
     "show_websites": "Show websites",
     "search": {
-      "label": "Search:",
-      "placeholder": "Search websites by name or url",
+      "label": "Search Websites:",
+      "placeholder": "Search Websites by name or url",
       "directory": "Directory",
       "website": "Website",
       "score": "Score",
-      "n_pages": "Nº of pages"
+      "n_pages": "Nº of pages",
+      "no_results": "No websites found"
     },
     "table": {
       "filter": "Filter",

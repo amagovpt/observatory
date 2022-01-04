@@ -1,6 +1,6 @@
 :host {
   width: 87%;
-  background-color: var(--statistics-background);
+  background-color: var(--info-observatory-background);
 }
 
 .search-wrapper {
@@ -15,6 +15,7 @@
 label {
   font-weight: bold;
   font-size: large;
+  color: var(--info-observatory-text);
 }
 
 #search {
@@ -71,6 +72,7 @@ table thead tr th {
 
 table tbody tr td {
   border-bottom: thin solid var(--table-border);
+  background-color: var(--statistics-background);
 }
 
 table tbody tr:hover {
@@ -122,4 +124,10 @@ caption {
   letter-spacing: 0;
   line-height: 22px;
   color: var(--table-header-text);
+}
+
+.no-results {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: var(--statistics-background);
 }

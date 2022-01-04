@@ -284,12 +284,13 @@
     "statistics_subtitle": "Metadados",
     "show_websites": "Mostrar sítios Web",
     "search": {
-      "label": "Pesquisa:",
-      "placeholder": "Pesquise sitios web por nome ou url",
+      "label": "Pesquise sítios Web:",
+      "placeholder": "Pesquise sitios Web por nome ou url",
       "directory": "Diretório",
       "website": "Sítio web",
       "score": "Pontuação",
-      "n_pages": "Nº de páginas"
+      "n_pages": "Nº de páginas",
+      "no_results": "Não foram encontrados sítios web"
     },
     "table": {
       "filter": "Filtro",
