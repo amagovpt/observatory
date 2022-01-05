@@ -27,16 +27,7 @@ export class WebsiteSearchComponent implements OnInit {
         const directory = this.globalData.directories[directoryId];
         for (const websiteId in directory.websites ?? {}) {
           const website = directory.websites[websiteId];
-          if (
-            website.name
-              .toLowerCase()
-              .normalize("NFD")
-              .includes(text.toLowerCase().normalize("NFD")) ||
-            website.domain
-              .toLowerCase()
-              .normalize("NFD")
-              .includes(text.toLowerCase().normalize("NFD"))
-          ) {
+          if (this._search(website, text)) {
             const data = directory.websitesList.find(
               (w: any) => w.id === website.id
             );
@@ -57,9 +48,47 @@ export class WebsiteSearchComponent implements OnInit {
       if (this.searchResults.length === 0) {
         this.noResults = true;
       }
-    } else {
+    }
+
+    if (
+      text &&
+      text.trim() !== "" &&
+      text.trim().length > 2 &&
+      this.searchResults.length > 0
+    ) {
       this.noResults = false;
     }
+  }
+
+  private _search(website: any, text: string): boolean {
+    const parts = text.trim().toLowerCase().split(" ");
+
+    let hasName = true;
+    let hasDomain = true;
+    let hasEntity = true;
+    for (const part of parts ?? []) {
+      const normalizedText = part.normalize("NFD");
+
+      if (
+        !website.name.toLowerCase().normalize("NFD").includes(normalizedText)
+      ) {
+        hasName = false;
+      }
+
+      if (
+        !website.domain.toLowerCase().normalize("NFD").includes(normalizedText)
+      ) {
+        hasDomain = false;
+      }
+
+      if (
+        !website.entity.toLowerCase().normalize("NFD").includes(normalizedText)
+      ) {
+        hasEntity = false;
+      }
+    }
+
+    return hasName || hasDomain || hasEntity;
   }
 
   sortData(sort: Sort): void {
