@@ -51,9 +51,9 @@ export class WebsiteSearchComponent implements OnInit {
     }
 
     if (
-      text &&
-      text.trim() !== "" &&
-      text.trim().length > 2 &&
+      !text ||
+      text.trim() === "" ||
+      text.trim().length <= 2 ||
       this.searchResults.length > 0
     ) {
       this.noResults = false;
@@ -63,13 +63,31 @@ export class WebsiteSearchComponent implements OnInit {
   private _search(website: any, text: string): boolean {
     const parts = text.trim().toLowerCase().split(" ");
 
-    let hasName = true;
+    /*let hasName = true;
     let hasDomain = true;
-    let hasEntity = true;
+    let hasEntity = true;*/
+
+    let hasText = true;
+
+    const totalText = (
+      website.name +
+      " " +
+      website.domain +
+      " " +
+      (website.entity ?? "")
+    )
+      .trim()
+      .toLowerCase()
+      .normalize("NFD");
+
     for (const part of parts ?? []) {
       const normalizedText = part.normalize("NFD");
 
-      if (
+      if (!totalText.includes(normalizedText)) {
+        hasText = false;
+      }
+
+      /*if (
         !website.name.toLowerCase().normalize("NFD").includes(normalizedText)
       ) {
         hasName = false;
@@ -82,13 +100,14 @@ export class WebsiteSearchComponent implements OnInit {
       }
 
       if (
+        !website.entity ||
         !website.entity.toLowerCase().normalize("NFD").includes(normalizedText)
       ) {
         hasEntity = false;
-      }
+      }*/
     }
 
-    return hasName || hasDomain || hasEntity;
+    return hasText; //hasName || hasDomain || hasEntity;
   }
 
   sortData(sort: Sort): void {
