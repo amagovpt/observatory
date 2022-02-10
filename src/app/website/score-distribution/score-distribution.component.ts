@@ -10,7 +10,7 @@ import { Chart } from "chart.js";
 export class ScoreDistributionComponent implements OnInit {
   @Input() data: any;
 
-  @ViewChild("chartDomains", { static: true }) chartDomains: any;
+  @ViewChild("chartWebsites", { static: true }) chartWebsites: any;
   chart: any;
 
   labels: string[];
@@ -72,7 +72,7 @@ export class ScoreDistributionComponent implements OnInit {
           this.freqPer[i] = tmpPer += this.percentageValues[i];
         }
 
-        this.chart = new Chart(this.chartDomains.nativeElement, {
+        this.chart = new Chart(this.chartWebsites.nativeElement, {
           type: "bar",
           responsive: true,
           data: {

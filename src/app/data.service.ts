@@ -24,7 +24,7 @@ export class DataService {
     const host = location.hostname;
 
     if (host === "localhost") {
-      this.server = "http://localhost:3000";
+      this.server = "http://localhost:3001";
     } else {
       this.server = "/api";
     }
@@ -129,7 +129,7 @@ export class DataService {
     return this.globalData;
   }
 
-  private createTemporaryDirectories(response: any): Array<any> {
+  /*private createTemporaryDirectories(response: any): Array<any> {
     const tmpDirectoriesIds = new Array<number>();
     const tmpDirectories = new Array<any>();
     response.result.map((directory: any) => {
@@ -311,5 +311,5 @@ export class DataService {
         }
       }
     }
-  }
+  }*/
 }

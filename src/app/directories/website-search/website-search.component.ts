@@ -72,7 +72,7 @@ export class WebsiteSearchComponent implements OnInit {
     const totalText = (
       website.name +
       " " +
-      website.domain +
+      website.startingUrl +
       " " +
       (website.entity ?? "")
     )

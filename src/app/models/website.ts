@@ -11,7 +11,7 @@ export class Website {
   declarationDate: Date | null;
   stamp: number | null;
   stampDate: Date | null;
-  domain: string;
+  startingUrl: string;
   creationDate: Date;
   pages: Array<Page>;
   calculatedScore: number;
@@ -33,7 +33,7 @@ export class Website {
     declarationDate: Date | null,
     stamp: number | null,
     stampDate: Date | null,
-    domain: string,
+    startingUrl: string,
     creationDate: Date
   ) {
     this.id = id;
@@ -44,7 +44,7 @@ export class Website {
     this.declarationDate = declarationDate ? new Date(declarationDate) : null;
     this.stamp = stamp;
     this.stampDate = stampDate ? new Date(stampDate) : null;
-    this.domain = domain;
+    this.startingUrl = startingUrl;
     this.creationDate = creationDate;
     this.pages = new Array<Page>();
     this.calculatedScore = 0;

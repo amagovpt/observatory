@@ -9,7 +9,7 @@ import { Chart } from "chart.js";
   styleUrls: ["./score-distribution-dialog.component.scss"],
 })
 export class ScoreDistributionDialogComponent implements OnInit {
-  @ViewChild("chartDomains", { static: true }) chartDomains: any;
+  @ViewChild("chartWebsites", { static: true }) chartWebsites: any;
   chart: any;
 
   values: number[] = [];
@@ -97,7 +97,7 @@ export class ScoreDistributionDialogComponent implements OnInit {
           this.freqPer[i] = tmpPer += this.percentageValues[i];
         }
 
-        this.chart = new Chart(this.chartDomains.nativeElement, {
+        this.chart = new Chart(this.chartWebsites.nativeElement, {
           type: "bar",
           responsive: true,
           data: {
