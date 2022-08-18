@@ -21,6 +21,8 @@ export class PracticesDetailsTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.type);
+    console.log(this.website);
     const iterable =
       this.type === "good"
         ? this.website.successDetailsTable

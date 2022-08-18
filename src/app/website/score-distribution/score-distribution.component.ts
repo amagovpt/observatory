@@ -44,6 +44,7 @@ export class ScoreDistributionComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.data)
     this.translate
       .get([
         "DIALOGS.scores.percentage",

@@ -22,6 +22,8 @@ export class TopThreePracticesComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.type)
+    console.log(this.data)
     const errors = new Array<any>();
     for (const key in this.data || {}) {
       if (this.data[key]) {

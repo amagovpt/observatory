@@ -24,6 +24,7 @@ export class Website {
   recentPage: Date;
   oldestPage: Date;
   success: any;
+  
 
   constructor(
     id: number,
