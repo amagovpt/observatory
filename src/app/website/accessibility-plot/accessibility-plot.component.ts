@@ -17,7 +17,6 @@ export class AccessibilityPlotComponent implements OnInit {
   constructor(private translate: TranslateService) { }
 
   ngOnInit() {
-    console.log(this.data);
     this.translate.get('WEBSITE.accessibility_plot.label').subscribe(res => {
       this.chart = new Chart(this.accessibilityPlot.nativeElement, {
         type: 'radar',

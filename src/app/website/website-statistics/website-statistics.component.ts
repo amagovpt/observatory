@@ -37,7 +37,6 @@ export class WebsiteStatisticsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.website)
     const size = this.website.nPages;
 
     this.pagesWithErrors = this.website.pagesWithErrors;

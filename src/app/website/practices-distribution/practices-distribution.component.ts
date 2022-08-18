@@ -38,10 +38,6 @@ export class PracticesDistributionComponent implements OnInit, AfterViewInit {
   direction: any;
 
   constructor(private translate: TranslateService) {
-    console.log(this.type)
-    console.log(this.color)
-    console.log(this.website)
-    console.log(this.data)
     this.tests = _tests;
   }
 
