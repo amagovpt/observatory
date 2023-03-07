@@ -212,38 +212,38 @@ export class ObservatoryNumbersComponent implements OnInit {
       100
     );
 
-    this.fillBar(<HTMLElement>badgesBars[6], "#a87d00", (this.badges.total.websites.gold - this.badges.currentYear.websites.gold / totalBadgesWeb) * 100);
+    this.fillBar(<HTMLElement>badgesBars[6], "#a87d00", ((this.badges.total.websites.gold - this.badges.currentYear.websites.gold) / totalBadgesWeb) * 100);
     this.fillBar(
       <HTMLElement>badgesBars[7],
       "#a87d00",
       (this.badges.currentYear.websites.gold / totalBadges) * 100
     );
-    this.fillBar(<HTMLElement>badgesBars[8], "#75797b", (this.badges.total.websites.silver - this.badges.currentYear.websites.silver / totalBadgesWeb) * 100);
+    this.fillBar(<HTMLElement>badgesBars[8], "#75797b", ((this.badges.total.websites.silver - this.badges.currentYear.websites.silver) / totalBadgesWeb) * 100);
     this.fillBar(
       <HTMLElement>badgesBars[9],
       "#75797b",
       (this.badges.currentYear.websites.silver / totalBadges) * 100
     );
-    this.fillBar(<HTMLElement>badgesBars[10], "#bc7448", (this.badges.total.websites.bronze - this.badges.currentYear.websites.bronze / totalBadgesWeb) * 100);
+    this.fillBar(<HTMLElement>badgesBars[10], "#bc7448", ((this.badges.total.websites.bronze - this.badges.currentYear.websites.bronze) / totalBadgesWeb) * 100);
     this.fillBar(
       <HTMLElement>badgesBars[11],
       "#bc7448",
       (this.badges.currentYear.websites.bronze / totalBadges) * 100
     );
 
-    this.fillBar(<HTMLElement>badgesBars[12], "#a87d00", (this.badges.total.apps.gold - this.badges.currentYear.apps.gold / totalBadgesApps) * 100);
+    this.fillBar(<HTMLElement>badgesBars[12], "#a87d00", ((this.badges.total.apps.gold - this.badges.currentYear.apps.gold) / totalBadgesApps) * 100);
     this.fillBar(
       <HTMLElement>badgesBars[13],
       "#a87d00",
       (this.badges.currentYear.apps.gold / totalBadges) * 100
     );
-    this.fillBar(<HTMLElement>badgesBars[14], "#75797b", (this.badges.total.apps.silver - this.badges.currentYear.apps.silver / totalBadgesApps) * 100);
+    this.fillBar(<HTMLElement>badgesBars[14], "#75797b", ((this.badges.total.apps.silver - this.badges.currentYear.apps.silver) / totalBadgesApps) * 100);
     this.fillBar(
       <HTMLElement>badgesBars[15],
       "#75797b",
       (this.badges.currentYear.apps.silver / totalBadges) * 100
     );
-    this.fillBar(<HTMLElement>badgesBars[16], "#bc7448", (this.badges.total.apps.bronze - this.badges.currentYear.apps.bronze / totalBadgesApps) * 100);
+    this.fillBar(<HTMLElement>badgesBars[16], "#bc7448", ((this.badges.total.apps.bronze - this.badges.currentYear.apps.bronze) / totalBadgesApps) * 100);
     this.fillBar(
       <HTMLElement>badgesBars[17],
       "#bc7448",
