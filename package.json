@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:dev": "ng build --configuration production --build-optimizer --base-href=\"/observatory/\"",
+    "build:dev": "ng build --configuration production --build-optimizer --base-href=\"/observatory2/\"",
     "build:prod": "ng build --configuration production --build-optimizer",
     "build:stats": "ng build --configuration production --build-optimizer --stats-json",
     "test": "ng test",
