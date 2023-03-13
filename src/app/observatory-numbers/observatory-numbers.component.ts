@@ -153,7 +153,7 @@ export class ObservatoryNumbersComponent implements OnInit {
     const totalBadgesApps =
       this.badges.total.apps.gold +
       this.badges.total.apps.silver +
-      this.badges.total.apps.bronze;
+      this.badges.total.apps.bronze + 1;//FIXME
 
     const badgesBars = document.querySelectorAll(".stamp .bar");
 
