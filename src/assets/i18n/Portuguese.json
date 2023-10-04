@@ -606,7 +606,7 @@
     "a_01b": "Encontrei páginas em que o primeiro link não permite saltar para o conteúdo principal da página",
     "a_02a": "Encontrei páginas em que não existem links para saltar blocos de texto",
     "a_02b": "Encontrei páginas em que existem links para saltar blocos de texto",
-    "a_03": "Encontrei <mark>{{value}}</mark> link cujo conteúdo está vazio. Ou melhor, é composto apenas por uma imagem e a imagem tem por equivalente textual alternativo um caráter vazio (i.e. <code>alt=\\\"\\\"</code>).",
+    "a_03": "Encontrei <mark>{{value}}</mark> link cujo conteúdo está vazio. Ou melhor, é composto apenas por uma imagem e a imagem tem por equivalente textual alternativo um carater vazio (i.e. <code>alt=\"\"</code>).",
     "a_04": "Não encontrei links",
     "a_05": "Encontrei páginas em que o atributo title do link se limita a repetir o texto do link",
     "a_06": "Encontrei páginas com links adjacentes que apontam para o mesmo destino",
