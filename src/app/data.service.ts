@@ -24,9 +24,9 @@ export class DataService {
     const host = location.hostname;
 
     if (host === "localhost") {
-      this.server = "http://localhost:3001";
+      this.server = "http://10.55.37.16/api2";
     } else {
-      this.server = "/api";
+      this.server = "http://10.55.37.16/api2";
     }
 
     this.declarations = {
