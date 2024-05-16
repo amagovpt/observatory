@@ -1,0 +1,142 @@
+.table_title {
+    color: black;
+    font-family: Lato;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 48px;
+    margin-top: .5em;
+    margin-bottom: 1em;
+}
+
+.table {
+    width: 100% !important;
+}
+
+.table tr th {
+    color: #fff;
+    background-color: #333 !important;
+    font-family: var(--fonte-lato);
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.table thead tr {
+    border-bottom: 1px solid #333;
+}
+
+.table_primary thead tr:last-child {
+    background-color: #4d4d4d !important;
+}
+
+.table_primary thead tr:last-child th {
+    background-color: transparent !important;
+}
+
+.table tr th.first-show i:first-child {
+    opacity: 100%;
+    font-size: 25px;
+}
+
+.table tr th i {
+    opacity: 0%;
+}
+
+.table tr th:hover {
+    cursor: pointer !important;
+}
+
+.table tr th.show_icon i {
+    opacity: 100%;
+}
+
+.table tr th:hover i {
+    opacity: 70%;
+}
+
+.table button {
+    height: auto !important;
+}
+
+.table thead tr td {
+    vertical-align: middle;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #333;
+}
+
+.table tbody tr a {
+    color: var(--primary);
+    text-decoration: none;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.table tbody tr:hover {
+    background-color: #e4e4e4 !important;
+}
+
+.table tbody tr:hover a {
+    text-decoration: underline;
+}
+
+
+.table tbody tr:last-child {
+    border: 0 !important;
+}
+
+.table_primary tbody tr td {
+    vertical-align: middle;
+    background-color: transparent !important;
+}
+
+.table tbody tr td:first-child {
+    width: 70px;
+    height: 72px;
+}
+
+.table_primary tbody tr td:last-child {
+    width: 8em;
+}
+
+.left {
+    text-align: left !important;
+    padding-left: 16px !important;
+}
+
+.right {
+    text-align: right !important;
+    padding-right: 16px !important; 
+}
+
+.show_icon .table tr th i {
+    opacity: 100%;
+}
+
+.table tr td i {
+    background-color: red;
+    color: white;
+    font-size: 25px;
+}
+
+/* DARK TABLE */
+.main_content_home .table_title {
+    color: white;
+}
+
+.main_content_home .table tbody tr td,
+.main_content_home .table tbody tr td a {
+    color: white;
+}
+
+.main_content_home .table tbody tr:hover {
+    background-color: #20242c !important;
+}
+
+.main_content_home .table tbody tr,
+.main_content_home .table tbody tr:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+}

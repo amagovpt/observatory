@@ -52,7 +52,7 @@ const Gauge = ({ percentage }) => {
         height="170"
         role="img"
       >
-        <title>{t("RESULTS.summary.gauge.title", {value: animatedPercentage})}</title>
+        <title>{t("STATISTICS.gauge.label", {value: animatedPercentage})}</title>
         <path
           className="grey"
           d="M55,90 A55,55 0 1,1 140,90"
@@ -86,7 +86,7 @@ const Gauge = ({ percentage }) => {
           fontSize="8"
           fontFamily="Lato"
         >
-          {t("RESULTS.summary.score")}
+          {t("STATISTICS.gauge.label")}
         </text>
       </svg>
     </div>

@@ -23,7 +23,7 @@ export function Header() {
 
       <WidgetBar
         logo={<LogoAcessmonitor />}
-        description={t("HEADER.line_text")}
+        description={t("HEADER.text")}
       />
     </header>
   );
