@@ -17,6 +17,21 @@
   font-weight: 700;
 }
 
+.logo .title,
+.logo .title2 {
+  color: var(--primary);
+  font-family: var(--font-lato);
+  font-size: 26px;
+  letter-spacing: 0;
+  line-height: 30px;
+  font-weight: 700;
+  margin-left: 0px;
+}
+
+.logo .title2 {
+  font-weight: 400;
+}
+
 .skip-to-content-link {
   position: absolute;
   width: 1px;

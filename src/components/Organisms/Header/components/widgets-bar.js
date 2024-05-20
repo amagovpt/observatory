@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { Icon } from "../../../index";
 
-export function WidgetBar({ description, logo }) {
+export function WidgetBar({ description, logo, title, title2 }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const themeClass = theme === "light" ? "" : "dark_mode";
@@ -31,7 +31,14 @@ export function WidgetBar({ description, logo }) {
           <div className="row ml-0 mr-0">
             <div className="col-12 col-lg-6 align-self-center">
               <div className="d-flex justify-content-between">
-                <h1 className="logo">{logo}</h1>
+                {title && title2 ? 
+                  <h1 className="d-flex flex-column logo">
+                    <span className="title">{title}</span>
+                    <span className="title2">{title2}</span>
+                  </h1>
+                :
+                  <h1 className="logo">{logo}</h1>
+                }
 
                 <div className="d-flex d-lg-none flex-column align-items-center">
                   {/* <button

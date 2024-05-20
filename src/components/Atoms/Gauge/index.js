@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { useTranslation } from "react-i18next";
 
-const Gauge = ({ percentage }) => {
+const Gauge = ({ percentage, title }) => {
   const { t } = useTranslation();
   const [animatedPercentage, setAnimatedPercentage] = useState(0);
 
@@ -86,7 +86,7 @@ const Gauge = ({ percentage }) => {
           fontSize="8"
           fontFamily="Lato"
         >
-          {t("STATISTICS.gauge.label")}
+          {title}
         </text>
       </svg>
     </div>

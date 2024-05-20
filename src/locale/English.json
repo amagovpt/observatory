@@ -342,10 +342,10 @@
         "see_tooltip": "Go to website",
         "note": "* conforming to WCAG 2.1 (W3C)",
         "paginator": {
-          "of": "of",
-          "items": "items",
-          "see": "Show",
-          "per_page": "items per page"
+          "of": " of ",
+          "items": " items",
+          "see": "Show ",
+          "per_page": " items per page"
         }
       }
     },
@@ -430,7 +430,8 @@
       "open_webpage": "Open website",
       "_404": {
         "title": "Error 404",
-        "description": "The page you tried to access doesn't exist."
+        "description": "The page you tried to access doesn't exist.",
+        "homepage": "Go back to homepage"
       },
       "messages": {
         "data_error": "An error has ocurred while trying to retrieve user data",

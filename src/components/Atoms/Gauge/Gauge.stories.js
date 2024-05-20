@@ -12,4 +12,5 @@ const Template = (args) => <Gauge {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   percentage: 9.5,
+  title: "Pontuação"
 };

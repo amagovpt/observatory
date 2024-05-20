@@ -7,7 +7,7 @@ import { WidgetBar } from "./components/widgets-bar";
 
 import "./styles/styles.css";
 
-export function Header() {
+export function Header({description, title, title2}) {
   const {t} = useTranslation()
   return (
     <header id="wrapper-navbar">
@@ -23,7 +23,9 @@ export function Header() {
 
       <WidgetBar
         logo={<LogoAcessmonitor />}
-        description={t("HEADER.text")}
+        title={title}
+        title2={title2}
+        description={description}
       />
     </header>
   );

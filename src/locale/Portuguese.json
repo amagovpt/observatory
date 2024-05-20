@@ -342,10 +342,10 @@
         "see_tooltip": "Ver sítio Web",
         "note": "* conformidade com WCAG 2.1 (W3C)",
         "paginator": {
-          "of": "de",
-          "items": "itens",
-          "see": "Ver",
-          "per_page": "itens por página"
+          "of": " de ",
+          "items": " itens",
+          "see": "Ver ",
+          "per_page": " itens por página"
         }
       }
     },
@@ -430,7 +430,8 @@
       "open_webpage": "Abrir sítio Web",
       "_404": {
         "title": "Erro 404",
-        "description": "A página que tentou aceder não existe."
+        "description": "A página que tentou aceder não existe.",
+        "homepage": "Voltar para a página inicial"
       },
       "messages": {
         "data_error": "Ocorreu um erro ao obter os dados",
