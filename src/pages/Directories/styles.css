@@ -1,0 +1,180 @@
+.container {
+    width: 87%;
+    max-width: none;
+}
+
+.main {
+    height: auto;
+    background-color: var(--background);
+    position: relative;
+    padding-bottom: 4rem;
+}
+
+.main .link_breadcrumb_container {
+    padding: 3rem 0px 2rem 0px;
+}
+
+.section_margin {
+    margin: 40px 0;
+}
+
+
+.page_title {
+    font-size: 2.6em;
+    color: #333;
+    font-weight: 900;
+    font-family: "Lato";
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.observatorio {
+    font-size: 19px;
+    line-height: 48px;
+    color: #fff;
+    background-color: var(--primary);
+    font-weight: 700;
+    font-family: var(--fonte-lato);
+    height: 31px;
+    width: 157px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0.38px;
+}
+
+.section {
+    justify-content: center;
+    align-items: center;
+}
+
+.container_title {
+    color: black;
+    font-family: Lato;
+    font-size: 1.375em;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.section_container {
+    width: 90%;
+    padding: 1em;
+}
+
+.section_container h3 {
+    color: black;
+    font-family: Lato;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin: 0;
+    padding-bottom: 4px;
+}
+
+.search_container {
+    width: 100%;
+    padding: 1em;
+    padding-left: 4em;
+    padding-right: 4em;
+    background-color: #339;
+}
+
+.search_container input {
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.search_container .table_primary tbody tr {
+    vertical-align: middle;
+    background-color: white !important;
+}
+
+.search_container .table tbody tr:hover {
+    background-color: #e4e4e4 !important;
+}
+
+.span_subtitle {
+    height: 11px;
+    font-size: 1em;
+}
+
+.search_container label {
+    font-weight: 700;
+    font-size: large;
+    color: white;
+    margin-bottom: .5rem;
+}
+
+.no_data {
+    font-size: 20px;
+    color: white;
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .title_container_title {
+      font-size: 38px;
+      font-weight: bold !important;
+    }
+}
+
+.middle_col {
+    width: 5em;
+}
+
+.note {
+    margin-top: 20px;
+}
+
+
+/* DARK MODE */
+.main_content_directories {
+    background-color: #2c3241 !important;
+    color: #ebf2f6;
+}
+
+.main_dark .breadcrumb-item {
+    color: var(--header-top-bar-dark-text) !important;
+  }
+  
+.main_dark .breadcrumb-item a {
+    color: var(--header-top-bar-dark-text) !important;
+}
+  
+.main_dark .breadcrumb-item::before {
+    color: var(--header-top-bar-dark-text) !important;
+}
+
+.main_dark .observatorio {
+    color: #000;
+    background-color: #b6dcf6;
+    border-color: transparent;
+}
+
+.main_dark .page_title {
+    color: white;
+}
+
+.main_content_directories .table_secondary tr {
+    background-color: #2c3241 !important;
+}
+
+.main_content_directories .search_container .table_primary tbody tr {
+    vertical-align: middle;
+    background-color: #2c3241 !important;
+}
+
+.main_content_directories .search_container .table tbody tr:hover {
+    background-color: #20242c !important;
+}
+
+.main_content_directories .section_container h3 {
+    color: white;
+}

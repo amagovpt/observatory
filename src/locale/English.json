@@ -20,6 +20,10 @@
         "part1": "Portuguese Observatory",
         "part2": "of Web Accessibility"
       },
+      "welcome": {
+        "title": "Welcome to the Portuguese Web Accessibility Observatory",
+        "subtitle": "Discover the indicators and status of accessibility and usability on Portuguese websites and mobile applications"
+      },
       "text": "The Public Observatory of accessibility and usability practices on websites and mobile applications.",
       "NAV": {
         "location": "Acessibilidade.gov.pt",
@@ -90,7 +94,7 @@
         "chart_title": "Graph",
         "table": "Table",
         "frequency": "Frequency (n.º of pages)",
-        "percentage": "Percentage (n.º of pages)",
+        "percentage": "Cumulative frequency (n.º of pages)",
         "percentage_label": "Percentage (%)",
         "range": "Range",
         "cumulative": "Cumulative frequency"
@@ -235,7 +239,8 @@
           "sentence2": "Project co-financed by the European Commission",
           "sentence3": "Horizon 2020 - Innovation Action program",
           "sentence4": "GA 780057"
-        }
+        },
+        "statistics_title": "Summary of the current state of usability and accessibility"
       }
     },
     "NUMBERS": {
@@ -345,7 +350,11 @@
           "of": " of ",
           "items": " items",
           "see": "Show ",
-          "per_page": " items per page"
+          "per_page": " items per page",
+          "first_page": "First page",
+          "previous_page": "Previous page",
+          "next_page": "Next page",
+          "last_page": "Last page"
         }
       }
     },
@@ -398,7 +407,10 @@
           "multi_page": "pages",
           "all_pages": "all pages",
           "from": "",
-          "to": "to"
+          "to": "to",
+          "multiDetailsTogether": "{{lower}} to {{upper}} occurrences in {{nPages}} pages",
+          "oneDetailAllPagesTogether": "{{lower}} occurrences in all pages",
+          "sameDetailTogether": "{{lower}} occurrences in {{nPages}} pages"
         },
         "lvl_label": "Level"
       }
@@ -741,7 +753,7 @@
       "listitem_02": "List items used outside lists",
       "long_01": "longdesc attribute in images with incorrect content",
       "marquee_01": "Moving content with <marquee> element",
-      "menuitem_01": "menuitem has non-empty accessible name",
+      "menuItem_01": "menuitem has non-empty accessible name",
       "menuitem_02": "menuitem without accessible name",
       "meta_01": "Webpage restarts automatically with <meta http-equiv=\"refresh\"> element",
       "meta_02": "Webpage is redirected automatically with <meta http-equiv=\"redirect\"> element",

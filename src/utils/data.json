@@ -43,6 +43,14 @@
 				"entity": "Comissão Nacional de Eleições",
 				"name": "Comissão Nacional de Eleições",
 				"score": 9.379166666666668
+			},
+			{
+				"index": 5,
+				"id": 21,
+				"DirectoryId": 1,
+				"entity": "INEM - Instituto Nacional de Emergência Médica, I.P.",
+				"name": "INEM - Instituto Nacional de Emergência Médica, I.P.",
+				"score": 9.0
 			}
 		],
 		"topFiveBestPractices": [

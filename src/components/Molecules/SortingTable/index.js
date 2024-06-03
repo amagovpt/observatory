@@ -2,16 +2,16 @@ import React, {useEffect, useState} from "react";
 import "./style.css";
 import {Icon} from "../../Atoms/Icon"
 
-const SortingTable = ({ headers, dataList, setDataList, nextPage, darkTheme, pagination, itemsPaginationText1, itemsPaginationText2, nItemsPerPageText1, nItemsPerPageText2 }) => {
+const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, columnsOptions, nextPage, darkTheme, pagination, itemsPaginationText1, itemsPaginationText2, nItemsPerPageText1, nItemsPerPageText2, iconsAltTexts, paginationButtonsTexts }) => {
 
     //SORT
     const [sort, setSort] = useState({property: "", type: ""});
 
     //Pagination
     const [page, setPage] = useState(1);
-    const [lastPage, setLastPage] = useState();
-    const [nItemsCurrent, setNItemsCurrent] = useState(10);
-    const [list, setList] = useState();
+    const [lastPage, setLastPage] = useState(1);
+    const [nItemsCurrent, setNItemsCurrent] = useState(50);
+    const [list, setList] = useState(null);
     const nAllItems = dataList && dataList.length
 
     const theme = darkTheme ? "dark" : ""
@@ -38,130 +38,138 @@ const SortingTable = ({ headers, dataList, setDataList, nextPage, darkTheme, pag
 
     const sortByProperty = (property) => {
         return dataList.slice().sort((a, b) => {
+            const valueA = a[property]
+            const valueB = b[property]
+
             let type = sort.type
             if(sort.property !== property) {
                 type="asc"
             }
-            if(property && typeof a[property] === "string") {
+            if(property && typeof valueA === "string") {
                 if(type === "asc") {
                     setSort({property: property, type: "des"})
-                    return (a[property]).localeCompare((b[property]));
+                    return (valueA).localeCompare((valueB));
                 } else {
                     setSort({property: property, type: "asc"})
-                    return (b[property]).localeCompare((a[property]));
+                    return (valueB).localeCompare((valueA));
                 }
             } else {
-                const aValue = a[property];
-                const bValue = b[property];
-
                 if (type === "asc") {
                     setSort({property: property, type: "des"})
-                    if (aValue === null && bValue !== null) return 1;  // null values come after numbers
-                    if (aValue !== null && bValue === null) return -1; // numbers come before null values
-                    if (aValue === null && bValue === null) return 0;  // both are null
-                    return parseFloat(aValue) - parseFloat(bValue);    // both are numbers
+                    if (valueA === null && valueB !== null) return 1;  // null values come after numbers
+                    if (valueA !== null && valueB === null) return -1; // numbers come before null values
+                    if (valueA === null && valueB === null) return 0;  // both are null
+                    return parseFloat(valueA) - parseFloat(valueB);    // both are numbers
                 } else {
                     setSort({property: property, type: "asc"})
-                    if (aValue === null && bValue !== null) return -1; // null values come before numbers
-                    if (aValue !== null && bValue === null) return 1;  // numbers come after null values
-                    if (aValue === null && bValue === null) return 0;  // both are null
-                    return parseFloat(bValue) - parseFloat(aValue);    // both are numbers
+                    if (valueA === null && valueB !== null) return -1; // null values come before numbers
+                    if (valueA !== null && valueB === null) return 1;  // numbers come after null values
+                    if (valueA === null && valueB === null) return 0;  // both are null
+                    return parseFloat(valueB) - parseFloat(valueA);    // both are numbers
                 }
             }
         })
     }
 
-    const normalSortHeader = (title, property, extraClass, justifyCenter, sortType, nCol, href) => {
-        const nOfColumns = nCol ? nCol : 1
-        return (
-            <th style={{width: href ? "30%" : "10%"}} colSpan={nOfColumns} aria-sort={sort.property === property ? (sort.type === "asc" ? "descending" : "ascending"):null} className={sort.property === property ? `hide-on-small-screen ${extraClass} show_icon` : `hide-on-small-screen ${extraClass}`} onClick={() => setDataList(sortByProperty(property))}>
-                <div className={`d-flex ${justifyCenter} align-items-center`}>
-                    <span>{title}</span>
-                    {sort.property === property && sort.type === "asc" ? <Icon name="AMA-SetaBaixo-Line" /> : <Icon name="AMA-SetaCima-Line" />}
-                </div>
-            </th>
-        )
-    }
-    
-    const doubleIconSortHeader = (icon, description, property, sortType, nCol) => {
-        const nOfColumns = nCol ? nCol : 1
-        return (
-            <th colSpan={nOfColumns} aria-sort={sort.property === property ? (sort.type === "asc" ? "descending" : "ascending"):null} className={sort.property === property ? "hide-on-small-screen first-show show_icon" : "hide-on-small-screen first-show"} onClick={() => setDataList(sortByProperty(property))}>
-                <div className="d-flex align-items-center justify-content-center">
-                    <Icon name={icon} />
-                    {sort.property === property && sort.type === "asc" ? <Icon name="AMA-SetaBaixo-Line" /> : <Icon name="AMA-SetaCima-Line" />}
-                    <span className="visually-hidden">{description}</span>
-                </div>
-            </th>
-        )
-    }
-
-    const renderAttributes = (object) => {
-        let id = object.id
-        return Object.keys(object).map((key) => {
-            if(key !== "id" && key !== "entity") {
-                if(typeof object[key] === "string") {
-                    return (<td key={key}><a onClick={() => nextPage(id)}>{object[key]}</a></td>)
-                } else {
-                    if(key === "declaration") {
-                        switch(object[key]) {
-                            case 1:
-                                return (<td key={key} className="td_center"><img src={`/img/SVG_Declaracao_Nao_Conforme.svg`} /></td>)
-                            case 2:
-                                return (<td key={key} className="td_center"><img src={`/img/SVG_Declaracao_Parcial_Conforme.svg`} /></td>)
-                            case 3:
-                                return (<td key={key} className="td_center"><img src={`/img/SVG_Declaracao_Conforme.svg`} /></td>)
-                            default:
-                                return (<td key={key} className="td_center">{object[key]}</td>)
-                        }
-                    } else if (key === "stamp") {
-                        switch(object[key]) {
-                            case 1:
-                                return (<td key={key} className="td_center"><img src={`/img/SVG_Selo_Bronze.svg`} /></td>)
-                            case 2:
-                                return (<td key={key} className="td_center"><img src={`/img/SVG_Selo_Prata.svg`} /></td>)
-                            case 3:
-                                return (<td key={key} className="td_center"><img src={`/img/SVG_Selo_Ouro.svg`} /></td>)
-                            default:
-                                return (<td key={key} className="td_center">{object[key]}</td>)
-                        }
-                    } else {
-                        return (<td key={key} className="td_center">{Number.isInteger(object[key]) && object[key] !== null ? object[key] : object[key].toFixed(1)}</td>)
-                    }
-                }
-            }
-        });
-    }
-
-    const renderHeaders = (headerData) => {
-        if(headerData.property === "" && headerData.nCol) {
-            return (<th colSpan={headerData.nCol} className="hide-on-small-screen td_center">{headerData.name === "" ? "" : headerData.name}</th>)
+    const renderHeader = (headerData) => {
+        const nOfColumns = headerData.nCol ? headerData.nCol : 1
+        if(!hasSort || hasSort && nOfColumns !== 1) {
+            const justifyCenter = headerData.justifyCenter ? "td_center" : ""
+            return (<th style={{width: headerData.bigWidth ? headerData.bigWidth : "10%"}} colSpan={nOfColumns} className={`hide-on-small-screen ${justifyCenter} no_pointer`}>{headerData.name === "" ? "" : headerData.name}</th>)
         } else {
+            const sameProp = sort.property === headerData.property
+            const justifyCenter = headerData.justifyCenter ? "justify-content-center" : ""
             if(headerData.icon) {
                 // Icon Header
-                return doubleIconSortHeader(headerData.name, headerData.description, headerData.property, headerData.varType, headerData.nCol)
+                return (
+                    <th colSpan={nOfColumns} aria-sort={sameProp ? (sort.type === "asc" ? "descending" : "ascending"):null} className={sameProp ? "hide-on-small-screen first-show show_icon" : "hide-on-small-screen first-show"} onClick={() => setDataList(sortByProperty(headerData.property))}>
+                        <div className="d-flex align-items-center justify-content-center">
+                            <Icon name={headerData.name} />
+                            {sameProp && sort.type === "asc" ? <Icon name="AMA-SetaBaixo-Line" /> : <Icon name="AMA-SetaCima-Line" />}
+                            <span className="visually-hidden">{headerData.description}</span>
+                        </div>
+                    </th>
+                )
             } else {
                 // Text Header
-                return normalSortHeader(headerData.name, headerData.property, headerData.position, headerData.justify, headerData.varType, headerData.nCol, headerData.href)
+                return (
+                    <th style={{width: headerData.bigWidth ? headerData.bigWidth : "10%"}} colSpan={nOfColumns} aria-sort={sameProp ? (sort.type === "asc" ? "descending" : "ascending"):null} className={sameProp ? `hide-on-small-screen show_icon` : `hide-on-small-screen`} onClick={() => setDataList(sortByProperty(headerData.property))}>
+                        <div className={`d-flex ${justifyCenter} align-items-center`}>
+                            <span>{headerData.name}</span>
+                            {sameProp && sort.type === "asc" ? <Icon name="AMA-SetaBaixo-Line" /> : <Icon name="AMA-SetaCima-Line" />}
+                        </div>
+                    </th>
+                )
             }
         }
     }
 
+    const renderSpans = (spans) => {
+        return spans.map((span) => {
+            return (<span>{span}</span>)
+        })
+    }
+
+    const renderAttributes = (row) => {
+        return Object.keys(row).map((key) => {
+            let center = columnsOptions[key].center ? "td_center" : ""
+            let bold = columnsOptions[key].bold ? "bold" : ""
+            switch(columnsOptions[key].type) {
+                case "Skip":
+                    return null
+                case "Number":
+                    return (<td className={`${center} ${bold}`}>{columnsOptions[key].decimalPlace ? row[key].toFixed(1) : row[key]}</td>)
+                case "Link":
+                    return (<td><a onClick={() => nextPage(row, key)}>{row[key]}</a></td>)
+                case "Text":
+                    return (<td className={`${center} ${bold}`}>{row[key]}</td>)
+                case "Stamp":
+                    switch(row[key]) {
+                        case 1:
+                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Selo_Bronze.svg`} alt={iconsAltTexts[0]} /></td>)
+                        case 2:
+                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Selo_Prata.svg`} alt={iconsAltTexts[1]} /></td>)
+                        case 3:
+                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Selo_Ouro.svg`} alt={iconsAltTexts[2]} /></td>)
+                        default:
+                            return (<td className={`${center} ${bold}`}>{row[key]}</td>)
+                    }
+                case "Declaration":
+                    switch(row[key]) {
+                        case 1:
+                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Declaracao_Nao_Conforme.svg`} alt={iconsAltTexts[3]} /></td>)
+                        case 2:
+                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Declaracao_Parcial_Conforme.svg`} alt={iconsAltTexts[4]} /></td>)
+                        case 3:
+                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Declaracao_Conforme.svg`} alt={iconsAltTexts[5]} /></td>)
+                        default:
+                            return (<td className={`${center} ${bold}`}>{row[key]}</td>)
+                    }
+                case "MultiText":
+                    return (<td className={`${center} ${bold} d-flex flex-column multi-text`}>{renderSpans(row[key])}</td>)
+                case "DoubleText":
+                    return (<td className={`${center} ${bold}`}><span >{row[key][0]}</span><span className={`bold`}>{row[key][1]}</span></td>)
+                default:
+                    return <td>{null}</td>
+            }
+        })
+    }
+
     return (
-        <>
+        <div className="table-responsive">
             <table className={`table table_primary ${theme}`} data-sortable="true">
                 <caption className="visually-hidden">
-                    Testing Sorting Table
+                    {caption}
                 </caption>
                 <thead>
                     {headers && Array.isArray(headers[0]) ? 
                         headers.map((row) => {
-                            return (<tr>{row.map((h) => { return renderHeaders(h)})}</tr>)
+                            return (<tr>{row.map((th) => { return renderHeader(th)})}</tr>)
                         })
                     :
                         <tr>
-                            {headers.map((row) => {
-                                return renderHeaders(row)
+                            {headers.map((th) => {
+                                return renderHeader(th)
                             })}
                         </tr>
                     }
@@ -184,8 +192,8 @@ const SortingTable = ({ headers, dataList, setDataList, nextPage, darkTheme, pag
                 </div>
                 <div className="pagination_section">
                     <span>{nItemsPerPageText1}</span>
-                    <select className="selection" name="itemsPerPage" id="itemsPerPage" onChange={(e) => setNItemsCurrent(e.target.value)}>
-                        <option value="10">10</option>
+                    <select aria-label="Number of rows per page" className="selection" name="itemsPerPage" id="itemsPerPage" onChange={(e) => setNItemsCurrent(e.target.value)}>
+                        <option value="50">50</option>
                         <option value="100">100</option>
                         <option value="250">250</option>
                         <option value="500">500</option>
@@ -194,20 +202,24 @@ const SortingTable = ({ headers, dataList, setDataList, nextPage, darkTheme, pag
                 </div>
                 <div className="pagination_section">
                     <button disabled={page === 1 ? true : false} className={page === 1 ? "disabled button_dir" : "button_dir"} onClick={() => setPage(1)}>
+                        <span className="visually-hidden">{paginationButtonsTexts[0]}</span>
                         <Icon name="AMA-LastPage-Solid" />
                     </button>
                     <button disabled={page === 1 ? true : false} className={page === 1 ? "disabled button_dir" : " button_dir"} onClick={() => setPage(page-1)}>
+                        <span className="visually-hidden">{paginationButtonsTexts[1]}</span>
                         <Icon name="AMA-SetaDir3-Solid" />
                     </button>
                     <button disabled={page === lastPage ? true : false} className={page === lastPage ? "disabled" : ""} onClick={() => setPage(page+1)}>
+                        <span className="visually-hidden">{paginationButtonsTexts[2]}</span>
                         <Icon name="AMA-SetaDir3-Solid" />
                     </button>
                     <button disabled={page === lastPage ? true : false} className={page === lastPage ? "disabled" : ""} onClick={() => setPage(lastPage)}>
+                        <span className="visually-hidden">{paginationButtonsTexts[3]}</span>
                         <Icon name="AMA-LastPage-Solid" />
                     </button>
                 </div>
             </div>}
-        </>
+        </div>
     );
 };
 

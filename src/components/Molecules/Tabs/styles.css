@@ -4,6 +4,35 @@
   line-height: 3em;
 }
 
+.vertical-tabs {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-tabs .nav-tabs {
+  background-color: white !important;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  justify-content: space-between;
+  margin-right: 20px;
+  border-bottom: none;
+}
+
+.vertical-tabs .nav-tabs .nav-link {
+  width: 100%;
+  justify-content: left;
+}
+
+.vertical-tabs .nav-tabs .nav-item:not(:last-child)::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: #dee2e6; /* Adjust color as needed */
+  padding-right: 15px;
+}
+
 .nav-tabs .nav-link {
   border: 0;
   color: var(--primary) !important;

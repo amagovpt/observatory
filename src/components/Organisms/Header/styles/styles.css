@@ -138,3 +138,8 @@
   background-color: var(--primary);
   color: #ebf2f6 !important;
 }
+
+.dark_mode .logo .title,
+.dark_mode .logo .title2 {
+  color: #b6dcf6;
+}

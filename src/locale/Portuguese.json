@@ -20,6 +20,10 @@
         "part1": "Observatório Português",
         "part2": "da Acessibilidade Web"
       },
+      "welcome": {
+        "title": "Bem vindo ao obsevatório Português da Acessibilidade Web",
+        "subtitle": "Conheça os indicadores e estado acessibilidade e usabilidade em sítios web e aplicações móveis portuguesas"
+      },
       "text": "O Observatório público das práticas de acessibilidade e usabilidade em sítios Web e aplicações móveis.",
       "NAV": {
         "location": "Acessibilidade.gov.pt",
@@ -90,7 +94,7 @@
         "chart_title": "Gráfico",
         "table": "Tabela",
         "frequency": "Frequência (n.º de páginas)",
-        "percentage": "Percentagem (n.º de páginas)",
+        "percentage": "Frequência acumulada (n.º de páginas)",
         "percentage_label": "Percentagem (%)",
         "range": "Intervalo",
         "cumulative": "Frequência acumulada"
@@ -235,7 +239,8 @@
           "sentence2": "Projeto co-financiado pela Comissão Europeia",
           "sentence3": "programa Horizon 2020 - Innovation Action",
           "sentence4": "GA 780057"
-        }
+        },
+        "statistics_title": "Sumário do estado atual da usabilidade e acessibilidade"
       }
     },
     "NUMBERS": {
@@ -345,7 +350,11 @@
           "of": " de ",
           "items": " itens",
           "see": "Ver ",
-          "per_page": " itens por página"
+          "per_page": " itens por página",
+          "first_page": "Primeira página",
+          "previous_page": "Página anterior",
+          "next_page": "Página seguinte",
+          "last_page": "Última página"
         }
       }
     },
@@ -398,7 +407,10 @@
           "multi_page": "páginas",
           "all_pages": "todas as páginas",
           "from": "de",
-          "to": "a"
+          "to": "a",
+          "multiDetailsTogether": "de {{lower}} a {{upper}} ocorrências em {{nPages}} páginas",
+          "oneDetailAllPagesTogether": "{{lower}} ocorrência em todas as páginas",
+          "sameDetailTogether": "{{lower}} ocorrências em {{nPages}} páginas"
         },
         "lvl_label": "Nível"
       }
@@ -741,7 +753,7 @@
       "listitem_02": "Encontrei itens de lista utilizados fora de listas",
       "long_01": "Encontrei páginas em que o atributo longdesc existente nas imagens tem um conteúdo incorreto",
       "marquee_01": "Encontrei páginas em que há conteúdo em movimento feito com o elemento <marquee>",
-      "menuitem_01": "Elementos com o papel semântico menuitem com nome acessível",
+      "menuItem_01": "Elementos com o papel semântico menuitem com nome acessível",
       "menuitem_02": "Elementos com o papel semântico menuitem sem nome acessível",
       "meta_01": "PEncontrei páginas em que a página é reiniciada automaticamente através do elemento <meta http-equiv=\"refresh\">",
       "meta_02": "Encontrei páginas em que a página é redireccionada automaticamente através do elemento <meta http-equiv=\"redirect\">",

@@ -16,6 +16,7 @@ export * from "./Atoms/CheckGroup";
 
 // MOLECULES
 export * from "./Molecules/Tabs";
+export * from "./Molecules/StatisticsHeader";
 
 // ORGANISMS
 export * from "./Organisms/Header";

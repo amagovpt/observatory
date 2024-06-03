@@ -13,6 +13,10 @@
     width: 100% !important;
 }
 
+.table tr {
+    height: 50px;
+}
+
 .table tr th {
     color: #fff;
     background-color: #333 !important;
@@ -84,11 +88,6 @@
     text-decoration: underline !important;
 }
 
-
-.table tbody tr:last-child {
-    border: 0 !important;
-}
-
 .table_primary tbody tr td {
     vertical-align: middle;
     background-color: transparent !important;
@@ -124,6 +123,15 @@
 
 .td_center {
     text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.multi-text {
+    border-bottom-width: 0px !important;
+    text-align: left;
 }
 
 .pagination_section {
@@ -162,6 +170,11 @@
 .pagination_section button.disabled {
     opacity: .3;
     cursor: auto;
+}s
+
+.table tr th.no_pointer,
+.table tr th:hover.no_pointer {
+    cursor: text !important;
 }
 
 
@@ -173,6 +186,16 @@
 
     .table.dark {
         background-color: #20242c;
+    }
+
+    .pagination {
+        flex-direction: column !important;
+    }
+
+    .pagination_section button {
+        width: 55px;
+        height: 55px;
+        margin: .2em;
     }
 }
 

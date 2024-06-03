@@ -1,0 +1,181 @@
+.observatorio {
+    width: fit-content;
+    height: fit-content;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.title_container h3 {
+    font-family: Lato;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.title_container h3 a {
+    text-decoration: none;
+    color: var(--primary)
+}
+
+.title_container h3 a:hover {
+    text-decoration: underline;
+}
+
+.radar_graphic {
+    height: 500px;
+}
+
+.good_bad ul {
+    margin-bottom: 0px !important;
+    background-color: transparent !important;
+}
+
+.good_bad .nav-tabs .nav-link.active {
+    background-color: transparent !important;
+}
+
+.good_bad ul li {
+    font-weight: 700;
+    padding: 0px;
+    font-size: 22px;
+    line-height: 48px;
+}
+
+.barLineContainer {
+    position: relative;
+    height: 500px;
+    overflow-x: auto;
+}
+
+.tabs_section .table_primary thead tr:last-child th {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+.website .section .table_primary tbody tr:hover {
+    background-color: transparent !important;
+}
+
+.best_practises .table_primary thead tr {
+    background-color: #efefee !important;
+}
+
+.best_practises .table_primary thead tr th {
+    color: black !important;
+}
+
+.dark_table .table_primary thead tr th {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+.best_practises .table {
+    margin-bottom: 25px;
+}
+
+.best_practises .top {
+    margin-top: 2em;
+}
+
+.best_practises .bottom {
+    margin-bottom: 1em;
+}
+
+.topTen_section ul {
+    background-color: #eaeaea !important;
+    margin-bottom: 10px !important;
+}
+
+.topTen_section .nav-tabs .nav-link.active {
+    background-color: #eaeaea !important;
+}
+
+.topTen_section ul li {
+    font-size: 16px;
+}
+
+/* MOBILE */
+@media (min-width: 320px) and (max-width: 480px) {
+    .radar_graphic {
+        height: fit-content;
+    }
+
+    .best_practises .table {
+        width: 700px !important;
+    }
+
+    .topTen_section .nav-tabs .nav-link.active {
+        background-color: var(--primary) !important;
+    }
+
+    .good_bad .nav-tabs .nav-link.active {
+        background-color: var(--primary) !important;
+    }    
+
+    .main_dark .barLineContainer {
+        background-color: #20242c;
+    }
+
+    .main_dark .best_practises .table tbody tr {
+        background-color: #2c3241;
+    }
+    
+    .main_dark .good_bad .topTen_section .nav-tabs .nav-link.active {
+        border: 0px !important;
+        background-color: var(--primary) !important;
+        color: white !important;
+    }
+}
+
+/* DARK MODE */
+.main_dark .good_bad .nav-tabs .nav-link {
+    color: #b6dcf6 !important;
+}
+
+.main_dark .good_bad .nav-tabs .nav-link.active {
+    border-bottom: 5px solid #b6dcf6 !important;
+}
+
+.main_dark .topTen_section .nav-tabs .nav-link {
+    color: var(--primary) !important;
+}
+.main_dark .topTen_section .nav-tabs .nav-link.active {
+    border-bottom: 5px solid var(--primary) !important;
+}
+
+.main_content_website {
+    background-color: #2c3241 !important;
+    color: #ebf2f6;
+}
+
+.title_container.main_content_website {
+    background-color: transparent !important;
+}
+
+.title_container.main_content_website h3 a {
+    color: #b6dcf6;
+}
+
+.main_content_website .section_container h3 {
+    color: white !important;
+}
+
+.main_content_website .best_practises .table_primary thead tr {
+    background-color: #20242c !important;
+}
+
+.main_content_website .best_practises .table_primary thead tr th {
+    color: white !important;
+}
+
+.main_content_website .best_practises h3,
+.main_content_website .best_practises h4 {
+    color: white;
+}
+
+.main_content_website .dark_table .table_primary thead tr th {
+    background-color: #20242c !important;
+    color: white !important;
+}
+
