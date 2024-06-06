@@ -1,10 +1,3 @@
-.observatorio {
-    width: fit-content;
-    height: fit-content;
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
 .title_container h3 {
     font-family: Lato;
     font-size: 24px;
@@ -15,7 +8,7 @@
 
 .title_container h3 a {
     text-decoration: none;
-    color: var(--primary)
+    color: var(--AMA-Color-Brand-Primary)
 }
 
 .title_container h3 a:hover {
@@ -43,14 +36,14 @@
 }
 
 .barLineContainer {
-    position: relative;
+    width: 100%;
     height: 500px;
     overflow-x: auto;
 }
 
 .tabs_section .table_primary thead tr:last-child th {
-    background-color: #333 !important;
-    color: white !important;
+    background-color: var(--AMA-Color-Text-Gray) !important;
+    color: var(--AMA-Color-Background-White) !important;
 }
 
 .website .section .table_primary tbody tr:hover {
@@ -58,37 +51,29 @@
 }
 
 .best_practises .table_primary thead tr {
-    background-color: #efefee !important;
+    background-color: var(--AMA-Color-Background-Light-Lighter) !important;
 }
 
 .best_practises .table_primary thead tr th {
-    color: black !important;
+    color: var(--AMA-Color-Grey-900) !important;
 }
 
 .dark_table .table_primary thead tr th {
-    background-color: #333 !important;
-    color: white !important;
+    background-color: var(--AMA-Color-Text-Gray) !important;
+    color: var(--AMA-Color-Background-White) !important;
 }
 
 .best_practises .table {
     margin-bottom: 25px;
 }
 
-.best_practises .top {
-    margin-top: 2em;
-}
-
-.best_practises .bottom {
-    margin-bottom: 1em;
-}
-
 .topTen_section ul {
-    background-color: #eaeaea !important;
+    background-color: var(--AMA-Color-Background-Light-Darker) !important;
     margin-bottom: 10px !important;
 }
 
 .topTen_section .nav-tabs .nav-link.active {
-    background-color: #eaeaea !important;
+    background-color: var(--AMA-Color-Background-Light-Darker) !important;
 }
 
 .topTen_section ul li {
@@ -105,48 +90,66 @@
         width: 700px !important;
     }
 
+    .barLineContainer {
+        height: 500px;
+        width: 800px;
+    }
+
+    .overflow {
+        overflow-x: auto;
+    }
+
     .topTen_section .nav-tabs .nav-link.active {
-        background-color: var(--primary) !important;
+        background-color: var(--AMA-Color-Brand-Primary) !important;
     }
 
     .good_bad .nav-tabs .nav-link.active {
-        background-color: var(--primary) !important;
+        background-color: var(--AMA-Color-Brand-Primary) !important;
     }    
 
     .main_dark .barLineContainer {
-        background-color: #20242c;
+        background-color: var(--AMA-Color-Background-Dark-Darker);
     }
 
     .main_dark .best_practises .table tbody tr {
-        background-color: #2c3241;
+        background-color: var(--AMA-Color-Background-Dark-Lighter);
     }
     
     .main_dark .good_bad .topTen_section .nav-tabs .nav-link.active {
         border: 0px !important;
-        background-color: var(--primary) !important;
-        color: white !important;
+        background-color: var(--AMA-Color-Brand-Primary) !important;
+        color: var(--AMA-Color-Background-White) !important;
     }
 }
 
 /* DARK MODE */
+.main_dark .breadcrumb .breadcrumb-item:not(:first-child) {
+    background-image: url("../../../public/img/chevron-right-light.svg");
+}
+
+.main_dark .breadcrumb-item,
+.main_dark .breadcrumb-item a {
+    color: var(--AMA-Color-Text-Blue) !important;
+}
+
 .main_dark .good_bad .nav-tabs .nav-link {
-    color: #b6dcf6 !important;
+    color: var(--AMA-Color-Text-Blue) !important;
 }
 
 .main_dark .good_bad .nav-tabs .nav-link.active {
-    border-bottom: 5px solid #b6dcf6 !important;
+    border-bottom: 5px solid var(--AMA-Color-Text-Blue) !important;
 }
 
 .main_dark .topTen_section .nav-tabs .nav-link {
-    color: var(--primary) !important;
+    color: var(--AMA-Color-Brand-Primary) !important;
 }
 .main_dark .topTen_section .nav-tabs .nav-link.active {
-    border-bottom: 5px solid var(--primary) !important;
+    border-bottom: 5px solid var(--AMA-Color-Brand-Primary) !important;
 }
 
 .main_content_website {
-    background-color: #2c3241 !important;
-    color: #ebf2f6;
+    background-color: var(--AMA-Color-Background-Dark-Lighter) !important;
+    color: var(--AMA-Color-Background-White);
 }
 
 .title_container.main_content_website {
@@ -154,28 +157,28 @@
 }
 
 .title_container.main_content_website h3 a {
-    color: #b6dcf6;
+    color: var(--AMA-Color-Text-Blue);
 }
 
 .main_content_website .section_container h3 {
-    color: white !important;
+    color: var(--AMA-Color-Background-White) !important;
 }
 
 .main_content_website .best_practises .table_primary thead tr {
-    background-color: #20242c !important;
+    background-color: var(--AMA-Color-Background-Dark-Darker) !important;
 }
 
 .main_content_website .best_practises .table_primary thead tr th {
-    color: white !important;
+    color: var(--AMA-Color-Background-White) !important;
 }
 
 .main_content_website .best_practises h3,
 .main_content_website .best_practises h4 {
-    color: white;
+    color: var(--AMA-Color-Background-White);
 }
 
 .main_content_website .dark_table .table_primary thead tr th {
-    background-color: #20242c !important;
-    color: white !important;
+    background-color: var(--AMA-Color-Background-Dark-Darker) !important;
+    color: var(--AMA-Color-Background-White) !important;
 }
 

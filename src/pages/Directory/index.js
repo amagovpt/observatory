@@ -1,14 +1,22 @@
 import "./styles.css";
 
-import { Breadcrumb } from "../../components/index";
+// Hooks
 import { useContext, useEffect, useState } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
-import moment from 'moment'
-import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-import { StatisticsHeader } from "../../components/Molecules/StatisticsHeader";
-import { SortingTable } from "../../components/Molecules/SortingTable";
+// Date formatting
+import moment from 'moment'
+
+// Dark / Light Theme Context
+import { ThemeContext } from "../../context/ThemeContext";
+
+// Components
+import { StatisticsHeader, SortingTable, Breadcrumb } from "../../components/index";
+
+// Extra Data / Functions
+import { getDirectoryTable } from "./utils"
+
 
 export default function Directory() {
 
@@ -16,54 +24,34 @@ export default function Directory() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [directoriesList, setDirectoriesList] = useState();
-  const [directoriesStats, setDirectoriesStats] = useState();
-
+  // Theme
   const { theme } = useContext(ThemeContext);
   const main_content_home = theme === "light" ? "" : "main_content_directory";
 
+  // Navigation Parameters
   const id = location.state?.id || null;
   const dataProcess = location.state?.content || null;
   const directoryName = dataProcess.directories[id].name
 
-  const directoriesHeaders = [
-    [
-      {icon: false, name: t("DIRECTORY.table.rank"), property: "rank"},
-      {icon: false, bigWidth: "50%", name: t("DIRECTORY.table.name"), property: "name"},
-      {icon: true, name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORY.table.declaration"), property: "declaration"},
-      {icon: true, name: "AMA-SeloDark-Line", description: t("DIRECTORY.table.stamp"), property: "stamp"},
-      {icon: false, name: t("DIRECTORY.table.score"), property: "score", justifyCenter: true},
-      {icon: false, name: t("DIRECTORY.table.pages"), property: "nPages", justifyCenter: true},
-      {icon: false, name: t("DIRECTORY.table.levels"), property: "", justifyCenter: true, multiCol: true, nCol: 3},
-    ],
-    [
-      {icon: false, nCol: 6, name: "", multiCol: true},
-      {icon: false, name: t("DIRECTORY.table.A"), property: "A", justifyCenter: true},
-      {icon: false, name: t("DIRECTORY.table.AA"), property: "AA", justifyCenter: true},
-      {icon: false, name: t("DIRECTORY.table.AAA"), property: "AAA", justifyCenter: true}
+  // Data for the main table
+  const [directoriesList, setDirectoriesList] = useState(dataProcess.directories[id].websitesList);
+
+  // Data for StatisticsHeader component
+  const [directoriesStats, setDirectoriesStats] = useState({
+    score: (dataProcess.directories[id].score).toFixed(1),
+    recentPage: moment(dataProcess.directories[id].recentPage).format("LL"),
+    oldestPage: moment(dataProcess.directories[id].oldestPage).format("LL"),
+    statsTable: [
+      dataProcess.directories[id].nEntities,
+      dataProcess.directories[id].nWebsites,
+      dataProcess.directories[id].nPages,
     ]
-  ]
+  });
 
-  let columnsOptions = {
-    id: { type: "Skip", center: false, bold: false, decimalPlace: false },
-    rank: { type: "Number", center: true, bold: false, decimalPlace: false },
-    name: { type: "Link", center: false, bold: false, decimalPlace: false },
-    entity: { type: "Skip", center: false, bold: false, decimalPlace: false },
-    declaration: { type: "Declaration", center: true, bold: false, decimalPlace: false },
-    stamp: { type: "Stamp", center: true, bold: false, decimalPlace: false },
-    score: { type: "Number", center: true, bold: false, decimalPlace: true },
-    nPages: { type: "Number", center: true, bold: false, decimalPlace: false },
-    A: { type: "Number", center: true, bold: false, decimalPlace: false },
-    AA: { type: "Number", center: true, bold: false, decimalPlace: false },
-    AAA: { type: "Number", center: true, bold: false, decimalPlace: false },
-  }
+  // Data and Options for the Tables on this page
+  const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t)
 
-  let statsTitles = [
-    t("STATISTICS.entities"),
-    t("STATISTICS.websites"),
-    t("STATISTICS.pages")
-  ]
-
+  // Navigation options
   const breadcrumbs = [
     {
       title: "Acessibilidade.gov.pt",
@@ -93,6 +81,8 @@ export default function Directory() {
     processData()
   }, [dataProcess, id])
 
+  // Function when clicking the links in main table
+  // row -> The row of the link clicked
   const nextPage = (row, key) => {
     if(row) {
       navigate(`/directories/${id}/${row["id"]}`, {state: {content: dataProcess, directoryId: id, websiteId: row["id"]}} )
@@ -102,20 +92,19 @@ export default function Directory() {
   return (
     <>
       <div className="container">
-        <div className="link_breadcrumb_container">
+        <div className="py-5">
           <Breadcrumb data={breadcrumbs} onClick={() => navigate(`/directories`, {state: {content: dataProcess}} )} />
         </div>
 
         <div className="title_container">
-            <div className="observatorio" lang="en">
-                {t("DIRECTORY.title")}
-            </div>
-            <h2 className="page_title">{t("DIRECTORY.subtitle") + " " + directoryName}</h2>
+          <div className="observatorio px-3">
+            {t("DIRECTORY.title")}
+          </div>
+          <h2 className="page_title my-2">{t("DIRECTORY.subtitle") + " " + directoryName}</h2>
         </div>
 
-        <section
-          className={`bg-white ${main_content_home} d-flex flex-row section section_margin`}
-        >
+        {/* Statistics Header Component */}
+        <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
           {directoriesStats && 
             <StatisticsHeader
               darkTheme={theme === "light" ? false : true}
@@ -126,47 +115,32 @@ export default function Directory() {
               oldestPage={t("STATISTICS.oldest_page_updated")}
               newestPage={t("STATISTICS.newest_page_updated")}
               gaugeTitle={t("STATISTICS.gauge.label")}
-              buttons={true}
+              buttons={false}
             />}
         </section>
 
-        <section
-          className={`bg-white ${main_content_home} d-flex flex-row section section_margin`}
-        >
-          <div className="d-flex flex-column section_container">
-              <h3>{t("DIRECTORY.table.title")}</h3>
-              <h4>{t("DIRECTORY.table.subtitle")+ " " + directoryName}</h4>
-              <SortingTable
-                hasSort={true}
-                headers={directoriesHeaders}
-                setDataList={setDirectoriesList}
-                dataList={directoriesList}
-                columnsOptions={columnsOptions}
-                nextPage={nextPage}
-                darkTheme={theme === "light" ? false : true}
-                links={true}
-                caption={t("DIRECTORY.table.subtitle")+ " " + directoryName}
-                iconsAltTexts={[
-                  t("DIRECTORY.table.stamp_bronze"),
-                  t("DIRECTORY.table.stamp_silver"),
-                  t("DIRECTORY.table.stamp_gold"),
-                  t("DIRECTORY.table.declaration_not_conform"),
-                  t("DIRECTORY.table.declaration_partial_conform"),
-                  t("DIRECTORY.table.declaration_conform")
-                ]}
-                pagination={true}
-                itemsPaginationText1={t("DIRECTORY.table.paginator.of")}
-                itemsPaginationText2={t("DIRECTORY.table.paginator.items")}
-                nItemsPerPageText1={t("DIRECTORY.table.paginator.see")}
-                nItemsPerPageText2={t("DIRECTORY.table.paginator.per_page")}
-                paginationButtonsTexts={[
-                  t("DIRECTORY.table.paginator.first_page"),
-                  t("DIRECTORY.table.paginator.previous_page"),
-                  t("DIRECTORY.table.paginator.next_page"),
-                  t("DIRECTORY.table.paginator.last_page")
-                ]}
-              />
-              <span className="note">{t("DIRECTORIES.table.note")}</span>
+        {/* MAIN Directory TABLE */}
+        <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
+          <div className="d-flex flex-column section_container p-3">
+            <h3 className="table_title pb-0 m-0">{t("DIRECTORY.table.title")}</h3>
+            <h4 className="mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</h4>
+            <SortingTable
+              hasSort={true}
+              headers={directoriesHeaders}
+              setDataList={setDirectoriesList}
+              dataList={directoriesList}
+              columnsOptions={columnsOptions}
+              nextPage={nextPage}
+              darkTheme={theme === "light" ? false : true}
+              links={true}
+              caption={t("DIRECTORY.table.subtitle")+ " " + directoryName}
+              iconsAltTexts={nameOfIcons}
+              pagination={true}
+              itemsPaginationTexts={itemsPaginationText}
+              nItemsPerPageTexts={nItemsPerPageText}
+              paginationButtonsTexts={paginationButtonsTexts}
+            />
+            <span className="mt-4">{t("DIRECTORIES.table.note")}</span>
           </div>
         </section>
       </div>

@@ -4,19 +4,19 @@ path {
 }
 
 .grey {
-  stroke: #e5e5e5;
+  stroke: var(--AMA-Color-Background-Light-Darker);
 }
 
 .red {
-  stroke: #dc3545;
+  stroke: var(--AMA-Color-Red-500);
 }
 
 .green {
-  stroke: #38b458;
+  stroke: var(--AMA-Color-Green-500);
 }
 
 .yellow {
-  stroke: #f9ce41;
+  stroke: var(--AMA-Color-Yellow-400);
 }
 
 .animated {

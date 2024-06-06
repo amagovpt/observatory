@@ -1,13 +1,21 @@
 import "./styles.css";
 
+// Hooks
 import { useContext, useEffect, useState } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+
+// Dark / Light Theme Context
+import { ThemeContext } from "../../context/ThemeContext";
+
+// Date formatting
 import moment from 'moment'
 
-import { StatisticsHeader } from "../../components/Molecules/StatisticsHeader";
-import { Button, Tabs, Icon } from "../../components/index"
+// Components
+import { Button, Icon, StatisticsHeader, LoadingComponent } from "../../components/index"
+import { Top5_Practices } from "./_components/top5_practices";
+import { AchievementPerType } from "./_components/achievementPerType"
+import { ObservatoryInfoTabs } from "./_components/observatoryInfoTabs";
 
 import dataJSON from "../../utils/data.json"
 
@@ -15,13 +23,26 @@ export default function Home() {
 
   const { t, i18n: {language} } = useTranslation();
   const navigate = useNavigate();
-  
-  const [loading, setLoading] = useState(true);
-  const [directoriesStats, setDirectoriesStats] = useState(null);
-  const [data, setData] = useState(null);
-  
+
+  // Theme
   const { theme } = useContext(ThemeContext);
   const main_content_home = theme === "light" ? "" : "main_content_home";
+  
+  // Loading
+  const [loading, setLoading] = useState(true);
+
+  // Data for StatisticsHeader component
+  const [directoriesStats, setDirectoriesStats] = useState(null);
+  let statsTitles = [
+    t("STATISTICS.directories"),
+    t("STATISTICS.entities"),
+    t("STATISTICS.websites"),
+    t("STATISTICS.pages")
+  ]
+
+  // Data for the screen
+  const [data, setData] = useState(null);
+
 
   useEffect(() => {
     const processData = async () => {
@@ -44,60 +65,26 @@ export default function Home() {
     processData()
   }, [language])
 
-  let statsTitles = [
-    t("STATISTICS.directories"),
-    t("STATISTICS.entities"),
-    t("STATISTICS.websites"),
-    t("STATISTICS.pages")
-  ]
-
-  const tab = (title, paragraph, bullet1, bullet2, bullet3) => {
-    return (
-      <div className="tabs_info_container">
-        <h2>{title}</h2>
-        <p>{paragraph}</p>
-        <ul>
-          <li>
-            <Icon name="AMA-Ponto-Solid" />
-            <span>{bullet1}</span>
-          </li>
-          <li>
-            <Icon name="AMA-Ponto-Solid" />
-            <span>{bullet2}</span>
-          </li>
-          <li>
-            <Icon name="AMA-Ponto-Solid" />
-            <span>{bullet3}</span>
-          </li>
-        </ul>
-      </div>
-    )
-  }
-
-  const tabsGoodBad = [
-    {
-      eventKey: "tab1",
-      title: t("HOME.tabs._1.title"),
-      component: tab(t("HOME.tabs._1.title"), t("HOME.tabs._1.paragraph"), t("HOME.tabs._1.bullet1"), t("HOME.tabs._1.bullet2"), t("HOME.tabs._1.bullet3")),
-    },
-    {
-      eventKey: "tab2",
-      title: t("HOME.tabs._2.title"),
-      component: tab(t("HOME.tabs._2.title"), t("HOME.tabs._2.paragraph"), t("HOME.tabs._2.bullet1"), t("HOME.tabs._2.bullet2"), t("HOME.tabs._2.bullet3")),
-    },
-    {
-      eventKey: "tab3",
-      title: t("HOME.tabs._3.title"),
-      component: tab(t("HOME.tabs._3.title"), t("HOME.tabs._3.paragraph"), t("HOME.tabs._3.bullet1"), t("HOME.tabs._3.bullet2"), t("HOME.tabs._3.bullet3")),
-    },
-  ];
-
+  
+  // Function when clicking the button to go to directories
   const nextPage = () => {
     navigate(`/directories`, {state: {content: data}})
   }
 
+  // Function when clicking one of the top 5 websites
   const goToWebsite = (id, websiteId) => {
     navigate(`/directories/${id}/${websiteId}`, {state: {content: data, directoryId: id, websiteId: websiteId}} )
+  }
+
+  // Data for the censos section
+  const censosDataIndividual = (icon, number, spans) => {
+    return (
+      <div className="censos_column">
+        <Icon name={icon} />
+        <span className="censos_number mt-2">{number}</span>
+        <span className="spans">{spans[0]}<br/>{spans[1]}<br/>{spans[2]}</span>
+      </div>
+    )
   }
 
   return (
@@ -112,10 +99,9 @@ export default function Home() {
         </section>
         
         <div className="container">
+          {/* Statistics Header Component */}
           <h2 className="mt-5">{t("HOME.summary.statistics_title")}</h2>
-          <section
-            className={`bg-white ${main_content_home} d-flex flex-row section my-5 section_statistics`}
-          >
+          <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5 section_statistics`}>
             {directoriesStats && <StatisticsHeader
               darkTheme={theme === "light" ? false : true}
               stats={directoriesStats}
@@ -129,7 +115,8 @@ export default function Home() {
             />}
           </section>
 
-          <section className={`${main_content_home} d-flex flex-row section my-5 align-items-start top5_websites`}>
+          {/* Top 5 websites section */}
+          <section className={`${main_content_home} d-flex flex-row justify-content-center align-items-center my-5 top5_websites`}>
             <div className="flex-1 top5_div">
               <h2>{t("HOME.top5.title")}</h2>
               <span>{t("HOME.top5.last_updated") + " " + directoriesStats.recentPage}</span>
@@ -159,148 +146,36 @@ export default function Home() {
 
         <section className={`bg-white ${main_content_home} d-flex flex-column section last_section pt-5`}>
           <div className="container">
+            {/* Declarations data */}
+            <h2>{t("NUMBERS.declaration.title")}</h2>
+            <h3>{t("NUMBERS.declaration.paragraph")}</h3>
+            <AchievementPerType data={data} type={"declarations"} good={"conform"} semi={"partial"} bad={"not_conform"}
+              title={t("NUMBERS.declaration.subtitle1")}
+              icon={"AMA-Declaracao-Line"}
+              colors={{good: "green", semi: "yellow", bad: "red"}}
+              colorTitle={{good: t("NUMBERS.declaration.conform"), semi: t("NUMBERS.declaration.partial"), bad: t("NUMBERS.declaration.non_conform")}}
+              colorRGB={{good: "rgb(21, 172, 81)", semi: "rgb(243, 214, 9)", bad: "rgb(233, 0, 24)"}}
+              translationType={"declaration"}
+            />
+
+            {/* Badges data */}
             <h2>{t("NUMBERS.badge.title")}</h2>
             <h3>{t("NUMBERS.badge.paragraph")}</h3>
+            <AchievementPerType data={data} type={"badges"} good={"gold"} semi={"silver"} bad={"bronze"}
+              title={t("NUMBERS.badge.subtitle1")}
+              icon={"AMA-SeloDark2-Line"}
+              colors={{good: "gold", semi: "silver", bad: "bronze"}}
+              colorTitle={{good: t("NUMBERS.badge.gold"), semi: t("NUMBERS.badge.silver"), bad: t("NUMBERS.badge.bronze")}}
+              colorRGB={{good: "rgb(168, 125, 0)", semi: "rgb(117, 121, 123)", bad: "rgb(188, 116, 72)"}}
+              translationType={"badge"}
+            />
 
-            <div className="grey_container p-5 mb-5 mt-4">
-              <div className="group_container pb-5">
-                <div className="first_column">
-                  <span className="subtitle smaller mb-3">{t("NUMBERS.declaration.subtitle1")}</span>
-                  <div className="icon">
-                    <span className="subtitle mb-3 me-2">{data.declarations.total.websites.conform + data.declarations.total.websites.partial + data.declarations.total.websites.not_conform + data.declarations.total.apps.conform + data.declarations.total.apps.partial + data.declarations.total.apps.not_conform}</span>
-                    <Icon name="AMA-Declaracao-Line" />
-                  </div>
-                  <span>{"+ " + Number(data.declarations.currentYear.websites.conform + data.declarations.currentYear.websites.partial + data.declarations.currentYear.websites.not_conform + data.declarations.currentYear.apps.conform + data.declarations.currentYear.apps.partial + data.declarations.currentYear.apps.not_conform) + " " + t("NUMBERS.last_year")}</span>
-                </div>
-                <div className="second_column">
-                  <div className="d-flex mb-5 w-100 row_st_dc">
-                    <span className="quantity">{data.declarations.total.websites.conform+data.declarations.total.apps.conform}</span>
-                    <div className="ps-2 green conform_container">
-                      <span className="type">{t("NUMBERS.declaration.conform")}</span>
-                      <span>{"+ " + Number(data.declarations.currentYear.websites.conform+data.declarations.currentYear.apps.conform) + " " + t("NUMBERS.last_year")}</span>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center ps-2">
-                      <div className="d-flex flex-row">
-                        <span className="mb-2" style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(21, 172, 81), rgb(21, 172, 81) 69.4737%, rgb(220, 220, 219) 69.4737%, rgb(220, 220, 219) 30.5263%)"}}></span>
-                        <span className="ps-3 opacity-50">Total</span>
-                      </div>
-                      <div className="d-flex flex-row">
-                        <span style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(21, 172, 81), rgb(21, 172, 81) 9.12281%, rgb(220, 220, 219) 9.12281%, rgb(220, 220, 219) 90.8772%)"}}></span>
-                        <span className="ps-3 opacity-50">2024</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="d-flex mb-5 w-100 row_st_dc">
-                    <span className="quantity">{data.declarations.total.websites.partial+data.declarations.total.apps.partial}</span>
-                    <div className="ps-2 yellow conform_container">
-                      <span className="type">{t("NUMBERS.declaration.partial")}</span>
-                      <span>{"+ " + Number(data.declarations.currentYear.websites.partial+data.declarations.currentYear.apps.partial) + " " + t("NUMBERS.last_year")}</span>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center ps-2">
-                      <div className="d-flex flex-row">
-                        <span className="mb-2" style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(243, 214, 9), rgb(243, 214, 9) 15.0877%, rgb(220, 220, 219) 15.0877%, rgb(220, 220, 219) 84.9123%)"}}></span>
-                        <span className="ps-3 opacity-50">Total</span>
-                      </div>
-                      <div className="d-flex flex-row">
-                      <span style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(243, 214, 9), rgb(243, 214, 9) 1.75439%, rgb(220, 220, 219) 1.75439%, rgb(220, 220, 219) 98.2456%)"}}></span>
-                        <span className="ps-3 opacity-50">2024</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="d-flex w-100 row_st_dc">
-                    <span className="quantity">{data.declarations.total.websites.not_conform+data.declarations.total.apps.not_conform}</span>
-                    <div className="ps-2 red conform_container">
-                      <span className="type">{t("NUMBERS.declaration.non_conform")}</span>
-                      <span>{"+ " + Number(data.declarations.currentYear.websites.not_conform+data.declarations.currentYear.apps.not_conform) + " " + t("NUMBERS.last_year")}</span>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center ps-2">
-                      <div className="d-flex flex-row">
-                        <span className="mb-2" style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(233, 0, 24), rgb(233, 0, 24) 4.5614%, rgb(220, 220, 219) 4.5614%, rgb(220, 220, 219) 95.4386%)"}}></span>
-                        <span className="ps-3 opacity-50">Total</span>
-                      </div>
-                      <div className="d-flex flex-row">
-                        <span style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(233, 0, 24), rgb(233, 0, 24) 0%, rgb(220, 220, 219) 0%, rgb(220, 220, 219) 100%)"}}></span>
-                        <span className="ps-3 opacity-50">2024</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="group_container pt-5">
-                <div className="first_column">
-                  <span className="subtitle smaller mb-3">{t("NUMBERS.badge.subtitle1")}</span>
-                  <div className="icon">
-                    <span className="subtitle mb-3 me-2">{data.badges.total.websites.gold + data.badges.total.websites.silver + data.badges.total.websites.bronze + data.badges.total.apps.gold + data.badges.total.apps.silver + data.badges.total.apps.bronze}</span>
-                    <Icon name="AMA-SeloDark2-Line" />
-                  </div>
-                  <span>{"+ " + Number(data.badges.currentYear.websites.gold + data.badges.currentYear.websites.silver + data.badges.currentYear.websites.bronze + data.badges.currentYear.apps.gold + data.badges.currentYear.apps.silver + data.badges.currentYear.apps.bronze) + " " + t("NUMBERS.last_year")}</span>
-                </div>
-                <div className="second_column">
-                  <div className="d-flex mb-5 w-100 row_st_dc">
-                    <span className="quantity">{data.badges.total.websites.gold+data.badges.total.apps.gold}</span>
-                    <div className="ps-2 gold conform_container">
-                      <span className="type">{t("NUMBERS.badge.gold")}</span>
-                      <span>{"+ " + Number(data.badges.currentYear.websites.gold+data.badges.currentYear.apps.gold) + " " + t("NUMBERS.last_year")}</span>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center ps-2">
-                      <div className="d-flex flex-row">
-                        <span className="mb-2" style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(168, 125, 0), rgb(168, 125, 0) 21.875%, rgb(220, 220, 219) 21.875%, rgb(220, 220, 219) 78.125%)"}}></span>
-                        <span className="ps-3 opacity-50">Total</span>
-                      </div>
-                      <div className="d-flex flex-row">
-                        <span style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(168, 125, 0), rgb(168, 125, 0) 9.375%, rgb(220, 220, 219) 9.375%, rgb(220, 220, 219) 90.625%)"}}></span>
-                        <span className="ps-3 opacity-50">2024</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="d-flex mb-5 w-100 row_st_dc">
-                    <span className="quantity">{data.badges.total.websites.silver+data.badges.total.apps.silver}</span>
-                    <div className="ps-2 silver conform_container">
-                      <span className="type">{t("NUMBERS.badge.silver")}</span>
-                      <span>{"+ " + Number(data.badges.currentYear.websites.silver+data.badges.currentYear.apps.silver) + " " + t("NUMBERS.last_year")}</span>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center ps-2">
-                      <div className="d-flex flex-row">
-                        <span className="mb-2" style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(117, 121, 123), rgb(117, 121, 123) 34.375%, rgb(220, 220, 219) 34.375%, rgb(220, 220, 219) 65.625%)"}}></span>
-                        <span className="ps-3 opacity-50">Total</span>
-                      </div>
-                      <div className="d-flex flex-row">
-                        <span style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(117, 121, 123), rgb(117, 121, 123) 18.75%, rgb(220, 220, 219) 18.75%, rgb(220, 220, 219) 81.25%)"}}></span>
-                        <span className="ps-3 opacity-50">2024</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="d-flex w-100 row_st_dc">
-                    <span className="quantity">{data.badges.total.websites.bronze+data.badges.total.apps.bronze}</span>
-                    <div className="ps-2 bronze conform_container">
-                      <span className="type">{t("NUMBERS.badge.bronze")}</span>
-                      <span>{"+ " + Number(data.badges.currentYear.websites.bronze+data.badges.currentYear.apps.bronze) + " " + t("NUMBERS.last_year")}</span>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center ps-2">
-                      <div className="d-flex flex-row">
-                        <span className="mb-2" style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(188, 116, 72), rgb(188, 116, 72) 9.375%, rgb(220, 220, 219) 9.375%, rgb(220, 220, 219) 90.625%)"}}></span>
-                        <span className="ps-3 opacity-50">Total</span>
-                      </div>
-                      <div className="d-flex flex-row">
-                        <span style={{width: "15em", height: "1em", background: "-webkit-linear-gradient(left, rgb(188, 116, 72), rgb(188, 116, 72) 6.25%, rgb(220, 220, 219) 6.25%, rgb(220, 220, 219) 93.75%)"}}></span>
-                        <span className="ps-3 opacity-50">2024</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-
+            {/* Observatory Information Tabs */}
             <div className="tabs-grid">
-              <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={true} />
+              <ObservatoryInfoTabs />
             </div>
 
+            {/* Censos Data */}
             <div className="censos_container p-5">
               <div className="d-flex flex-row align-items-center justify-content-between">
                 <h2>{t("HOME.4all.title")}</h2>
@@ -308,61 +183,25 @@ export default function Home() {
               </div>
               <p className="censos_description mb-4">{t("HOME.4all.paragraph.part1")}<br/>{t("HOME.4all.paragraph.part2")}</p>
               <div className="censos_data">
-                <div className="censos_column">
-                  <Icon name="AMA-BracoPartido-Line" />
-                  <span className="censos_number mt-2">2 905 200</span>
-                  <span className="spans">{t("HOME.4all.disabilities._1.part1")}<br/>{t("HOME.4all.disabilities._1.part2")}<br/>{t("HOME.4all.disabilities._1.part3")}</span>
-                </div>
-                <div className="censos_column">
-                  <Icon name="AMA-CadeiraRodasPC-Line" />
-                  <span className="censos_number mt-2">18%</span>
-                  <span className="spans">{t("HOME.4all.disabilities._2.part1")}<br/>{t("HOME.4all.disabilities._2.part2")}<br/>{t("HOME.4all.disabilities._2.part3")}</span>
-                </div>
-                <div className="censos_column">
-                  <Icon name="AMA-Braille-Line" />
-                  <span className="censos_number mt-2">24,8%</span>
-                  <span className="spans">{t("HOME.4all.disabilities._3.part1")}<br/>{t("HOME.4all.disabilities._3.part2")}<br/>{t("HOME.4all.disabilities._3.part3")}</span>
-                </div>
-                <div className="censos_column">
-                  <Icon name="AMA-Idoso-Line" />
-                  <span className="censos_number mt-2">508 400</span>
-                  <span className="spans">{t("HOME.4all.disabilities._4.part1")}<br/>{t("HOME.4all.disabilities._4.part2")}<br/>{t("HOME.4all.disabilities._4.part3")}</span>
-                </div>
+                {censosDataIndividual("AMA-BracoPartido-Line", "1 085 472", [t("HOME.4all.disabilities._1.part1"), t("HOME.4all.disabilities._1.part2"), t("HOME.4all.disabilities._1.part3")])}
+
+                {censosDataIndividual("AMA-CadeiraRodasPC-Line", "10,9%", [t("HOME.4all.disabilities._2.part1"), t("HOME.4all.disabilities._2.part2"), t("HOME.4all.disabilities._2.part3")])}
+
+                {censosDataIndividual("AMA-Braille-Line", "62,4%", [t("HOME.4all.disabilities._3.part1"), t("HOME.4all.disabilities._3.part2"), t("HOME.4all.disabilities._3.part3")])}
+
+                {censosDataIndividual("AMA-Idoso-Line", "78,7%", [t("HOME.4all.disabilities._4.part1"), t("HOME.4all.disabilities._4.part2"), t("HOME.4all.disabilities._4.part3")])}
               </div>
             </div>
            
+            {/* Top 5 Good and Bad Practices */}
             <div className="d-flex flex-row my-5 top5_best_good">
-              <div className="flex-1 mobile_margin">
-                <div className="d-flex flex-row align-items-center">
-                  <Icon name="AMA-Check-Line" />
-                  <h2 className="ms-2">{t("HOME.summary.best_practices_title")}</h2>
-                </div>
-                <ul className="ps-0">
-                  {data.topFiveBestPractices.map((best, index) => 
-                    <li className="d-flex align-items-center mb-3">
-                      <span className="top5_number pt-1 me-2">{index+1}</span>
-                      <span>{t(`RESULTS.${best.key}`)}</span>
-                    </li>)}
-                </ul>
-              </div>
-              <div className="flex-1">
-                <div className="d-flex flex-row align-items-center">
-                  <Icon name="AMA-Wrong-Line" />
-                  <h2 className="ms-2">{t("HOME.summary.errors_title")}</h2>
-                </div>
-                <ul className="ps-0">
-                {data.topFiveErrors.map((best, index) => 
-                  <li className="d-flex align-items-center mb-3">
-                    <span className="top5_number pt-1 me-2">{index+1}</span>
-                    <span>{t(`RESULTS.${best.key}`)}</span>
-                  </li>)}
-                </ul>
-              </div>
+              <Top5_Practices data={data.topFiveBestPractices} title={t("HOME.summary.best_practices_title")} icon={"AMA-Check-Line"} />
+              <Top5_Practices data={data.topFiveErrors} title={t("HOME.summary.errors_title")} icon={"AMA-Wrong-Line"} />
             </div>
           </div>
         </section>
       </>
-    : null}
+    : <LoadingComponent />}
     </>
   );
 }

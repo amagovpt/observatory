@@ -6,8 +6,10 @@ import { Button } from "../../Atoms/Button";
 
 const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, subtitle, oldestPage, newestPage, gaugeTitle, buttons }) => {
 
+    // Theme
     const theme = darkTheme ? "dark" : ""
 
+    // Normal stats with Value (Title) and description (Subtitle)
     const normalExtraStats = (value, subtitle) => {
         return (
             <div className="d-flex flex-column margin_mobile">
@@ -17,6 +19,7 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
         )
     }
 
+    // Stats with percentage and multiple subtitles
     const percentageStats = (value, object, total, first) => {
         const percentage = (value*100/total).toFixed(1)
         return (
@@ -32,7 +35,7 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
     }
 
     return (
-        <div className={`${theme} d-flex flex-column section_container`}>
+        <div className={`${theme} d-flex flex-column section_container p-3 m-0`}>
             {/* Web version */}
             <div className="grid_container">
                 <div className="d-flex flex-column first_row">
@@ -52,6 +55,7 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
                 <div className="second_row">
                     <Gauge percentage={stats.score} title={gaugeTitle}/>
                 </div>
+                {/* doubleRow checks if its just one row os stats or two */}
                 <div className={`second_row last_column ${doubleRow ? "double" : ""}`}>
                     {doubleRow ?
                         <>

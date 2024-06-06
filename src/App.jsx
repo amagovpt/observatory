@@ -1,4 +1,5 @@
 import "./styles/theme.css";
+import "./styles/main.css";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./pages/Layout";
 import "./i18n";

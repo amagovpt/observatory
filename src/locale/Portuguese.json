@@ -179,7 +179,7 @@
       },
       "4all": {
         "title": "Acessibilidade Web para todos",
-        "census": "Dados: Censos 2011",
+        "census": "Dados: Censos 2021",
         "paragraph": {
           "part1": "Sabia que qualquer utilizador da Web poderá, em qualquer fase da sua vida, ter graus de deficiência ou limitações visuais, auditivas, cognitivas, físicas ou motoras?",
           "part2": "Em Portugal, estima-se que há aproximadamente:"
@@ -187,23 +187,23 @@
         "disabilities": {
           "_1": {
             "part1": "pessoas com limitações visuais,",
-            "part2": "auditivas ou motoras temporárias",
-            "part3": "ou permanentes."
+            "part2": "auditivas, cognitivas ou motoras",
+            "part3": "temporárias ou permanentes."
           },
           "_2": {
-            "part1": "da população com limitações",
-            "part2": "físicas ou cognitivas crónicas",
-            "part3": "ou permanentes."
+            "part1": "da população com 5 ou",
+            "part2": "mais anos apresenta pelo",
+            "part3": "menos uma incapacidade."
           },
           "_3": {
-            "part1": "da população entre  os 15 e os 64 anos",
-            "part2": "com limitações visuais ou auditivas,",
-            "part3": "mesmo com auxiliares."
+            "part1": "da população com mais de 65",
+            "part2": "anos com dificuldade em ver,",
+            "part3": "mesmo com óculos."
           },
           "_4": {
-            "part1": "pessoas com mais de 65 anos",
-            "part2": "com dificuldade em ver,",
-            "part3": "mesmo com óculos."
+            "part1": "da população com mais de 65",
+            "part2": "anos com limitações auditivas,",
+            "part3": "mesmo com auxiliares."
           }
         }
       },
@@ -269,6 +269,7 @@
         "subtitle1": "Sítios Web e aplicações móveis com Declaração de Acessibilidade",
         "subtitle2": "Sítios Web com Declaração de Acessibilidade",
         "subtitle3": "Aplicações móveis com Declaração de Acessibilidade",
+        "percentTitle": "% de declarações de usabilidade e acessibilidade",
         "conform": "Plenamente conformes",
         "partial": "Parcialmente conformes",
         "non_conform": "Não conformes"
@@ -279,6 +280,7 @@
         "subtitle1": "Sítios Web e aplicações móveis com Selo de Usabilidade",
         "subtitle2": "Sítios Web com Selo de Usabilidade",
         "subtitle3": "Aplicações móveis com Selo de Usabilidade",
+        "percentTitle": "% de selos de usabilidade e acessibilidade",
         "gold": "Selo de Ouro",
         "silver": "Selo de Prata",
         "bronze": "Selo de Bronze"
@@ -448,7 +450,8 @@
       "messages": {
         "data_error": "Ocorreu um erro ao obter os dados",
         "data_table_error": "Ocorreu um erro ao tentar carregar a tabela de dados"
-      }
+      },
+      "empty": "Vazio"
     },
     "ELEMS": {
       "imgAlt": "Imagens com texto alternativo preenchido",

@@ -1,5 +1,5 @@
 .nav-tabs {
-  background-color: #eaeaea !important;
+  background-color: var(--AMA-Color-Background-Light-Darker) !important;
   border-radius: 0px !important;
   line-height: 3em;
 }
@@ -10,7 +10,7 @@
 }
 
 .vertical-tabs .nav-tabs {
-  background-color: white !important;
+  background-color: var(--AMA-Color-Background-White) !important;
   display: flex;
   flex-direction: column;
   width: fit-content;
@@ -29,22 +29,22 @@
   display: inline-block;
   width: 100%;
   height: 1px;
-  background-color: #dee2e6; /* Adjust color as needed */
+  background-color: var(--AMA-Color-Grey-100); /* Adjust color as needed */
   padding-right: 15px;
 }
 
 .nav-tabs .nav-link {
   border: 0;
-  color: var(--primary) !important;
+  color: var(--AMA-Color-Brand-Primary) !important;
   border-radius: 0 !important;
 }
 
 .nav-tabs .nav-link.active {
   font-weight: 700;
-  color: var(--primary);
+  color: var(--AMA-Color-Brand-Primary);
   font-family: var(--font-lato);
-  background-color: #eaeaea;
-  border-bottom: 5px solid var(--primary);
+  background-color: var(--AMA-Color-Background-Light-Darker);
+  border-bottom: 5px solid var(--AMA-Color-Brand-Primary);
 }
 
 .nav-pills .nav-link {
@@ -66,8 +66,8 @@
   }
 
   .nav-tabs .nav-link.active {
-    color: #fff !important;
-    background-color: var(--primary);
+    color: var(--AMA-Color-Background-White) !important;
+    background-color: var(--AMA-Color-Brand-Primary);
     border: 0;
   }
 }

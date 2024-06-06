@@ -7,12 +7,8 @@
 }
 
 .container_error a {
-    color: #000;
+    color: var(--AMA-Color-Grey-900);
     text-decoration: none;
-}
-
-.container_error a span {
-    padding-right: 10px;
 }
 
 .container_error a span:hover {
@@ -23,5 +19,5 @@
 /* DARK MODE */
 .dark_mode-error,
 .dark_mode-error a {
-    color: var(--white);
+    color: var(--AMA-Color-Background-White);
 }

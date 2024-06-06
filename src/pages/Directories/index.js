@@ -1,14 +1,22 @@
 import "./styles.css";
 
-import { Breadcrumb } from "../../components/index";
+// Hooks
 import { useContext, useEffect, useState } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
-import moment from 'moment'
-import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-import { StatisticsHeader } from "../../components/Molecules/StatisticsHeader";
-import { SortingTable } from "../../components/Molecules/SortingTable";
+// Date formatting
+import moment from 'moment'
+
+// Dark / Light Theme Context
+import { ThemeContext } from "../../context/ThemeContext";
+
+// Components
+import { StatisticsHeader, SortingTable, Breadcrumb } from "../../components/index";
+
+// Extra Data / Functions
+import { searchFuntion, getDirectoriesTable } from "./utils"
+
 
 export default function Directories() {
 
@@ -16,76 +24,37 @@ export default function Directories() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [directoriesList, setDirectoriesList] = useState([]);
-  const [directoriesStats, setDirectoriesStats] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  const [search, setSearch] = useState("");
-  const [otherData, setOtherData] = useState(null);
-  
+  // Theme
   const { theme } = useContext(ThemeContext);
   const main_content_home = theme === "light" ? "" : "main_content_directories";
 
+  // Navigation Parameters
   const dataProcess = location.state?.content || null;
 
-  const searchTableHeaders = [
-    {icon: false, bigWidth: "40%", name: t("DIRECTORIES.search.directory"), property: "directoryName"},
-    {icon: false, bigWidth: "40%", name: t("DIRECTORIES.search.website"), property: "name"},
-    {icon: true, name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORIES.table.declaration"), property: "declaration"},
-    {icon: true, name: "AMA-SeloDark-Line", description: t("DIRECTORIES.table.stamp"), property: "stamp"},
-    {icon: false, name: t("DIRECTORIES.search.score"), property: "score", justifyCenter: true},
-    {icon: false, name: t("DIRECTORIES.search.n_pages"), property: "nPages", justifyCenter: true},
-  ]
+  // Search and data for the search table
+  const [search, setSearch] = useState("");
+  const [otherData, setOtherData] = useState(null);
 
-  let columnsOptionsSearch = {
-    directoryName: { type: "Link", center: false, bold: false, decimalPlace: false },
-    directoryId: { type: "Skip", center: false, bold: false, decimalPlace: false },
-    name: { type: "Link", center: false, bold: false, decimalPlace: false },
-    id: { type: "Skip", center: false, bold: false, decimalPlace: false },
-    declaration: { type: "Declaration", center: true, bold: false, decimalPlace: false },
-    stamp: { type: "Stamp", center: true, bold: false, decimalPlace: false },
-    score: { type: "Number", center: true, bold: false, decimalPlace: true },
-    nPages: { type: "Number", center: true, bold: false, decimalPlace: false },
-  }
-  
-  const directoriesHeaders = [
-    [
-      {icon: false, name: t("DIRECTORIES.table.rank"), property: "rank"},
-      {icon: false, bigWidth: "50%", name: t("DIRECTORIES.table.name"), property: "name"},
-      {icon: true, name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORIES.table.declaration"), property: "declaration"},
-      {icon: true, name: "AMA-SeloDark-Line", description: t("DIRECTORIES.table.stamp"), property: "stamp"},
-      {icon: false, name: t("DIRECTORIES.table.score"), property: "score", justifyCenter: true},
-      {icon: false, name: t("DIRECTORIES.table.websites"), property: "nWebsites", justifyCenter: true},
-      {icon: false, nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},
-    ],
-    [
-      {icon: false, nCol: 6, name: "", multiCol: true},
-      {icon: false, name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true},
-      {icon: false, name: t("DIRECTORIES.table.AA"), property: "AA", justifyCenter: true},
-      {icon: false, name: t("DIRECTORIES.table.AAA"), property: "AAA", justifyCenter: true}
+  // Data for the main table
+  const [directoriesList, setDirectoriesList] = useState(dataProcess.directoriesList);
+
+  // Data for StatisticsHeader component
+  const [directoriesStats, setDirectoriesStats] = useState({
+    score: (dataProcess.score).toFixed(1),
+    recentPage: moment(dataProcess.recentPage).format("LL"),
+    oldestPage: moment(dataProcess.oldestPage).format("LL"),
+    statsTable: [
+      dataProcess.nDirectories,
+      dataProcess.nEntities,
+      dataProcess.nWebsites,
+      dataProcess.nPages,
     ]
-  ]
+  });
 
-  let columnsOptions = {
-    id: { type: "Skip", center: false, bold: false, decimalPlace: false },
-    rank: { type: "Number", center: true, bold: false, decimalPlace: false },
-    name: { type: "Link", center: false, bold: false, decimalPlace: false },
-    declarations: { type: "Number", center: true, bold: false, decimalPlace: false },
-    stamps: { type: "Number", center: true, bold: false, decimalPlace: false },
-    score: { type: "Number", center: true, bold: false, decimalPlace: true },
-    nWebsites: { type: "Number", center: true, bold: false, decimalPlace: false },
-    A: { type: "Number", center: true, bold: false, decimalPlace: false },
-    AA: { type: "Number", center: true, bold: false, decimalPlace: false },
-    AAA: { type: "Number", center: true, bold: false, decimalPlace: false },
-  }
-
-  let statsTitles = [
-    t("STATISTICS.directories"),
-    t("STATISTICS.entities"),
-    t("STATISTICS.websites"),
-    t("STATISTICS.pages")
-  ]
-
+  // Data and Options for the Tables on this page
+  const { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons } = getDirectoriesTable(t)
+  
+  // Navigation options
   const breadcrumbs = [
     {
       title: "Acessibilidade.gov.pt",
@@ -97,7 +66,6 @@ export default function Directories() {
 
   useEffect(() => {
     const processData = async () => {
-      setLoading(true)
       setDirectoriesStats({
         score: (dataProcess.score).toFixed(1),
         recentPage: moment(dataProcess.recentPage).format("LL"),
@@ -111,17 +79,21 @@ export default function Directories() {
       })
 
       setDirectoriesList(dataProcess.directoriesList)
-      setLoading(false)
     }
     processData()
   }, [dataProcess])
 
+  // Function when clicking the links in main table
+  // row -> The row of the link clicked
   const nextPage = (row, key) => {
     if(row) {
       navigate(`/directories/${row["id"]}`, {state: {content: dataProcess, id: row["id"]}} )
     }
   }
 
+  // Function when clicking the links in the search table
+  // row -> The row of the link clicked
+  // key -> The key of the column that was clicked
   const nextPageSearch = (row, key) => {
     if(key !== "directoryName") {
       navigate(`/directories/${row["directoryId"]}/${row["id"]}`, {state: {content: dataProcess, directoryId: row["directoryId"], websiteId: row["id"]}} )
@@ -130,82 +102,22 @@ export default function Directories() {
     }
   }
 
-  const searchFuntion = (text) => {
-    let searchResults = []
-    setSearch(text)
-    if (text && text.trim() !== "" && text.trim().length > 2) {
-      dataProcess.directoriesList.map((directory) => {
-        dataProcess.directories[directory.id].websitesList.map((website) => {
-          if(_search(website, text)) {
-            searchResults.push({
-              directoryName: directory.name,
-              directoryId: directory.id,
-              name: website.name,
-              id: website.id,
-              declaration: website.declaration,
-              stamp: website.stamp,
-              score: website.score,
-              nPages: website.nPages,
-            })
-          }
-        })
-      })
-      if (searchResults.length === 0) {
-        setOtherData(null)
-      } else {
-        setOtherData(searchResults)
-      }
-      
-    }
-
-    if (!text || text.trim() === "" || text.trim().length <= 2) {
-      setOtherData(null)
-    }
-  }
-
-  const _search = (website, text) => {
-    const parts = text.trim().toLowerCase().split(" ");
-    let hasText = true;
-
-    const totalText = (
-      website.name +
-      " " +
-      website.startingUrl +
-      " " +
-      (website.entity ?? "")
-    )
-      .trim()
-      .toLowerCase()
-      .normalize("NFD");
-
-    for (const part of parts ?? []) {
-      const normalizedText = part.normalize("NFD");
-
-      if (!totalText.includes(normalizedText)) {
-        hasText = false;
-      }
-    }
-
-    return hasText;
-  }
-
   return (
     <>
       <div className="container">
-        {!loading ? <><div className="link_breadcrumb_container">
+        <div className="py-5">
           <Breadcrumb data={breadcrumbs} />
         </div>
 
         <div className="title_container">
-            <div className="observatorio" lang="en">
-                {t("HEADER.NAV.observatory")}
-            </div>
-            <h2 className="page_title">{t("HEADER.NAV.directories")}</h2>
+          <div className="observatorio px-3">
+              {t("HEADER.NAV.observatory")}
+          </div>
+          <h2 className="page_title my-2">{t("HEADER.NAV.directories")}</h2>
         </div>
 
-        <section
-          className={`bg-white ${main_content_home} d-flex flex-row section section_margin`}
-        >
+        {/* Statistics Header Component */}
+        <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
           {directoriesStats && <StatisticsHeader
             darkTheme={theme === "light" ? false : true}
             stats={directoriesStats}
@@ -215,15 +127,14 @@ export default function Directories() {
             oldestPage={t("STATISTICS.oldest_page_updated")}
             newestPage={t("STATISTICS.newest_page_updated")}
             gaugeTitle={t("STATISTICS.gauge.label")}
-            buttons={true}
+            buttons={false}
           />}
         </section>
 
-        <section
-          className={`bg-white ${main_content_home} d-flex flex-row section section_margin`}
-        >
-          <div className="d-flex flex-column section_container">
-            <h3 className="table_title">{t("DIRECTORIES.table.title")}</h3>
+        {/* MAIN Directories TABLE */}
+        <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
+          <div className="d-flex flex-column section_container p-3 m-0">
+            <h3 className="table_title pb-3 m-0">{t("DIRECTORIES.table.title")}</h3>
             <SortingTable
               hasSort={true}
               headers={directoriesHeaders}
@@ -235,15 +146,16 @@ export default function Directories() {
               caption={t("DIRECTORIES.table.title")}
               columnsOptions={columnsOptions}
             />
-            <span className="note">{t("DIRECTORIES.table.note")}</span>
+            <span className="mt-4">{t("DIRECTORIES.table.note")}</span>
           </div>
-        </section></>:null}
+        </section>
 
-        <section className={`bg-white ${main_content_home} d-flex flex-row section`}>
-          <div className="d-flex flex-column search_container">
+        {/* SEARCH TABLE */}
+        <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center`}>
+          <div className="d-flex flex-column search_container p-4 px-5">
             <form className="d-flex flex-column">
-              <label for="search">{t("DIRECTORIES.search.label")}</label>
-              <input type="text" id="search" placeholder={t("DIRECTORIES.search.placeholder")} value={search} onChange={(e) => searchFuntion(e.target.value)}/>
+              <label for="search" className="mb-2">{t("DIRECTORIES.search.label")}</label>
+              <input className="p-3 mb-3" type="text" id="search" placeholder={t("DIRECTORIES.search.placeholder")} value={search} onChange={(e) => searchFuntion(e.target.value, setSearch, setOtherData, dataProcess)}/>
             </form>
             {search && search.length >= 3 ? 
               (otherData ?
@@ -257,14 +169,7 @@ export default function Directories() {
                   pagination={false}
                   hasSort={true}
                   caption={t("DIRECTORY.table.subtitle")+ " "}
-                  iconsAltTexts={[
-                    t("DIRECTORY.table.stamp_bronze"),
-                    t("DIRECTORY.table.stamp_silver"),
-                    t("DIRECTORY.table.stamp_gold"),
-                    t("DIRECTORY.table.declaration_not_conform"),
-                    t("DIRECTORY.table.declaration_partial_conform"),
-                    t("DIRECTORY.table.declaration_conform")
-                  ]}
+                  iconsAltTexts={nameOfIcons}
                 />
               :
                 <span className="no_data">{t("DIRECTORIES.search.no_results")}</span>

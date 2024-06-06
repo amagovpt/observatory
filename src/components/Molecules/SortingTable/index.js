@@ -2,7 +2,22 @@ import React, {useEffect, useState} from "react";
 import "./style.css";
 import {Icon} from "../../Atoms/Icon"
 
-const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, columnsOptions, nextPage, darkTheme, pagination, itemsPaginationText1, itemsPaginationText2, nItemsPerPageText1, nItemsPerPageText2, iconsAltTexts, paginationButtonsTexts }) => {
+/*
+    hasSort -> If Table has sorting
+    caption -> Table caption
+    headers -> Custom Array of Headers
+    dataList -> Array of data
+    setDataList -> Set function to change the data shown based on sorting
+    columnsOptions -> Custom array to help render the data cells
+    nextPage -> Function used for the button click
+    darkTheme -> If Dark theme activated or not
+    pagination -> If Table has pagination
+    itemsPaginationTexts -> Texts for the text telling how many items in that page out of the total
+    nItemsPerPageTexts -> Texts for the selection of how many items per page (Pagination)
+    iconsAltTexts -> Alternative texts for the icons of the data cells
+    paginationButtonsTexts ->  texts for accessibility screen readers for the 4 buttons of pagination (Pagination)
+*/
+const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, columnsOptions, nextPage, darkTheme, pagination, itemsPaginationTexts, nItemsPerPageTexts, iconsAltTexts, paginationButtonsTexts }) => {
 
     //SORT
     const [sort, setSort] = useState({property: "", type: ""});
@@ -14,8 +29,11 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
     const [list, setList] = useState(null);
     const nAllItems = dataList && dataList.length
 
+    // Theme
     const theme = darkTheme ? "dark" : ""
 
+    // useEffect that gives the data to the table
+    // based on how many items per page is to be shown
     useEffect(() => {
         if(dataList && pagination) {
             setPage(1)
@@ -26,6 +44,8 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
         }
     }, [nItemsCurrent, dataList])
 
+    // useEffect that runs after a page change
+    // Gives the new data to the table
     useEffect(() => {
         if(dataList && pagination) {
             const start = page === 1 ? 0 : (page-1) * nItemsCurrent
@@ -36,17 +56,23 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
         }
     }, [page])
 
+    // Property sorting function
     const sortByProperty = (property) => {
         return dataList.slice().sort((a, b) => {
+            // Gets the values for the given property
             const valueA = a[property]
             const valueB = b[property]
 
+            // If its not the same property then the order is always ASCENDING
+            // If its a repeting property then the type being ASCENDING will make
+            // in the if's below to sort by DESCENDING
             let type = sort.type
             if(sort.property !== property) {
                 type="asc"
             }
             if(property && typeof valueA === "string") {
                 if(type === "asc") {
+                    // Set the last property and type of sorting
                     setSort({property: property, type: "des"})
                     return (valueA).localeCompare((valueB));
                 } else {
@@ -71,16 +97,32 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
         })
     }
 
+    // Function that renders the Headers of the Table
+    // Receives an Object from the custom array that tells everything we need to render
     const renderHeader = (headerData) => {
+
+        // If it specifies a nCol means that the header will be more than 1 column
         const nOfColumns = headerData.nCol ? headerData.nCol : 1
+
+        // If the table doesn't have sorting OR it has but this specific column will ocuppy more than 1
+        // Then it means it will be a normal text render with no sorting icon or functionallity
         if(!hasSort || hasSort && nOfColumns !== 1) {
             const justifyCenter = headerData.justifyCenter ? "td_center" : ""
-            return (<th style={{width: headerData.bigWidth ? headerData.bigWidth : "10%"}} colSpan={nOfColumns} className={`hide-on-small-screen ${justifyCenter} no_pointer`}>{headerData.name === "" ? "" : headerData.name}</th>)
+            // If column has bidWidth it means that column ocupies more than normal on the size of the table
+            return (
+                <th style={{width: headerData.bigWidth ? headerData.bigWidth : "10%"}} colSpan={nOfColumns} className={`hide-on-small-screen ${justifyCenter} no_pointer`}>
+                    {/* If there is nothing to be rendered on the table, render a visually-hidden text because of accessibility */}
+                    {!headerData?.empty ? <span>{headerData.name}</span> : <span className="visually-hidden">Empty</span>}
+                </th>
+            )
         } else {
+            // sameProp is used to see which Icon to render
             const sameProp = sort.property === headerData.property
             const justifyCenter = headerData.justifyCenter ? "justify-content-center" : ""
+            // If the column will be a Icon or a Text being displayed
             if(headerData.icon) {
                 // Icon Header
+                // Icons need to have a discription with the class visually-hidden for accessibility screen readers
                 return (
                     <th colSpan={nOfColumns} aria-sort={sameProp ? (sort.type === "asc" ? "descending" : "ascending"):null} className={sameProp ? "hide-on-small-screen first-show show_icon" : "hide-on-small-screen first-show"} onClick={() => setDataList(sortByProperty(headerData.property))}>
                         <div className="d-flex align-items-center justify-content-center">
@@ -104,26 +146,38 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
         }
     }
 
+
     const renderSpans = (spans) => {
         return spans.map((span) => {
             return (<span>{span}</span>)
         })
     }
 
+    // Function that renders the individual cells on the table
+    // We receive an entire data row, then we go 1 by 1 on the properties of the object
+    // Then we also get help from our --> columnsOptions
+    // This custom array passed to the component helps us know what to render and what specifics for each cell
+    // the custom array will have the same exact properties and for each one will tell if its a Text or a Number or an Icon ...
     const renderAttributes = (row) => {
         return Object.keys(row).map((key) => {
             let center = columnsOptions[key].center ? "td_center" : ""
             let bold = columnsOptions[key].bold ? "bold" : ""
+            // Use the custom array to check the type of render to do
             switch(columnsOptions[key].type) {
                 case "Skip":
+                    // Don't render this property
                     return null
                 case "Number":
+                    // Render a number, if it has "decimalPlace" as TRUE then render the number with 1 decimal place
                     return (<td className={`${center} ${bold}`}>{columnsOptions[key].decimalPlace ? row[key].toFixed(1) : row[key]}</td>)
-                case "Link":
-                    return (<td><a onClick={() => nextPage(row, key)}>{row[key]}</a></td>)
+                case "Button":
+                    // Render a button disguised as a text link
+                    return (<td><button className="sortingTableButton" onClick={() => nextPage(row, key)}>{row[key]}</button></td>)
                 case "Text":
+                    // Render normal text
                     return (<td className={`${center} ${bold}`}>{row[key]}</td>)
                 case "Stamp":
+                    // Render one of the 3 Stamp Icons based on the number received (from: 1 to 3)
                     switch(row[key]) {
                         case 1:
                             return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Selo_Bronze.svg`} alt={iconsAltTexts[0]} /></td>)
@@ -135,6 +189,7 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                             return (<td className={`${center} ${bold}`}>{row[key]}</td>)
                     }
                 case "Declaration":
+                    // Render one of the 3 Declaration Icons based on the number received (from: 1 to 3)
                     switch(row[key]) {
                         case 1:
                             return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Declaracao_Nao_Conforme.svg`} alt={iconsAltTexts[3]} /></td>)
@@ -146,10 +201,13 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                             return (<td className={`${center} ${bold}`}>{row[key]}</td>)
                     }
                 case "MultiText":
+                    // Render 2 or more spans that are all normal text.
                     return (<td className={`${center} ${bold} d-flex flex-column multi-text`}>{renderSpans(row[key])}</td>)
                 case "DoubleText":
+                    // Render 2 texts where the second one is bold and the first one not. If this property also comes with bold then all text will be bold
                     return (<td className={`${center} ${bold}`}><span >{row[key][0]}</span><span className={`bold`}>{row[key][1]}</span></td>)
                 default:
+                    // Render an empty cell
                     return <td>{null}</td>
             }
         })
@@ -158,24 +216,34 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
     return (
         <div className="table-responsive">
             <table className={`table table_primary ${theme}`} data-sortable="true">
+                {/* Table caption -> descripton of the table */}
                 <caption className="visually-hidden">
                     {caption}
                 </caption>
                 <thead>
+                    {/* Check if the array has multiple sub-arrays or not
+                        If Yes then means theres more than 1 row of headers
+                        If No then it's just 1 row of headers
+                    */}
                     {headers && Array.isArray(headers[0]) ? 
+                        // Multiple rows of headers
                         headers.map((row) => {
                             return (<tr>{row.map((th) => { return renderHeader(th)})}</tr>)
                         })
                     :
-                        <tr>
-                            {headers.map((th) => {
-                                return renderHeader(th)
-                            })}
-                        </tr>
+                        <>
+                            {/* Just 1 row of headers */}
+                            <tr>
+                                {headers.map((th) => {
+                                    return renderHeader(th)
+                                })}
+                            </tr>
+                        </>
                     }
                 </thead>
 
                 <tbody>
+                    {/* Render the data cells of the table */}
                     {list && list.map((row) => {
                         return (
                             <tr>
@@ -186,20 +254,26 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                 </tbody>
             </table>
 
+            {/* Pagination */}
             {pagination && <div className={`d-flex flex-row justify-content-between pagination ${theme}`}>
+                {/* Section informing the number of items in that page from the total*/}
                 <div className="pagination_section">
-                    {((page-1)*nItemsCurrent)+ 1 + " - " + (nAllItems > nItemsCurrent && page !== lastPage ? (page*nItemsCurrent) : nAllItems) + itemsPaginationText1 + nAllItems + itemsPaginationText2}
+                    {((page-1)*nItemsCurrent)+ 1 + " - " + (nAllItems > nItemsCurrent && page !== lastPage ? (page*nItemsCurrent) : nAllItems) + itemsPaginationTexts[0] + nAllItems + itemsPaginationTexts[1]}
                 </div>
+
+                {/* Section informing the number of items per page and option to change */}
                 <div className="pagination_section">
-                    <span>{nItemsPerPageText1}</span>
+                    <span>{nItemsPerPageTexts[0]}</span>
                     <select aria-label="Number of rows per page" className="selection" name="itemsPerPage" id="itemsPerPage" onChange={(e) => setNItemsCurrent(e.target.value)}>
                         <option value="50">50</option>
                         <option value="100">100</option>
                         <option value="250">250</option>
                         <option value="500">500</option>
                     </select>
-                    <span>{nItemsPerPageText2}</span>
+                    <span>{nItemsPerPageTexts[1]}</span>
                 </div>
+
+                {/* Section with the pagination navigation */}
                 <div className="pagination_section">
                     <button disabled={page === 1 ? true : false} className={page === 1 ? "disabled button_dir" : "button_dir"} onClick={() => setPage(1)}>
                         <span className="visually-hidden">{paginationButtonsTexts[0]}</span>

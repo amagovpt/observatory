@@ -5,7 +5,6 @@
 }
 
 .container_title {
-    color: black;
     font-family: Lato;
     font-size: 1.375em;
     font-weight: 700;
@@ -45,7 +44,6 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 50% 50%;
-    color: black;
     font-family: Lato;
     font-size: 1em;
     letter-spacing: 0;
@@ -64,9 +62,8 @@
     display: flex;
     place-content: center space-around;
     align-items: center;
-    background-color: #efefee;
+    background-color: var(--AMA-Color-Background-Light-Lighter);
     text-align: center;
-    color: black;
     font-family: Lato;
     font-weight: 700;
     letter-spacing: 0;
@@ -93,12 +90,11 @@
 }
 
 .first {
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid var(--AMA-Color-Grey-50);
 }
 
 .percentage {
     height: 11px;
-    color: black;
     font-family: Lato;
     font-size: 18px !important;
     font-weight: 400;
@@ -109,7 +105,6 @@
 
 .percentage_title {
     height: fit-content;
-    color: black;
     font-family: Lato;
     font-size: 2.25em;
     letter-spacing: 0;
@@ -120,7 +115,6 @@
 
 .percentage_subtitle {
     height: fit-content;
-    color: black;
     font-family: Lato;
     font-weight: 400;
     letter-spacing: 0;
@@ -165,9 +159,8 @@
         display: flex;
         place-content: center space-around;
         align-items: center;
-        background-color: #e4e4e4;
+        background-color: var(--AMA-Color-Background-Light-Darker);
         text-align: center;
-        color: black;
         font-family: Lato;
         font-weight: 700;
         letter-spacing: 0;
@@ -186,12 +179,12 @@
 
     /* DARK MODE */
     .section_container.dark .grid_container_mobile .fourth_row {
-        background-color: #20242c !important;
-        color: white;
+        background-color: var(--AMA-Color-Background-Dark-Darker) !important;
+        color: var(--AMA-Color-Background-White);
     }
 
     .section_container.dark {
-        color: white;
+        color: var(--AMA-Color-Background-White);
     }
 }
 
@@ -200,16 +193,16 @@
 .section_container.dark .container_title,
 .section_container.dark .container_subtitle,
 .section_container.dark .second_column {
-    color: white !important;
+    color: var(--AMA-Color-Background-White) !important;
 }
 
 .section_container.dark .second_row text {
-    fill: white;
+    fill: var(--AMA-Color-Background-White);
 }
 
 .section_container.dark .grid_container .last_column {
-    background-color: #20242c !important;
-    color: white;
+    background-color: var(--AMA-Color-Background-Dark-Darker) !important;
+    color: var(--AMA-Color-Background-White);
 }
 
 .section_container.dark .btn {
@@ -219,5 +212,5 @@
 .section_container.dark .percentage,
 .section_container.dark .percentage_title,
 .section_container.dark .percentage_subtitle {
-    color: white;
+    color: var(--AMA-Color-Background-White);
 }

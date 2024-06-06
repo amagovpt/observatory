@@ -1,6 +1,6 @@
 footer {
   padding: 40px 0;
-  background-color: #f1f1f1;
+  background-color: var(--AMA-Color-Background-Light-Lighter);
 }
 
 footer .footer-menu {
@@ -16,7 +16,7 @@ footer .footer-menu li a {
   display: block;
   padding: 8px 12px;
   text-decoration: none;
-  color: var(--primary);
+  color: var(--AMA-Color-Brand-Primary);
   font-size: 18px;
   font-family: var(--font-lato);
 }
@@ -95,10 +95,10 @@ footer .copyright p {
 /* Dark Mode */
 
 .dark_mode_footer {
-  background-color: var(--header-dark);
-  color: var(--header-top-bar-dark-text);
+  background-color: var(--AMA-Color-Blue-600);
+  color: var(--AMA-Color-Text-Blue);
 }
 
 .dark_mode_footer li a {
-  color: var(--header-top-bar-dark-text) !important;
+  color: var(--AMA-Color-Text-Blue) !important;
 }

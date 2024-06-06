@@ -3,20 +3,93 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
 
 :root {
-  --primary: #333399;
-  --success: #3a8241;
-  --danger: #b82118;
-  --white: #ffffff;
-  --focus-button: #ffc107;
-  --info: #e0e0e0;
-  --background: #e4e4e4;
+
+  /* COLORS PALLETE */
+  --AMA-Color-Brand-Primary: #333399;
+  --AMA-Color-Brand-Secondary: #333333;
+  --AMA-Color-Brand-Tertiary: #1ACC60;
+  
+  --AMA-Color-Text-Gray: #333333;
+  --AMA-Color-Text-Blue: #B6DCF6;
+
+  --AMA-Color-System-Warning: #FFC107;
+  --AMA-Color-System-Error: #DC3545;
+  --AMA-Color-System-Success: #38B458;
+
+  --AMA-Color-Background-White: #FFFFFF;
+  --AMA-Color-Background-Light-Lighter: #EFEFEE;
+  --AMA-Color-Background-Light-Darker: #E4E4E4;
+  --AMA-Color-Background-Dark-Lighter: #2D3241;
+  --AMA-Color-Background-Dark-Darker: #21242C;
+
+  --AMA-Color-Headers-Light: #EFEFEE;
+  --AMA-Color-Headers-Pre-Header: #E4E4E4;
+
+  --AMA-Color-Blue-0: #F0F0FA;
+  --AMA-Color-Blue-50: #D2D1EF;
+  --AMA-Color-Blue-100: #B5B3E5;
+  --AMA-Color-Blue-200: #9793D9;
+  --AMA-Color-Blue-300: #7974CF;
+  --AMA-Color-Blue-400: #5D56C5;
+  --AMA-Color-Blue-500: #3A3297;
+  --AMA-Color-Blue-600: #2E2879;
+  --AMA-Color-Blue-700: #231E5B;
+  --AMA-Color-Blue-800: #16143C;
+  --AMA-Color-Blue-900: #0B0A1F;
+
+  --AMA-Color-Grey-0: #FFFFFF;
+  --AMA-Color-Grey-50: #D6D6D6;
+  --AMA-Color-Grey-100: #C2C2C2;
+  --AMA-Color-Grey-200: #ADADAD;
+  --AMA-Color-Grey-300: #939393;
+  --AMA-Color-Grey-400: #858585;
+  --AMA-Color-Grey-500: #707070;
+  --AMA-Color-Grey-600: #5C5C5C;
+  --AMA-Color-Grey-700: #515151;
+  --AMA-Color-Grey-800: #1F1F1F;
+  --AMA-Color-Grey-900: #0A0A0A;
+
+  --AMA-Color-Green-0: #EEFDF3;
+  --AMA-Color-Green-50: #CDF7DC;
+  --AMA-Color-Green-100: #ACF2C5;
+  --AMA-Color-Green-200: #8DEEAE;
+  --AMA-Color-Green-300: #6DEB98;
+  --AMA-Color-Green-400: #55E380;
+  --AMA-Color-Green-500: #38B458;
+  --AMA-Color-Green-600: #2C8F47;
+  --AMA-Color-Green-700: #206B35;
+  --AMA-Color-Green-800: #144724;
+  --AMA-Color-Green-900: #092411;
+
+  --AMA-Color-Yellow-0: #FEFAEB;
+  --AMA-Color-Yellow-50: #FFF6D3;
+  --AMA-Color-Yellow-100: #FCECAF;
+  --AMA-Color-Yellow-200: #FBE189;
+  --AMA-Color-Yellow-300: #FAD763;
+  --AMA-Color-Yellow-400: #F9CE41;
+  --AMA-Color-Yellow-500: #DAAA20;
+  --AMA-Color-Yellow-600: #B38B18;
+  --AMA-Color-Yellow-700: #8B6C10;
+  --AMA-Color-Yellow-800: #634E09;
+  --AMA-Color-Yellow-900: #3B2E03;
+
+  --AMA-Color-Red-0: #FBEEEF;
+  --AMA-Color-Red-50: #F7DDDF;
+  --AMA-Color-Red-100: #F3CCCF;
+  --AMA-Color-Red-200: #EBAAB0;
+  --AMA-Color-Red-300: #E38991;
+  --AMA-Color-Red-400: #DB6872;
+  --AMA-Color-Red-500: #C8313B;
+  --AMA-Color-Red-600: #A62831;
+  --AMA-Color-Red-700: #851F27;
+  --AMA-Color-Red-800: #64171D;
+  --AMA-Color-Red-900: #420F13;
+
+
+  /* TYPOGRAPHY PALLETE */
   --font-lato: "Lato", sans-serif;
   --font-red-hat: "Red Hat Display", sans-serif;
 
-  --header-dark: #272777;
-  --header-top-bar-dark-text: #b6dcf6;
-
-  --primary-disabled: #707070;
 }
 
 * {
@@ -35,13 +108,4 @@ button {
 
 ul {
   list-style: none;
-}
-
-/* Dark for all pages */
-
-.dark_mode-resume .acess_monitor,
-.dark_mode-details .acess_monitor,
-.dark_mode-code .acess_monitor {
-  background-color: #b6dcf6;
-  color: #20242c;
 }

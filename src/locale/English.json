@@ -179,7 +179,7 @@
       },
       "4all": {
         "title": "Web accessibility for everyone",
-        "census": "Data: Census 2011",
+        "census": "Data: Census 2021",
         "paragraph": {
           "part1": "Did you know that any web user can, at any stage of their life, have degrees of impairment or visual, auditory, cognitive, physical or motor limitations?",
           "part2": "In Portugal, it is estimated that there are approximately:"
@@ -269,6 +269,7 @@
         "subtitle1": "Web sites and mobile applications with Declaration of Accessibility",
         "subtitle2": "Websites with Declaration of Accessibility",
         "subtitle3": "Mobile applications with Accessibility Declaration",
+        "percentTitle": "% of usability and accessibility declarations",
         "conform": "Fully compliant",
         "partial": "Partially compliant",
         "non_conform": "Non compliant"
@@ -279,6 +280,7 @@
         "subtitle1": "Websites and mobile applications with Usability Badge",
         "subtitle2": "Websites with Usability Badge",
         "subtitle3": "Mobile Applications with Usability Badge",
+        "percentTitle": "% of usability and accessibility badges",
         "gold": "Gold badge",
         "silver": "Silver badge",
         "bronze": "Bronze badge"
@@ -448,7 +450,8 @@
       "messages": {
         "data_error": "An error has ocurred while trying to retrieve user data",
         "data_table_error": "An error has ocurred when trying to load the data table"
-      }
+      },
+      "empty": "Empty"
     },
     "ELEMS": {
       "imgAlt": "Images with non-empty alternative text",

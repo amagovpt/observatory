@@ -17,6 +17,7 @@ const Accordion = ({ options, textColor, id, ...props }) => {
     color: textColor,
   };
 
+  // Function to add or remove a class from the accordion-button to change the background image
   const toggleShow = () => {
     const parentElement = document.getElementById(id)
     const childElement = document.querySelector('.accordion-button')

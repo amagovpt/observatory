@@ -1,17 +1,26 @@
 .breadcrumb-item + .breadcrumb-item::before {
-  content: ">";
-  color: var(--primary);
+  content: unset;
 }
 
 .breadcrumb-item a {
-  color: var(--primary);
+  color: var(--AMA-Color-Brand-Primary);
 }
 
 .breadcrumb-item {
   font-family: var(--font-lato) !important;
-  font-size: 18px;
+  font-size: 1rem;
 }
 
 .breadcrumb-item.active {
-  color: #333 !important;
+  color: var(--AMA-Color-Text-Gray) !important;
+}
+
+.breadcrumb .breadcrumb-item:not(:first-child) {
+  background-image: url("../../../../public/img/chevron-right-dark.svg");
+  background-size: .75rem;
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: center;
+  padding-left: 1rem;
+  margin-left: 0.5rem;
 }

@@ -3,17 +3,17 @@
   align-items: center;
   gap: 10px !important;
   flex-direction: row;
-  color: var(--primary) !important;
+  color: var(--AMA-Color-Brand-Primary) !important;
 }
 
 .link-container a {
   font-weight: 500 !important;
-  color: var(--primary) !important;
-  text-decoration-color: var(--primary) !important;
+  color: var(--AMA-Color-Brand-Primary) !important;
+  text-decoration-color: var(--AMA-Color-Brand-Primary) !important;
 }
 
 .link-container a:focus {
-  border: 3px solid var(--focus-button);
+  border: 3px solid var(--AMA-Color-Yellow-400);
   box-shadow: none;
   outline: 0;
 }

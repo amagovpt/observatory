@@ -1,34 +1,33 @@
 .btn-primary {
-  color: var(--white);
-  background-color: var(--primary);
+  color: var(--AMA-Color-Background-White);
+  background-color: var(--AMA-Color-Brand-Primary);
   font-weight: 700;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--AMA-Color-Brand-Primary) !important;
 }
 
 .btn-primary:hover {
-  color: var(--primary);
-  border-color: var(--primary);
-  background-color: var(--white);
+  color: var(--AMA-Color-Brand-Primary);
+  background-color: var(--AMA-Color-Background-White);
 }
 
 .btn-primary:disabled {
   opacity: 1;
   border-color: transparent;
-  color: var(--white);
-  background-color: var(--primary-disabled);
+  color: var(--AMA-Color-Background-White);
+  background-color: var(--AMA-Color-Grey-500);
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: var(--primary);
-  border-color: var(--primary);
+  color: var(--AMA-Color-Background-White);
+  background-color: var(--AMA-Color-Brand-Primary);
+  border-color: var(--AMA-Color-Brand-Primary);
 }
 
 .btn-check:focus + .btn,
 .btn-primary:focus {
-  color: var(--white);
-  background-color: var(--primary);
+  color: var(--AMA-Color-Background-White);
+  background-color: var(--AMA-Color-Brand-Primary);
   outline: 0;
 }

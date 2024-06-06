@@ -26,12 +26,12 @@ button,
   gap: 10px !important;
 
   font-family: var(--font-lato) !important;
-  border: 2px solid inherit #fff;
+  border: 2px solid inherit var(--AMA-Color-Background-White);
 }
 
 button,
 .btn:focus {
-  border: 3px solid var(--focus-button);
+  border: 3px solid var(--AMA-Color-Yellow-400);
   box-shadow: none;
 }
 
