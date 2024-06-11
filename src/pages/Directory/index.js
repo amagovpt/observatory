@@ -15,7 +15,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { StatisticsHeader, SortingTable, Breadcrumb } from "../../components/index";
 
 // Extra Data / Functions
-import { getDirectoryTable } from "./utils"
+import { getDirectoryTable, checkIfAllOk } from "./utils"
 
 
 export default function Directory() {
@@ -31,22 +31,13 @@ export default function Directory() {
   // Navigation Parameters
   const id = location.state?.id || null;
   const dataProcess = location.state?.content || null;
-  const directoryName = dataProcess.directories[id].name
 
   // Data for the main table
-  const [directoriesList, setDirectoriesList] = useState(dataProcess.directories[id].websitesList);
+  const [directoriesList, setDirectoriesList] = useState();
+  const [directoryName, setDirectoryName] = useState()
 
   // Data for StatisticsHeader component
-  const [directoriesStats, setDirectoriesStats] = useState({
-    score: (dataProcess.directories[id].score).toFixed(1),
-    recentPage: moment(dataProcess.directories[id].recentPage).format("LL"),
-    oldestPage: moment(dataProcess.directories[id].oldestPage).format("LL"),
-    statsTable: [
-      dataProcess.directories[id].nEntities,
-      dataProcess.directories[id].nWebsites,
-      dataProcess.directories[id].nPages,
-    ]
-  });
+  const [directoriesStats, setDirectoriesStats] = useState();
 
   // Data and Options for the Tables on this page
   const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t)
@@ -63,23 +54,28 @@ export default function Directory() {
   ];
 
   useEffect(() => {
-    const processData = () => {
-      const tempData = dataProcess.directories[id]
-      setDirectoriesStats({
-          score: (tempData.score).toFixed(1),
-          recentPage: moment(tempData.recentPage).format("LL"),
-          oldestPage: moment(tempData.oldestPage).format("LL"),
-          statsTable: [
-            tempData.nEntities,
-            tempData.nWebsites,
-            tempData.nPages,
-          ]
-      })
-    
-      setDirectoriesList(tempData.websitesList)
+    if(!checkIfAllOk(id, dataProcess)){
+      navigate(`/error`)
+    } else {
+      const processData = () => {
+        const tempData = dataProcess.directories[id]
+        setDirectoryName(dataProcess.directories[id].name)
+        setDirectoriesStats({
+            score: (tempData.score).toFixed(1),
+            recentPage: moment(tempData.recentPage).format("LL"),
+            oldestPage: moment(tempData.oldestPage).format("LL"),
+            statsTable: [
+              tempData.nEntities,
+              tempData.nWebsites,
+              tempData.nPages,
+            ]
+        })
+      
+        setDirectoriesList(tempData.websitesList)
+      }
+      processData()
     }
-    processData()
-  }, [dataProcess, id])
+  }, [dataProcess, id, navigate])
 
   // Function when clicking the links in main table
   // row -> The row of the link clicked
@@ -97,10 +93,10 @@ export default function Directory() {
         </div>
 
         <div className="title_container">
-          <div className="observatorio px-3">
+          <div className="AMA-Typography-Body-Large Bold observatorio px-3">
             {t("DIRECTORY.title")}
           </div>
-          <h2 className="page_title my-2">{t("DIRECTORY.subtitle") + " " + directoryName}</h2>
+          <h2 className="Bold my-2">{t("DIRECTORY.subtitle") + " " + directoryName}</h2>
         </div>
 
         {/* Statistics Header Component */}
@@ -121,10 +117,10 @@ export default function Directory() {
 
         {/* MAIN Directory TABLE */}
         <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
-          <div className="d-flex flex-column section_container p-3">
-            <h3 className="table_title pb-0 m-0">{t("DIRECTORY.table.title")}</h3>
-            <h4 className="mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</h4>
-            <SortingTable
+          <div className="d-flex flex-column section_container py-4">
+            <h3 className="Bold m-0">{t("DIRECTORIES.table.title")}</h3>
+            <p className="AMA-Typography-Body mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</p>
+            {directoriesList && <SortingTable
               hasSort={true}
               headers={directoriesHeaders}
               setDataList={setDirectoriesList}
@@ -139,8 +135,8 @@ export default function Directory() {
               itemsPaginationTexts={itemsPaginationText}
               nItemsPerPageTexts={nItemsPerPageText}
               paginationButtonsTexts={paginationButtonsTexts}
-            />
-            <span className="mt-4">{t("DIRECTORIES.table.note")}</span>
+            />}
+            <div className="AMA-Typography-Body mt-4">{t("DIRECTORIES.table.note")}</div>
           </div>
         </section>
       </div>

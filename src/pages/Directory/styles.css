@@ -1,28 +1,3 @@
-.table_title {
-    color: black;
-    font-family: Lato;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 28px;
-}
-
-.section_container h4 {
-    color: var(--AMA-Color-Grey-700);
-    font-family: Lato;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 0;
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-    .title_container_title {
-      font-size: 38px;
-      font-weight: bold !important;
-    }
-}
-
-
 /* DARK MODE */
 .main_content_directory {
     background-color: var(--AMA-Color-Background-Dark-Lighter) !important;

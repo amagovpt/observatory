@@ -11,20 +11,20 @@ export function ObservatoryInfoTabs({ }) {
   const tab = (title, paragraph, bullet1, bullet2, bullet3) => {
     return (
       <div className="tabs_info_container">
-        <h2>{title}</h2>
-        <p>{paragraph}</p>
-        <ul>
-          <li>
+        <h2 className="Bold">{title}</h2>
+        <p className="AMA-Typography-Body-Large">{paragraph}</p>
+        <ul className="ps-0">
+          <li className="d-flex p-1">
             <Icon name="AMA-Ponto-Solid" />
-            <span className="pt-2">{bullet1}</span>
+            <p className="AMA-Typography-Body-Large pt-2">{bullet1}</p>
           </li>
-          <li>
+          <li className="d-flex p-1">
             <Icon name="AMA-Ponto-Solid" />
-            <span className="pt-2">{bullet2}</span>
+            <p className="AMA-Typography-Body-Large pt-2">{bullet2}</p>
           </li>
-          <li>
+          <li className="d-flex p-1">
             <Icon name="AMA-Ponto-Solid" />
-            <span className="pt-2">{bullet3}</span>
+            <p className="AMA-Typography-Body-Large pt-2">{bullet3}</p>
           </li>
         </ul>
       </div>

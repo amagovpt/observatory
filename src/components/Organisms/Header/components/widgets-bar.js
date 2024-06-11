@@ -26,7 +26,7 @@ export function WidgetBar({ description, logo, title, title2 }) {
 
   return (
     <div id="widget">
-      <div className={`${themeClass} widgets-bar`}>
+      <div className={`${themeClass} widgets-bar py-4`}>
         <div className="container">
           <div className="row ml-0 mr-0">
             <div className="col-12 col-lg-6 align-self-center">
@@ -34,37 +34,21 @@ export function WidgetBar({ description, logo, title, title2 }) {
                 {title && title2 ? 
                   <h1 className="d-flex flex-column logo">
                     <span className="title">{title}</span>
-                    <span className="title2">{title2}</span>
+                    <span className="title2 Medium">{title2}</span>
                   </h1>
                 :
                   <h1 className="logo">{logo}</h1>
                 }
-
-                <div className="d-flex d-lg-none flex-column align-items-center">
-                  {/* <button
-                    type="button"
-                    className="open-mobile-menu menu-hamburger rounded-circle"
-                  >
-                    <span
-                      className="icon-AMA-Menu-Line"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="visually-hidden">
-                      {t("HEADER.mobile_menu")} 
-                    </span>
-                  </button> */}
-                </div>
               </div>
             </div>
 
-            {/* Menu */}
-
+            {/* Mobile */}
             <div className="d-flex flex-row gap-4 button-mobile">
               <button
                 className="btn btn-link dark-mode p-1 d-flex align-items-center"
                 onClick={toggleTheme}
               >
-                <span id="darkModeLabel-mobile">
+                <span id="darkModeLabel-mobile" className="AMA-Typography-Body">
                   {theme === "light"
                     ? t("HEADER.light_mode")
                     : t("HEADER.dark_mode")}
@@ -79,14 +63,14 @@ export function WidgetBar({ description, logo, title, title2 }) {
                 className="btn btn-link language-mode p-1  d-flex align-items-center"
                 onClick={toggleLanguage}
               >
-                <span id="langModeLabel-mobile">{t("HEADER.language_en")}</span>
+                <span id="langModeLabel-mobile" className="AMA-Typography-Body">{t("HEADER.language_en")}</span>
                 <Icon name="AMA-Globo-Line icon-lang" aria-hidden="true" />
               </button>
             </div>
 
             <div className="col-12 col-lg-6 align-self-center ">
               <div className="site-description">
-                <p>{description}</p>
+                <p className="AMA-Typography-Body">{description}</p>
               </div>
             </div>
           </div>

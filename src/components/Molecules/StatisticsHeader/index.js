@@ -13,8 +13,8 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
     const normalExtraStats = (value, subtitle) => {
         return (
             <div className="d-flex flex-column margin_mobile">
-                <span className="span_title">{value}</span>
-                <span className="span_subtitle">{subtitle}</span>
+                <h3 className="Bold">{value}</h3>
+                <span className="AMA-Typography-Body">{subtitle}</span>
             </div>
         )
     }
@@ -24,49 +24,49 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
         const percentage = (value*100/total).toFixed(1)
         return (
             <div className="d-flex flex-column margin_mobile">
-                <span className="percentage_title">
+                <h3 className="Bold p-1">
                     {value}
-                    {!first ? <span className="percentage">{percentage}%</span> : null}
-                </span>
-                {object.subtitle2 !== "" ? <span className="percentage_subtitle extra">{object.subtitle2}</span> : null}
-                <span className="percentage_subtitle">{object.subtitle}</span>
+                    {!first ? <span className="AMA-Typography-Body-Large ps-2">{percentage}%</span> : null}
+                </h3>
+                {object.subtitle2 !== "" ? <span className="AMA-Typography-Body Bold">{object.subtitle2}</span> : null}
+                <span className="AMA-Typography-Body">{object.subtitle}</span>
             </div>
         )
     }
 
     return (
-        <div className={`${theme} d-flex flex-column section_container p-3 m-0`}>
+        <div className={`${theme} d-flex flex-column section_container p-4 m-0`}>
             {/* Web version */}
             <div className="grid_container">
-                <div className="d-flex flex-column first_row">
-                    <span className="container_title">{title}</span>
-                    <span className="container_subtitle">{subtitle}</span>
+                <div className="d-flex flex-column mb-3">
+                    <h2 className="Bold">{title}</h2>
+                    <span className="AMA-Typography-Body">{subtitle}</span>
                 </div>
-                <div className="first_row second_column">
+                <div className="mb-3 second_column ps-4">
                     <div className="d-flex flex-column">
-                        <span className="second_column_title">{oldestPage}</span>
-                        <span className="second_column_subtitle">{stats.oldestPage}</span>
+                        <span className="AMA-Typography-Body Bold mb-1">{oldestPage}</span>
+                        <span className="AMA-Typography-Body">{stats.oldestPage}</span>
                     </div>
                     <div className="d-flex flex-column">
-                        <span className="second_column_title">{newestPage}</span>
-                        <span className="second_column_subtitle">{stats.recentPage}</span>
+                        <span className="AMA-Typography-Body Bold mb-1">{newestPage}</span>
+                        <span className="AMA-Typography-Body">{stats.recentPage}</span>
                     </div>
                 </div>
                 <div className="second_row">
                     <Gauge percentage={stats.score} title={gaugeTitle}/>
                 </div>
                 {/* doubleRow checks if its just one row os stats or two */}
-                <div className={`second_row last_column ${doubleRow ? "double" : ""}`}>
+                <div className={`last_column px-3 ${doubleRow ? "flex-column" : ""}`}>
                     {doubleRow ?
                         <>
-                            <div className="double_row first">
+                            <div className="d-flex justify-content-around w-100 align-items-center py-4 first">
                                 {stats.statsTable.map((stat, index) => {
                                     const total = stats.statsTable[0]
                                     const first = index === 0
                                     return index < 3 ? percentageStats(stat, statsTitles[index], total, first) : null
                                 })}
                             </div>
-                            <div className="double_row">
+                            <div className="d-flex justify-content-around w-100 align-items-center py-4">
                                 {stats.statsTable.map((stat, index) => {
                                     const total = stats.statsTable[0]
                                     return index >= 3 ? percentageStats(stat, statsTitles[index], total) : null
@@ -81,21 +81,21 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
 
             {/* Mobile version */}
             <div className="grid_container_mobile">
-                <div className="d-flex flex-column row first_row">
-                    <span className="container_title">{title}</span>
-                    <span className="container_subtitle">{subtitle}</span>
+                <div className="d-flex flex-column row my-3">
+                    <h2 className="Bold">{title}</h2>
+                    <span className="AMA-Typography-Body">{subtitle}</span>
                 </div>
-                <div className="row second_row">
+                <div className="row second_row mb-4">
                     <Gauge percentage={stats.score} title={gaugeTitle}/>
                 </div>
-                <div className="row third_row">
-                    <div className="d-flex flex-column first_data">
-                        <span className="second_column_title">{oldestPage}</span>
-                        <span className="second_column_subtitle">{stats.oldestPage}</span>
+                <div className="row d-flex flex-column mb-4">
+                    <div className="d-flex flex-column mb-2">
+                        <span className="AMA-Typography-Body Bold mb-1">{oldestPage}</span>
+                        <span className="AMA-Typography-Body">{stats.oldestPage}</span>
                     </div>
                     <div className="d-flex flex-column">
-                        <span className="second_column_title">{newestPage}</span>
-                        <span className="second_column_subtitle">{stats.recentPage}</span>
+                        <span className="AMA-Typography-Body Bold mb-1">{newestPage}</span>
+                        <span className="AMA-Typography-Body">{stats.recentPage}</span>
                     </div>
                 </div>
                 <div className="row fourth_row">
@@ -107,11 +107,11 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
                 </div>
             </div>
 
-            {buttons && <div className="d-flex flex-row justify-content-end gap-4 buttons_mobile">
+            {/* {buttons && <div className="d-flex flex-row justify-content-end gap-4 buttons_mobile">
                 <Button variant="primary" text={"Distribuições de pontuações"} />
                 <Button variant="success" text={"Boas práticas"} />
                 <Button variant="danger" text={"Más práticas"} />
-            </div>}
+            </div>} */}
         </div>
     );
 };

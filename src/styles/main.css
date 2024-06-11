@@ -1,12 +1,8 @@
 .observatorio {
-    font-size: 19px;
     color: var(--AMA-Color-Background-White);
     background-color: var(--AMA-Color-Brand-Primary);
     height: fit-content;
     width: fit-content;
-    font-weight: 700;
-    line-height: 32px;
-    letter-spacing: 0.38px;
     text-align: center;
 }
 
@@ -20,16 +16,6 @@
     background-color: var(--AMA-Color-Background-Light-Darker);
     position: relative;
     padding-bottom: 4rem;
-}
-
-.page_title {
-    font-size: 2.6em;
-    color: var(--AMA-Color-Text-Gray);
-    font-weight: 900;
-    font-family: "Lato";
-    word-break: break-all;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
 }
 
 .section_container {

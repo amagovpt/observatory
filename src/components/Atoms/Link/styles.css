@@ -7,7 +7,6 @@
 }
 
 .link-container a {
-  font-weight: 500 !important;
   color: var(--AMA-Color-Brand-Primary) !important;
   text-decoration-color: var(--AMA-Color-Brand-Primary) !important;
 }

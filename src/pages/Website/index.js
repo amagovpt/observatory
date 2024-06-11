@@ -17,6 +17,9 @@ import { GoodBadTab } from "./_components/goodBadTab";
 import { RadarGraph } from "./_components/radarGraph";
 import { Breadcrumb, Tabs, StatisticsHeader } from "../../components/index";
 
+// Extra Data / Functions
+import { checkIfAllOk } from "./utils"
+
 
 export default function Directory() {
 
@@ -32,11 +35,10 @@ export default function Directory() {
   const id = location.state?.directoryId || null;
   const sitioId = location.state?.websiteId || null;
   const dataProcess = location.state?.content || null;
-  const directoryName = dataProcess.directories[id].name || ""
-  const tempData = dataProcess.directories[id].websites[sitioId]
 
   // General Data
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
+  const [directoryName, setDirectoryName] = useState()
 
   // Statistics for StatisticsHeader
   const [websiteStats, setWebsiteStats] = useState();
@@ -50,7 +52,7 @@ export default function Directory() {
     { title: t("HEADER.NAV.observatory"), href: "/" },
     { title: t("HEADER.NAV.directories"), href: "" },
     { title: directoryName, href: "" },
-    { title: data.name },
+    { title: data && data.name },
   ];
 
   // Texts for StatisticsHeader component
@@ -70,8 +72,8 @@ export default function Directory() {
       component:
         <GoodBadTab 
           main_content_website={main_content_website}
-          tempData={tempData.successDetailsTable}
-          top10Data={tempData.bestPracticesDistribution}
+          tempData={data && data.successDetailsTable}
+          top10Data={data && data.bestPracticesDistribution}
           color={"#15ac51"}
           goodOrBad={"top_3_best_practices"}
           title={t("WEBSITE.top_10_best_practices_title")}
@@ -83,8 +85,8 @@ export default function Directory() {
       component:
         <GoodBadTab
           main_content_website={main_content_website}
-          tempData={tempData.errorsDetailsTable}
-          top10Data={tempData.errorsDistribution}
+          tempData={data && data.errorsDetailsTable}
+          top10Data={data && data.errorsDistribution}
           color={"#e90018"}
           goodOrBad={"top_3_bad_practices"}
           title={t("WEBSITE.top_10_bad_practices_title")}
@@ -94,9 +96,14 @@ export default function Directory() {
   
 
   useEffect(() => {
-    const processData = () => {
-        setData(tempData)
+    if(!checkIfAllOk(id, sitioId, dataProcess)){
+      navigate(`/error`)
+    } else {
+      const processData = () => {
+        setDirectoryName(dataProcess.directories[id].name)
+        const tempData = dataProcess.directories[id].websites[sitioId]
 
+        setData(tempData)
         setWebsiteStats({
           score: (tempData.score).toFixed(1),
           recentPage: moment(tempData.recentPage).format("LL"),
@@ -110,9 +117,10 @@ export default function Directory() {
             tempData.pagesWithoutErrorsAAA
           ]
         })
+      }
+      processData()
     }
-    processData()
-  }, [dataProcess, id, sitioId, theme, language])
+  }, [dataProcess, id, sitioId, theme, language, navigate])
 
   // Function to execute when clicking on a breadcrumb
   const goBack = (item) => {
@@ -126,16 +134,16 @@ export default function Directory() {
   return (
     <>
       <div className="container website">
-        <div className="link_breadcrumb_container">
+        <div className="py-5">
           <Breadcrumb data={breadcrumbs} onClick={(item) => goBack(item)}/>
         </div>
 
         <div className={`title_container ${main_content_website}`}>
-          <div className="observatorio px-3 mb-2">
+          <div className="AMA-Typography-Body-Large Bold observatorio px-3 mb-2">
             {directoryName}
           </div>
-          <h2 className="page_title">{data.name}</h2>
-          <h3><a href={data.startingUrl} >{data.startingUrl}</a></h3>
+          <h2 className="Bold my-2">{data && data.name}</h2>
+          <h3><a className="AMA-Typography-Action-Large Bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h3>
         </div>
 
         {/* Statistics Header Component */}
@@ -156,25 +164,25 @@ export default function Directory() {
 
         {/* Radar Graph */}
         <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
-          <div className="d-flex flex-column section_container p-3">
-            <h3 className="table_title">{t("WEBSITE.accessibility_plot.title")}</h3>
+          <div className="d-flex flex-column section_container py-4">
+            <h3 className="Bold">{t("WEBSITE.accessibility_plot.title")}</h3>
             <div className="d-flex radar_graphic justify-content-center">
-              <RadarGraph tempData={tempData} />
+              {data && <RadarGraph tempData={data} />}
             </div>
           </div>
         </section>
 
         {/* Bar+Line Graph */}
         <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
-          <div className="d-flex flex-column section_container p-3">
-            <h3 className="table_title">{t("DIALOGS.scores.title")}</h3>
-            <BarLineGraphTabs tempData={tempData} websiteStats={websiteStats} />
+          <div className="d-flex flex-column section_container py-4">
+            <h3 className="Bold mb-3">{t("DIALOGS.scores.title")}</h3>
+            {data && <BarLineGraphTabs tempData={data} websiteStats={websiteStats} />}
           </div>
         </section>
 
         {/* Good / Bad section */}
         <div className="good_bad">
-          <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={false} />
+          {data && <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={false} />}
         </div>
       </div>
     </>

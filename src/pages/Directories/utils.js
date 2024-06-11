@@ -51,7 +51,9 @@ export function searchFuntion (text, setSearch, setOtherData, dataProcess) {
               nPages: website.nPages,
             })
           }
+          return ""
         })
+        return ""
       })
       if (searchResults.length === 0) {
         setOtherData(null)
@@ -145,4 +147,11 @@ export function getDirectoriesTable (t) {
     ]
 
     return { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons }
+}
+
+
+
+export function checkIfAllOk (array) {
+  if(!array) return false
+  return true
 }

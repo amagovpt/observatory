@@ -15,7 +15,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { StatisticsHeader, SortingTable, Breadcrumb } from "../../components/index";
 
 // Extra Data / Functions
-import { searchFuntion, getDirectoriesTable } from "./utils"
+import { searchFuntion, getDirectoriesTable, checkIfAllOk } from "./utils"
 
 
 export default function Directories() {
@@ -36,20 +36,10 @@ export default function Directories() {
   const [otherData, setOtherData] = useState(null);
 
   // Data for the main table
-  const [directoriesList, setDirectoriesList] = useState(dataProcess.directoriesList);
+  const [directoriesList, setDirectoriesList] = useState();
 
   // Data for StatisticsHeader component
-  const [directoriesStats, setDirectoriesStats] = useState({
-    score: (dataProcess.score).toFixed(1),
-    recentPage: moment(dataProcess.recentPage).format("LL"),
-    oldestPage: moment(dataProcess.oldestPage).format("LL"),
-    statsTable: [
-      dataProcess.nDirectories,
-      dataProcess.nEntities,
-      dataProcess.nWebsites,
-      dataProcess.nPages,
-    ]
-  });
+  const [directoriesStats, setDirectoriesStats] = useState();
 
   // Data and Options for the Tables on this page
   const { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons } = getDirectoriesTable(t)
@@ -65,23 +55,27 @@ export default function Directories() {
   ];
 
   useEffect(() => {
-    const processData = async () => {
-      setDirectoriesStats({
-        score: (dataProcess.score).toFixed(1),
-        recentPage: moment(dataProcess.recentPage).format("LL"),
-        oldestPage: moment(dataProcess.oldestPage).format("LL"),
-        statsTable: [
-          dataProcess.nDirectories,
-          dataProcess.nEntities,
-          dataProcess.nWebsites,
-          dataProcess.nPages,
-        ]
-      })
+    if(!checkIfAllOk(dataProcess)){
+      navigate(`/error`)
+    } else {
+      const processData = async () => {
+        setDirectoriesStats({
+          score: (dataProcess.score).toFixed(1),
+          recentPage: moment(dataProcess.recentPage).format("LL"),
+          oldestPage: moment(dataProcess.oldestPage).format("LL"),
+          statsTable: [
+            dataProcess.nDirectories,
+            dataProcess.nEntities,
+            dataProcess.nWebsites,
+            dataProcess.nPages,
+          ]
+        })
 
-      setDirectoriesList(dataProcess.directoriesList)
+        setDirectoriesList(dataProcess.directoriesList)
+      }
+      processData()
     }
-    processData()
-  }, [dataProcess])
+  }, [dataProcess, navigate])
 
   // Function when clicking the links in main table
   // row -> The row of the link clicked
@@ -110,10 +104,10 @@ export default function Directories() {
         </div>
 
         <div className="title_container">
-          <div className="observatorio px-3">
+          <div className="AMA-Typography-Body-Large Bold observatorio px-3">
               {t("HEADER.NAV.observatory")}
           </div>
-          <h2 className="page_title my-2">{t("HEADER.NAV.directories")}</h2>
+          <h2 className="Bold my-2">{t("HEADER.NAV.directories")}</h2>
         </div>
 
         {/* Statistics Header Component */}
@@ -133,9 +127,9 @@ export default function Directories() {
 
         {/* MAIN Directories TABLE */}
         <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
-          <div className="d-flex flex-column section_container p-3 m-0">
-            <h3 className="table_title pb-3 m-0">{t("DIRECTORIES.table.title")}</h3>
-            <SortingTable
+          <div className="d-flex flex-column section_container py-4 m-0">
+            <h3 className="Bold pb-3 m-0">{t("DIRECTORIES.table.title")}</h3>
+            {directoriesList && <SortingTable
               hasSort={true}
               headers={directoriesHeaders}
               setDataList={setDirectoriesList}
@@ -145,8 +139,8 @@ export default function Directories() {
               pagination={false}
               caption={t("DIRECTORIES.table.title")}
               columnsOptions={columnsOptions}
-            />
-            <span className="mt-4">{t("DIRECTORIES.table.note")}</span>
+            />}
+            <div className="AMA-Typography-Body mt-4">{t("DIRECTORIES.table.note")}</div>
           </div>
         </section>
 
@@ -154,7 +148,7 @@ export default function Directories() {
         <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center`}>
           <div className="d-flex flex-column search_container p-4 px-5">
             <form className="d-flex flex-column">
-              <label for="search" className="mb-2">{t("DIRECTORIES.search.label")}</label>
+              <label className="AMA-Typography-Body-Large Bold mb-2">{t("DIRECTORIES.search.label")}</label>
               <input className="p-3 mb-3" type="text" id="search" placeholder={t("DIRECTORIES.search.placeholder")} value={search} onChange={(e) => searchFuntion(e.target.value, setSearch, setOtherData, dataProcess)}/>
             </form>
             {search && search.length >= 3 ? 
@@ -172,7 +166,7 @@ export default function Directories() {
                   iconsAltTexts={nameOfIcons}
                 />
               :
-                <span className="no_data">{t("DIRECTORIES.search.no_results")}</span>
+                <div className="AMA-Typography-Body-Large">{t("DIRECTORIES.search.no_results")}</div>
               ) 
             : 
               null

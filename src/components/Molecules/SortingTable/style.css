@@ -96,14 +96,6 @@
     font-size: 25px;
 }
 
-.td_center {
-    text-align: center;
-}
-
-.bold {
-    font-weight: bold;
-}
-
 .multi-text {
     border-bottom-width: 0px !important;
     text-align: left;

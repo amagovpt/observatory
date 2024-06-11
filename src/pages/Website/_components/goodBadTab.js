@@ -91,7 +91,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
   return (
     <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center`}>
       <div className="d-flex flex-column section_container best_practises p-3">
-        <h3 className="table_title py-2 m-0">{title}</h3>
+        <h3 className="Bold py-3 m-0">{title}</h3>
         
         {/* Top Ten Practices Graph/Table */}
         <div className="tabs_section">
@@ -99,8 +99,8 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
         </div>
 
         {/* Tables for Practices, 3 per type and one general */}
-        <h3 className="mt-5">{t(`WEBSITE.${goodOrBad}.title`)}</h3>
-        <h4>{t(`WEBSITE.${goodOrBad}.subtitle`)}</h4>
+        <h3 className="Bold mt-5">{t(`WEBSITE.${goodOrBad}.title`)}</h3>
+        <p className="AMA-Typography-Body-Large mb-3">{t(`WEBSITE.${goodOrBad}.subtitle`)}</p>
         {dataTableA && <SortingTable
           hasSort={false}
           headers={dataTableHeadersA}
@@ -131,7 +131,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
           links={false}
           caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"})}
         />}
-        <h3 className="mt-5 mb-4">{t("WEBSITE.table.best_title")}</h3>
+        <h3 className="Bold mt-5 mb-3">{t("WEBSITE.table.best_title")}</h3>
         <div className="dark_table">
           {detailsTable && <SortingTable
             hasSort={false}

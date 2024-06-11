@@ -4,39 +4,6 @@
     grid-template-rows: auto 1fr;
 }
 
-.container_title {
-    font-family: Lato;
-    font-size: 1.375em;
-    font-weight: 700;
-    letter-spacing: 0;
-}
-
-.span_title {
-    height: 26px;
-    font-size: 2.25em;
-    margin-bottom: .2em;
-}
-
-.first_row {
-    margin-top: 2em;
-    margin-bottom: 3em;
-}
-
-.second_row {
-    margin-bottom: 3em; 
-}
-
-.third_row {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-bottom: 2em;
-}
-
-.third_row_button {
-    margin-left: 1em;
-}
-
 .second_column {
     place-content: center flex-start;
     align-items: center;
@@ -44,16 +11,6 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 50% 50%;
-    font-family: Lato;
-    font-size: 1em;
-    letter-spacing: 0;
-    line-height: 20px;
-    padding-left: 16px;
-}
-
-.second_column_title {
-    font-weight: 700;
-    margin-bottom: .2em;
 }
 
 .last_column {
@@ -64,69 +21,15 @@
     align-items: center;
     background-color: var(--AMA-Color-Background-Light-Lighter);
     text-align: center;
-    font-family: Lato;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 20px;
-}
-
-.last_column.double {
-    flex-direction: column;
-    padding-left: 32px;
-    padding-right: 32px;
-    box-sizing: border-box;
 }
 
 .grid_container_mobile {
     display: none;
 }
 
-.double_row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 2em 1em;
-}
-
 .first {
     border-bottom: 1px solid var(--AMA-Color-Grey-50);
 }
-
-.percentage {
-    height: 11px;
-    font-family: Lato;
-    font-size: 18px !important;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 20px;
-    padding: .3em;
-}
-
-.percentage_title {
-    height: fit-content;
-    font-family: Lato;
-    font-size: 2.25em;
-    letter-spacing: 0;
-    font-weight: 700;
-    line-height: 20px;
-    padding: .2em;
-}
-
-.percentage_subtitle {
-    height: fit-content;
-    font-family: Lato;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 20px;
-}
-
-.extra {
-    font-size: 16px;
-    font-weight: 700;
-    padding: .2em;
-}
-
 
 /* MOBILE */
 @media (min-width: 320px) and (max-width: 480px) {
@@ -144,15 +47,6 @@
         align-self: center;
     }
 
-    .third_row {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .first_data {
-        margin-bottom: 2em;
-    }
-
     .fourth_row {
         flex-direction: row;
         box-sizing: border-box;
@@ -161,10 +55,6 @@
         align-items: center;
         background-color: var(--AMA-Color-Background-Light-Darker);
         text-align: center;
-        font-family: Lato;
-        font-weight: 700;
-        letter-spacing: 0;
-        line-height: 20px; 
         padding: 1em;
     }
 
@@ -190,9 +80,7 @@
 
 
 /* DARK MODE */
-.section_container.dark .container_title,
-.section_container.dark .container_subtitle,
-.section_container.dark .second_column {
+.section_container.dark {
     color: var(--AMA-Color-Background-White) !important;
 }
 
@@ -202,15 +90,5 @@
 
 .section_container.dark .grid_container .last_column {
     background-color: var(--AMA-Color-Background-Dark-Darker) !important;
-    color: var(--AMA-Color-Background-White);
-}
-
-.section_container.dark .btn {
-    border: none;
-}
-
-.section_container.dark .percentage,
-.section_container.dark .percentage_title,
-.section_container.dark .percentage_subtitle {
     color: var(--AMA-Color-Background-White);
 }

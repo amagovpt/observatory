@@ -11,11 +11,11 @@ export function Footer() {
   const themeClass = theme === "light" ? "" : "dark_mode_footer";
 
   return (
-    <footer className={`${themeClass}`}>
+    <footer className={`${themeClass} py-5`}>
       <div className="container">
         <nav aria-label="Menu de rodapé do selo.usabilidade.gov.pt">
           <div className="menu-menu-de-rodape-container">
-            <ul id="menu-menu-de-rodape" className="footer-menu">
+            <ul id="menu-menu-de-rodape" className="footer-menu ps-0 mb-1">
               <li
                 id="menu-item-193"
                 className="menu-item menu-item-type-post_type menu-item-object-page menu-item-193"
@@ -23,6 +23,7 @@ export function Footer() {
                 <a
                   href="https://www.acessibilidade.gov.pt/acessibilidade/"
                   rel="noreferrer"
+                  className="AMA-Typography-Action-Large p-3"
                 >
                   {t("FOOTER.accessibility")}
                 </a>
@@ -35,6 +36,7 @@ export function Footer() {
                 <a
                   href="https://www.acessibilidade.gov.pt/termos-e-condicoes/"
                   rel="noreferrer"
+                  className="AMA-Typography-Action-Large p-3"
                 >
                   {t("FOOTER.terms")}
                 </a>
@@ -47,6 +49,7 @@ export function Footer() {
                 <a
                   href="https://www.ama.gov.pt/web/agencia-para-a-modernizacao-administrativa/politica-de-privacidade"
                   rel="noreferrer"
+                  className="AMA-Typography-Action-Large p-3"
                 >
                   {t("FOOTER.privacy")}
                 </a>
@@ -59,6 +62,7 @@ export function Footer() {
                 <a
                   href="https://amagovpt.github.io/kit-selo/"
                   rel="noreferrer"
+                  className="AMA-Typography-Action-Large p-3"
                 >
                   Github
                 </a>
@@ -71,6 +75,7 @@ export function Footer() {
                 <a
                   href="https://www.acessibilidade.gov.pt/glossario/"
                   rel="noreferrer"
+                  className="AMA-Typography-Action-Large p-3"
                 >
                   {t("FOOTER.glossary")}
                 </a>
@@ -82,6 +87,7 @@ export function Footer() {
                 <a
                   href="https://www.acessibilidade.gov.pt/opcoes-de-visualizacao/"
                   rel="noreferrer"
+                  className="AMA-Typography-Action-Large p-3"
                 >
                   {t("FOOTER.options")}
                 </a>
@@ -90,13 +96,13 @@ export function Footer() {
           </div>
         </nav>
 
-        <ul className="footer-logos">
+        <ul className="footer-logos mb-3">
           <li>
             <img
               decoding="async"
               alt={t("FOOTER.img_portuguese_replubic")}
               src="https://selo.leadershipbt.com/wp-content/uploads/2023/02/logo_republica_portuguesa.svg"
-              className="img-fluid"
+              className="img-fluid p-3"
               width="150"
             />
           </li>
@@ -106,7 +112,7 @@ export function Footer() {
               decoding="async"
               alt={t("FOOTER.img_ama")}
               src="https://selo.leadershipbt.com/wp-content/uploads/2023/02/logo_ama.svg"
-              className="img-fluid"
+              className="img-fluid p-3"
               width="150"
             />
           </li>
@@ -116,7 +122,7 @@ export function Footer() {
               decoding="async"
               alt="eportugal"
               src="https://selo.leadershipbt.com/wp-content/uploads/2023/02/logo_eportugal.svg"
-              className="img-fluid"
+              className="img-fluid p-3"
               width="150"
             />
           </li>
@@ -126,7 +132,7 @@ export function Footer() {
               decoding="async"
               alt="usabilidade.gov.pt"
               src="https://selo.leadershipbt.com/wp-content/uploads/2023/02/logo_usabilidade.svg"
-              className="img-fluid"
+              className="img-fluid p-3"
               width="150"
             />
           </li>
@@ -136,7 +142,7 @@ export function Footer() {
               decoding="async"
               alt={t("FOOTER.img_compete_2020")}
               src="https://selo.leadershipbt.com/wp-content/uploads/2023/02/logo_compete.svg"
-              className="img-fluid"
+              className="img-fluid p-3"
               width="150"
             />
           </li>
@@ -146,7 +152,7 @@ export function Footer() {
               decoding="async"
               alt="Portugal 2020"
               src="https://selo.leadershipbt.com/wp-content/uploads/2023/02/logo_2020.svg"
-              className="img-fluid"
+              className="img-fluid p-3"
               width="150"
             />
           </li>
@@ -156,20 +162,20 @@ export function Footer() {
               decoding="async"
               alt={t("FOOTER.img_european_union")}
               src="https://selo.leadershipbt.com/wp-content/uploads/2023/02/logo_uniao_europeia.svg"
-              className="img-fluid"
+              className="img-fluid p-3"
               width="150"
             />
           </li>
         </ul>
 
-        <div className="logo-selo">
+        <div className="logo-selo mb-3">
           <img
             src="https://selo.leadershipbt.com/wp-content/themes/www-a11y-theme/img/selo-ouro.svg"
             alt={t("FOOTER.gold_badge_label")}
           />
         </div>
-        <div className="copyright">
-          <p>
+        <div className="text-center">
+          <p className="AMA-Typography-Body">
             © 2024 AMA - {t("FOOTER.link")}
             {t("FOOTER.rights")}
           </p>

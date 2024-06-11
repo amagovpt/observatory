@@ -1,15 +1,7 @@
-.table_title {
-    color: black;
-    font-family: Lato;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 48px;
-}
-
 .search_container {
     width: 100%;
     background-color: var(--AMA-Color-Brand-Primary);
+    color: var(--AMA-Color-Background-White);
 }
 
 .search_container .table_primary tbody tr {
@@ -20,31 +12,6 @@
 .search_container .table tbody tr:hover {
     background-color: var(--AMA-Color-Background-Light-Darker) !important;
 }
-
-.span_subtitle {
-    height: 11px;
-    font-size: 1em;
-}
-
-.search_container label {
-    font-weight: 700;
-    font-size: large;
-    color: var(--AMA-Color-Background-White);
-}
-
-.no_data {
-    font-size: 20px;
-    color: var(--AMA-Color-Background-White);
-}
-
-
-@media (min-width: 320px) and (max-width: 480px) {
-    .title_container_title {
-      font-size: 38px;
-      font-weight: bold !important;
-    }
-}
-
 
 /* DARK MODE */
 .main_content_directories {

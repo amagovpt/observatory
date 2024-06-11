@@ -8,11 +8,11 @@
 
 .container_error a {
     color: var(--AMA-Color-Grey-900);
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .container_error a span:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
 
 

@@ -13,8 +13,8 @@ export default function Resume() {
   return (
     <div className={`container_error ${themeClass}`}>
       <h1>{t("MISC._404.title")}</h1>
-      <p>{t("MISC._404.description")}</p>
-      <a href="/" className="d-flex align-items-center">
+      <p className="AMA-Typography-Body">{t("MISC._404.description")}</p>
+      <a href="/" className="d-flex align-items-center AMA-Typography-Action">
         <span className="pe-2">{t("MISC._404.homepage")}</span>
         <Icon name="AMA-Entrar-Line" />
       </a>

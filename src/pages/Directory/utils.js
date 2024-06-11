@@ -73,3 +73,10 @@ export function getDirectoryTable (t) {
 
     return { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText }
 }
+
+
+export function checkIfAllOk (id, array) {
+  if(!array) return false
+  const idObejct = array.directoriesList.find(e => e.id === id)
+  return idObejct ? true : false;
+}

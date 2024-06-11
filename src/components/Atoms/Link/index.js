@@ -6,7 +6,7 @@ export function Link({ to, text, children, iconLeft, iconRight, ...rest }) {
   return (
     <div className="link-container">
       {iconLeft && <>{iconLeft}</>}
-      <a href={to} {...rest}>
+      <a className="AMA-Typography-Action" href={to} {...rest}>
         {children || <span dangerouslySetInnerHTML={{ __html: text }} />}
       </a>
       {iconRight && <>{iconRight}</>}

@@ -21,7 +21,6 @@ ChartJS.register(
 );
 
 export function RadarGraph({ tempData }) {
-
   const { t, i18n: { language } } = useTranslation();
   const { theme } = useContext(ThemeContext);
 
@@ -34,12 +33,13 @@ export function RadarGraph({ tempData }) {
     let labelsForRadar = []
     tempData.accessibilityPlotData.map((value) => {
       labelsForRadar.push("")
+      return ""
     })
 
     const { manchaData } = getRadarGraph(t, theme, labelsForRadar, tempData.accessibilityPlotData)
     setDataForRadar(manchaData)
 
-  }, [tempData, language, theme])
+  }, [tempData, language, theme, t])
 
   return (
     <>

@@ -53,7 +53,7 @@ const Button = ({
           <span className="btn-loading-text">{loadingText}</span>
         </span>
       ) : (
-        <>{text}</>
+        <span className="AMA-Typography-Body Bold">{text}</span>
       )}
 
       {!isLoading && iconRight && <>{iconRight}</>}

@@ -2,49 +2,20 @@
   background: var(--AMA-Color-Background-White);
 }
 
-.page-header {
-  padding-bottom: 40px;
-  margin-bottom: 50px;
-  border-bottom: 2px solid var(--AMA-Color-Background-Dark-Darker);
-  font-family: var(--font-lato);
-}
-
-.dark-theme .page-header {
-  border-bottom-color: var(--AMA-Color-Background-White);
-}
-
-.page-header h1 {
-  font-weight: 700;
-}
-
 .logo .title,
 .logo .title2 {
   color: var(--AMA-Color-Brand-Primary);
-  font-family: var(--font-lato);
   font-size: 26px;
-  letter-spacing: 0;
-  line-height: 30px;
-  font-weight: 700;
-  margin-left: 0px;
-}
-
-.logo .title2 {
-  font-weight: 400;
 }
 
 .skip-to-content-link {
   position: absolute;
   width: 1px;
   height: 1px;
-  padding: 0;
   margin: -1px;
   overflow: hidden !important;
   white-space: nowrap;
   border: 0;
-  font-size: 14px;
-
-  display: flex;
-  align-items: center;
   color: var(--AMA-Color-Brand-Primary) !important;
 }
 
@@ -58,7 +29,6 @@
 }
 
 .skip-to-content-link:focus span {
-  padding: 8px 12px;
   outline: 1px solid var(--AMA-Color-Blue-600);
   color: var(--AMA-Color-Brand-Primary) !important;
   outline-color: var(--AMA-Color-Blue-600);
@@ -71,7 +41,6 @@
 
 .widgets-bar {
   background-color: var(--AMA-Color-Background-Light-Lighter);
-  padding: 20px 0;
 }
 
 .widgets-bar a {
@@ -79,9 +48,7 @@
 }
 
 .site-description p {
-  font-size: 1rem;
   text-align: right;
-  margin-bottom: 0;
 }
 
 .button-mobile {

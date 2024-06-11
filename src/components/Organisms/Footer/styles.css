@@ -1,37 +1,25 @@
 footer {
-  padding: 40px 0;
   background-color: var(--AMA-Color-Background-Light-Lighter);
 }
 
 footer .footer-menu {
-  padding-left: 0;
   list-style: none;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 20px;
 }
 
 footer .footer-menu li a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
+  text-decoration: none !important;
   color: var(--AMA-Color-Brand-Primary);
-  font-size: 18px;
-  font-family: var(--font-lato);
 }
 
 footer .footer-menu li a:hover {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .footer-logos {
   text-align: center;
-  margin-bottom: 20px;
-}
-
-.footer-logos img {
-  padding: 15px;
 }
 
 .footer-logos li {
@@ -70,26 +58,12 @@ footer .footer-menu li a:hover {
   }
 }
 
-footer .footer-logo figure {
-  margin-bottom: 0;
-}
-
 footer .logo-selo {
   text-align: center;
-  margin-bottom: 20px;
 }
 
 footer .logo-selo img {
   max-width: 150px;
-}
-
-footer .copyright {
-  text-align: center;
-  font-size: 14px;
-}
-
-footer .copyright p {
-  margin-bottom: 0;
 }
 
 /* Dark Mode */

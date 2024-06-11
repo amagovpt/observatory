@@ -1,22 +1,18 @@
-.title_container h3 {
-    font-family: Lato;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: 26px;
+.website table tbody tr:hover {
+    background-color: transparent !important;
 }
 
 .title_container h3 a {
-    text-decoration: none;
+    text-decoration: none !important;
     color: var(--AMA-Color-Brand-Primary)
 }
 
 .title_container h3 a:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
 
 .radar_graphic {
-    height: 500px;
+    height: 500px !important;
 }
 
 .good_bad ul {
@@ -44,10 +40,6 @@
 .tabs_section .table_primary thead tr:last-child th {
     background-color: var(--AMA-Color-Text-Gray) !important;
     color: var(--AMA-Color-Background-White) !important;
-}
-
-.website .section .table_primary tbody tr:hover {
-    background-color: transparent !important;
 }
 
 .best_practises .table_primary thead tr {

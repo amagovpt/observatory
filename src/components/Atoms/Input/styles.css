@@ -27,9 +27,7 @@
 
 .field input:focus,
 .fieldUpload input:focus {
-  /* REVER o Boxshadow */
-  box-shadow: none;
-  border-color: var(--AMA-Color-Yellow-300) !important;
+  box-shadow: 0 0 0 3px var(--AMA-Color-Yellow-300) !important;
 }
 
 .field .form-control.is-invalid,

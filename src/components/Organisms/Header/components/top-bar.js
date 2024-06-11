@@ -38,17 +38,17 @@ export function TopBar() {
 
   return (
     <>
-      <div className={`top-bar ${themeClass}`}>
+      <div className={`top-bar ${themeClass} py-1`}>
         <div className="accordion accordion-flush" id="accordionTopBar">
           <div className="container">
             <div className="d-flex justify-content-between flex-row-reverse">
               <div className="d-flex flex-row gap-4">
                 <button
-                  className="btn btn-link dark-mode p-1 d-flex align-items-center"
+                  className="btn btn-link dark-mode d-flex align-items-center"
                   id="darkModeBtn"
                   onClick={toggleTheme}
                 >
-                  <span id="darkModeLabel">
+                  <span id="darkModeLabel" className="AMA-Typography-Body">
                     {theme !== "light"
                       ? t("HEADER.light_mode")
                       : t("HEADER.dark_mode")}
@@ -67,6 +67,7 @@ export function TopBar() {
                 >
                   <span
                     id="langModeLabel"
+                    className="AMA-Typography-Body"
                   >
                     {t("HEADER.language_en")}
                   </span>
@@ -89,9 +90,9 @@ export function TopBar() {
                   aria-hidden="true"
                 />
 
-                <span id="flushHeading">
+                <span id="flushHeading" className="AMA-Typography-Body">
                   {t("HEADER.tool") + " "}
-                  <span className="text-primary fw-bold dark_mode_span">
+                  <span className="text-primary fw-bold dark_mode_span AMA-Typography-Body">
                     acessibilidade.gov.pt
                   </span>
                 </span>
@@ -118,217 +119,178 @@ export function TopBar() {
                     <div className="col-12 col-lg-6 align-self-center">
                       <div className="d-flex justify-content-between">
                         <div className="title-ecosssistema-ama">
-                          <div className="h2">
+                          <h2>
                             {t("HEADER.DROPDOWN.ecosystem")}
                             <br />
                             <strong>acessibilidade</strong>.gov.pt
-                          </div>
+                          </h2>
                         </div>
                       </div>
                     </div>
                     <div className="col-12 col-lg-6 align-self-center">
-                      <div className="description-ecossistema-ama">
-                        <p>{t("HEADER.DROPDOWN.text")}</p>
+                      <div className="AMA-Typography-Body">
+                        <p className="m-0">{t("HEADER.DROPDOWN.text")}</p>
                       </div>
                     </div>
                   </div>
                   <hr className="mt-4 mb-5" />
                   <div className="row">
                     <div className="col-12 col-lg-4">
-                      <div className="left-column-ecossistema-ama">
-                        <div className="h3">
-                          <strong>acessibilidade</strong>.gov.pt
-                        </div>
-                      </div>
-                      <div className="left-column-ecossistema-ama">
-                        <p>{t("HEADER.DROPDOWN.accessibility.text")}</p>
-                      </div>
-                      <div className="left-column-ecossistema-ama">
-                        <div
-                          style={{ height: "20px" }}
-                          aria-hidden="true"
-                          className="wp-block-spacer"
-                        ></div>
-                      </div>
-                      <div className="left-column-ecossistema-ama">
-                        <ul className="ama-list">
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://observatorio.acessibilidade.gov.pt/"
-                              text={t("HEADER.DROPDOWN.accessibility.link1")}
-                            />
-                          </li>
+                      <h3 className="mb-2">
+                        <strong>acessibilidade</strong>.gov.pt
+                      </h3>
+                      <p className="mb-4">{t("HEADER.DROPDOWN.accessibility.text")}</p>
+                      <ul className="ama-list">
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://observatorio.acessibilidade.gov.pt/"
+                            text={t("HEADER.DROPDOWN.accessibility.link1")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://www.acessibilidade.gov.pt/gerador/"
-                              text={t("HEADER.DROPDOWN.accessibility.link2")}
-                            />
-                          </li>
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://www.acessibilidade.gov.pt/gerador/"
+                            text={t("HEADER.DROPDOWN.accessibility.link2")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://accessmonitor.acessibilidade.gov.pt/"
-                              text={t("HEADER.DROPDOWN.accessibility.link3")}
-                            />
-                          </li>
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://accessmonitor.acessibilidade.gov.pt/"
+                            text={t("HEADER.DROPDOWN.accessibility.link3")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://www.acessibilidade.gov.pt/wcag/"
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://www.acessibilidade.gov.pt/wcag/"
+                          >
+                            <abbr
+                              title="Web Content Accessibility Guidelines, version 2.1"
+                              lang="en"
                             >
-                              <abbr
-                                title="Web Content Accessibility Guidelines, version 2.1"
-                                lang="en"
-                              >
-                                WCAG 2.1
-                              </abbr>
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
+                              WCAG 2.1
+                            </abbr>
+                          </Link>
+                        </li>
+                      </ul>
                     </div>
                     <div className="col-12 col-lg-4">
-                      <div className="center-column-ecossistema-ama">
-                        <div className="h3">
-                          <strong>mosaico</strong>.gov.pt
-                        </div>
-                      </div>
-                      <div className="center-column-ecossistema-ama">
-                        <p>{t("HEADER.DROPDOWN.usability.text")}</p>
-                      </div>
-                      <div className="center-column-ecossistema-ama">
-                        <div
-                          style={{ height: "20px" }}
-                          aria-hidden="true"
-                          className="wp-block-spacer"
-                        ></div>
-                      </div>
-                      <div className="center-column-ecossistema-ama">
-                        <ul className="ama-list">
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://mosaico.gov.pt/areas-tecnicas/usabilidade"
-                              text={t("HEADER.DROPDOWN.usability.link1")}
-                            />
-                          </li>
+                      <h3 className="mb-2">
+                        <strong>mosaico</strong>.gov.pt
+                      </h3>
+                      <p className="mb-4">{t("HEADER.DROPDOWN.usability.text")}</p>
+                      <ul className="ama-list">
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://mosaico.gov.pt/areas-tecnicas/usabilidade"
+                            text={t("HEADER.DROPDOWN.usability.link1")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://zeroheight.com/1be481dc2/p/97181d-agora-design-system"
-                              text={t("HEADER.DROPDOWN.usability.link2")}
-                            />
-                          </li>
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://zeroheight.com/1be481dc2/p/97181d-agora-design-system"
+                            text={t("HEADER.DROPDOWN.usability.link2")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://prd-agora.northeurope.cloudapp.azure.com"
-                              text={t("HEADER.DROPDOWN.usability.link3")}
-                            />
-                          </li>
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://prd-agora.northeurope.cloudapp.azure.com"
+                            text={t("HEADER.DROPDOWN.usability.link3")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://guias.mosaico.gov.pt/guias-praticos/usabilidade-como-realizar-testes-de-usabilidade"
-                              text={t("HEADER.DROPDOWN.usability.link5")}
-                            />
-                          </li>
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://guias.mosaico.gov.pt/guias-praticos/usabilidade-como-realizar-testes-de-usabilidade"
+                            text={t("HEADER.DROPDOWN.usability.link5")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://guias.mosaico.gov.pt/guias-praticos/usabilidade-como-desenvolver-aplicacoes-para-dispositivos-moveis"
-                              text={t("HEADER.DROPDOWN.usability.link6")}
-                            />
-                          </li>
-                        </ul>
-                      </div>
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://guias.mosaico.gov.pt/guias-praticos/usabilidade-como-desenvolver-aplicacoes-para-dispositivos-moveis"
+                            text={t("HEADER.DROPDOWN.usability.link6")}
+                          />
+                        </li>
+                      </ul>
                     </div>
                     <div className="col-12 col-lg-4">
-                      <div className="right-column-ecossistema-ama">
-                        <div className="h3">
-                          <strong>selo.usabilidade</strong>.gov.pt
-                        </div>
-                      </div>
-                      <div className="right-column-ecossistema-ama">
-                        <p>{t("HEADER.DROPDOWN.badge.text")}</p>
-                      </div>
-                      <div className="right-column-ecossistema-ama">
-                        <div
-                          style={{ height: "20px" }}
-                          aria-hidden="true"
-                          className="wp-block-spacer"
-                        ></div>
-                      </div>
-                      <div className="right-column-ecossistema-ama">
-                        <ul className="ama-list">
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://pprselo.usabilidade.gov.pt/candidatura/"
-                              text={t("HEADER.DROPDOWN.badge.link3")}
-                            />
-                          </li>
+                      <h3 className="mb-2">
+                        <strong>selo.usabilidade</strong>.gov.pt
+                      </h3>
+                      <p className="mb-4">{t("HEADER.DROPDOWN.badge.text")}</p>
+                      <ul className="ama-list">
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://pprselo.usabilidade.gov.pt/candidatura/"
+                            text={t("HEADER.DROPDOWN.badge.link3")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://pprselo.usabilidade.gov.pt/requisitos/"
-                              text={t("HEADER.DROPDOWN.badge.link5")}
-                            />
-                          </li>
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://pprselo.usabilidade.gov.pt/requisitos/"
+                            text={t("HEADER.DROPDOWN.badge.link5")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://amagovpt.github.io/kit-selo/"
-                              text={t("HEADER.DROPDOWN.badge.link2")}
-                            />
-                          </li>
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://amagovpt.github.io/kit-selo/"
+                            text={t("HEADER.DROPDOWN.badge.link2")}
+                          />
+                        </li>
 
-                          <li>
-                            <Link
-                              iconLeft={
-                                <Icon name="AMA-Setalongaoficial-Line" />
-                              }
-                              to="https://pprselo.usabilidade.gov.pt/ajuda/"
-                              text={t("HEADER.DROPDOWN.badge.link1")}
-                            />
-                          </li>
-                        </ul>
-                      </div>
+                        <li className="mb-3">
+                          <Link
+                            iconLeft={
+                              <Icon name="AMA-Setalongaoficial-Line" />
+                            }
+                            to="https://pprselo.usabilidade.gov.pt/ajuda/"
+                            text={t("HEADER.DROPDOWN.badge.link1")}
+                          />
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
