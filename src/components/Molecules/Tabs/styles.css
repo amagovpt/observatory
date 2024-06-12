@@ -1,5 +1,5 @@
 .nav-tabs {
-  background-color: var(--AMA-Color-Background-Light-Darker) !important;
+  background-color: var(--ama-color-background-light-darker) !important;
   border-radius: 0px !important;
   line-height: 3em;
 }
@@ -10,7 +10,7 @@
 }
 
 .vertical-tabs .nav-tabs {
-  background-color: var(--AMA-Color-Background-White) !important;
+  background-color: var(--ama-color-background-white) !important;
   display: flex;
   flex-direction: column;
   width: fit-content;
@@ -29,22 +29,22 @@
   display: inline-block;
   width: 100%;
   height: 1px;
-  background-color: var(--AMA-Color-Grey-100); /* Adjust color as needed */
+  background-color: var(--ama-color-grey-100); /* Adjust color as needed */
   padding-right: 15px;
 }
 
 .nav-tabs .nav-link {
   border: 0;
-  color: var(--AMA-Color-Brand-Primary) !important;
+  color: var(--ama-color-brand-primary) !important;
   border-radius: 0 !important;
 }
 
 .nav-tabs .nav-link.active {
   font-weight: 700;
-  color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-brand-primary);
   font-family: var(--font-lato);
-  background-color: var(--AMA-Color-Background-Light-Darker);
-  border-bottom: 5px solid var(--AMA-Color-Brand-Primary);
+  background-color: var(--ama-color-background-light-darker);
+  border-bottom: 5px solid var(--ama-color-brand-primary);
 }
 
 .nav-pills .nav-link {
@@ -66,8 +66,8 @@
   }
 
   .nav-tabs .nav-link.active {
-    color: var(--AMA-Color-Background-White) !important;
-    background-color: var(--AMA-Color-Brand-Primary);
+    color: var(--ama-color-background-white) !important;
+    background-color: var(--ama-color-brand-primary);
     border: 0;
   }
 }

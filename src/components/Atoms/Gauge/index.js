@@ -72,7 +72,7 @@ const Gauge = ({ percentage, title }) => {
           y="60"
           textAnchor="middle"
           fill="#333"
-          className="AMA-Typography-Display-6 Bold"
+          className="ama-typography-display-6 bold"
         >
           {animatedPercentage}
         </text>

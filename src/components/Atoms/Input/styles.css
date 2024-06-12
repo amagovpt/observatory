@@ -1,18 +1,18 @@
 .field label,
 .fieldUpload label {
   font-size: 1rem;
-  color: var(--AMA-Color-Text-Gray);
+  color: var(--ama-color-text-gray);
   font-weight: 700;
 }
 
 .field input,
 .fieldUpload input {
   height: 42px;
-  border: 2px solid var(--AMA-Color-Brand-Primary) !important;
-  background-color: var(--AMA-Color-Background-White);
+  border: 2px solid var(--ama-color-brand-primary) !important;
+  background-color: var(--ama-color-background-white);
   margin: 8px 0 8px 0;
   min-width: 50px;
-  color: var(--AMA-Color-Text-Gray);
+  color: var(--ama-color-text-gray);
   font-weight: 400;
   font-size: 1em;
   font-family: var(--font-lato);
@@ -27,17 +27,17 @@
 
 .field input:focus,
 .fieldUpload input:focus {
-  box-shadow: 0 0 0 3px var(--AMA-Color-Yellow-300) !important;
+  box-shadow: 0 0 0 3px var(--ama-color-yellow-300) !important;
 }
 
 .field .form-control.is-invalid,
 .fieldUpload .form-control.is-invalid {
-  border-color: var(--AMA-Color-Red-500) !important;
+  border-color: var(--ama-color-red-500) !important;
 }
 
 .field .invalid-feedback,
 .fieldUpload .invalid-feedback {
-  color: var(--AMA-Color-Red-500);
+  color: var(--ama-color-red-500);
   font-size: 1em;
   font-weight: 700;
   margin-top: -0.5rem;
@@ -45,11 +45,11 @@
 }
 
 input[type="file"].form-control::file-selector-button {
-  background-color: var(--AMA-Color-Brand-Primary);
+  background-color: var(--ama-color-brand-primary);
   border-radius: 25px;
-  color: var(--AMA-Color-Background-White);
+  color: var(--ama-color-background-white);
   border: 0 solid;
-  border-color: var(--AMA-Color-Brand-Primary);
+  border-color: var(--ama-color-brand-primary);
   padding: 0px 10px;
   margin-left: -16px;
   height: 50px;

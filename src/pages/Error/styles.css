@@ -7,7 +7,7 @@
 }
 
 .container_error a {
-    color: var(--AMA-Color-Grey-900);
+    color: var(--ama-color-grey-900);
     text-decoration: none !important;
 }
 
@@ -19,5 +19,5 @@
 /* DARK MODE */
 .dark_mode-error,
 .dark_mode-error a {
-    color: var(--AMA-Color-Background-White);
+    color: var(--ama-color-background-white);
 }

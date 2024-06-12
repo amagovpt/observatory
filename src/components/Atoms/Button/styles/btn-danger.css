@@ -1,19 +1,19 @@
 .btn-danger {
-  color: var(--AMA-Color-Background-White);
-  background-color: var(--AMA-Color-Red-500);
+  color: var(--ama-color-background-white);
+  background-color: var(--ama-color-red-500);
   font-weight: 700;
-  border: 2px solid var(--AMA-Color-Red-500);
+  border: 2px solid var(--ama-color-red-500);
 }
 
 .btn-danger:hover {
-  color: var(--AMA-Color-Background-White);
+  color: var(--ama-color-background-white);
   border-color: transparent;
-  background-color: var(--AMA-Color-Red-600);
+  background-color: var(--ama-color-red-600);
 }
 
 .btn-danger:disabled {
   opacity: 1;
   border-color: transparent;
-  color: var(--AMA-Color-Background-White);
-  background-color: var(--AMA-Color-Grey-500);
+  color: var(--ama-color-background-white);
+  background-color: var(--ama-color-grey-500);
 }

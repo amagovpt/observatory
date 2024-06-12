@@ -1,33 +1,33 @@
 .btn-primary {
-  color: var(--AMA-Color-Background-White);
-  background-color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-background-white);
+  background-color: var(--ama-color-brand-primary);
   font-weight: 700;
-  border: 2px solid var(--AMA-Color-Brand-Primary) !important;
+  border: 2px solid var(--ama-color-brand-primary) !important;
 }
 
 .btn-primary:hover {
-  color: var(--AMA-Color-Brand-Primary);
-  background-color: var(--AMA-Color-Background-White);
+  color: var(--ama-color-brand-primary);
+  background-color: var(--ama-color-background-white);
 }
 
 .btn-primary:disabled {
   opacity: 1;
   border-color: transparent;
-  color: var(--AMA-Color-Background-White);
-  background-color: var(--AMA-Color-Grey-500);
+  color: var(--ama-color-background-white);
+  background-color: var(--ama-color-grey-500);
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show > .btn-primary.dropdown-toggle {
-  color: var(--AMA-Color-Background-White);
-  background-color: var(--AMA-Color-Brand-Primary);
-  border-color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-background-white);
+  background-color: var(--ama-color-brand-primary);
+  border-color: var(--ama-color-brand-primary);
 }
 
 .btn-check:focus + .btn,
 .btn-primary:focus {
-  color: var(--AMA-Color-Background-White);
-  background-color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-background-white);
+  background-color: var(--ama-color-brand-primary);
   outline: 0;
 }

@@ -23,7 +23,7 @@ export function Footer() {
                 <a
                   href="https://www.acessibilidade.gov.pt/acessibilidade/"
                   rel="noreferrer"
-                  className="AMA-Typography-Action-Large p-3"
+                  className="ama-typography-action-large p-3"
                 >
                   {t("FOOTER.accessibility")}
                 </a>
@@ -36,7 +36,7 @@ export function Footer() {
                 <a
                   href="https://www.acessibilidade.gov.pt/termos-e-condicoes/"
                   rel="noreferrer"
-                  className="AMA-Typography-Action-Large p-3"
+                  className="ama-typography-action-large p-3"
                 >
                   {t("FOOTER.terms")}
                 </a>
@@ -49,7 +49,7 @@ export function Footer() {
                 <a
                   href="https://www.ama.gov.pt/web/agencia-para-a-modernizacao-administrativa/politica-de-privacidade"
                   rel="noreferrer"
-                  className="AMA-Typography-Action-Large p-3"
+                  className="ama-typography-action-large p-3"
                 >
                   {t("FOOTER.privacy")}
                 </a>
@@ -62,7 +62,7 @@ export function Footer() {
                 <a
                   href="https://amagovpt.github.io/kit-selo/"
                   rel="noreferrer"
-                  className="AMA-Typography-Action-Large p-3"
+                  className="ama-typography-action-large p-3"
                 >
                   Github
                 </a>
@@ -75,7 +75,7 @@ export function Footer() {
                 <a
                   href="https://www.acessibilidade.gov.pt/glossario/"
                   rel="noreferrer"
-                  className="AMA-Typography-Action-Large p-3"
+                  className="ama-typography-action-large p-3"
                 >
                   {t("FOOTER.glossary")}
                 </a>
@@ -87,7 +87,7 @@ export function Footer() {
                 <a
                   href="https://www.acessibilidade.gov.pt/opcoes-de-visualizacao/"
                   rel="noreferrer"
-                  className="AMA-Typography-Action-Large p-3"
+                  className="ama-typography-action-large p-3"
                 >
                   {t("FOOTER.options")}
                 </a>
@@ -175,7 +175,7 @@ export function Footer() {
           />
         </div>
         <div className="text-center">
-          <p className="AMA-Typography-Body">
+          <p className="ama-typography-body">
             © 2024 AMA - {t("FOOTER.link")}
             {t("FOOTER.rights")}
           </p>

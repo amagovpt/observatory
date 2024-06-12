@@ -1,6 +1,6 @@
 .observatorio {
-    color: var(--AMA-Color-Background-White);
-    background-color: var(--AMA-Color-Brand-Primary);
+    color: var(--ama-color-background-white);
+    background-color: var(--ama-color-brand-primary);
     height: fit-content;
     width: fit-content;
     text-align: center;
@@ -13,7 +13,7 @@
 
 .main {
     height: auto;
-    background-color: var(--AMA-Color-Background-Light-Darker);
+    background-color: var(--ama-color-background-light-darker);
     position: relative;
     padding-bottom: 4rem;
 }

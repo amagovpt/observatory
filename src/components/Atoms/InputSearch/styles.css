@@ -1,11 +1,11 @@
 .field-search input {
   height: 42px;
-  border: 2px solid var(--AMA-Color-Brand-Primary) !important;
-  background-color: var(--AMA-Color-Background-White);
+  border: 2px solid var(--ama-color-brand-primary) !important;
+  background-color: var(--ama-color-background-white);
   margin: 8px 0 8px 0;
   min-width: 50px;
   padding: 0px 16px;
-  color: var(--AMA-Color-Text-Gray);
+  color: var(--ama-color-text-gray);
   font-weight: 400;
   font-size: 1em;
   font-family: var(--font-lato);
@@ -34,10 +34,10 @@
 
 .field-search button {
   border-radius: 0px;
-  border: 2px solid var(--AMA-Color-Brand-Primary);
+  border: 2px solid var(--ama-color-brand-primary);
   border-left: 0px !important;
 }
 
 .field-search button i {
-  color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-brand-primary);
 }

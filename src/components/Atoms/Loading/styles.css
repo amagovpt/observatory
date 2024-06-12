@@ -21,7 +21,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--AMA-Color-Brand-Primary);
+  background: var(--ama-color-brand-primary);
   animation: dotAnimation 2.6s infinite linear;
 }
 

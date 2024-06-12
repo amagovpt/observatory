@@ -1,4 +1,4 @@
 .form-check-input:checked {
-  background-color: var(--AMA-Color-Brand-Primary);
-  border-color: var(--AMA-Color-Brand-Primary);
+  background-color: var(--ama-color-brand-primary);
+  border-color: var(--ama-color-brand-primary);
 }

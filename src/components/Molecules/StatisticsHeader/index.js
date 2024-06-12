@@ -13,8 +13,8 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
     const normalExtraStats = (value, subtitle) => {
         return (
             <div className="d-flex flex-column margin_mobile">
-                <h3 className="Bold">{value}</h3>
-                <span className="AMA-Typography-Body">{subtitle}</span>
+                <h3 className="bold">{value}</h3>
+                <span className="ama-typography-body">{subtitle}</span>
             </div>
         )
     }
@@ -24,12 +24,12 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
         const percentage = (value*100/total).toFixed(1)
         return (
             <div className="d-flex flex-column margin_mobile">
-                <h3 className="Bold p-1">
+                <h3 className="bold p-1">
                     {value}
-                    {!first ? <span className="AMA-Typography-Body-Large ps-2">{percentage}%</span> : null}
+                    {!first ? <span className="ama-typography-body-large ps-2">{percentage}%</span> : null}
                 </h3>
-                {object.subtitle2 !== "" ? <span className="AMA-Typography-Body Bold">{object.subtitle2}</span> : null}
-                <span className="AMA-Typography-Body">{object.subtitle}</span>
+                {object.subtitle2 !== "" ? <span className="ama-typography-body bold">{object.subtitle2}</span> : null}
+                <span className="ama-typography-body">{object.subtitle}</span>
             </div>
         )
     }
@@ -39,17 +39,17 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
             {/* Web version */}
             <div className="grid_container">
                 <div className="d-flex flex-column mb-3">
-                    <h2 className="Bold">{title}</h2>
-                    <span className="AMA-Typography-Body">{subtitle}</span>
+                    <h2 className="bold">{title}</h2>
+                    <span className="ama-typography-body">{subtitle}</span>
                 </div>
                 <div className="mb-3 second_column ps-4">
                     <div className="d-flex flex-column">
-                        <span className="AMA-Typography-Body Bold mb-1">{oldestPage}</span>
-                        <span className="AMA-Typography-Body">{stats.oldestPage}</span>
+                        <span className="ama-typography-body bold mb-1">{oldestPage}</span>
+                        <span className="ama-typography-body">{stats.oldestPage}</span>
                     </div>
                     <div className="d-flex flex-column">
-                        <span className="AMA-Typography-Body Bold mb-1">{newestPage}</span>
-                        <span className="AMA-Typography-Body">{stats.recentPage}</span>
+                        <span className="ama-typography-body bold mb-1">{newestPage}</span>
+                        <span className="ama-typography-body">{stats.recentPage}</span>
                     </div>
                 </div>
                 <div className="second_row">
@@ -82,20 +82,20 @@ const StatisticsHeader = ({ darkTheme, stats, statsTitles, doubleRow, title, sub
             {/* Mobile version */}
             <div className="grid_container_mobile">
                 <div className="d-flex flex-column row my-3">
-                    <h2 className="Bold">{title}</h2>
-                    <span className="AMA-Typography-Body">{subtitle}</span>
+                    <h2 className="bold">{title}</h2>
+                    <span className="ama-typography-body">{subtitle}</span>
                 </div>
                 <div className="row second_row mb-4">
                     <Gauge percentage={stats.score} title={gaugeTitle}/>
                 </div>
                 <div className="row d-flex flex-column mb-4">
                     <div className="d-flex flex-column mb-2">
-                        <span className="AMA-Typography-Body Bold mb-1">{oldestPage}</span>
-                        <span className="AMA-Typography-Body">{stats.oldestPage}</span>
+                        <span className="ama-typography-body bold mb-1">{oldestPage}</span>
+                        <span className="ama-typography-body">{stats.oldestPage}</span>
                     </div>
                     <div className="d-flex flex-column">
-                        <span className="AMA-Typography-Body Bold mb-1">{newestPage}</span>
-                        <span className="AMA-Typography-Body">{stats.recentPage}</span>
+                        <span className="ama-typography-body bold mb-1">{newestPage}</span>
+                        <span className="ama-typography-body">{stats.recentPage}</span>
                     </div>
                 </div>
                 <div className="row fourth_row">

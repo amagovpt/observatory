@@ -104,10 +104,10 @@ export default function Directories() {
         </div>
 
         <div className="title_container">
-          <div className="AMA-Typography-Body-Large Bold observatorio px-3">
+          <div className="ama-typography-body-large bold observatorio px-3">
               {t("HEADER.NAV.observatory")}
           </div>
-          <h2 className="Bold my-2">{t("HEADER.NAV.directories")}</h2>
+          <h2 className="bold my-2">{t("HEADER.NAV.directories")}</h2>
         </div>
 
         {/* Statistics Header Component */}
@@ -128,7 +128,7 @@ export default function Directories() {
         {/* MAIN Directories TABLE */}
         <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
           <div className="d-flex flex-column section_container py-4 m-0">
-            <h3 className="Bold pb-3 m-0">{t("DIRECTORIES.table.title")}</h3>
+            <h3 className="bold pb-3 m-0">{t("DIRECTORIES.table.title")}</h3>
             {directoriesList && <SortingTable
               hasSort={true}
               headers={directoriesHeaders}
@@ -140,7 +140,7 @@ export default function Directories() {
               caption={t("DIRECTORIES.table.title")}
               columnsOptions={columnsOptions}
             />}
-            <div className="AMA-Typography-Body mt-4">{t("DIRECTORIES.table.note")}</div>
+            <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
           </div>
         </section>
 
@@ -148,7 +148,7 @@ export default function Directories() {
         <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center`}>
           <div className="d-flex flex-column search_container p-4 px-5">
             <form className="d-flex flex-column">
-              <label className="AMA-Typography-Body-Large Bold mb-2">{t("DIRECTORIES.search.label")}</label>
+              <label className="ama-typography-body-large bold mb-2">{t("DIRECTORIES.search.label")}</label>
               <input className="p-3 mb-3" type="text" id="search" placeholder={t("DIRECTORIES.search.placeholder")} value={search} onChange={(e) => searchFuntion(e.target.value, setSearch, setOtherData, dataProcess)}/>
             </form>
             {search && search.length >= 3 ? 
@@ -166,7 +166,7 @@ export default function Directories() {
                   iconsAltTexts={nameOfIcons}
                 />
               :
-                <div className="AMA-Typography-Body-Large">{t("DIRECTORIES.search.no_results")}</div>
+                <div className="ama-typography-body-large">{t("DIRECTORIES.search.no_results")}</div>
               ) 
             : 
               null

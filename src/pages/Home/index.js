@@ -81,8 +81,8 @@ export default function Home() {
     return (
       <div className="d-flex flex-column align-items-center text-center censos_column">
         <Icon name={icon} />
-        <span className="AMA-Typography-Display-6 Bold mt-2">{number}</span>
-        <span className="AMA-Typography-Body Bold">{spans[0]}<br/>{spans[1]}<br/>{spans[2]}</span>
+        <span className="ama-typography-display-6 bold mt-2">{number}</span>
+        <span className="ama-typography-body bold">{spans[0]}<br/>{spans[1]}<br/>{spans[2]}</span>
       </div>
     )
   }
@@ -100,7 +100,7 @@ export default function Home() {
         
         <div className="container">
           {/* Statistics Header Component */}
-          <h2 className="mt-5 Bold">{t("HOME.summary.statistics_title")}</h2>
+          <h2 className="mt-5 bold">{t("HOME.summary.statistics_title")}</h2>
           <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5 section_statistics`}>
             {directoriesStats && <StatisticsHeader
               darkTheme={theme === "light" ? false : true}
@@ -118,9 +118,9 @@ export default function Home() {
           {/* Top 5 websites section */}
           <section className={`${main_content_home} d-flex flex-row justify-content-center align-items-center my-5 top5_websites`}>
             <div className="flex-1 top5_div">
-              <h2 className="Bold mb-2">{t("HOME.top5.title")}</h2>
-              <div className="AMA-Typography-Body">{t("HOME.top5.last_updated") + " " + directoriesStats.recentPage}</div>
-              <p className="AMA-Typography-Body mt-2 mb-4">{t("HOME.top5.paragraph.part1")+ " " +t("HOME.top5.paragraph.part2")+ " " +t("HOME.top5.paragraph.part3")}</p>
+              <h2 className="bold mb-2">{t("HOME.top5.title")}</h2>
+              <div className="ama-typography-body">{t("HOME.top5.last_updated") + " " + directoriesStats.recentPage}</div>
+              <p className="ama-typography-body mt-2 mb-4">{t("HOME.top5.paragraph.part1")+ " " +t("HOME.top5.paragraph.part2")+ " " +t("HOME.top5.paragraph.part3")}</p>
               <Button
                 text={t("HOME.top5.button")}
                 size="lg"
@@ -133,10 +133,10 @@ export default function Home() {
                 {data.topFiveWebsites.map((website) => (
                   <li className="d-flex justify-content-between align-items-center mb-2">
                     <div className="d-flex flex-row align-items-center">
-                      <span className="AMA-Typography-Body top5_number me-3">{website.index}</span>
-                      <span className="AMA-Typography-Action-Large Bold top5_link" onClick={() => goToWebsite(website.DirectoryId, website.id)}>{website.name}</span>
+                      <span className="ama-typography-body top5_number me-3">{website.index}</span>
+                      <span className="ama-typography-action-large bold top5_link" onClick={() => goToWebsite(website.DirectoryId, website.id)}>{website.name}</span>
                     </div>
-                    <span className="AMA-Typography-Body-Large Bold">{(website.score).toFixed(1)}</span>
+                    <span className="ama-typography-body-large bold">{(website.score).toFixed(1)}</span>
                   </li>
                 ))}
               </ul>
@@ -147,8 +147,8 @@ export default function Home() {
         <section className={`bg-white ${main_content_home} d-flex flex-column section last_section pt-5`}>
           <div className="container">
             {/* Declarations data */}
-            <h2 className="Bold">{t("NUMBERS.declaration.title")}</h2>
-            <p className="AMA-Typography-Body-Large">{t("NUMBERS.declaration.paragraph")}</p>
+            <h2 className="bold">{t("NUMBERS.declaration.title")}</h2>
+            <p className="ama-typography-body-large">{t("NUMBERS.declaration.paragraph")}</p>
             <AchievementPerType data={data} type={"declarations"} good={"conform"} semi={"partial"} bad={"not_conform"}
               title={t("NUMBERS.declaration.subtitle1")}
               icon={"AMA-Declaracao-Line"}
@@ -159,8 +159,8 @@ export default function Home() {
             />
 
             {/* Badges data */}
-            <h2 className="Bold">{t("NUMBERS.badge.title")}</h2>
-            <p className="AMA-Typography-Body-Large">{t("NUMBERS.badge.paragraph")}</p>
+            <h2 className="bold">{t("NUMBERS.badge.title")}</h2>
+            <p className="ama-typography-body-large">{t("NUMBERS.badge.paragraph")}</p>
             <AchievementPerType data={data} type={"badges"} good={"gold"} semi={"silver"} bad={"bronze"}
               title={t("NUMBERS.badge.subtitle1")}
               icon={"AMA-SeloDark2-Line"}
@@ -178,10 +178,10 @@ export default function Home() {
             {/* Censos Data */}
             <div className="censos_container p-5">
               <div className="d-flex flex-row align-items-center justify-content-between mb-2 mobile">
-                <h2 className="Bold">{t("HOME.4all.title")}</h2>
-                <span className="AMA-Typography-Body">{t("HOME.4all.census")}</span>
+                <h2 className="bold">{t("HOME.4all.title")}</h2>
+                <span className="ama-typography-body">{t("HOME.4all.census")}</span>
               </div>
-              <p className="AMA-Typography-Body mb-4">{t("HOME.4all.paragraph.part1")}<br/>{t("HOME.4all.paragraph.part2")}</p>
+              <p className="ama-typography-body mb-4">{t("HOME.4all.paragraph.part1")}<br/>{t("HOME.4all.paragraph.part2")}</p>
               <div className="d-flex justify-content-between">
                 {censosDataIndividual("AMA-BracoPartido-Line", "1 085 472", [t("HOME.4all.disabilities._1.part1"), t("HOME.4all.disabilities._1.part2"), t("HOME.4all.disabilities._1.part3")])}
 

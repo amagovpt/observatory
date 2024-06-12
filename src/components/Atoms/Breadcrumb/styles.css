@@ -3,7 +3,7 @@
 }
 
 .breadcrumb-item a {
-  color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-brand-primary);
 }
 
 .breadcrumb-item {
@@ -12,7 +12,7 @@
 }
 
 .breadcrumb-item.active {
-  color: var(--AMA-Color-Text-Gray) !important;
+  color: var(--ama-color-text-gray) !important;
 }
 
 .breadcrumb .breadcrumb-item:not(:first-child) {

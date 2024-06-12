@@ -1,16 +1,16 @@
 .btn-ghost {
-  color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-brand-primary);
   font-weight: 700;
-  border: 1px solid var(--AMA-Color-Brand-Primary);
+  border: 1px solid var(--ama-color-brand-primary);
 }
 
 .btn-ghost:hover {
-  color: var(--AMA-Color-Blue-400);
-  border: 2px solid var(--AMA-Color-Blue-400);
+  color: var(--ama-color-blue-400);
+  border: 2px solid var(--ama-color-blue-400);
 }
 
 .btn-ghost:disabled {
   opacity: 0.8;
-  color: var(--AMA-Color-Grey-700);
-  border: 1px solid var(--AMA-Color-Grey-700);
+  color: var(--ama-color-grey-700);
+  border: 1px solid var(--ama-color-grey-700);
 }

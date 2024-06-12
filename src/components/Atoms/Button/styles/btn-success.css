@@ -1,19 +1,19 @@
 .btn-success {
-  color: var(--AMA-Color-Text-Gray);
-  background-color: var(--AMA-Color-Green-400);
+  color: var(--ama-color-text-gray);
+  background-color: var(--ama-color-green-400);
   font-weight: 700;
   border: 2px solid transparent;
 }
 
 .btn-success:hover {
-  color: var(--AMA-Color-Text-Gray);
-  background-color: var(--AMA-Color-Green-500);
+  color: var(--ama-color-text-gray);
+  background-color: var(--ama-color-green-500);
   border-color: transparent;
 }
 
 .btn-success:disabled {
   opacity: 1;
   border-color: transparent;
-  color: var(--AMA-Color-Background-White);
-  background-color: var(--AMA-Color-Grey-500);
+  color: var(--ama-color-background-white);
+  background-color: var(--ama-color-grey-500);
 }

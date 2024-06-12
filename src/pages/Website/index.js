@@ -139,11 +139,11 @@ export default function Directory() {
         </div>
 
         <div className={`title_container ${main_content_website}`}>
-          <div className="AMA-Typography-Body-Large Bold observatorio px-3 mb-2">
+          <div className="ama-typography-body-large bold observatorio px-3 mb-2">
             {directoryName}
           </div>
-          <h2 className="Bold my-2">{data && data.name}</h2>
-          <h3><a className="AMA-Typography-Action-Large Bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h3>
+          <h2 className="bold my-2">{data && data.name}</h2>
+          <h3><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h3>
         </div>
 
         {/* Statistics Header Component */}
@@ -165,7 +165,7 @@ export default function Directory() {
         {/* Radar Graph */}
         <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
           <div className="d-flex flex-column section_container py-4">
-            <h3 className="Bold">{t("WEBSITE.accessibility_plot.title")}</h3>
+            <h3 className="bold">{t("WEBSITE.accessibility_plot.title")}</h3>
             <div className="d-flex radar_graphic justify-content-center">
               {data && <RadarGraph tempData={data} />}
             </div>
@@ -175,7 +175,7 @@ export default function Directory() {
         {/* Bar+Line Graph */}
         <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
           <div className="d-flex flex-column section_container py-4">
-            <h3 className="Bold mb-3">{t("DIALOGS.scores.title")}</h3>
+            <h3 className="bold mb-3">{t("DIALOGS.scores.title")}</h3>
             {data && <BarLineGraphTabs tempData={data} websiteStats={websiteStats} />}
           </div>
         </section>

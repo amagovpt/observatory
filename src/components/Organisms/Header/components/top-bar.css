@@ -1,5 +1,5 @@
 .top-bar {
-  background-color: var(--AMA-Color-Background-Light-Darker);
+  background-color: var(--ama-color-background-light-darker);
 }
 
 .top-bar button {
@@ -12,20 +12,20 @@
 }
 
 .top-bar .btn-ecossistema {
-  color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-brand-primary);
   text-decoration: none;
   text-align: start;
 }
 
 #accordionBtn:hover {
-  color: var(--AMA-Color-Blue-600) !important;
+  color: var(--ama-color-blue-600) !important;
 }
 
 #accordionBtn:focus {
   box-shadow: none;
-  color: var(--AMA-Color-Blue-600);
+  color: var(--ama-color-blue-600);
   border-radius: 4px;
-  border: 1px solid var(--AMA-Color-Blue-600) !important;
+  border: 1px solid var(--ama-color-blue-600) !important;
 }
 
 .btn-ecossistema .icon-ed-menu-dots {
@@ -34,7 +34,7 @@
 }
 
 .btn-ecossistema span:nth-child(2) {
-  color: var(--AMA-Color-Background-Dark-Darker);
+  color: var(--ama-color-background-dark-darker);
 }
 
 .btn-ecossistema i {
@@ -50,15 +50,15 @@
 
 .dark-mode:hover,
 .language-mode:hover {
-  color: var(--AMA-Color-Blue-600) !important;
+  color: var(--ama-color-blue-600) !important;
 }
 
 .dark-mode:focus,
 .language-mode:focus {
   box-shadow: none;
-  color: var(--AMA-Color-Blue-600);
+  color: var(--ama-color-blue-600);
   border-radius: 4px;
-  border: 1px solid var(--AMA-Color-Blue-600) !important;
+  border: 1px solid var(--ama-color-blue-600) !important;
 }
 
 @media (min-width: 992px) {
@@ -111,7 +111,7 @@
 
 .dark-mode,
 .language-mode {
-  color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-brand-primary);
   font-size: 16px;
   text-decoration: none;
   padding-right: 0px !important;
@@ -146,61 +146,61 @@ ul.ama-list > li {
 /* DARK MODE */
 
 .dark_mode {
-  color: var(--AMA-Color-Text-Blue) !important;
-  background-color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-text-blue) !important;
+  background-color: var(--ama-color-brand-primary);
 }
 
 .dark_mode .btn-ecossistema {
-  color: var(--AMA-Color-Text-Blue);
+  color: var(--ama-color-text-blue);
 }
 
 .dark_mode #flushHeading {
-  color: var(--AMA-Color-Background-White) !important;
+  color: var(--ama-color-background-white) !important;
 }
 
 .dark_mode .dark_mode_span {
-  color: var(--AMA-Color-Text-Blue) !important;
+  color: var(--ama-color-text-blue) !important;
 }
 
 .dark_mode .dark-mode,
 .dark_mode .language-mode {
-  color: var(--AMA-Color-Text-Blue);
+  color: var(--ama-color-text-blue);
   padding-right: 0px !important;
 }
 
 .dark_mode .dark-mode:hover,
 .dark_mode .language-mode:hover {
-  color: var(--AMA-Color-Text-Blue) !important;
+  color: var(--ama-color-text-blue) !important;
 }
 
 .dark_mode .dark-mode:focus,
 .dark_mode .language-mode:focus {
   box-shadow: none;
-  color: var(--AMA-Color-Text-Blue);
+  color: var(--ama-color-text-blue);
   border-radius: 4px;
-  border: 1px solid var(--AMA-Color-Text-Blue) !important;
+  border: 1px solid var(--ama-color-text-blue) !important;
 }
 
 .dark_mode #accordionBtn:hover {
-  color: var(--AMA-Color-Text-Blue) !important;
+  color: var(--ama-color-text-blue) !important;
 }
 
 .dark_mode #accordionBtn:focus {
   box-shadow: none;
-  color: var(--AMA-Color-Text-Blue);
+  color: var(--ama-color-text-blue);
   border-radius: 4px;
-  border: 1px solid var(--AMA-Color-Text-Blue) !important;
+  border: 1px solid var(--ama-color-text-blue) !important;
 }
 
 .dark_mode #accordionTopBar {
-  color: var(--AMA-Color-Background-White);
+  color: var(--ama-color-background-white);
 }
 
 .dark_mode #accordionTopBar ul li a {
-  color: var(--AMA-Color-Text-Blue) !important;
-  text-decoration-color: var(--AMA-Color-Text-Blue) !important;
+  color: var(--ama-color-text-blue) !important;
+  text-decoration-color: var(--ama-color-text-blue) !important;
 }
 
 .dark_mode #accordionTopBar ul li i {
-  color: var(--AMA-Color-Text-Blue) !important;
+  color: var(--ama-color-text-blue) !important;
 }

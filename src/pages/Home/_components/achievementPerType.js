@@ -19,9 +19,9 @@ export function AchievementPerType({ data, type, good, semi, bad, title, icon, c
     const percentageTotalGrey = 100 - percentTotal
     return (
       <div className={`d-flex ${marginBottom} w-100 row_st_dc align-items-center`}>
-        <span className="AMA-Typography-Display-6 Bold quantity">{quantityTotal}</span>
+        <span className="ama-typography-display-6 bold quantity">{quantityTotal}</span>
         <div className={`ps-2 ${barColor} conform_container`}>
-          <span className="AMA-Typography-Body Bold">{type}</span>
+          <span className="ama-typography-body bold">{type}</span>
         </div>
         <div className="d-flex justify-content-center ps-2">
           <div className="d-flex flex-row">
@@ -35,14 +35,14 @@ export function AchievementPerType({ data, type, good, semi, bad, title, icon, c
   return (
     <div className="d-flex flex-row group_container p-5 mb-5 mt-4">
       <div className="d-flex flex-column first_column">
-        <div className="AMA-Typography-Body-Larger Bold mb-3">{title}</div>
-        <div className="d-flex flex-row align-items-center AMA-Typography-Display-1">
+        <div className="ama-typography-body-larger bold mb-3">{title}</div>
+        <div className="d-flex flex-row align-items-center ama-typography-display-1">
           <span className="me-2">{total}</span>
           <Icon name={icon} />
         </div>
       </div>
       <div className="d-flex flex-column second_column">
-        <div className="AMA-Typography-Body mb-3 align-self-end">{t(`NUMBERS.${translationType}.percentTitle`)}</div>
+        <div className="ama-typography-body mb-3 align-self-end">{t(`NUMBERS.${translationType}.percentTitle`)}</div>
         {barStatsRow("mb-5", valueGood, colors.good, colorTitle.good, colorRGB.good, valueGood*100/total)}
         {barStatsRow("mb-5", valueSemi, colors.semi, colorTitle.semi, colorRGB.semi, valueSemi*100/total)}
         {barStatsRow("", valueBad, colors.bad, colorTitle.bad, colorRGB.bad, valueBad*100/total)}

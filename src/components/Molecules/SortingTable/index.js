@@ -112,7 +112,7 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
             return (
                 <th style={{width: headerData.bigWidth ? headerData.bigWidth : "10%"}} colSpan={nOfColumns} className={`hide-on-small-screen ${justifyCenter} no_pointer`}>
                     {/* If there is nothing to be rendered on the table, render a visually-hidden text because of accessibility */}
-                    {!headerData?.empty ? <span className="AMA-Typography-Body Bold">{headerData.name}</span> : <span className="visually-hidden">Empty</span>}
+                    {!headerData?.empty ? <span className="ama-typography-body bold">{headerData.name}</span> : <span className="visually-hidden">Empty</span>}
                 </th>
             )
         } else {
@@ -137,7 +137,7 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                 return (
                     <th style={{width: headerData.bigWidth ? headerData.bigWidth : "10%"}} colSpan={nOfColumns} aria-sort={sameProp ? (sort.type === "asc" ? "descending" : "ascending"):null} className={sameProp ? `hide-on-small-screen show_icon` : `hide-on-small-screen`} onClick={() => setDataList(sortByProperty(headerData.property))}>
                         <div className={`d-flex ${justifyCenter} align-items-center`}>
-                            <span className="AMA-Typography-Body Bold">{headerData.name}</span>
+                            <span className="ama-typography-body bold">{headerData.name}</span>
                             {sameProp && sort.type === "asc" ? <Icon name="AMA-SetaBaixo-Line" /> : <Icon name="AMA-SetaCima-Line" />}
                         </div>
                     </th>
@@ -149,7 +149,7 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
 
     const renderSpans = (spans) => {
         return spans.map((span) => {
-            return (<span className="AMA-Typography-Body mb-1">{span}</span>)
+            return (<span className="ama-typography-body mb-1">{span}</span>)
         })
     }
 
@@ -161,7 +161,7 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
     const renderAttributes = (row) => {
         return Object.keys(row).map((key) => {
             let center = columnsOptions[key].center ? "text-center" : ""
-            let bold = columnsOptions[key].bold ? "Bold" : ""
+            let bold = columnsOptions[key].bold ? "bold" : ""
             // Use the custom array to check the type of render to do
             switch(columnsOptions[key].type) {
                 case "Skip":
@@ -169,13 +169,13 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                     return null
                 case "Number":
                     // Render a number, if it has "decimalPlace" as TRUE then render the number with 1 decimal place
-                    return (<td className={`${center} ${bold} AMA-Typography-Body`}>{columnsOptions[key].decimalPlace ? row[key].toFixed(1) : row[key]}</td>)
+                    return (<td className={`${center} ${bold} ama-typography-body`}>{columnsOptions[key].decimalPlace ? row[key].toFixed(1) : row[key]}</td>)
                 case "Button":
                     // Render a button disguised as a text link
                     return (<td><button className="sortingTableButton" onClick={() => nextPage(row, key)}>{row[key]}</button></td>)
                 case "Text":
                     // Render normal text
-                    return (<td className={`${center} ${bold} AMA-Typography-Body`}>{row[key]}</td>)
+                    return (<td className={`${center} ${bold} ama-typography-body`}>{row[key]}</td>)
                 case "Stamp":
                     // Render one of the 3 Stamp Icons based on the number received (from: 1 to 3)
                     switch(row[key]) {
@@ -205,7 +205,7 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                     return (<td className={`${center} ${bold} d-flex flex-column multi-text`}>{renderSpans(row[key])}</td>)
                 case "DoubleText":
                     // Render 2 texts where the second one is bold and the first one not. If this property also comes with bold then all text will be bold
-                    return (<td className={`${center} ${bold}`}><span className="AMA-Typography-Body">{row[key][0]}</span><span className="AMA-Typography-Body Bold">{row[key][1]}</span></td>)
+                    return (<td className={`${center} ${bold}`}><span className="ama-typography-body">{row[key][0]}</span><span className="ama-typography-body bold">{row[key][1]}</span></td>)
                 default:
                     // Render an empty cell
                     return <td>{null}</td>
@@ -257,20 +257,20 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
             {/* Pagination */}
             {pagination && <div className={`d-flex flex-row justify-content-between pagination ${theme}`}>
                 {/* Section informing the number of items in that page from the total*/}
-                <div className="AMA-Typography-Body pagination_section">
+                <div className="ama-typography-body pagination_section">
                     {((page-1)*nItemsCurrent)+ 1 + " - " + (nAllItems > nItemsCurrent && page !== lastPage ? (page*nItemsCurrent) : nAllItems) + itemsPaginationTexts[0] + nAllItems + itemsPaginationTexts[1]}
                 </div>
 
                 {/* Section informing the number of items per page and option to change */}
                 <div className="pagination_section">
-                    <span className="AMA-Typography-Body">{nItemsPerPageTexts[0]}</span>
+                    <span className="ama-typography-body">{nItemsPerPageTexts[0]}</span>
                     <select aria-label="Number of rows per page" className="selection" name="itemsPerPage" id="itemsPerPage" onChange={(e) => setNItemsCurrent(e.target.value)}>
                         <option value="50">50</option>
                         <option value="100">100</option>
                         <option value="250">250</option>
                         <option value="500">500</option>
                     </select>
-                    <span className="AMA-Typography-Body">{nItemsPerPageTexts[1]}</span>
+                    <span className="ama-typography-body">{nItemsPerPageTexts[1]}</span>
                 </div>
 
                 {/* Section with the pagination navigation */}

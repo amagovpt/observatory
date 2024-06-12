@@ -1,10 +1,10 @@
 .skip-to-content {
-  background: var(--AMA-Color-Background-White);
+  background: var(--ama-color-background-white);
 }
 
 .logo .title,
 .logo .title2 {
-  color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-brand-primary);
   font-size: 26px;
 }
 
@@ -16,7 +16,7 @@
   overflow: hidden !important;
   white-space: nowrap;
   border: 0;
-  color: var(--AMA-Color-Brand-Primary) !important;
+  color: var(--ama-color-brand-primary) !important;
 }
 
 .skip-to-content-link:focus {
@@ -29,18 +29,18 @@
 }
 
 .skip-to-content-link:focus span {
-  outline: 1px solid var(--AMA-Color-Blue-600);
-  color: var(--AMA-Color-Brand-Primary) !important;
-  outline-color: var(--AMA-Color-Blue-600);
+  outline: 1px solid var(--ama-color-blue-600);
+  color: var(--ama-color-brand-primary) !important;
+  outline-color: var(--ama-color-blue-600);
   border-radius: 4px;
 }
 
 .text-primary {
-  color: var(--AMA-Color-Brand-Primary) !important;
+  color: var(--ama-color-brand-primary) !important;
 }
 
 .widgets-bar {
-  background-color: var(--AMA-Color-Background-Light-Lighter);
+  background-color: var(--ama-color-background-light-lighter);
 }
 
 .widgets-bar a {
@@ -82,8 +82,8 @@
   border: 0;
   width: 45px;
   height: 45px;
-  color: var(--AMA-Color-Background-White);
-  background-color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-background-white);
+  background-color: var(--ama-color-brand-primary);
 }
 
 .menu-hamburger span {
@@ -91,11 +91,11 @@
 }
 
 #widget .dark_mode {
-  background-color: var(--AMA-Color-Brand-Primary);
-  color: var(--AMA-Color-Background-White) !important;
+  background-color: var(--ama-color-brand-primary);
+  color: var(--ama-color-background-white) !important;
 }
 
 .dark_mode .logo .title,
 .dark_mode .logo .title2 {
-  color: var(--AMA-Color-Text-Blue);
+  color: var(--ama-color-text-blue);
 }

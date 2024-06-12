@@ -10,13 +10,13 @@
 }
 
 .top5_websites .top5_div button {
-    border: 2px solid var(--AMA-Color-Brand-Primary) !important;
+    border: 2px solid var(--ama-color-brand-primary) !important;
 }
 
 .top5_number {
     width: 36px;
     height: 36px;
-    border: 2px solid var(--AMA-Color-Green-900);
+    border: 2px solid var(--ama-color-green-900);
     align-items: center;
     justify-content: center;
     border-radius: 50%;
@@ -25,7 +25,7 @@
 }
 
 .top5_link {
-    color: var(--AMA-Color-Brand-Primary);
+    color: var(--ama-color-brand-primary);
     text-decoration: none !important;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .censos_container {
-    background-color: var(--AMA-Color-Blue-50);
+    background-color: var(--ama-color-blue-50);
 }
 
 .censos_container p {
@@ -72,8 +72,8 @@
 
 .tabs-grid .nav-tabs .nav-link.active {
     background-color: transparent;
-    color: var(--AMA-Color-Text-Gray) !important;
-    border-right: 5px solid var(--AMA-Color-Brand-Primary);
+    color: var(--ama-color-text-gray) !important;
+    border-right: 5px solid var(--ama-color-brand-primary);
     border-bottom: 0px;
 }
 
@@ -83,12 +83,12 @@
 
 .tabs-grid .tabs_info_container li i {
     font-size: 50px;
-    color: var(--AMA-Color-Brand-Primary)
+    color: var(--ama-color-brand-primary)
 }
 
 .top5_best_good .top5_number {
     border: 0px;
-    background-color: var(--AMA-Color-Background-Light-Darker);
+    background-color: var(--ama-color-background-light-darker);
 }
 
 .top5_best_good i {
@@ -97,7 +97,7 @@
 
 .group_container {
     flex-direction: row;
-    background-color: var(--AMA-Color-Background-Light-Lighter);
+    background-color: var(--ama-color-background-light-lighter);
 }
 
 .group_container .first_column {
@@ -114,23 +114,23 @@
 }
 
 .group_container .green {
-    border-left: solid 4px var(--AMA-Color-Green-500);
+    border-left: solid 4px var(--ama-color-green-500);
 }
 
 .group_container .yellow {
-    border-left: solid 4px var(--AMA-Color-Yellow-400);
+    border-left: solid 4px var(--ama-color-yellow-400);
 }
 
 .group_container .red {
-    border-left: solid 4px var(--AMA-Color-System-Error);
+    border-left: solid 4px var(--ama-color-system-error);
 }
 
 .group_container .gold {
-    border-left: solid 4px var(--AMA-Color-Yellow-600);
+    border-left: solid 4px var(--ama-color-yellow-600);
 }
 
 .group_container .silver {
-    border-left: solid 4px var(--AMA-Color-Grey-400);
+    border-left: solid 4px var(--ama-color-grey-400);
 }
 
 .group_container .bronze {
@@ -144,64 +144,64 @@
 
 /* DARK MODE */
 .main_dark .home_container {
-    color: var(--AMA-Color-Text-Blue);
-    background-color: var(--AMA-Color-Background-Dark-Lighter) !important;
+    color: var(--ama-color-text-blue);
+    background-color: var(--ama-color-background-dark-lighter) !important;
 }
 
 .main_dark .welcome_section {
-    background-color: var(--AMA-Color-Background-Dark-Lighter) !important;
-    color: var(--AMA-Color-Background-White);
+    background-color: var(--ama-color-background-dark-lighter) !important;
+    color: var(--ama-color-background-white);
 }
 
 .main_dark .last_section,
 .main_dark .section_statistics,
 .main_content_home .tabs-grid .nav-tabs {
-    background-color: var(--AMA-Color-Background-Dark-Lighter) !important;
+    background-color: var(--ama-color-background-dark-lighter) !important;
 }
 
 .main_dark .container,
-.main_content_home .top5_div span,
+.main_content_home .top5_div,
 .main_content_home .top5_div p,
 .main_content_home .tabs-grid .tabs_info_container,
 .main_content_home .top5_best_good {
-    color: var(--AMA-Color-Background-White);
+    color: var(--ama-color-background-white);
 }
 
 .main_content_home .top5_number {
-    border-color: var(--AMA-Color-Background-White);
+    border-color: var(--ama-color-background-white);
 }
 
 .main_content_home .top5_link {
-    color: var(--AMA-Color-Text-Blue) !important;
+    color: var(--ama-color-text-blue) !important;
 }
 
 .main_content_home .top5_div button {
-    background-color: var(--AMA-Color-Text-Blue) !important;
-    color: var(--AMA-Color-Grey-900);
-    border-color: var(--AMA-Color-Text-Blue) !important;
+    background-color: var(--ama-color-text-blue) !important;
+    color: var(--ama-color-grey-900);
+    border-color: var(--ama-color-text-blue) !important;
 }
 
 .main_content_home .top5_div button:hover {
-    background-color: var(--AMA-Color-Background-Dark-Darker) !important;
-    color:var(--AMA-Color-Text-Blue);
+    background-color: var(--ama-color-background-dark-darker) !important;
+    color:var(--ama-color-text-blue);
 }
 
 .main_content_home .tabs-grid .tabs_info_container li i {
-    color: var(--AMA-Color-Text-Blue);
+    color: var(--ama-color-text-blue);
 }
 
 .main_content_home .tabs-grid .nav-tabs .nav-link {
-    color: var(--AMA-Color-Background-White) !important;
+    color: var(--ama-color-background-white) !important;
 }
 
 .main_content_home .tabs-grid .nav-tabs .nav-link.active {
-    color: var(--AMA-Color-Text-Blue) !important;
-    border-right: 5px solid var(--AMA-Color-Text-Blue);
+    color: var(--ama-color-text-blue) !important;
+    border-right: 5px solid var(--ama-color-text-blue);
 }
 
 .main_content_home .censos_container {
-    background-color: var(--AMA-Color-Brand-Primary);
-    color: var(--AMA-Color-Background-White)
+    background-color: var(--ama-color-brand-primary);
+    color: var(--ama-color-background-white)
 }
 
 .main_content_home .censos_container .censos_img {
@@ -209,20 +209,20 @@
 }
 
 .main_content_home .top5_best_good .top5_number {
-    background-color: var(--AMA-Color-Background-Dark-Darker);
+    background-color: var(--ama-color-background-dark-darker);
 }
 
 .main_content_home .group_container {
-    background-color: var(--AMA-Color-Background-Dark-Darker);
-    color: var(--AMA-Color-Background-White);
+    background-color: var(--ama-color-background-dark-darker);
+    color: var(--ama-color-background-white);
 }
 
 .main_dark .loadingContainer {
-    color: var(--AMA-Color-Text-Blue);
+    color: var(--ama-color-text-blue);
 }
   
 .main_dark .dot {
-    background-color: var(--AMA-Color-Text-Blue);
+    background-color: var(--ama-color-text-blue);
 }
 
 
@@ -261,8 +261,8 @@
     }
 
     .vertical-tabs .nav-tabs .nav-link.active {
-        background-color: var(--AMA-Color-Brand-Primary);
-        color: var(--AMA-Color-Background-White) !important;
+        background-color: var(--ama-color-brand-primary);
+        color: var(--ama-color-background-white) !important;
         border: 0px;
     }
  
@@ -310,31 +310,31 @@
     }
 
     .group_container .green {
-        border-top: solid 4px var(--AMA-Color-Green-500);
+        border-top: solid 4px var(--ama-color-green-500);
         border-left: 0px;
         padding-top: 5px;
     }
     
     .group_container .yellow {
-        border-top: solid 4px var(--AMA-Color-Yellow-400);
+        border-top: solid 4px var(--ama-color-yellow-400);
         border-left: 0px;
         padding-top: 5px;
     }
     
     .group_container .red {
-        border-top: solid 4px var(--AMA-Color-System-Error);
+        border-top: solid 4px var(--ama-color-system-error);
         border-left: 0px;
         padding-top: 5px;
     }
     
     .group_container .gold {
-        border-top: solid 4px var(--AMA-Color-Yellow-600);
+        border-top: solid 4px var(--ama-color-yellow-600);
         border-left: 0px;
         padding-top: 5px;
     }
     
     .group_container .silver {
-        border-top: solid 4px var(--AMA-Color-Grey-400);
+        border-top: solid 4px var(--ama-color-grey-400);
         border-left: 0px;
         padding-top: 5px;
     }
@@ -347,8 +347,8 @@
 
     /* DARK MODE MOBILE */
     .main_content_home .vertical-tabs .nav-tabs .nav-link.active {
-        background-color: var(--AMA-Color-Text-Blue);
-        color: var(--AMA-Color-Grey-900) !important;
+        background-color: var(--ama-color-text-blue);
+        color: var(--ama-color-grey-900) !important;
         border: 0px;
     }
 }

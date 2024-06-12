@@ -5,7 +5,7 @@ export function LoadingComponent() {
   return (
     <div className="loadingContainer">
       <div className="text_container">
-        <span className="AMA-Typography-Body">A carregar...</span>
+        <span className="ama-typography-body">A carregar...</span>
       </div>
       <div className="loader">
         {[...Array(9)].map((_, index) => (

@@ -34,7 +34,7 @@ export function WidgetBar({ description, logo, title, title2 }) {
                 {title && title2 ? 
                   <h1 className="d-flex flex-column logo">
                     <span className="title">{title}</span>
-                    <span className="title2 Medium">{title2}</span>
+                    <span className="title2 medium">{title2}</span>
                   </h1>
                 :
                   <h1 className="logo">{logo}</h1>
@@ -48,7 +48,7 @@ export function WidgetBar({ description, logo, title, title2 }) {
                 className="btn btn-link dark-mode p-1 d-flex align-items-center"
                 onClick={toggleTheme}
               >
-                <span id="darkModeLabel-mobile" className="AMA-Typography-Body">
+                <span id="darkModeLabel-mobile" className="ama-typography-body">
                   {theme === "light"
                     ? t("HEADER.light_mode")
                     : t("HEADER.dark_mode")}
@@ -63,14 +63,14 @@ export function WidgetBar({ description, logo, title, title2 }) {
                 className="btn btn-link language-mode p-1  d-flex align-items-center"
                 onClick={toggleLanguage}
               >
-                <span id="langModeLabel-mobile" className="AMA-Typography-Body">{t("HEADER.language_en")}</span>
+                <span id="langModeLabel-mobile" className="ama-typography-body">{t("HEADER.language_en")}</span>
                 <Icon name="AMA-Globo-Line icon-lang" aria-hidden="true" />
               </button>
             </div>
 
             <div className="col-12 col-lg-6 align-self-center ">
               <div className="site-description">
-                <p className="AMA-Typography-Body">{description}</p>
+                <p className="ama-typography-body">{description}</p>
               </div>
             </div>
           </div>

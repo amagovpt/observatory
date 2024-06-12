@@ -7,19 +7,19 @@
 }
 
 .table tr th {
-    color: var(--AMA-Color-Background-White);
-    background-color: var(--AMA-Color-Text-Gray) !important;
+    color: var(--ama-color-background-white);
+    background-color: var(--ama-color-text-gray) !important;
     font-family: var(--fonte-lato);
     font-size: 16px;
     vertical-align: middle;
 }
 
 .table thead tr {
-    border-bottom: 1px solid var(--AMA-Color-Text-Gray);
+    border-bottom: 1px solid var(--ama-color-text-gray);
 }
 
 .table_primary thead tr:last-child {
-    background-color: var(--AMA-Color-Grey-700) !important;
+    background-color: var(--ama-color-grey-700) !important;
 }
 
 .table_primary thead tr:last-child th {
@@ -56,11 +56,11 @@
 }
 
 .table tbody tr {
-    border-bottom: 1px solid var(--AMA-Color-Text-Gray);
+    border-bottom: 1px solid var(--ama-color-text-gray);
 }
 
 .table tbody tr:hover {
-    background-color: var(--AMA-Color-Background-Light-Darker) !important;
+    background-color: var(--ama-color-background-light-darker) !important;
 }
 
 .table_primary tbody tr td {
@@ -92,7 +92,7 @@
 }
 
 .table tr td i {
-    color: var(--AMA-Color-Background-White);
+    color: var(--ama-color-background-white);
     font-size: 25px;
 }
 
@@ -113,7 +113,7 @@
     padding: .5em;
     margin-left: 10px;
     margin-right: 10px;
-    border: 2px solid var(--AMA-Color-Brand-Primary);
+    border: 2px solid var(--ama-color-brand-primary);
 }
 
 .pagination_section button {
@@ -125,8 +125,8 @@
     width: 68px;
     height: 68px;
     border: none;
-    color: var(--AMA-Color-Grey-900);
-    background-color: var(--AMA-Color-Background-Light-Darker);
+    color: var(--ama-color-grey-900);
+    background-color: var(--ama-color-background-light-darker);
     cursor: pointer;
 }
 
@@ -151,7 +151,7 @@
     width: 100%;
     padding: 0px !important;
     justify-content: flex-start;
-    color: var(--AMA-Color-Brand-Primary) !important;
+    color: var(--ama-color-brand-primary) !important;
     text-decoration: none;
     font-family: Lato;
     font-size: 18px;
@@ -167,11 +167,11 @@
 /* MOBILE */
 @media (min-width: 320px) and (max-width: 480px) {
     .table {
-        background-color: var(--AMA-Color-Background-White);
+        background-color: var(--ama-color-background-white);
     }
 
     .table.dark {
-        background-color: var(--AMA-Color-Background-Dark-Darker);
+        background-color: var(--ama-color-background-dark-darker);
     }
 
     .pagination {
@@ -188,24 +188,24 @@
 /* DARK TABLE */
 .table.dark tbody tr td,
 .table.dark tbody tr td .sortingTableButton {
-    color: var(--AMA-Color-Background-White) !important;
+    color: var(--ama-color-background-white) !important;
 }
 
 .table.dark tbody tr:hover {
-    background-color: var(--AMA-Color-Background-Dark-Darker) !important;
+    background-color: var(--ama-color-background-dark-darker) !important;
 }
 
 .table.dark tbody tr,
 .table.dark tbody tr:last-child {
-    border-bottom: 1px solid var(--AMA-Color-Grey-400) !important;
+    border-bottom: 1px solid var(--ama-color-grey-400) !important;
 }
 
 .pagination.dark {
-    color: var(--AMA-Color-Background-White)
+    color: var(--ama-color-background-white)
 }
 
 .pagination.dark .pagination_section .selection {
-    background-color: var(--AMA-Color-Background-Dark-Lighter);
+    background-color: var(--ama-color-background-dark-lighter);
     color: var(--table-pagination-select-text);
-    border: 2px solid var(--AMA-Color-Text-Blue);
+    border: 2px solid var(--ama-color-text-blue);
 }

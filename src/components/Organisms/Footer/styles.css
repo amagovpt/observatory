@@ -1,5 +1,5 @@
 footer {
-  background-color: var(--AMA-Color-Background-Light-Lighter);
+  background-color: var(--ama-color-background-light-lighter);
 }
 
 footer .footer-menu {
@@ -11,7 +11,7 @@ footer .footer-menu {
 
 footer .footer-menu li a {
   text-decoration: none !important;
-  color: var(--AMA-Color-Brand-Primary);
+  color: var(--ama-color-brand-primary);
 }
 
 footer .footer-menu li a:hover {
@@ -69,10 +69,10 @@ footer .logo-selo img {
 /* Dark Mode */
 
 .dark_mode_footer {
-  background-color: var(--AMA-Color-Blue-600);
-  color: var(--AMA-Color-Text-Blue);
+  background-color: var(--ama-color-blue-600);
+  color: var(--ama-color-text-blue);
 }
 
 .dark_mode_footer li a {
-  color: var(--AMA-Color-Text-Blue) !important;
+  color: var(--ama-color-text-blue) !important;
 }

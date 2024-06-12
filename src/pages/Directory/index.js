@@ -93,10 +93,10 @@ export default function Directory() {
         </div>
 
         <div className="title_container">
-          <div className="AMA-Typography-Body-Large Bold observatorio px-3">
+          <div className="ama-typography-body-large bold observatorio px-3">
             {t("DIRECTORY.title")}
           </div>
-          <h2 className="Bold my-2">{t("DIRECTORY.subtitle") + " " + directoryName}</h2>
+          <h2 className="bold my-2">{t("DIRECTORY.subtitle") + " " + directoryName}</h2>
         </div>
 
         {/* Statistics Header Component */}
@@ -118,8 +118,8 @@ export default function Directory() {
         {/* MAIN Directory TABLE */}
         <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
           <div className="d-flex flex-column section_container py-4">
-            <h3 className="Bold m-0">{t("DIRECTORIES.table.title")}</h3>
-            <p className="AMA-Typography-Body mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</p>
+            <h3 className="bold m-0">{t("DIRECTORIES.table.title")}</h3>
+            <p className="ama-typography-body mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</p>
             {directoriesList && <SortingTable
               hasSort={true}
               headers={directoriesHeaders}
@@ -136,7 +136,7 @@ export default function Directory() {
               nItemsPerPageTexts={nItemsPerPageText}
               paginationButtonsTexts={paginationButtonsTexts}
             />}
-            <div className="AMA-Typography-Body mt-4">{t("DIRECTORIES.table.note")}</div>
+            <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
           </div>
         </section>
       </div>

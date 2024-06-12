@@ -48,7 +48,7 @@ export function TopBar() {
                   id="darkModeBtn"
                   onClick={toggleTheme}
                 >
-                  <span id="darkModeLabel" className="AMA-Typography-Body">
+                  <span id="darkModeLabel" className="ama-typography-body">
                     {theme !== "light"
                       ? t("HEADER.light_mode")
                       : t("HEADER.dark_mode")}
@@ -67,7 +67,7 @@ export function TopBar() {
                 >
                   <span
                     id="langModeLabel"
-                    className="AMA-Typography-Body"
+                    className="ama-typography-body"
                   >
                     {t("HEADER.language_en")}
                   </span>
@@ -90,9 +90,9 @@ export function TopBar() {
                   aria-hidden="true"
                 />
 
-                <span id="flushHeading" className="AMA-Typography-Body">
+                <span id="flushHeading" className="ama-typography-body">
                   {t("HEADER.tool") + " "}
-                  <span className="text-primary fw-bold dark_mode_span AMA-Typography-Body">
+                  <span className="text-primary fw-bold dark_mode_span ama-typography-body">
                     acessibilidade.gov.pt
                   </span>
                 </span>
@@ -128,7 +128,7 @@ export function TopBar() {
                       </div>
                     </div>
                     <div className="col-12 col-lg-6 align-self-center">
-                      <div className="AMA-Typography-Body">
+                      <div className="ama-typography-body">
                         <p className="m-0">{t("HEADER.DROPDOWN.text")}</p>
                       </div>
                     </div>
