@@ -93,7 +93,7 @@ export default function Directory() {
     <>
       <div className="container">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} onClick={() => navigate(`/directories`)} darkTheme={theme === "light" ? false : true} />
+          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} hereTag={t("NAV.youAreHere")} />
         </div>
 
         <div className="title_container">

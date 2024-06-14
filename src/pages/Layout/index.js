@@ -12,7 +12,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header description={t("HEADER.text")} title={t("HEADER.title.part1")} title2={t("HEADER.title.part2")} />
-      <main className={`main ${mainDark}`} id="content">
+      <main className={`main ${mainDark}`} id="content" aria-label={t("HOME_PAGE.main_aria")}>
         {children}
       </main>
 

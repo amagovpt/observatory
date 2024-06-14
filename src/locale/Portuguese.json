@@ -16,6 +16,7 @@
     },
     "HEADER": {
       "tool": "Uma ferramenta do ecossistema do",
+      "header_arial_label": "Cabeçalho da página do Observatório",
       "title": {
         "part1": "Observatório Português",
         "part2": "da Acessibilidade Web"
@@ -29,7 +30,8 @@
         "location": "Acessibilidade.gov.pt",
         "observatory": "Observatório",
         "numbers": "O Observatório em números",
-        "directories": "Diretórios"
+        "directories": "Diretórios",
+        "youAreHere": "você está aqui"
       },
       "dark_mode": "Modo escuro",
       "light_mode": "Modo claro",
@@ -60,7 +62,9 @@
           "link3": "Candidatura",
           "link4": "Declaração de acessibilidade e usabilidade",
           "link5": "Requisitos do Selo"
-        }
+        },
+        "open_dropdown": "pressione para comprimir a nossa lista de aplicações e sítios web",
+        "close_dropdown": "pressione para expandir a nossa lista de aplicações e sítios web"
       }
     },
     "STATISTICS": {
@@ -241,7 +245,8 @@
           "sentence4": "GA 780057"
         },
         "statistics_title": "Sumário do estado atual da usabilidade e acessibilidade"
-      }
+      },
+      "main_aria": "corpo principal da página do Observatório"
     },
     "NUMBERS": {
       "summary": {

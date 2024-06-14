@@ -139,7 +139,7 @@ export default function Directory() {
     <>
       <div className="container website">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} />
+          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} hereTag={t("NAV.youAreHere")} />
         </div>
 
         <div className={`title_container ${main_content_website}`}>

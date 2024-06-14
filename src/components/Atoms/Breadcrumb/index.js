@@ -8,6 +8,8 @@ const { Item } = BBreadcrumb;
 
 const Breadcrumb = ({ data, onClick, darkTheme, ...props }) => {
 
+  const { t } = useTranslation();
+
   // Theme
   const theme = darkTheme ? "dark" : ""
   
@@ -27,6 +29,7 @@ const Breadcrumb = ({ data, onClick, darkTheme, ...props }) => {
             href={item.href === "" ? "" : item.href}
             active={index === size}
             onClick={handleOnClick(item)}
+            aria-label={index === size ? t("HEADER.DROPDOWN.youarehere") : undefined}
           >
             {item.title}
           </Item>

@@ -36,6 +36,10 @@ export function TopBar() {
     }
   };
 
+  const getTitle = () => {
+    return openAccordion ? t("HEADER.DROPDOWN.open_dropdown") : t("HEADER.DROPDOWN.close_dropdown");
+  }
+
   return (
     <>
       <div className={`top-bar ${themeClass} py-1`}>
@@ -84,6 +88,7 @@ export function TopBar() {
                 onClick={toggleAccordion}
                 aria-expanded={openAccordion ? "true" : "false"}
                 id="accordionBtn"
+                title={getTitle()}
               >
                 <span
                   className="icon-AMA-MenuCimaGrande-Line icon-ed-menu-dots"

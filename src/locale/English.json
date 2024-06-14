@@ -16,6 +16,7 @@
     },
     "HEADER": {
       "tool": "A tool of the ecosystem from",
+      "header_arial_label": "Observatory page header",
       "title": {
         "part1": "Portuguese Observatory",
         "part2": "of Web Accessibility"
@@ -29,7 +30,8 @@
         "location": "Acessibilidade.gov.pt",
         "observatory": "Observatory",
         "numbers": "The Observatory in numbers",
-        "directories": "Directories"
+        "directories": "Directories",
+        "youAreHere": "you are here"
       },
       "dark_mode": "Dark mode",
       "light_mode": "Light mode",
@@ -60,7 +62,9 @@
           "link3": "Candidacy",
           "link4": "Declaration of accessibility and usability",
           "link5": "Badge requirements"
-        }
+        },
+        "open_dropdown": "press to compress our list of applications and websites",
+        "close_dropdown": "press to expand our list of applications and websites"
       }
     },
     "STATISTICS": {
@@ -241,7 +245,8 @@
           "sentence4": "GA 780057"
         },
         "statistics_title": "Summary of the current state of usability and accessibility"
-      }
+      },
+      "main_aria": "main body of the Observatory page"
     },
     "NUMBERS": {
       "summary": {
