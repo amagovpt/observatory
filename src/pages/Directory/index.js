@@ -1,5 +1,8 @@
 import "./styles.css";
 
+// Api
+import { api } from "../../config/api";
+
 // Hooks
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -8,14 +11,17 @@ import { useTranslation } from "react-i18next";
 // Date formatting
 import moment from 'moment'
 
-// Dark / Light Theme Context
+// Contexts
 import { ThemeContext } from "../../context/ThemeContext";
+import { DataContext } from "../../context/DataContext";
 
 // Components
 import { StatisticsHeader, SortingTable, Breadcrumb } from "../../components/index";
 
 // Extra Data / Functions
 import { getDirectoryTable, checkIfAllOk } from "./utils"
+
+import dataJSON from "../../utils/data.json"
 
 
 export default function Directory() {
@@ -28,9 +34,11 @@ export default function Directory() {
   const { theme } = useContext(ThemeContext);
   const main_content_home = theme === "light" ? "" : "main_content_directory";
 
+  // Observatorio Data
+  const { observatorioData, setObsData } = useContext(DataContext);
+
   // Navigation Parameters
-  const id = location.state?.id || null;
-  const dataProcess = location.state?.content || null;
+  const id = Number(location.pathname.split("/")[2]) || null;
 
   // Data for the main table
   const [directoriesList, setDirectoriesList] = useState();
@@ -40,7 +48,7 @@ export default function Directory() {
   const [directoriesStats, setDirectoriesStats] = useState();
 
   // Data and Options for the Tables on this page
-  const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t)
+  const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t, id)
 
   // Navigation options
   const breadcrumbs = [
@@ -49,17 +57,21 @@ export default function Directory() {
       href: "https://www.acessibilidade.gov.pt/",
     },
     { title: t("HEADER.NAV.observatory"), href: "/" },
-    { title: t("HEADER.NAV.directories"), href: "" },
+    { title: t("HEADER.NAV.directories"), href: "/directories" },
     { title: directoryName },
   ];
 
   useEffect(() => {
-    if(!checkIfAllOk(id, dataProcess)){
-      navigate(`/error`)
+    if(!observatorioData){
+      // const response = await api.get("/observatory")
+      // setObsData(response.data?.result)
+      // if(!checkIfAllOk(id, response.data?.result)) navigate("/error")
+      setObsData(dataJSON.result)
+      if(!checkIfAllOk(id, dataJSON.result)) navigate("/error")
     } else {
       const processData = () => {
-        const tempData = dataProcess.directories[id]
-        setDirectoryName(dataProcess.directories[id].name)
+        const tempData = observatorioData.directories[id]
+        setDirectoryName(observatorioData.directories[id].name)
         setDirectoriesStats({
             score: (tempData.score).toFixed(1),
             recentPage: moment(tempData.recentPage).format("LL"),
@@ -75,21 +87,13 @@ export default function Directory() {
       }
       processData()
     }
-  }, [dataProcess, id, navigate])
-
-  // Function when clicking the links in main table
-  // row -> The row of the link clicked
-  const nextPage = (row, key) => {
-    if(row) {
-      navigate(`/directories/${id}/${row["id"]}`, {state: {content: dataProcess, directoryId: id, websiteId: row["id"]}} )
-    }
-  }
+  }, [observatorioData, id, navigate])
 
   return (
     <>
       <div className="container">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} onClick={() => navigate(`/directories`, {state: {content: dataProcess}} )} darkTheme={theme === "light" ? false : true} />
+          <Breadcrumb data={breadcrumbs} onClick={() => navigate(`/directories`)} darkTheme={theme === "light" ? false : true} />
         </div>
 
         <div className="title_container">
@@ -126,7 +130,6 @@ export default function Directory() {
               setDataList={setDirectoriesList}
               dataList={directoriesList}
               columnsOptions={columnsOptions}
-              nextPage={nextPage}
               darkTheme={theme === "light" ? false : true}
               links={true}
               caption={t("DIRECTORY.table.subtitle")+ " " + directoryName}

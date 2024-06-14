@@ -184,6 +184,17 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                 case "Button":
                     // Render a button disguised as a text link
                     return (<td><button className="sortingTableButton" onClick={() => nextPage(row, key)}>{row[key]}</button></td>)
+                case "Link":
+                    let href
+                    if(key === "directoryName") {
+                        href = `${columnsOptions[key].href}${row["directoryId"]}`
+                    } else if (key === "directoryName" && row["id"]) {
+                        href = `${columnsOptions[key].href}${row["directoryId"]}/${row["id"]}`
+                    } else {
+                        href = `${columnsOptions[key].href}${row["id"]}`
+                    }
+                    // Render a link
+                    return (<td><a href={href} className="ama-typography-action-large bold">{row[key]}</a></td>)
                 case "Text":
                     // Render normal text
                     return (<td className={`${center} ${bold} ama-typography-body`}>{row[key]}</td>)

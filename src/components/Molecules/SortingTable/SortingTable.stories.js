@@ -23,7 +23,7 @@ const directoriesHeaders = [
 let columnsOptions = {
   id: { type: "Skip", center: false, bold: false, decimalPlace: false },
   rank: { type: "Number", center: true, bold: false, decimalPlace: false },
-  name: { type: "Button", center: false, bold: false, decimalPlace: false },
+  name: { type: "Link", center: false, bold: false, decimalPlace: false },
   entity: { type: "Skip", center: false, bold: false, decimalPlace: false },
   declaration: { type: "Declaration", center: true, bold: false, decimalPlace: false },
   stamp: { type: "Stamp", center: true, bold: false, decimalPlace: false },

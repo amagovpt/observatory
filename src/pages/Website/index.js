@@ -1,12 +1,16 @@
 import "./styles.css";
 
+// Api
+import { api } from "../../config/api";
+
 // Hooks
 import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-// Dark / Light Theme Context
+// Contexts
 import { ThemeContext } from "../../context/ThemeContext";
+import { DataContext } from "../../context/DataContext";
 
 // Date formatting
 import moment from 'moment'
@@ -20,6 +24,8 @@ import { Breadcrumb, Tabs, StatisticsHeader } from "../../components/index";
 // Extra Data / Functions
 import { checkIfAllOk } from "./utils"
 
+import dataJSON from "../../utils/data.json"
+
 
 export default function Directory() {
 
@@ -31,10 +37,12 @@ export default function Directory() {
   const { theme } = useContext(ThemeContext);
   const main_content_website = theme === "light" ? "" : "main_content_website";
 
+  // Observatorio Data
+  const { observatorioData, setObsData } = useContext(DataContext);
+
   // Navigation Parameters
-  const id = location.state?.directoryId || null;
-  const sitioId = location.state?.websiteId || null;
-  const dataProcess = location.state?.content || null;
+  const id = Number(location.pathname.split("/")[2]) || null;
+  const sitioId = Number(location.pathname.split("/")[3]) || null;
 
   // General Data
   const [data, setData] = useState(null);
@@ -50,8 +58,8 @@ export default function Directory() {
       href: "https://www.acessibilidade.gov.pt/",
     },
     { title: t("HEADER.NAV.observatory"), href: "/" },
-    { title: t("HEADER.NAV.directories"), href: "" },
-    { title: directoryName, href: "" },
+    { title: t("HEADER.NAV.directories"), href: "/directories" },
+    { title: directoryName, href: `/directories/${id}` },
     { title: data && data.name },
   ];
 
@@ -96,12 +104,17 @@ export default function Directory() {
   
 
   useEffect(() => {
-    if(!checkIfAllOk(id, sitioId, dataProcess)){
-      navigate(`/error`)
+    if(!observatorioData){
+      // const response = await api.get("/observatory")
+      // setObsData(response.data?.result)
+      // if(!checkIfAllOk(id, sitioId, response.data?.result)) navigate("/error")
+
+      setObsData(dataJSON.result)
+      if(!checkIfAllOk(id, sitioId, dataJSON.result)) navigate("/error")
     } else {
       const processData = () => {
-        setDirectoryName(dataProcess.directories[id].name)
-        const tempData = dataProcess.directories[id].websites[sitioId]
+        setDirectoryName(observatorioData.directories[id].name)
+        const tempData = observatorioData.directories[id].websites[sitioId]
 
         setData(tempData)
         setWebsiteStats({
@@ -120,22 +133,13 @@ export default function Directory() {
       }
       processData()
     }
-  }, [dataProcess, id, sitioId, theme, language, navigate])
-
-  // Function to execute when clicking on a breadcrumb
-  const goBack = (item) => {
-    if(item.title === directoryName) {
-      navigate(`/directories/${id}`, {state: {content: dataProcess, id: id}} )
-    } else {
-      navigate(`/directories`, {state: {content: dataProcess}} )
-    }
-  }
+  }, [observatorioData, id, sitioId, theme, language, navigate])
 
   return (
     <>
       <div className="container website">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} onClick={(item) => goBack(item)} darkTheme={theme === "light" ? false : true} />
+          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} />
         </div>
 
         <div className={`title_container ${main_content_website}`}>

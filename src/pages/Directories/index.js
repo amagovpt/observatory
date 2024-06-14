@@ -1,5 +1,8 @@
 import "./styles.css";
 
+// Api
+import { api } from "../../config/api";
+
 // Hooks
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -8,28 +11,30 @@ import { useTranslation } from "react-i18next";
 // Date formatting
 import moment from 'moment'
 
-// Dark / Light Theme Context
+// Contexts
 import { ThemeContext } from "../../context/ThemeContext";
+import { DataContext } from "../../context/DataContext";
 
 // Components
 import { StatisticsHeader, SortingTable, Breadcrumb } from "../../components/index";
 
 // Extra Data / Functions
-import { searchFuntion, getDirectoriesTable, checkIfAllOk } from "./utils"
+import { searchFuntion, getDirectoriesTable } from "./utils"
+
+import dataJSON from "../../utils/data.json"
 
 
 export default function Directories() {
 
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const location = useLocation();
 
   // Theme
   const { theme } = useContext(ThemeContext);
   const main_content_home = theme === "light" ? "" : "main_content_directories";
 
-  // Navigation Parameters
-  const dataProcess = location.state?.content || null;
+  // Observatorio Data
+  const { observatorioData, setObsData } = useContext(DataContext);
 
   // Search and data for the search table
   const [search, setSearch] = useState("");
@@ -55,46 +60,29 @@ export default function Directories() {
   ];
 
   useEffect(() => {
-    if(!checkIfAllOk(dataProcess)){
-      navigate(`/error`)
+    if(!observatorioData){
+      // const response = await api.get("/observatory")
+      // setObsData(response.data?.result)
+      setObsData(dataJSON.result)
     } else {
       const processData = async () => {
         setDirectoriesStats({
-          score: (dataProcess.score).toFixed(1),
-          recentPage: moment(dataProcess.recentPage).format("LL"),
-          oldestPage: moment(dataProcess.oldestPage).format("LL"),
+          score: (observatorioData.score).toFixed(1),
+          recentPage: moment(observatorioData.recentPage).format("LL"),
+          oldestPage: moment(observatorioData.oldestPage).format("LL"),
           statsTable: [
-            dataProcess.nDirectories,
-            dataProcess.nEntities,
-            dataProcess.nWebsites,
-            dataProcess.nPages,
+            observatorioData.nDirectories,
+            observatorioData.nEntities,
+            observatorioData.nWebsites,
+            observatorioData.nPages,
           ]
         })
 
-        setDirectoriesList(dataProcess.directoriesList)
+        setDirectoriesList(observatorioData.directoriesList)
       }
       processData()
     }
-  }, [dataProcess, navigate])
-
-  // Function when clicking the links in main table
-  // row -> The row of the link clicked
-  const nextPage = (row, key) => {
-    if(row) {
-      navigate(`/directories/${row["id"]}`, {state: {content: dataProcess, id: row["id"]}} )
-    }
-  }
-
-  // Function when clicking the links in the search table
-  // row -> The row of the link clicked
-  // key -> The key of the column that was clicked
-  const nextPageSearch = (row, key) => {
-    if(key !== "directoryName") {
-      navigate(`/directories/${row["directoryId"]}/${row["id"]}`, {state: {content: dataProcess, directoryId: row["directoryId"], websiteId: row["id"]}} )
-    } else {
-      navigate(`/directories/${row["directoryId"]}`, {state: {content: dataProcess, id: row["directoryId"]}} )
-    }
-  }
+  }, [observatorioData, navigate])
 
   return (
     <>
@@ -134,7 +122,6 @@ export default function Directories() {
               headers={directoriesHeaders}
               setDataList={setDirectoriesList}
               dataList={directoriesList}
-              nextPage={nextPage}
               darkTheme={theme === "light" ? false : true}
               pagination={false}
               caption={t("DIRECTORIES.table.title")}
@@ -149,7 +136,7 @@ export default function Directories() {
           <div className="d-flex flex-column search_container p-4 px-5">
             <form className="d-flex flex-column">
               <label className="ama-typography-body-large bold mb-2">{t("DIRECTORIES.search.label")}</label>
-              <input className="p-3 mb-3" type="text" id="search" placeholder={t("DIRECTORIES.search.placeholder")} value={search} onChange={(e) => searchFuntion(e.target.value, setSearch, setOtherData, dataProcess)}/>
+              <input className="p-3 mb-3" type="text" id="search" placeholder={t("DIRECTORIES.search.placeholder")} value={search} onChange={(e) => searchFuntion(e.target.value, setSearch, setOtherData, observatorioData)}/>
             </form>
             {search && search.length >= 3 ? 
               (otherData ?
@@ -158,7 +145,6 @@ export default function Directories() {
                   columnsOptions={columnsOptionsSearch}
                   setDataList={setOtherData}
                   dataList={otherData}
-                  nextPage={nextPageSearch}
                   darkTheme={theme === "light" ? false : true}
                   pagination={false}
                   hasSort={true}

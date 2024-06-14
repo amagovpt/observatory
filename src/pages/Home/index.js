@@ -1,12 +1,16 @@
 import "./styles.css";
 
+// Api
+import { api } from "../../config/api";
+
 // Hooks
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-// Dark / Light Theme Context
+// Contexts
 import { ThemeContext } from "../../context/ThemeContext";
+import { DataContext } from "../../context/DataContext";
 
 // Date formatting
 import moment from 'moment'
@@ -27,6 +31,9 @@ export default function Home() {
   // Theme
   const { theme } = useContext(ThemeContext);
   const main_content_home = theme === "light" ? "" : "main_content_home";
+
+  // Observatorio Data
+  const { observatorioData, setObsData } = useContext(DataContext);
   
   // Loading
   const [loading, setLoading] = useState(true);
@@ -40,14 +47,25 @@ export default function Home() {
     t("STATISTICS.pages")
   ]
 
-  // Data for the screen
-  const [data, setData] = useState(null);
-
-
   useEffect(() => {
     const processData = async () => {
       setLoading(true)
-      setData(dataJSON.result)
+
+      // const response = await api.get("/observatory")
+      // setObsData(response.data?.result)
+      // setDirectoriesStats({
+      //   score: (response.data?.result.score).toFixed(1),
+      //   recentPage: moment(response.data?.result.recentPage).format("LL"),
+      //   oldestPage: moment(response.data?.result.oldestPage).format("LL"),
+      //   statsTable: [
+      //     response.data?.result.nDirectories,
+      //     response.data?.result.nEntities,
+      //     response.data?.result.nWebsites,
+      //     response.data?.result.nPages,
+      //   ]
+      // })
+
+      setObsData(dataJSON.result)
       setDirectoriesStats({
         score: (dataJSON.result.score).toFixed(1),
         recentPage: moment(dataJSON.result.recentPage).format("LL"),
@@ -59,22 +77,10 @@ export default function Home() {
           dataJSON.result.nPages,
         ]
       })
-
       setLoading(false)
     }
     processData()
   }, [language])
-
-  
-  // Function when clicking the button to go to directories
-  const nextPage = () => {
-    navigate(`/directories`, {state: {content: data}})
-  }
-
-  // Function when clicking one of the top 5 websites
-  const goToWebsite = (id, websiteId) => {
-    navigate(`/directories/${id}/${websiteId}`, {state: {content: data, directoryId: id, websiteId: websiteId}} )
-  }
 
   // Data for the censos section
   const censosDataIndividual = (icon, number, spans) => {
@@ -125,16 +131,16 @@ export default function Home() {
                 text={t("HOME.top5.button")}
                 size="lg"
                 id="btn-url"
-                onClick={nextPage}
+                onClick={() => navigate("/directories")}
               />
             </div>
             <div className="flex-1 top5_div">
               <ul>
-                {data.topFiveWebsites.map((website) => (
+                {observatorioData.topFiveWebsites.map((website) => (
                   <li className="d-flex justify-content-between align-items-center mb-2">
                     <div className="d-flex flex-row align-items-center">
                       <span className="ama-typography-body top5_number me-3">{website.index}</span>
-                      <span className="ama-typography-action-large bold top5_link" onClick={() => goToWebsite(website.DirectoryId, website.id)}>{website.name}</span>
+                      <span className="ama-typography-action-large bold top5_link" onClick={() => navigate(`/directories/${website.DirectoryId}/${website.id}`)}>{website.name}</span>
                     </div>
                     <span className="ama-typography-body-large bold">{(website.score).toFixed(1)}</span>
                   </li>
@@ -149,7 +155,7 @@ export default function Home() {
             {/* Declarations data */}
             <h2 className="bold">{t("NUMBERS.declaration.title")}</h2>
             <p className="ama-typography-body-large">{t("NUMBERS.declaration.paragraph")}</p>
-            <AchievementPerType data={data} type={"declarations"} good={"conform"} semi={"partial"} bad={"not_conform"}
+            <AchievementPerType data={observatorioData} type={"declarations"} good={"conform"} semi={"partial"} bad={"not_conform"}
               title={t("NUMBERS.declaration.subtitle1")}
               icon={"AMA-Declaracao-Line"}
               colors={{good: "green", semi: "yellow", bad: "red"}}
@@ -161,7 +167,7 @@ export default function Home() {
             {/* Badges data */}
             <h2 className="bold">{t("NUMBERS.badge.title")}</h2>
             <p className="ama-typography-body-large">{t("NUMBERS.badge.paragraph")}</p>
-            <AchievementPerType data={data} type={"badges"} good={"gold"} semi={"silver"} bad={"bronze"}
+            <AchievementPerType data={observatorioData} type={"badges"} good={"gold"} semi={"silver"} bad={"bronze"}
               title={t("NUMBERS.badge.subtitle1")}
               icon={"AMA-SeloDark2-Line"}
               colors={{good: "gold", semi: "silver", bad: "bronze"}}
@@ -195,8 +201,8 @@ export default function Home() {
            
             {/* Top 5 Good and Bad Practices */}
             <div className="d-flex flex-row my-5 top5_best_good">
-              <Top5_Practices data={data.topFiveBestPractices} title={t("HOME.summary.best_practices_title")} icon={"AMA-Check-Line"} />
-              <Top5_Practices data={data.topFiveErrors} title={t("HOME.summary.errors_title")} icon={"AMA-Wrong-Line"} />
+              <Top5_Practices data={observatorioData.topFiveBestPractices} title={t("HOME.summary.best_practices_title")} icon={"AMA-Check-Line"} />
+              <Top5_Practices data={observatorioData.topFiveErrors} title={t("HOME.summary.errors_title")} icon={"AMA-Wrong-Line"} />
             </div>
           </div>
         </section>

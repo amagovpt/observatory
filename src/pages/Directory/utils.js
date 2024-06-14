@@ -6,7 +6,7 @@
 // columnsOptions -> Options to tell the type to render with which property for main table
 // statsTitles -> Titles for the StatisticsHeader component
 // nameOfIcons -> Name of icons to be showned in the table
-export function getDirectoryTable (t) {
+export function getDirectoryTable (t, id) {
     const directoriesHeaders = [
       [
         {icon: false, name: t("DIRECTORY.table.rank"), property: "rank"},
@@ -28,7 +28,7 @@ export function getDirectoryTable (t) {
     let columnsOptions = {
       id: { type: "Skip", center: false, bold: false, decimalPlace: false },
       rank: { type: "Number", center: true, bold: false, decimalPlace: false },
-      name: { type: "Button", center: false, bold: false, decimalPlace: false },
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: `/directories/${id}/` },
       entity: { type: "Skip", center: false, bold: false, decimalPlace: false },
       declaration: { type: "Declaration", center: true, bold: false, decimalPlace: false },
       stamp: { type: "Stamp", center: true, bold: false, decimalPlace: false },

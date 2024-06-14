@@ -146,22 +146,14 @@
     cursor: text !important;
 }
 
-.sortingTableButton {
-    border: 0px;
-    background-color: transparent;
-    text-align: left;
-    width: 100%;
-    padding: 0px !important;
-    justify-content: flex-start;
+.table tbody tr td a {
     color: var(--ama-color-brand-primary) !important;
-    text-decoration: none;
-    font-family: Lato;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0;
+    text-decoration: none !important;
+    width: 100%;
+    display: flex;
 }
 
-.table tbody tr:hover .sortingTableButton {
+.table tbody tr:hover td a {
     text-decoration: underline !important;
 }
 
