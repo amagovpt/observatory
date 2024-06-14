@@ -1,5 +1,6 @@
 import React from "react";
 import { StatisticsHeader } from "./index";
+import Documentation from './Documentation.md'
 
 const directoriesStats = {
   score: (8.486663447825674).toFixed(1),
@@ -23,20 +24,25 @@ const statsTitles = [
 export default {
   title: "components/Molecules/StatisticsHeader",
   component: StatisticsHeader,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: Documentation,
+      },
+    },
+  },
 };
 
-export const Table = () => {
+export const HeaderStatistics = (args) => <StatisticsHeader {...args} />;
 
-  return (
-    <StatisticsHeader
-      darkTheme={false}
-      stats={directoriesStats}
-      statsTitles={statsTitles}
-      title={"Estatísticas"}
-      subtitle={"Metadados"}
-      oldestPage={"Avaliação mais antiga de uma página:"}
-      newestPage={"Avaliação mais recente de uma página:"}
-      gaugeTitle={"Pontuação média"}
-    />
-  )
-};
+HeaderStatistics.args = {
+  darkTheme: false,
+  title: "Estatísticas",
+  subtitle: "Metadados",
+  oldestPage: "Avaliação mais antiga de uma página:",
+  newestPage: "Avaliação mais recente de uma página:",
+  gaugeTitle: "Pontuação média",
+  statsTitles: statsTitles,
+  stats: directoriesStats
+}

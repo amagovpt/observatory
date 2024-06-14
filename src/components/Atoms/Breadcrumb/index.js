@@ -6,7 +6,11 @@ import "./styles.css";
 
 const { Item } = BBreadcrumb;
 
-const Breadcrumb = ({ data, onClick, ...props }) => {
+const Breadcrumb = ({ data, onClick, darkTheme, ...props }) => {
+
+  // Theme
+  const theme = darkTheme ? "dark" : ""
+  
   const size = data.length - 1;
   const handleOnClick = (item) => (e) => {
     if (item.href === "") {
@@ -15,29 +19,33 @@ const Breadcrumb = ({ data, onClick, ...props }) => {
     }
   };
   return (
-    <BBreadcrumb {...props}>
-      {data.map((item, index) => (
-        <Item
-          key={`id-${index}`}
-          href={item.href === "" ? "" : item.href}
-          active={index === size}
-          onClick={handleOnClick(item)}
-        >
-          {item.title}
-        </Item>
-      ))}
-    </BBreadcrumb>
+    <div className={`breadcrumbs ${theme}`}>
+      <BBreadcrumb {...props}>
+        {data.map((item, index) => (
+          <Item
+            key={`id-${index}`}
+            href={item.href === "" ? "" : item.href}
+            active={index === size}
+            onClick={handleOnClick(item)}
+          >
+            {item.title}
+          </Item>
+        ))}
+      </BBreadcrumb>
+    </div>
   );
 };
 
 Breadcrumb.defaultProps = {
   data: [],
   onClick: () => {},
+  darkTheme: false
 };
 
 Breadcrumb.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object),
   onClick: PropTypes.func,
+  darkTheme: PropTypes.bool
 };
 
 export default Breadcrumb;

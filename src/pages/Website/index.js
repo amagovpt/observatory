@@ -135,7 +135,7 @@ export default function Directory() {
     <>
       <div className="container website">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} onClick={(item) => goBack(item)}/>
+          <Breadcrumb data={breadcrumbs} onClick={(item) => goBack(item)} darkTheme={theme === "light" ? false : true} />
         </div>
 
         <div className={`title_container ${main_content_website}`}>

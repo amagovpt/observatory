@@ -101,49 +101,49 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
         {/* Tables for Practices, 3 per type and one general */}
         <h3 className="bold mt-5">{t(`WEBSITE.${goodOrBad}.title`)}</h3>
         <p className="ama-typography-body-large mb-3">{t(`WEBSITE.${goodOrBad}.subtitle`)}</p>
-        {dataTableA && <SortingTable
-          hasSort={false}
-          headers={dataTableHeadersA}
-          dataList={dataTableA}
-          columnsOptions={columnsOptionsAAs}
-          darkTheme={theme === "light" ? false : true}
-          pagination={false}
-          links={false}
-          caption={t(`WEBSITE.${goodOrBad}.message`, {value: "A"})}
-        />}
-        {dataTableAA && <SortingTable
-          hasSort={false}
-          headers={dataTableHeadersAA}
-          dataList={dataTableAA}
-          columnsOptions={columnsOptionsAAs}
-          darkTheme={theme === "light" ? false : true}
-          pagination={false}
-          links={false}
-          caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AA"})}
-        />}
-        {dataTableAAA && <SortingTable
-          hasSort={false}
-          headers={dataTableHeadersAAA}
-          dataList={dataTableAAA}
-          columnsOptions={columnsOptionsAAs}
-          darkTheme={theme === "light" ? false : true}
-          pagination={false}
-          links={false}
-          caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"})}
-        />}
-        <h3 className="bold mt-5 mb-3">{t("WEBSITE.table.best_title")}</h3>
-        <div className="dark_table">
-          {detailsTable && <SortingTable
+        <div className="light_tables">
+          {dataTableA && <SortingTable
             hasSort={false}
-            headers={detailsTableHeaders}
-            dataList={detailsTable}
-            columnsOptions={columnsOptionsDetails}
+            headers={dataTableHeadersA}
+            dataList={dataTableA}
+            columnsOptions={columnsOptionsAAs}
             darkTheme={theme === "light" ? false : true}
             pagination={false}
             links={false}
-            caption={t("WEBSITE.table.best_title")}
+            caption={t(`WEBSITE.${goodOrBad}.message`, {value: "A"})}
+          />}
+          {dataTableAA && <SortingTable
+            hasSort={false}
+            headers={dataTableHeadersAA}
+            dataList={dataTableAA}
+            columnsOptions={columnsOptionsAAs}
+            darkTheme={theme === "light" ? false : true}
+            pagination={false}
+            links={false}
+            caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AA"})}
+          />}
+          {dataTableAAA && <SortingTable
+            hasSort={false}
+            headers={dataTableHeadersAAA}
+            dataList={dataTableAAA}
+            columnsOptions={columnsOptionsAAs}
+            darkTheme={theme === "light" ? false : true}
+            pagination={false}
+            links={false}
+            caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"})}
           />}
         </div>
+        <h3 className="bold mt-5 mb-3">{t("WEBSITE.table.best_title")}</h3>
+        {detailsTable && <SortingTable
+          hasSort={false}
+          headers={detailsTableHeaders}
+          dataList={detailsTable}
+          columnsOptions={columnsOptionsDetails}
+          darkTheme={theme === "light" ? false : true}
+          pagination={false}
+          links={false}
+          caption={t("WEBSITE.table.best_title")}
+        />}
       </div>
     </section>
   );

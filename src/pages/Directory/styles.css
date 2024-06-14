@@ -4,15 +4,6 @@
     color: var(--ama-color-background-white);
 }
 
-.main_dark .breadcrumb .breadcrumb-item:not(:first-child) {
-    background-image: url("../../../public/img/chevron-right-light.svg");
-}
-  
-.main_dark .breadcrumb-item,
-.main_dark .breadcrumb-item a {
-    color: var(--ama-color-text-blue) !important;
-}
-
 .main_dark .observatorio {
     color: var(--ama-color-grey-900);
     background-color: var(--ama-color-text-blue);

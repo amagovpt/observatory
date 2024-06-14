@@ -56,9 +56,3 @@ button.btn-sm {
   height: 32px;
   font-size: 12px;
 }
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .btn-primary {
-    height: fit-content !important;
-  }
-}

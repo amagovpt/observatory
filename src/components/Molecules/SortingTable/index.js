@@ -108,13 +108,24 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
         // Then it means it will be a normal text render with no sorting icon or functionallity
         if(!hasSort || hasSort && nOfColumns !== 1) {
             const justifyCenter = headerData.justifyCenter ? "text-center" : ""
-            // If column has bidWidth it means that column ocupies more than normal on the size of the table
-            return (
-                <th style={{width: headerData.bigWidth ? headerData.bigWidth : "10%"}} colSpan={nOfColumns} className={`hide-on-small-screen ${justifyCenter} no_pointer`}>
-                    {/* If there is nothing to be rendered on the table, render a visually-hidden text because of accessibility */}
-                    {!headerData?.empty ? <span className="ama-typography-body bold">{headerData.name}</span> : <span className="visually-hidden">Empty</span>}
-                </th>
-            )
+            if(headerData.icon) {
+                // Icon Header
+                // Icons need to have a discription with the class visually-hidden for accessibility screen readers
+                return (
+                    <th colSpan={nOfColumns} className={`hide-on-small-screen ${justifyCenter} no_pointer first-show`}>
+                        <Icon name={headerData.name} />
+                        <span className="visually-hidden">{headerData.description}</span>
+                    </th>
+                )
+            } else {
+                // If column has bidWidth it means that column ocupies more than normal on the size of the table
+                return (
+                    <th style={{width: headerData.bigWidth ? headerData.bigWidth : "10%"}} colSpan={nOfColumns} className={`hide-on-small-screen ${justifyCenter} no_pointer`}>
+                        {/* If there is nothing to be rendered on the table, render a visually-hidden text because of accessibility */}
+                        {!headerData?.empty ? <span className="ama-typography-body bold">{headerData.name}</span> : <span className="visually-hidden">Empty</span>}
+                    </th>
+                )
+            }
         } else {
             // sameProp is used to see which Icon to render
             const sameProp = sort.property === headerData.property
@@ -214,8 +225,8 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
     }
 
     return (
-        <div className="table-responsive">
-            <table className={`table table_primary ${theme}`} data-sortable="true">
+        <div className={`table-responsive ${theme}`}>
+            <table className="table table_primary" data-sortable="true">
                 {/* Table caption -> descripton of the table */}
                 <caption className="visually-hidden">
                     {caption}

@@ -89,7 +89,7 @@ export default function Directory() {
     <>
       <div className="container">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} onClick={() => navigate(`/directories`, {state: {content: dataProcess}} )} />
+          <Breadcrumb data={breadcrumbs} onClick={() => navigate(`/directories`, {state: {content: dataProcess}} )} darkTheme={theme === "light" ? false : true} />
         </div>
 
         <div className="title_container">

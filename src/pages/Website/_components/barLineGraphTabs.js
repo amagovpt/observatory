@@ -106,7 +106,7 @@ export function BarLineGraphTabs({ tempData, websiteStats }) {
   }, [tempData, language, theme])
 
   return (
-    <div className="tabs_section">
+    <div className="BarLine_section tabs_section">
       <Tabs tabs={tabs} defaultActiveKey="tab1" vertical={false} />
     </div>
   );

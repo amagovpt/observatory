@@ -100,7 +100,7 @@ export default function Directories() {
     <>
       <div className="container">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} />
+          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} />
         </div>
 
         <div className="title_container">

@@ -1,4 +1,4 @@
-.website table tbody tr:hover {
+.website .table tbody tr:hover {
     background-color: transparent !important;
 }
 
@@ -37,26 +37,16 @@
     overflow-x: auto;
 }
 
-.tabs_section .table_primary thead tr:last-child th {
-    background-color: var(--ama-color-text-gray) !important;
-    color: var(--ama-color-background-white) !important;
+.best_practises .table {
+    margin-bottom: 25px;
 }
 
-.best_practises .table_primary thead tr {
+.best_practises .light_tables .table_primary thead tr {
     background-color: var(--ama-color-background-light-lighter) !important;
 }
 
-.best_practises .table_primary thead tr th {
+.best_practises .light_tables .table_primary thead tr th {
     color: var(--ama-color-grey-900) !important;
-}
-
-.dark_table .table_primary thead tr th {
-    background-color: var(--ama-color-text-gray) !important;
-    color: var(--ama-color-background-white) !important;
-}
-
-.best_practises .table {
-    margin-bottom: 25px;
 }
 
 .topTen_section ul {
@@ -91,52 +81,39 @@
         overflow-x: auto;
     }
 
-    .topTen_section .nav-tabs .nav-link.active {
-        background-color: var(--ama-color-brand-primary) !important;
-    }
-
+    .tabs_section .nav-tabs .nav-link.active,
     .good_bad .nav-tabs .nav-link.active {
         background-color: var(--ama-color-brand-primary) !important;
-    }    
+    }
 
     .main_dark .barLineContainer {
         background-color: var(--ama-color-background-dark-darker);
     }
 
-    .main_dark .best_practises .table tbody tr {
-        background-color: var(--ama-color-background-dark-lighter);
-    }
-    
-    .main_dark .good_bad .topTen_section .nav-tabs .nav-link.active {
+    .main_dark .topTen_section .nav-tabs .nav-link.active,
+    .main_dark .BarLine_section .nav-tabs .nav-link.active {
         border: 0px !important;
-        background-color: var(--ama-color-brand-primary) !important;
-        color: var(--ama-color-background-white) !important;
+        background-color: var(--ama-color-text-blue) !important;
+        color: var(--ama-color-text-gray) !important;
     }
 }
 
 /* DARK MODE */
-.main_dark .breadcrumb .breadcrumb-item:not(:first-child) {
-    background-image: url("../../../public/img/chevron-right-light.svg");
+.main_dark .good_bad .nav-tabs,
+.main_dark .tabs_section .nav-tabs {
+    border-color: var(--ama-color-background-dark-darker) !important;
+    background-color: var(--ama-color-background-dark-darker) !important;
 }
 
-.main_dark .breadcrumb-item,
-.main_dark .breadcrumb-item a {
+.main_dark .good_bad .nav-tabs .nav-link,
+.main_dark .tabs_section .nav-tabs .nav-link {
     color: var(--ama-color-text-blue) !important;
+    background-color: var(--ama-color-background-dark-darker) !important;
 }
 
-.main_dark .good_bad .nav-tabs .nav-link {
-    color: var(--ama-color-text-blue) !important;
-}
-
-.main_dark .good_bad .nav-tabs .nav-link.active {
-    border-bottom: 5px solid var(--ama-color-text-blue) !important;
-}
-
-.main_dark .topTen_section .nav-tabs .nav-link {
-    color: var(--ama-color-brand-primary) !important;
-}
-.main_dark .topTen_section .nav-tabs .nav-link.active {
-    border-bottom: 5px solid var(--ama-color-brand-primary) !important;
+.main_dark .good_bad .nav-tabs .nav-link.active,
+.main_dark .tabs_section .nav-tabs .nav-link.active {
+    border-bottom: 5px solid var(--ama-color-text-blue);
 }
 
 .main_content_website {
@@ -156,21 +133,14 @@
     color: var(--ama-color-background-white) !important;
 }
 
-.main_content_website .best_practises .table_primary thead tr {
+.main_content_website .table_primary thead tr,
+.main_content_website .best_practises .light_tables .table_primary thead tr {
     background-color: var(--ama-color-background-dark-darker) !important;
-}
-
-.main_content_website .best_practises .table_primary thead tr th {
-    color: var(--ama-color-background-white) !important;
 }
 
 .main_content_website .best_practises h3,
-.main_content_website .best_practises h4 {
-    color: var(--ama-color-background-white);
-}
-
-.main_content_website .dark_table .table_primary thead tr th {
-    background-color: var(--ama-color-background-dark-darker) !important;
+.main_content_website .best_practises h4,
+.main_content_website .best_practises .light_tables .table_primary thead tr th {
     color: var(--ama-color-background-white) !important;
 }
 

@@ -6,19 +6,20 @@
     height: 50px;
 }
 
-.table tr th {
+.table thead tr th {
     color: var(--ama-color-background-white);
-    background-color: var(--ama-color-text-gray) !important;
     font-family: var(--fonte-lato);
     font-size: 16px;
     vertical-align: middle;
+    background-color: transparent;
 }
 
 .table thead tr {
+    background-color: var(--ama-color-text-gray) !important;
     border-bottom: 1px solid var(--ama-color-text-gray);
 }
 
-.table_primary thead tr:last-child {
+.table thead tr:last-child:not(:only-child) {
     background-color: var(--ama-color-grey-700) !important;
 }
 
@@ -57,6 +58,7 @@
 
 .table tbody tr {
     border-bottom: 1px solid var(--ama-color-text-gray);
+    background-color: var(--ama-color-background-white) !important;
 }
 
 .table tbody tr:hover {
@@ -170,7 +172,7 @@
         background-color: var(--ama-color-background-white);
     }
 
-    .table.dark {
+    .table-responsive.dark {
         background-color: var(--ama-color-background-dark-darker);
     }
 
@@ -186,22 +188,23 @@
 }
 
 /* DARK TABLE */
-.table.dark tbody tr td,
-.table.dark tbody tr td .sortingTableButton {
+.table-responsive.dark,
+.table-responsive.dark tbody tr td,
+.table-responsive.dark tbody tr td .sortingTableButton {
     color: var(--ama-color-background-white) !important;
 }
 
-.table.dark tbody tr:hover {
+.table-responsive.dark,
+.table-responsive.dark tbody tr {
+    background-color: var(--ama-color-background-dark-lighter) !important;
+}
+.table-responsive.dark tbody tr:hover {
     background-color: var(--ama-color-background-dark-darker) !important;
 }
 
-.table.dark tbody tr,
-.table.dark tbody tr:last-child {
+.table-responsive.dark tbody tr,
+.table-responsive.dark tbody tr:last-child {
     border-bottom: 1px solid var(--ama-color-grey-400) !important;
-}
-
-.pagination.dark {
-    color: var(--ama-color-background-white)
 }
 
 .pagination.dark .pagination_section .selection {

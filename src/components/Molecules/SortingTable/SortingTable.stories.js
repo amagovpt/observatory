@@ -1,18 +1,19 @@
 import React, {useState} from "react";
 import { SortingTable } from "./index";
+import Documentation from './Documentation.md'
 
 const directoriesHeaders = [
   [
     {icon: false, name: "Classificação", property: "rank"},
     {icon: false, bigWidth: "50%", name: "Sítio Web", property: "name"},
-    {icon: true, name: "AMA-DeclaracaoDark-Line", description: "Com declaração de usabilidade e acessibilidade", property: "declaration"},
-    {icon: true, name: "AMA-SeloDark-Line", description: "Com selo de usabilidade e acessibilidade", property: "stamp"},
+    {icon: true, name: "AMA-DeclaracaoDark-Line", description: "Com declaração de usabilidade e acessibilidade", property: "declaration", justifyCenter: true},
+    {icon: true, name: "AMA-SeloDark-Line", description: "Com selo de usabilidade e acessibilidade", property: "stamp", justifyCenter: true},
     {icon: false, name: "Pontuação", property: "score", justifyCenter: true},
     {icon: false, name: "Páginas", property: "nPages", justifyCenter: true},
-    {icon: false, name: "Páginas em conformidade*", property: "", justifyCenter: true, multiCol: true, nCol: 3},
+    {icon: false, name: "Páginas em conformidade*", property: "", justifyCenter: true, nCol: 3},
   ],
   [
-    {icon: false, nCol: 6, name: "Vazio", multiCol: true, empty: true},
+    {icon: false, nCol: 6, name: "Vazio", empty: true},
     {icon: false, name: "A", property: "A", justifyCenter: true},
     {icon: false, name: "AA", property: "AA", justifyCenter: true},
     {icon: false, name: "AAA", property: "AAA", justifyCenter: true}
@@ -403,27 +404,38 @@ const dataRows = [
 export default {
   title: "components/Molecules/SortingTable",
   component: SortingTable,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: Documentation,
+      },
+    },
+  },
 };
 
-export const Table2 = () => {
+export const sortingTable = (args) => {
   const [data, setData] = useState(dataRows)
 
   return (
     <SortingTable
-      hasSort={true}
+      {...args}
       headers={directoriesHeaders}
       setDataList={setData}
       dataList={data}
       columnsOptions={columnsOptions}
       nextPage={() => null}
-      darkTheme={false}
-      links={true}
       caption={"Estatísticas do diretório"+ " " + "Os 25 Portais + Procurados da AP"}
       iconsAltTexts={nameOfIcons}
-      pagination={true}
-      itemsPaginationTexts={itemsPaginationText}
-      nItemsPerPageTexts={nItemsPerPageText}
       paginationButtonsTexts={paginationButtonsTexts}
     />
   )
 };
+
+sortingTable.args = {
+  hasSort: true,
+  pagination: true,
+  darkTheme: false,
+  itemsPaginationTexts: itemsPaginationText,
+  nItemsPerPageTexts: nItemsPerPageText
+}

@@ -4,28 +4,10 @@
     color: var(--ama-color-background-white);
 }
 
-.search_container .table_primary tbody tr {
-    vertical-align: middle;
-    background-color: var(--ama-color-background-white) !important;
-}
-
-.search_container .table tbody tr:hover {
-    background-color: var(--ama-color-background-light-darker) !important;
-}
-
 /* DARK MODE */
 .main_content_directories {
     background-color: var(--ama-color-background-dark-lighter) !important;
     color: var(--ama-color-background-white);
-}
-
-.main_dark .breadcrumb .breadcrumb-item:not(:first-child) {
-    background-image: url("../../../public/img/chevron-right-light.svg");
-}
-  
-.main_dark .breadcrumb-item,
-.main_dark .breadcrumb-item a {
-    color: var(--ama-color-text-blue) !important;
 }
 
 .main_dark .observatorio {
@@ -34,23 +16,7 @@
     border-color: transparent;
 }
 
-.main_dark .page_title {
-    color: var(--ama-color-background-white);
-}
-
-.main_content_directories .table_secondary tr {
-    background-color: var(--ama-color-background-dark-lighter) !important;
-}
-
-.main_content_directories .search_container .table_primary tbody tr {
-    vertical-align: middle;
-    background-color: var(--ama-color-background-dark-lighter) !important;
-}
-
-.main_content_directories .search_container .table tbody tr:hover {
-    background-color: var(--ama-color-background-dark-darker) !important;
-}
-
+.main_dark .page_title,
 .main_content_directories .section_container h3 {
     color: var(--ama-color-background-white);
 }

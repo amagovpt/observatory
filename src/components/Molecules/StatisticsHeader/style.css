@@ -82,6 +82,11 @@
 /* DARK MODE */
 .section_container.dark {
     color: var(--ama-color-background-white) !important;
+    background-color: var(--ama-color-background-dark-lighter) !important;
+}
+
+.section_container.dark h2 {
+    color: var(--ama-color-background-white) !important;
 }
 
 .section_container.dark .second_row text {
