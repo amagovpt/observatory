@@ -4,6 +4,8 @@ import { Breadcrumb as BBreadcrumb } from "react-bootstrap";
 
 import "./styles.css";
 
+import { useTranslation } from "react-i18next";
+
 const { Item } = BBreadcrumb;
 
 const Breadcrumb = ({ data, onClick, darkTheme, ...props }) => {
