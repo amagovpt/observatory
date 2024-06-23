@@ -41,11 +41,11 @@
     margin-bottom: 25px;
 }
 
-.best_practises .light_tables .table_primary thead tr {
+.best_practises .light_tables .sorting_table thead tr {
     background-color: var(--ama-color-background-light-lighter) !important;
 }
 
-.best_practises .light_tables .table_primary thead tr th {
+.best_practises .light_tables .sorting_table thead tr th {
     color: var(--ama-color-grey-900) !important;
 }
 
@@ -133,14 +133,14 @@
     color: var(--ama-color-background-white) !important;
 }
 
-.main_content_website .table_primary thead tr,
-.main_content_website .best_practises .light_tables .table_primary thead tr {
+.main_content_website .sorting_table thead tr,
+.main_content_website .best_practises .light_tables .sorting_table thead tr {
     background-color: var(--ama-color-background-dark-darker) !important;
 }
 
 .main_content_website .best_practises h3,
 .main_content_website .best_practises h4,
-.main_content_website .best_practises .light_tables .table_primary thead tr th {
+.main_content_website .best_practises .light_tables .sorting_table thead tr th {
     color: var(--ama-color-background-white) !important;
 }
 

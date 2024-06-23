@@ -23,7 +23,7 @@
     background-color: var(--ama-color-grey-700) !important;
 }
 
-.table_primary thead tr:last-child th {
+.sorting_table thead tr:last-child th {
     background-color: transparent !important;
 }
 
@@ -65,7 +65,7 @@
     background-color: var(--ama-color-background-light-darker) !important;
 }
 
-.table_primary tbody tr td {
+.sorting_table tbody tr td {
     vertical-align: middle;
     background-color: transparent !important;
 }
@@ -75,7 +75,7 @@
     height: 72px;
 }
 
-.table_primary tbody tr td:last-child {
+.sorting_table tbody tr td:last-child {
     width: 8em;
 }
 

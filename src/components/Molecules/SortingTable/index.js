@@ -237,7 +237,7 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
 
     return (
         <div className={`table-responsive ${theme}`}>
-            <table className="table table_primary" data-sortable="true">
+            <table className="table sorting_table" data-sortable="true">
                 {/* Table caption -> descripton of the table */}
                 <caption className="visually-hidden">
                     {caption}
