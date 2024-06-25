@@ -21,7 +21,7 @@ import { StatisticsHeader, SortingTable, Breadcrumb } from "../../components/ind
 // Extra Data / Functions
 import { searchFuntion, getDirectoriesTable } from "./utils"
 
-import dataJSON from "../../utils/data.json"
+//import dataJSON from "../../utils/data.json"
 
 
 export default function Directories() {
@@ -60,12 +60,24 @@ export default function Directories() {
   ];
 
   useEffect(() => {
-    if(!observatorioData){
-      // const response = await api.get("/observatory")
-      // setObsData(response.data?.result)
-      setObsData(dataJSON.result)
-    } else {
-      const processData = async () => {
+    const processData = async () => {
+      if(!observatorioData){
+        const response = await api.get("/observatory")
+        setObsData(response.data?.result)
+        setDirectoriesStats({
+          score: (response.data?.result.score).toFixed(1),
+          recentPage: moment(response.data?.result.recentPage).format("LL"),
+          oldestPage: moment(response.data?.result.oldestPage).format("LL"),
+          statsTable: [
+            response.data?.result.nDirectories,
+            response.data?.result.nEntities,
+            response.data?.result.nWebsites,
+            response.data?.result.nPages,
+          ]
+        })
+        setDirectoriesList(response.data?.result.directoriesList)
+        // setObsData(dataJSON.result)
+      } else {
         setDirectoriesStats({
           score: (observatorioData.score).toFixed(1),
           recentPage: moment(observatorioData.recentPage).format("LL"),
@@ -77,18 +89,17 @@ export default function Directories() {
             observatorioData.nPages,
           ]
         })
-
         setDirectoriesList(observatorioData.directoriesList)
       }
-      processData()
     }
-  }, [observatorioData, navigate])
+    processData()
+  }, [])
 
   return (
     <>
       <div className="container">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} hereTag={t("NAV.youAreHere")} />
+          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} tagHere={t("NAV.youAreHere")} />
         </div>
 
         <div className="title_container">

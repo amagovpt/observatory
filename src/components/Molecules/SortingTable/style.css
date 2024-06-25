@@ -182,7 +182,8 @@
 /* DARK TABLE */
 .table-responsive.dark,
 .table-responsive.dark tbody tr td,
-.table-responsive.dark tbody tr td .sortingTableButton {
+.table-responsive.dark tbody tr td .sortingTableButton,
+.table-responsive.dark tbody tr td a {
     color: var(--ama-color-background-white) !important;
 }
 

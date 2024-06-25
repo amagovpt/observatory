@@ -21,7 +21,7 @@ import { StatisticsHeader, SortingTable, Breadcrumb } from "../../components/ind
 // Extra Data / Functions
 import { getDirectoryTable, checkIfAllOk } from "./utils"
 
-import dataJSON from "../../utils/data.json"
+//import dataJSON from "../../utils/data.json"
 
 
 export default function Directory() {
@@ -62,14 +62,27 @@ export default function Directory() {
   ];
 
   useEffect(() => {
-    if(!observatorioData){
-      // const response = await api.get("/observatory")
-      // setObsData(response.data?.result)
-      // if(!checkIfAllOk(id, response.data?.result)) navigate("/error")
-      setObsData(dataJSON.result)
-      if(!checkIfAllOk(id, dataJSON.result)) navigate("/error")
-    } else {
-      const processData = () => {
+    const processData = async () => {
+      if(!observatorioData){
+        const response = await api.get("/observatory")
+        setObsData(response.data?.result)
+        if(!checkIfAllOk(id, response.data?.result)) navigate("/error")
+        // setObsData(dataJSON.result)
+        // if(!checkIfAllOk(id, dataJSON.result)) navigate("/error")
+        const tempData = response.data?.result.directories[id]
+        setDirectoryName(response.data?.result.directories[id].name)
+        setDirectoriesStats({
+            score: (tempData.score).toFixed(1),
+            recentPage: moment(tempData.recentPage).format("LL"),
+            oldestPage: moment(tempData.oldestPage).format("LL"),
+            statsTable: [
+              tempData.nEntities,
+              tempData.nWebsites,
+              tempData.nPages,
+            ]
+        })
+        setDirectoriesList(tempData.websitesList)
+      } else {
         const tempData = observatorioData.directories[id]
         setDirectoryName(observatorioData.directories[id].name)
         setDirectoriesStats({
@@ -82,18 +95,17 @@ export default function Directory() {
               tempData.nPages,
             ]
         })
-      
         setDirectoriesList(tempData.websitesList)
       }
-      processData()
     }
-  }, [observatorioData, id, navigate])
+    processData()
+  }, [id])
 
   return (
     <>
       <div className="container">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} hereTag={t("NAV.youAreHere")} />
+          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} tagHere={t("NAV.youAreHere")} />
         </div>
 
         <div className="title_container">

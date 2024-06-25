@@ -1,16 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Breadcrumb as BBreadcrumb } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 import "./styles.css";
 
-import { useTranslation } from "react-i18next";
-
 const { Item } = BBreadcrumb;
 
-const Breadcrumb = ({ data, onClick, darkTheme, ...props }) => {
-
-  const { t } = useTranslation();
+const Breadcrumb = ({ data, onClick, darkTheme, tagHere, ...props }) => {
 
   // Theme
   const theme = darkTheme ? "dark" : ""
@@ -30,8 +26,11 @@ const Breadcrumb = ({ data, onClick, darkTheme, ...props }) => {
             key={`id-${index}`}
             href={item.href === "" ? "" : item.href}
             active={index === size}
+            // Make sure breadcrumb uses Link instead of default <a> tag so that context isn't lost
+            linkAs={Link}
+            linkProps={{ to: item.href }}
             onClick={handleOnClick(item)}
-            aria-label={index === size ? t("HEADER.DROPDOWN.youarehere") : undefined}
+            aria-label={index === size ? tagHere : undefined}
           >
             {item.title}
           </Item>
@@ -39,18 +38,6 @@ const Breadcrumb = ({ data, onClick, darkTheme, ...props }) => {
       </BBreadcrumb>
     </div>
   );
-};
-
-Breadcrumb.defaultProps = {
-  data: [],
-  onClick: () => {},
-  darkTheme: false
-};
-
-Breadcrumb.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object),
-  onClick: PropTypes.func,
-  darkTheme: PropTypes.bool
 };
 
 export default Breadcrumb;

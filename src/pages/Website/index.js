@@ -24,7 +24,7 @@ import { Breadcrumb, Tabs, StatisticsHeader } from "../../components/index";
 // Extra Data / Functions
 import { checkIfAllOk } from "./utils"
 
-import dataJSON from "../../utils/data.json"
+//import dataJSON from "../../utils/data.json"
 
 
 export default function Directory() {
@@ -104,18 +104,32 @@ export default function Directory() {
   
 
   useEffect(() => {
-    if(!observatorioData){
-      // const response = await api.get("/observatory")
-      // setObsData(response.data?.result)
-      // if(!checkIfAllOk(id, sitioId, response.data?.result)) navigate("/error")
-
-      setObsData(dataJSON.result)
-      if(!checkIfAllOk(id, sitioId, dataJSON.result)) navigate("/error")
-    } else {
-      const processData = () => {
+    const processData = async () => {
+      if(!observatorioData){
+        const response = await api.get("/observatory")
+        setObsData(response.data?.result)
+        if(!checkIfAllOk(id, sitioId, response.data?.result)) navigate("/error")
+        // setObsData(dataJSON.result)
+        // if(!checkIfAllOk(id, sitioId, dataJSON.result)) navigate("/error")
+        setDirectoryName(response.data?.result.directories[id].name)
+        const tempData = response.data?.result.directories[id].websites[sitioId]
+        setData(tempData)
+        setWebsiteStats({
+          score: (tempData.score).toFixed(1),
+          recentPage: moment(tempData.recentPage).format("LL"),
+          oldestPage: moment(tempData.oldestPage).format("LL"),
+          statsTable: [
+            tempData.nPages,
+            tempData.pagesWithoutErrors,
+            tempData.pagesWithErrors,
+            tempData.pagesWithoutErrorsA,
+            tempData.pagesWithoutErrorsAA,
+            tempData.pagesWithoutErrorsAAA
+          ]
+        })
+      } else {
         setDirectoryName(observatorioData.directories[id].name)
         const tempData = observatorioData.directories[id].websites[sitioId]
-
         setData(tempData)
         setWebsiteStats({
           score: (tempData.score).toFixed(1),
@@ -131,15 +145,15 @@ export default function Directory() {
           ]
         })
       }
-      processData()
     }
-  }, [observatorioData, id, sitioId, theme, language, navigate])
+    processData()
+  }, [id, sitioId])
 
   return (
     <>
       <div className="container website">
         <div className="py-5">
-          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} hereTag={t("NAV.youAreHere")} />
+          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} tagHere={t("NAV.youAreHere")} />
         </div>
 
         <div className={`title_container ${main_content_website}`}>

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "./style.css";
 import {Icon} from "../../Atoms/Icon"
+import { Link } from 'react-router-dom';
 
 /*
     hasSort -> If Table has sorting
@@ -194,7 +195,7 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                         href = `${columnsOptions[key].href}${row["id"]}`
                     }
                     // Render a link
-                    return (<td><a href={href} className="ama-typography-action-large bold">{row[key]}</a></td>)
+                    return (<td><Link to={href} className="ama-typography-action-large bold">{row[key]}</Link></td>)
                 case "Text":
                     // Render normal text
                     return (<td className={`${center} ${bold} ama-typography-body`}>{row[key]}</td>)
