@@ -21,7 +21,7 @@ import { Top5_Practices } from "./_components/top5_practices";
 import { AchievementPerType } from "./_components/achievementPerType"
 import { ObservatoryInfoTabs } from "./_components/observatoryInfoTabs";
 
-//import dataJSON from "../../utils/data.json"
+import dataJSON from "../../utils/data.json"
 
 export default function Home() {
 
@@ -51,32 +51,24 @@ export default function Home() {
     const processData = async () => {
       setLoading(true)
 
-      const response = await api.get("/observatory")
-      setObsData(response.data?.result)
+      // const response = await api.get("/observatory")
+      // setObsData(response.data?.result)
+      // const tempData = response.data?.result
+
+      setObsData(dataJSON.result)
+      const tempData = dataJSON.result
+
       setDirectoriesStats({
-        score: (response.data?.result.score).toFixed(1),
-        recentPage: moment(response.data?.result.recentPage).format("LL"),
-        oldestPage: moment(response.data?.result.oldestPage).format("LL"),
+        score: (tempData.score).toFixed(1),
+        recentPage: moment(tempData.recentPage).format("LL"),
+        oldestPage: moment(tempData.oldestPage).format("LL"),
         statsTable: [
-          response.data?.result.nDirectories,
-          response.data?.result.nEntities,
-          response.data?.result.nWebsites,
-          response.data?.result.nPages,
+          tempData.nDirectories,
+          tempData.nEntities,
+          tempData.nWebsites,
+          tempData.nPages,
         ]
       })
-
-      // setObsData(dataJSON.result)
-      // setDirectoriesStats({
-      //   score: (dataJSON.result.score).toFixed(1),
-      //   recentPage: moment(dataJSON.result.recentPage).format("LL"),
-      //   oldestPage: moment(dataJSON.result.oldestPage).format("LL"),
-      //   statsTable: [
-      //     dataJSON.result.nDirectories,
-      //     dataJSON.result.nEntities,
-      //     dataJSON.result.nWebsites,
-      //     dataJSON.result.nPages,
-      //   ]
-      // })
       setLoading(false)
     }
     processData()

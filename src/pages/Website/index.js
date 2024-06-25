@@ -19,23 +19,26 @@ import moment from 'moment'
 import { BarLineGraphTabs } from "./_components/barLineGraphTabs";
 import { GoodBadTab } from "./_components/goodBadTab";
 import { RadarGraph } from "./_components/radarGraph";
-import { Breadcrumb, Tabs, StatisticsHeader } from "../../components/index";
+import { Breadcrumb, Tabs, StatisticsHeader, LoadingComponent } from "../../components/index";
 
 // Extra Data / Functions
 import { checkIfAllOk } from "./utils"
 
-//import dataJSON from "../../utils/data.json"
+import dataJSON from "../../utils/data.json"
 
 
 export default function Directory() {
 
-  const { t, i18n: { language } } = useTranslation();
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
 
   // Theme
   const { theme } = useContext(ThemeContext);
   const main_content_website = theme === "light" ? "" : "main_content_website";
+
+  // Loading
+  const [loading, setLoading] = useState(true);
 
   // Observatorio Data
   const { observatorioData, setObsData } = useContext(DataContext);
@@ -105,26 +108,30 @@ export default function Directory() {
 
   useEffect(() => {
     const processData = async () => {
+      setLoading(true)
       if(!observatorioData){
-        const response = await api.get("/observatory")
-        setObsData(response.data?.result)
-        if(!checkIfAllOk(id, sitioId, response.data?.result)) navigate("/error")
-        // setObsData(dataJSON.result)
-        // if(!checkIfAllOk(id, sitioId, dataJSON.result)) navigate("/error")
-        setDirectoryName(response.data?.result.directories[id].name)
-        const tempData = response.data?.result.directories[id].websites[sitioId]
-        setData(tempData)
+        // const response = await api.get("/observatory")
+        // setObsData(response.data?.result)
+        // if(!checkIfAllOk(id, sitioId, response.data?.result)) navigate("/error")
+        // const tempData = response.data?.result.directories[id]
+        
+        setObsData(dataJSON.result)
+        if(!checkIfAllOk(id, sitioId, dataJSON.result)) navigate("/error")
+        const tempData = dataJSON.result.directories[id]
+
+        setDirectoryName(tempData.name)
+        setData(tempData.websites[sitioId])
         setWebsiteStats({
-          score: (tempData.score).toFixed(1),
-          recentPage: moment(tempData.recentPage).format("LL"),
-          oldestPage: moment(tempData.oldestPage).format("LL"),
+          score: (tempData.websites[sitioId].score).toFixed(1),
+          recentPage: moment(tempData.websites[sitioId].recentPage).format("LL"),
+          oldestPage: moment(tempData.websites[sitioId].oldestPage).format("LL"),
           statsTable: [
-            tempData.nPages,
-            tempData.pagesWithoutErrors,
-            tempData.pagesWithErrors,
-            tempData.pagesWithoutErrorsA,
-            tempData.pagesWithoutErrorsAA,
-            tempData.pagesWithoutErrorsAAA
+            tempData.websites[sitioId].nPages,
+            tempData.websites[sitioId].pagesWithoutErrors,
+            tempData.websites[sitioId].pagesWithErrors,
+            tempData.websites[sitioId].pagesWithoutErrorsA,
+            tempData.websites[sitioId].pagesWithoutErrorsAA,
+            tempData.websites[sitioId].pagesWithoutErrorsAAA
           ]
         })
       } else {
@@ -145,64 +152,67 @@ export default function Directory() {
           ]
         })
       }
+      setLoading(false)
     }
     processData()
   }, [id, sitioId])
 
   return (
     <>
-      <div className="container website">
-        <div className="py-5">
-          <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} tagHere={t("NAV.youAreHere")} />
-        </div>
-
-        <div className={`title_container ${main_content_website}`}>
-          <div className="ama-typography-body-large bold observatorio px-3 mb-2">
-            {directoryName}
+      {!loading ? 
+        <div className="container website">
+          <div className="py-5">
+            <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} tagHere={t("NAV.youAreHere")} />
           </div>
-          <h2 className="bold my-2">{data && data.name}</h2>
-          <h3><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h3>
-        </div>
 
-        {/* Statistics Header Component */}
-        <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
-          {websiteStats && <StatisticsHeader
-            darkTheme={theme === "light" ? false : true}
-            stats={websiteStats}
-            statsTitles={statsTitles}
-            doubleRow={true}
-            title={t("DIRECTORIES.statistics_title")}
-            subtitle={t("DIRECTORIES.statistics_subtitle")}
-            oldestPage={t("STATISTICS.oldest_page_updated")}
-            newestPage={t("STATISTICS.newest_page_updated")}
-            gaugeTitle={t("STATISTICS.gauge.label")}
-            buttons={false}
-          />}
-        </section>
-
-        {/* Radar Graph */}
-        <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
-          <div className="d-flex flex-column section_container py-4">
-            <h3 className="bold">{t("WEBSITE.accessibility_plot.title")}</h3>
-            <div className="d-flex radar_graphic justify-content-center">
-              {data && <RadarGraph tempData={data} />}
+          <div className={`title_container ${main_content_website}`}>
+            <div className="ama-typography-body-large bold observatorio px-3 mb-2">
+              {directoryName}
             </div>
+            <h2 className="bold my-2">{data && data.name}</h2>
+            <h3><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h3>
           </div>
-        </section>
 
-        {/* Bar+Line Graph */}
-        <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
-          <div className="d-flex flex-column section_container py-4">
-            <h3 className="bold mb-3">{t("DIALOGS.scores.title")}</h3>
-            {data && <BarLineGraphTabs tempData={data} websiteStats={websiteStats} />}
+          {/* Statistics Header Component */}
+          <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
+            {websiteStats && <StatisticsHeader
+              darkTheme={theme === "light" ? false : true}
+              stats={websiteStats}
+              statsTitles={statsTitles}
+              doubleRow={true}
+              title={t("DIRECTORIES.statistics_title")}
+              subtitle={t("DIRECTORIES.statistics_subtitle")}
+              oldestPage={t("STATISTICS.oldest_page_updated")}
+              newestPage={t("STATISTICS.newest_page_updated")}
+              gaugeTitle={t("STATISTICS.gauge.label")}
+              buttons={false}
+            />}
+          </section>
+
+          {/* Radar Graph */}
+          <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
+            <div className="d-flex flex-column section_container py-4">
+              <h3 className="bold">{t("WEBSITE.accessibility_plot.title")}</h3>
+              <div className="d-flex radar_graphic justify-content-center">
+                {data && <RadarGraph tempData={data} />}
+              </div>
+            </div>
+          </section>
+
+          {/* Bar+Line Graph */}
+          <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
+            <div className="d-flex flex-column section_container py-4">
+              <h3 className="bold mb-3">{t("DIALOGS.scores.title")}</h3>
+              {data && <BarLineGraphTabs tempData={data} websiteStats={websiteStats} />}
+            </div>
+          </section>
+
+          {/* Good / Bad section */}
+          <div className="good_bad">
+            {data && <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={false} />}
           </div>
-        </section>
-
-        {/* Good / Bad section */}
-        <div className="good_bad">
-          {data && <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={false} />}
         </div>
-      </div>
+      : <LoadingComponent />}
     </>
   );
 }
