@@ -51,12 +51,12 @@ export default function Home() {
     const processData = async () => {
       setLoading(true)
 
-      // const response = await api.get("/observatory")
-      // setObsData(response.data?.result)
-      // const tempData = response.data?.result
+      const response = await api.get("/observatory")
+      setObsData(response.data?.result)
+      const tempData = response.data?.result
 
-      setObsData(dataJSON.result)
-      const tempData = dataJSON.result
+      // setObsData(dataJSON.result)
+      // const tempData = dataJSON.result
 
       setDirectoriesStats({
         score: (tempData.score).toFixed(1),
@@ -123,7 +123,7 @@ export default function Home() {
                 text={t("HOME.top5.button")}
                 size="lg"
                 id="btn-url"
-                onClick={() => navigate("/directories")}
+                onClick={() => navigate("/observatorio-react/directories")}
               />
             </div>
             <div className="flex-1 top5_div">
@@ -132,7 +132,7 @@ export default function Home() {
                   <li className="d-flex justify-content-between align-items-center mb-2">
                     <div className="d-flex flex-row align-items-center">
                       <span className="ama-typography-body top5_number me-3">{website.index}</span>
-                      <span className="ama-typography-action-large bold top5_link" onClick={() => navigate(`/directories/${website.DirectoryId}/${website.id}`)}>{website.name}</span>
+                      <span className="ama-typography-action-large bold top5_link" onClick={() => navigate(`/observatorio-react/directories/${website.DirectoryId}/${website.id}`)}>{website.name}</span>
                     </div>
                     <span className="ama-typography-body-large bold">{(website.score).toFixed(1)}</span>
                   </li>

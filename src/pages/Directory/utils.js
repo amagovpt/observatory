@@ -28,7 +28,7 @@ export function getDirectoryTable (t, id) {
     let columnsOptions = {
       id: { type: "Skip", center: false, bold: false, decimalPlace: false },
       rank: { type: "Number", center: true, bold: false, decimalPlace: false },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: `/directories/${id}/` },
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: `/observatorio-react/directories/${id}/` },
       entity: { type: "Skip", center: false, bold: false, decimalPlace: false },
       declaration: { type: "Declaration", center: true, bold: false, decimalPlace: false },
       stamp: { type: "Stamp", center: true, bold: false, decimalPlace: false },

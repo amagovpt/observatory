@@ -41,7 +41,7 @@ export default function Directory() {
   const { observatorioData, setObsData } = useContext(DataContext);
 
   // Navigation Parameters
-  const id = Number(location.pathname.split("/")[2]) || null;
+  const id = Number(location.pathname.split("/")[3]) || null;
 
   // Data for the main table
   const [directoriesList, setDirectoriesList] = useState();
@@ -59,8 +59,8 @@ export default function Directory() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "/" },
-    { title: t("HEADER.NAV.directories"), href: "/directories" },
+    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react/" },
+    { title: t("HEADER.NAV.directories"), href: "/observatorio-react/directories" },
     { title: directoryName },
   ];
 
@@ -68,14 +68,14 @@ export default function Directory() {
     const processData = async () => {
       setLoading(true)
       if(!observatorioData){
-        // const response = await api.get("/observatory")
-        // setObsData(response.data?.result)
-        // if(!checkIfAllOk(id, response.data?.result)) navigate("/error")
-        // const tempData = response.data?.result.directories[id]
+        const response = await api.get("/observatory")
+        setObsData(response.data?.result)
+        if(!checkIfAllOk(id, response.data?.result)) navigate("/observatorio-react/error")
+        const tempData = response.data?.result.directories[id]
         
-        setObsData(dataJSON.result)
-        if(!checkIfAllOk(id, dataJSON.result)) navigate("/error")
-        const tempData = dataJSON.result.directories[id]
+        // setObsData(dataJSON.result)
+        // if(!checkIfAllOk(id, dataJSON.result)) navigate("/error")
+        // const tempData = dataJSON.result.directories[id]
 
         setDirectoryName(tempData.name)
         setDirectoriesStats({

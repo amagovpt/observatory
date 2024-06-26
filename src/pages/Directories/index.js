@@ -56,20 +56,20 @@ export default function Directories() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "/" },
-    { title: t("HEADER.NAV.directories"), href: "/directories" },
+    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react/" },
+    { title: t("HEADER.NAV.directories"), href: "/observatorio-react/directories" },
   ];
 
   useEffect(() => {
     const processData = async () => {
       setLoading(true)
       if(!observatorioData){
-        // const response = await api.get("/observatory")
-        // setObsData(response.data?.result)
-        // const tempData = response.data?.result
+        const response = await api.get("/observatory")
+        setObsData(response.data?.result)
+        const tempData = response.data?.result
 
-        setObsData(dataJSON.result)
-        const tempData = dataJSON.result
+        // setObsData(dataJSON.result)
+        // const tempData = dataJSON.result
 
         setDirectoriesStats({
           score: (tempData.score).toFixed(1),

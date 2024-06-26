@@ -203,11 +203,11 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                     // Render one of the 3 Stamp Icons based on the number received (from: 1 to 3)
                     switch(row[key]) {
                         case 1:
-                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Selo_Bronze.svg`} alt={iconsAltTexts[0]} /></td>)
+                            return (<td className={`${center} ${bold}`}><img src={`/observatorio-react/img/SVG_Selo_Bronze.svg`} alt={iconsAltTexts[0]} /></td>)
                         case 2:
-                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Selo_Prata.svg`} alt={iconsAltTexts[1]} /></td>)
+                            return (<td className={`${center} ${bold}`}><img src={`/observatorio-react/img/SVG_Selo_Prata.svg`} alt={iconsAltTexts[1]} /></td>)
                         case 3:
-                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Selo_Ouro.svg`} alt={iconsAltTexts[2]} /></td>)
+                            return (<td className={`${center} ${bold}`}><img src={`/observatorio-react/img/SVG_Selo_Ouro.svg`} alt={iconsAltTexts[2]} /></td>)
                         default:
                             return (<td className={`${center} ${bold}`}>{row[key]}</td>)
                     }
@@ -215,11 +215,11 @@ const SortingTable = ({ hasSort, caption, headers, dataList, setDataList, column
                     // Render one of the 3 Declaration Icons based on the number received (from: 1 to 3)
                     switch(row[key]) {
                         case 1:
-                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Declaracao_Nao_Conforme.svg`} alt={iconsAltTexts[3]} /></td>)
+                            return (<td className={`${center} ${bold}`}><img src={`/observatorio-react/img/SVG_Declaracao_Nao_Conforme.svg`} alt={iconsAltTexts[3]} /></td>)
                         case 2:
-                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Declaracao_Parcial_Conforme.svg`} alt={iconsAltTexts[4]} /></td>)
+                            return (<td className={`${center} ${bold}`}><img src={`/observatorio-react/img/SVG_Declaracao_Parcial_Conforme.svg`} alt={iconsAltTexts[4]} /></td>)
                         case 3:
-                            return (<td className={`${center} ${bold}`}><img src={`/img/SVG_Declaracao_Conforme.svg`} alt={iconsAltTexts[5]} /></td>)
+                            return (<td className={`${center} ${bold}`}><img src={`/observatorio-react/img/SVG_Declaracao_Conforme.svg`} alt={iconsAltTexts[5]} /></td>)
                         default:
                             return (<td className={`${center} ${bold}`}>{row[key]}</td>)
                     }
