@@ -16,7 +16,7 @@ import { DataContext } from "../../context/DataContext";
 import moment from 'moment'
 
 // Components
-import { Button, Icon, StatisticsHeader, LoadingComponent } from "../../components/index"
+import { Button, Icon, StatisticsHeader, LoadingComponent } from "ama-design-system"
 import { Top5_Practices } from "./_components/top5_practices";
 import { AchievementPerType } from "./_components/achievementPerType"
 import { ObservatoryInfoTabs } from "./_components/observatoryInfoTabs";
@@ -72,6 +72,23 @@ export default function Home() {
       setLoading(false)
     }
     processData()
+  }, [])
+
+  // useEffect to update the StatisticsHeader stats when language changes
+  useEffect(() => {
+    if(!observatorioData) return
+    const tempData = observatorioData
+    setDirectoriesStats({
+      score: (tempData.score).toFixed(1),
+      recentPage: moment(tempData.recentPage).format("LL"),
+      oldestPage: moment(tempData.oldestPage).format("LL"),
+      statsTable: [
+        tempData.nDirectories,
+        tempData.nEntities,
+        tempData.nWebsites,
+        tempData.nPages,
+      ]
+    })
   }, [language])
 
   // Data for the censos section
@@ -101,7 +118,7 @@ export default function Home() {
           <h2 className="mt-5 bold">{t("HOME.summary.statistics_title")}</h2>
           <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5 section_statistics`}>
             {directoriesStats && <StatisticsHeader
-              darkTheme={theme === "light" ? false : true}
+              darkTheme={theme}
               stats={directoriesStats}
               statsTitles={statsTitles}
               title={t("DIRECTORIES.statistics_title")}
@@ -114,11 +131,11 @@ export default function Home() {
           </section>
 
           {/* Top 5 websites section */}
-          <section className={`${main_content_home} d-flex flex-row justify-content-center align-items-center my-5 top5_websites`}>
+          <section className={`${main_content_home} d-flex justify-content-center align-items-center my-5 top5_websites`}>
             <div className="flex-1 top5_div">
               <h2 className="bold mb-2">{t("HOME.top5.title")}</h2>
               <div className="ama-typography-body">{t("HOME.top5.last_updated") + " " + directoriesStats.recentPage}</div>
-              <p className="ama-typography-body mt-2 mb-4">{t("HOME.top5.paragraph.part1")+ " " +t("HOME.top5.paragraph.part2")+ " " +t("HOME.top5.paragraph.part3")}</p>
+              <p className="ama-typography-body mt-2">{t("HOME.top5.paragraph.part1")+ " " +t("HOME.top5.paragraph.part2")+ " " +t("HOME.top5.paragraph.part3")}</p>
               <Button
                 text={t("HOME.top5.button")}
                 size="lg"
@@ -132,7 +149,7 @@ export default function Home() {
                   <li className="d-flex justify-content-between align-items-center mb-2">
                     <div className="d-flex flex-row align-items-center">
                       <span className="ama-typography-body top5_number me-3">{website.index}</span>
-                      <span className="ama-typography-action-large bold top5_link" onClick={() => navigate(`/observatorio-react/directories/${website.DirectoryId}/${website.id}`)}>{website.name}</span>
+                      <a href="" className="top5_link ama-typography-body-large bold" onClick={() => navigate(`/observatorio-react/directories/${website.DirectoryId}/${website.id}`)}>{website.name}</a>
                     </div>
                     <span className="ama-typography-body-large bold">{(website.score).toFixed(1)}</span>
                   </li>
@@ -192,14 +209,14 @@ export default function Home() {
             </div>
            
             {/* Top 5 Good and Bad Practices */}
-            <div className="d-flex flex-row my-5 top5_best_good">
+            <div className="d-flex my-5 top5_best_good">
               <Top5_Practices data={observatorioData.topFiveBestPractices} title={t("HOME.summary.best_practices_title")} icon={"AMA-Check-Line"} />
               <Top5_Practices data={observatorioData.topFiveErrors} title={t("HOME.summary.errors_title")} icon={"AMA-Wrong-Line"} />
             </div>
           </div>
         </section>
       </>
-    : <LoadingComponent />}
+    : <LoadingComponent darkTheme={theme} loadingText={t("MISC.loading")} />}
     </>
   );
 }

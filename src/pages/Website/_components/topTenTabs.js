@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../../context/ThemeContext";
 
 // Components
-import { Tabs, SortingTable } from "../../../components/index";
+import { Tabs, SortingTable } from "ama-design-system";
 
 // Extra Data / Functions
 import { getTopTenGraphTable } from "../utils"
@@ -46,7 +46,7 @@ export function TopTenTabs({ top10Data, color, aditionalData, title }) {
           headers={dataHeaders}
           dataList={dataTable}
           columnsOptions={columnsOptions}
-          darkTheme={theme === "light" ? false : true}
+          darkTheme={theme}
           pagination={false}
           links={false}
           caption={title}

@@ -2,7 +2,7 @@
 import { useTranslation } from "react-i18next";
 
 // Components
-import { Icon } from "../../../components/index"
+import { Icon } from "ama-design-system"
 
 
 export function AchievementPerType({ data, type, good, semi, bad, title, icon, colors, colorTitle, colorRGB, translationType}) {
@@ -33,7 +33,7 @@ export function AchievementPerType({ data, type, good, semi, bad, title, icon, c
   }
 
   return (
-    <div className="d-flex flex-row group_container p-5 mb-5 mt-4">
+    <div className="d-flex group_container p-5 mb-5 mt-4">
       <div className="d-flex flex-column first_column">
         <div className="ama-typography-body-larger bold mb-3">{title}</div>
         <div className="d-flex flex-row align-items-center ama-typography-display-1">

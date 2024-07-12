@@ -21,3 +21,11 @@
 .section_container {
     width: 90%;
 }
+
+.link_breadcrumb_container .breadcrumb .breadcrumb-item:not(:first-child) {
+    background-image: url("/public/img/chevron-right-dark.svg");
+}
+
+.link_breadcrumb_container .breadcrumbs.dark .breadcrumb .breadcrumb-item:not(:first-child) {
+    background-image: url("/public/img/chevron-right-light.svg");
+}

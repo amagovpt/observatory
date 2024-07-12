@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../../context/ThemeContext";
 
 // Components
-import { SortingTable } from "../../../components/index";
+import { SortingTable } from "ama-design-system";
 import { TopTenTabs } from "./topTenTabs";
 
 // Extra Data / Functions
@@ -91,7 +91,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
   return (
     <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center`}>
       <div className="d-flex flex-column section_container best_practises p-3">
-        <h3 className="bold py-3 m-0">{title}</h3>
+        <h2 className="bold py-3 m-0">{title}</h2>
         
         {/* Top Ten Practices Graph/Table */}
         <div className="tabs_section">
@@ -99,7 +99,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
         </div>
 
         {/* Tables for Practices, 3 per type and one general */}
-        <h3 className="bold mt-5">{t(`WEBSITE.${goodOrBad}.title`)}</h3>
+        <h2 className="bold mt-5">{t(`WEBSITE.${goodOrBad}.title`)}</h2>
         <p className="ama-typography-body-large mb-3">{t(`WEBSITE.${goodOrBad}.subtitle`)}</p>
         <div className="light_tables">
           {dataTableA && <SortingTable
@@ -107,7 +107,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
             headers={dataTableHeadersA}
             dataList={dataTableA}
             columnsOptions={columnsOptionsAAs}
-            darkTheme={theme === "light" ? false : true}
+            darkTheme={theme}
             pagination={false}
             links={false}
             caption={t(`WEBSITE.${goodOrBad}.message`, {value: "A"})}
@@ -117,7 +117,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
             headers={dataTableHeadersAA}
             dataList={dataTableAA}
             columnsOptions={columnsOptionsAAs}
-            darkTheme={theme === "light" ? false : true}
+            darkTheme={theme}
             pagination={false}
             links={false}
             caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AA"})}
@@ -127,19 +127,19 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
             headers={dataTableHeadersAAA}
             dataList={dataTableAAA}
             columnsOptions={columnsOptionsAAs}
-            darkTheme={theme === "light" ? false : true}
+            darkTheme={theme}
             pagination={false}
             links={false}
             caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"})}
           />}
         </div>
-        <h3 className="bold mt-5 mb-3">{t("WEBSITE.table.best_title")}</h3>
+        <h2 className="bold mt-5 mb-3">{t("WEBSITE.table.best_title")}</h2>
         {detailsTable && <SortingTable
           hasSort={false}
           headers={detailsTableHeaders}
           dataList={detailsTable}
           columnsOptions={columnsOptionsDetails}
-          darkTheme={theme === "light" ? false : true}
+          darkTheme={theme}
           pagination={false}
           links={false}
           caption={t("WEBSITE.table.best_title")}

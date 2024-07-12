@@ -6,6 +6,7 @@ import { api } from "../../config/api";
 // Hooks
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 // Date formatting
 import moment from 'moment'
@@ -15,7 +16,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { DataContext } from "../../context/DataContext";
 
 // Components
-import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent } from "../../components/index";
+import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent } from "ama-design-system";
 
 // Extra Data / Functions
 import { searchFuntion, getDirectoriesTable } from "./utils"
@@ -25,7 +26,8 @@ import dataJSON from "../../utils/data.json"
 
 export default function Directories() {
 
-  const { t } = useTranslation();
+  const { t, i18n: {language} } = useTranslation();
+  const navigate = useNavigate();
 
   // Theme
   const { theme } = useContext(ThemeContext);
@@ -45,7 +47,7 @@ export default function Directories() {
   const [directoriesStats, setDirectoriesStats] = useState();
 
   // Data and Options for the Tables on this page
-  const { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons } = getDirectoriesTable(t)
+  const { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons } = getDirectoriesTable(t, navigate)
 
   // Loading
   const [loading, setLoading] = useState(true);
@@ -56,7 +58,7 @@ export default function Directories() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react/" },
+    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react" },
     { title: t("HEADER.NAV.directories"), href: "/observatorio-react/directories" },
   ];
 
@@ -102,25 +104,42 @@ export default function Directories() {
     processData()
   }, [])
 
+  // useEffect to update the StatisticsHeader stats when language changes
+  useEffect(() => {
+    if(!observatorioData) return
+    const tempData = observatorioData
+    setDirectoriesStats({
+      score: (tempData.score).toFixed(1),
+      recentPage: moment(tempData.recentPage).format("LL"),
+      oldestPage: moment(tempData.oldestPage).format("LL"),
+      statsTable: [
+        tempData.nDirectories,
+        tempData.nEntities,
+        tempData.nWebsites,
+        tempData.nPages,
+      ]
+    })
+  }, [language])
+
   return (
     <>
       {!loading ? 
         <div className="container">
-          <div className="py-5">
-            <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} tagHere={t("NAV.youAreHere")} />
+          <div className="link_breadcrumb_container py-5">
+            <Breadcrumb data={breadcrumbs} darkTheme={theme} tagHere={t("NAV.youAreHere")} />
           </div>
 
           <div className="title_container">
             <div className="ama-typography-body-large bold observatorio px-3">
                 {t("HEADER.NAV.observatory")}
             </div>
-            <h2 className="bold my-2">{t("HEADER.NAV.directories")}</h2>
+            <h1 className="bold my-2">{t("HEADER.NAV.directories")}</h1>
           </div>
 
           {/* Statistics Header Component */}
           <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
             {directoriesStats && <StatisticsHeader
-              darkTheme={theme === "light" ? false : true}
+              darkTheme={theme}
               stats={directoriesStats}
               statsTitles={statsTitles}
               title={t("DIRECTORIES.statistics_title")}
@@ -135,16 +154,17 @@ export default function Directories() {
           {/* MAIN Directories TABLE */}
           <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
             <div className="d-flex flex-column section_container py-4 m-0">
-              <h3 className="bold pb-3 m-0">{t("DIRECTORIES.table.title")}</h3>
+              <h2 className="bold pb-3 m-0">{t("DIRECTORIES.table.title")}</h2>
               {directoriesList && <SortingTable
+                darkTheme={theme}
                 hasSort={true}
                 headers={directoriesHeaders}
                 setDataList={setDirectoriesList}
                 dataList={directoriesList}
-                darkTheme={theme === "light" ? false : true}
                 pagination={false}
                 caption={t("DIRECTORIES.table.title")}
                 columnsOptions={columnsOptions}
+                project={"/observatorio-react"}
               />}
               <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
             </div>
@@ -154,7 +174,7 @@ export default function Directories() {
           <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center`}>
             <div className="d-flex flex-column search_container p-4 px-5">
               <form className="d-flex flex-column">
-                <label className="ama-typography-body-large bold mb-2">{t("DIRECTORIES.search.label")}</label>
+                <label htmlFor="search" className="ama-typography-body-large bold mb-2">{t("DIRECTORIES.search.label")}</label>
                 <input className="p-3 mb-3" type="text" id="search" placeholder={t("DIRECTORIES.search.placeholder")} value={search} onChange={(e) => searchFuntion(e.target.value, setSearch, setOtherData, observatorioData)}/>
               </form>
               {search && search.length >= 3 ? 
@@ -164,11 +184,12 @@ export default function Directories() {
                     columnsOptions={columnsOptionsSearch}
                     setDataList={setOtherData}
                     dataList={otherData}
-                    darkTheme={theme === "light" ? false : true}
+                    darkTheme={theme}
                     pagination={false}
                     hasSort={true}
                     caption={t("DIRECTORY.table.subtitle")+ " "}
                     iconsAltTexts={nameOfIcons}
+                    project={"/observatorio-react"}
                   />
                 :
                   <div className="ama-typography-body-large">{t("DIRECTORIES.search.no_results")}</div>
@@ -179,7 +200,7 @@ export default function Directories() {
             </div>
           </section>
         </div>
-      : <LoadingComponent />}
+      : <LoadingComponent darkTheme={theme} loadingText={t("MISC.loading")} />}
     </>
   );
 }

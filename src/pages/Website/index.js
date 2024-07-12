@@ -19,7 +19,7 @@ import moment from 'moment'
 import { BarLineGraphTabs } from "./_components/barLineGraphTabs";
 import { GoodBadTab } from "./_components/goodBadTab";
 import { RadarGraph } from "./_components/radarGraph";
-import { Breadcrumb, Tabs, StatisticsHeader, LoadingComponent } from "../../components/index";
+import { Breadcrumb, Tabs, StatisticsHeader, LoadingComponent } from "ama-design-system";
 
 // Extra Data / Functions
 import { checkIfAllOk } from "./utils"
@@ -29,7 +29,7 @@ import dataJSON from "../../utils/data.json"
 
 export default function Directory() {
 
-  const { t } = useTranslation();
+  const { t, i18n: {language} } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -60,7 +60,7 @@ export default function Directory() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react/" },
+    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react" },
     { title: t("HEADER.NAV.directories"), href: "/observatorio-react/directories" },
     { title: directoryName, href: `/observatorio-react/directories/${id}` },
     { title: data && data.name },
@@ -120,18 +120,19 @@ export default function Directory() {
         // const tempData = dataJSON.result.directories[id]
 
         setDirectoryName(tempData.name)
-        setData(tempData.websites[sitioId])
+        const tempData2 = tempData.websites[sitioId]
+        setData(tempData2)
         setWebsiteStats({
-          score: (tempData.websites[sitioId].score).toFixed(1),
-          recentPage: moment(tempData.websites[sitioId].recentPage).format("LL"),
-          oldestPage: moment(tempData.websites[sitioId].oldestPage).format("LL"),
+          score: (tempData2.score).toFixed(1),
+          recentPage: moment(tempData2.recentPage).format("LL"),
+          oldestPage: moment(tempData2.oldestPage).format("LL"),
           statsTable: [
-            tempData.websites[sitioId].nPages,
-            tempData.websites[sitioId].pagesWithoutErrors,
-            tempData.websites[sitioId].pagesWithErrors,
-            tempData.websites[sitioId].pagesWithoutErrorsA,
-            tempData.websites[sitioId].pagesWithoutErrorsAA,
-            tempData.websites[sitioId].pagesWithoutErrorsAAA
+            tempData2.nPages,
+            tempData2.pagesWithoutErrors,
+            tempData2.pagesWithErrors,
+            tempData2.pagesWithoutErrorsA,
+            tempData2.pagesWithoutErrorsAA,
+            tempData2.pagesWithoutErrorsAAA
           ]
         })
       } else {
@@ -157,26 +158,45 @@ export default function Directory() {
     processData()
   }, [id, sitioId])
 
+  // useEffect to update the StatisticsHeader stats when language changes
+  useEffect(() => {
+    if(!observatorioData) return
+    const tempData = observatorioData.directories[id].websites[sitioId]
+    setWebsiteStats({
+      score: (tempData.score).toFixed(1),
+      recentPage: moment(tempData.recentPage).format("LL"),
+      oldestPage: moment(tempData.oldestPage).format("LL"),
+      statsTable: [
+        tempData.nPages,
+        tempData.pagesWithoutErrors,
+        tempData.pagesWithErrors,
+        tempData.pagesWithoutErrorsA,
+        tempData.pagesWithoutErrorsAA,
+        tempData.pagesWithoutErrorsAAA
+      ]
+    })
+  }, [language])
+
   return (
     <>
       {!loading ? 
         <div className="container website">
-          <div className="py-5">
-            <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} tagHere={t("NAV.youAreHere")} />
+          <div className="link_breadcrumb_container py-5">
+            <Breadcrumb data={breadcrumbs} darkTheme={theme} tagHere={t("NAV.youAreHere")} />
           </div>
 
           <div className={`title_container ${main_content_website}`}>
             <div className="ama-typography-body-large bold observatorio px-3 mb-2">
               {directoryName}
             </div>
-            <h2 className="bold my-2">{data && data.name}</h2>
-            <h3><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h3>
+            <h1 className="bold my-2">{data && data.name}</h1>
+            <h2><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h2>
           </div>
 
           {/* Statistics Header Component */}
           <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
             {websiteStats && <StatisticsHeader
-              darkTheme={theme === "light" ? false : true}
+              darkTheme={theme}
               stats={websiteStats}
               statsTitles={statsTitles}
               doubleRow={true}
@@ -192,7 +212,7 @@ export default function Directory() {
           {/* Radar Graph */}
           <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
             <div className="d-flex flex-column section_container py-4">
-              <h3 className="bold">{t("WEBSITE.accessibility_plot.title")}</h3>
+              <h2 className="bold">{t("WEBSITE.accessibility_plot.title")}</h2>
               <div className="d-flex radar_graphic justify-content-center">
                 {data && <RadarGraph tempData={data} />}
               </div>
@@ -202,7 +222,7 @@ export default function Directory() {
           {/* Bar+Line Graph */}
           <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
             <div className="d-flex flex-column section_container py-4">
-              <h3 className="bold mb-3">{t("DIALOGS.scores.title")}</h3>
+              <h2 className="bold mb-3">{t("DIALOGS.scores.title")}</h2>
               {data && <BarLineGraphTabs tempData={data} websiteStats={websiteStats} />}
             </div>
           </section>
@@ -212,7 +232,7 @@ export default function Directory() {
             {data && <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={false} />}
           </div>
         </div>
-      : <LoadingComponent />}
+      : <LoadingComponent darkTheme={theme} loadingText={t("MISC.loading")} />}
     </>
   );
 }

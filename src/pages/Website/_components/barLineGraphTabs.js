@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../../context/ThemeContext";
 
 // Components
-import { Tabs, SortingTable } from "../../../components/index";
+import { Tabs, SortingTable } from "ama-design-system";
 
 // Extra Data / Functions
 import { getBarLineGraph, getBarLineTable } from "../utils"
@@ -61,7 +61,7 @@ export function BarLineGraphTabs({ tempData, websiteStats }) {
           hasSort={false}
           headers={dataHeaders}
           dataList={dataTable}
-          darkTheme={theme === "light" ? false : true}
+          darkTheme={theme}
           pagination={false}
           links={false}
           caption={t("DIALOGS.scores.table")}

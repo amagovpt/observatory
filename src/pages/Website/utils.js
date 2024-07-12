@@ -138,7 +138,7 @@ export function getBarLineGraph (t, dataForLine, dataForBar, websiteStats, theme
 export function getBarLineTable (t) {
     const dataHeaders = [
         [
-          {icon: false, name: t("DIALOGS.scores.range")},
+          {icon: false, name: t("DIALOGS.scores.range"), justifyCenter: true},
           {icon: false, name: t("DIALOGS.scores.frequency"), justifyCenter: true},
           {icon: false, name: t("DIALOGS.scores.frequency")+ " (%)", justifyCenter: true},
           {icon: false, name: t("DIALOGS.scores.cumulative"), justifyCenter: true},
@@ -147,7 +147,7 @@ export function getBarLineTable (t) {
     ]
 
     const columnsOptions = {
-        range: { type: "Text", center: false, bold: false, decimalPlace: false },
+        range: { type: "Text", center: true, bold: false, decimalPlace: false },
         frequency: { type: "Number", center: true, bold: false, decimalPlace: false },
         frequency_percent: { type: "Text", center: true, bold: false, decimalPlace: false },
         cumulative: { type: "Number", center: true, bold: false, decimalPlace: false },
@@ -267,14 +267,14 @@ export function getRadarGraph (t, theme, labelsForRadar, data) {
 // horizontalData -> Data for Bar Graph
 export function getTopTenGraphTable (t, theme, labelsForHorizontal, dataForHorizontal, color) {
     const dataHeaders = [
-        {icon: false, name: t("DIALOGS.errors.level")},
+        {icon: false, name: t("DIALOGS.errors.level"), justifyCenter: true},
         {icon: false, bigWidth: "50%", name: t("DIALOGS.errors.description")},
         {icon: false, name: t("DIALOGS.errors.pages"), justifyCenter: true},
         {icon: false, name: t("DIALOGS.errors.situations"), justifyCenter: true}
     ]
     
     let columnsOptions = {
-        lvl: { type: "Text", center: false, bold: false, decimalPlace: false },
+        lvl: { type: "Text", center: true, bold: false, decimalPlace: false },
         name: { type: "Text", center: false, bold: false, decimalPlace: false },
         nPages: { type: "Number", center: true, bold: false, decimalPlace: false },
         nOccurrences: { type: "Number", center: true, bold: false, decimalPlace: false },

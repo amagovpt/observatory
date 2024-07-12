@@ -1,22 +1,45 @@
 import { useContext } from "react";
-import { Footer, Header } from "../../components";
+import { Footer, Header } from "ama-design-system";
 import { ThemeContext } from "../../context/ThemeContext";
 import "./styles.css";
 import { useTranslation } from "react-i18next";
+import { useLocation } from 'react-router-dom'
 
 export default function Layout({ children }) {
-  const { theme } = useContext(ThemeContext);
-  const { t } = useTranslation();
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const location = useLocation()
   const mainDark = theme === "light" ? "" : "main_dark";
+
+  const { t, i18n: {language, changeLanguage} } = useTranslation();
+
+  const toggleLanguage = () => {
+    if (language === "en") {
+      changeLanguage("pt");
+      document.querySelector("html")?.setAttribute("lang", "pt-PT");
+    } else {
+      changeLanguage("en");
+      document.querySelector("html")?.setAttribute("lang", "en");
+    }
+  };
 
   return (
     <>
-      <Header description={t("HEADER.text")} title={t("HEADER.title.part1")} title2={t("HEADER.title.part2")} />
+      <Header
+        description={t("HEADER.text")}
+        title={t("HEADER.title.part1")}
+        title2={t("HEADER.title.part2")}
+        darkTheme={theme}
+        homePage={location.pathname === "/observatorio-react" ? true : false}
+        language={language}
+        changeLanguage={toggleLanguage}
+        changeTheme={toggleTheme}
+        linkTo={"/observatorio-react"}
+      />
       <main className={`main ${mainDark}`} id="content" aria-label={t("HOME_PAGE.main_aria")}>
         {children}
       </main>
 
-      <Footer />
+      <Footer darkTheme={theme} />
     </>
   );
 }

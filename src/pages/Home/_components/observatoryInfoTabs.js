@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 // Components
-import { Icon, Tabs } from "../../../components/index"
+import { Icon, Tabs } from "ama-design-system"
 
 export function ObservatoryInfoTabs({ }) {
 

@@ -16,7 +16,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { DataContext } from "../../context/DataContext";
 
 // Components
-import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent } from "../../components/index";
+import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent } from "ama-design-system";
 
 // Extra Data / Functions
 import { getDirectoryTable, checkIfAllOk } from "./utils"
@@ -26,7 +26,7 @@ import dataJSON from "../../utils/data.json"
 
 export default function Directory() {
 
-  const { t } = useTranslation();
+  const { t, i18n: {language} } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ export default function Directory() {
   const [directoriesStats, setDirectoriesStats] = useState();
 
   // Data and Options for the Tables on this page
-  const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t, id)
+  const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t, id, navigate)
 
   // Navigation options
   const breadcrumbs = [
@@ -59,7 +59,7 @@ export default function Directory() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react/" },
+    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react" },
     { title: t("HEADER.NAV.directories"), href: "/observatorio-react/directories" },
     { title: directoryName },
   ];
@@ -109,26 +109,43 @@ export default function Directory() {
     processData()
   }, [id])
 
+  // useEffect to update the StatisticsHeader stats when language changes
+  useEffect(() => {
+    if(!observatorioData) return
+    const tempData = observatorioData
+    setDirectoriesStats({
+      score: (tempData.score).toFixed(1),
+      recentPage: moment(tempData.recentPage).format("LL"),
+      oldestPage: moment(tempData.oldestPage).format("LL"),
+      statsTable: [
+        tempData.nDirectories,
+        tempData.nEntities,
+        tempData.nWebsites,
+        tempData.nPages,
+      ]
+    })
+  }, [language])
+
   return (
     <>
       {!loading ? 
         <div className="container">
-          <div className="py-5">
-            <Breadcrumb data={breadcrumbs} darkTheme={theme === "light" ? false : true} tagHere={t("NAV.youAreHere")} />
+          <div className="link_breadcrumb_container py-5">
+            <Breadcrumb data={breadcrumbs} darkTheme={theme} tagHere={t("NAV.youAreHere")} />
           </div>
 
           <div className="title_container">
             <div className="ama-typography-body-large bold observatorio px-3">
               {t("DIRECTORY.title")}
             </div>
-            <h2 className="bold my-2">{t("DIRECTORY.subtitle") + " " + directoryName}</h2>
+            <h1 className="bold my-2">{t("DIRECTORY.subtitle") + " " + directoryName}</h1>
           </div>
 
           {/* Statistics Header Component */}
           <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
             {directoriesStats && 
               <StatisticsHeader
-                darkTheme={theme === "light" ? false : true}
+                darkTheme={theme}
                 stats={directoriesStats}
                 statsTitles={statsTitles}
                 title={t("DIRECTORIES.statistics_title")}
@@ -143,7 +160,7 @@ export default function Directory() {
           {/* MAIN Directory TABLE */}
           <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
             <div className="d-flex flex-column section_container py-4">
-              <h3 className="bold m-0">{t("DIRECTORIES.table.title")}</h3>
+              <h2 className="bold m-0">{t("DIRECTORIES.table.title")}</h2>
               <p className="ama-typography-body mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</p>
               {directoriesList && <SortingTable
                 hasSort={true}
@@ -151,7 +168,7 @@ export default function Directory() {
                 setDataList={setDirectoriesList}
                 dataList={directoriesList}
                 columnsOptions={columnsOptions}
-                darkTheme={theme === "light" ? false : true}
+                darkTheme={theme}
                 links={true}
                 caption={t("DIRECTORY.table.subtitle")+ " " + directoryName}
                 iconsAltTexts={nameOfIcons}
@@ -159,12 +176,13 @@ export default function Directory() {
                 itemsPaginationTexts={itemsPaginationText}
                 nItemsPerPageTexts={nItemsPerPageText}
                 paginationButtonsTexts={paginationButtonsTexts}
+                project={"/observatorio-react"}
               />}
               <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
             </div>
           </section>
         </div>
-      : <LoadingComponent />}
+      : <LoadingComponent darkTheme={theme} loadingText={t("MISC.loading")} />}
     </>
   );
 }

@@ -2,12 +2,12 @@
     background-color: transparent !important;
 }
 
-.title_container h3 a {
+.title_container h2 a {
     text-decoration: none !important;
     color: var(--ama-color-brand-primary)
 }
 
-.title_container h3 a:hover {
+.title_container h2 a:hover {
     text-decoration: underline !important;
 }
 
@@ -49,6 +49,10 @@
     color: var(--ama-color-grey-900) !important;
 }
 
+.best_practises .light_tables .sorting_table tbody tr td:last-child {
+    width: 200px !important;
+}
+
 .topTen_section ul {
     background-color: var(--ama-color-background-light-darker) !important;
     margin-bottom: 10px !important;
@@ -79,6 +83,14 @@
 
     .overflow {
         overflow-x: auto;
+    }
+
+    .main_content_website .sorting_table tbody tr:hover {
+        background-color: var(--ama-color-background-dark-lighter) !important;
+    }
+
+    .main_content_website .sorting_table thead tr th {
+        background-color: var(--ama-color-background-dark-darker) !important;
     }
 
     .tabs_section .nav-tabs .nav-link.active,
@@ -125,12 +137,8 @@
     background-color: transparent !important;
 }
 
-.title_container.main_content_website h3 a {
+.title_container.main_content_website h2 a {
     color: var(--ama-color-text-blue);
-}
-
-.main_content_website .section_container h3 {
-    color: var(--ama-color-background-white) !important;
 }
 
 .main_content_website .sorting_table thead tr,
@@ -138,8 +146,6 @@
     background-color: var(--ama-color-background-dark-darker) !important;
 }
 
-.main_content_website .best_practises h3,
-.main_content_website .best_practises h4,
 .main_content_website .best_practises .light_tables .sorting_table thead tr th {
     color: var(--ama-color-background-white) !important;
 }

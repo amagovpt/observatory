@@ -78,7 +78,7 @@ export function searchFuntion (text, setSearch, setOtherData, dataProcess) {
 // columnsOptions -> Options to tell the type to render with which property for main table
 // statsTitles -> Titles for the StatisticsHeader component
 // nameOfIcons -> Name of icons to be showned in the table
-export function getDirectoriesTable (t) {
+export function getDirectoriesTable (t, navigate) {
     const searchTableHeaders = [
       {icon: false, bigWidth: "40%", name: t("DIRECTORIES.search.directory"), property: "directoryName"},
       {icon: false, bigWidth: "40%", name: t("DIRECTORIES.search.website"), property: "name"},
@@ -89,9 +89,9 @@ export function getDirectoriesTable (t) {
     ]
     
     let columnsOptionsSearch = {
-      directoryName: { type: "Link", center: false, bold: false, decimalPlace: false, href: "/observatorio-react/directories/"},
+      directoryName: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => navigate(`/observatorio-react/directories/${row.directoryId}`) },
       directoryId: { type: "Skip", center: false, bold: false, decimalPlace: false },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: "/observatorio-react/directories/" },
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => navigate(`/observatorio-react/directories/${row.directoryId}/${row.id}`) },
       id: { type: "Skip", center: false, bold: false, decimalPlace: false },
       declaration: { type: "Declaration", center: true, bold: false, decimalPlace: false },
       stamp: { type: "Stamp", center: true, bold: false, decimalPlace: false },
@@ -120,7 +120,7 @@ export function getDirectoriesTable (t) {
     let columnsOptions = {
       id: { type: "Skip", center: false, bold: false, decimalPlace: false },
       rank: { type: "Number", center: true, bold: false, decimalPlace: false },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: "/observatorio-react/directories/" },
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => navigate(`/observatorio-react/directories/${row.id}`) },
       declarations: { type: "Number", center: true, bold: false, decimalPlace: false },
       stamps: { type: "Number", center: true, bold: false, decimalPlace: false },
       score: { type: "Number", center: true, bold: false, decimalPlace: true },

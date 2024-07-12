@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 // Components
-import { Icon } from "../../../components/index"
+import { Icon } from "ama-design-system"
 
 export function Top5_Practices({ data, title, icon }) {
 
