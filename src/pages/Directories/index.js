@@ -70,7 +70,6 @@ export default function Directories() {
       setLoading(true)
 
       if(!observatorioData) {
-
         // const {response, err} = await getObservatoryData();
         const response = dataJSON
         const err = {}
@@ -80,7 +79,7 @@ export default function Directories() {
         } else {
           setObsData(response.data?.result)
           setDirectoriesStats(createStatisticsObject("directories", response.data?.result, moment))
-          setDirectoriesList(response.data?.result)
+          setDirectoriesList(response.data?.result.directoriesList)
         }
 
       } else {
@@ -142,7 +141,7 @@ export default function Directories() {
                 pagination={false}
                 caption={t("DIRECTORIES.table.title")}
                 columnsOptions={columnsOptions}
-                project={"/"}
+                project={""}
               />}
               <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
             </div>
@@ -167,7 +166,7 @@ export default function Directories() {
                     hasSort={true}
                     caption={t("DIRECTORY.table.subtitle")+ " "}
                     iconsAltTexts={nameOfIcons}
-                    project={"/"}
+                    project={""}
                   />
                 :
                   <div className="ama-typography-body-large">{t("DIRECTORIES.search.no_results")}</div>
