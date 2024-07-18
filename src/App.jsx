@@ -20,14 +20,14 @@ export default function App() {
       <DataProvider>
         <Router>
           <Layout>
-            <Routes basename="/observatorio-react">
-              <Route path="/observatorio-react" element={<Home />} />
-              <Route path="/observatorio-react/directories" element={<Directories />} />
-              <Route path="/observatorio-react/directories/:id" element={<Directory />} />
-              <Route path="/observatorio-react/directories/:id/:id" element={<Website />} />
+            <Routes basename="/">
+              <Route path="/" element={<Home />} />
+              <Route path="/directories" element={<Directories />} />
+              <Route path="/directories/:id" element={<Directory />} />
+              <Route path="/directories/:id/:id" element={<Website />} />
 
               {/* Error page needs to be last */}
-              <Route path="/observatorio-react/*" element={<Error />} />
+              <Route path="/*" element={<Error />} />
             </Routes>
           </Layout>
         </Router>

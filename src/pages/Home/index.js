@@ -56,7 +56,8 @@ export default function Home() {
       setLoading(true)
 
       // const {response, err} = await getObservatoryData();
-      const {response, err} = dataJSON;
+      const response = dataJSON
+      const err = {}
 
       if(err && err.code) {
         setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
@@ -126,7 +127,7 @@ export default function Home() {
                 text={t("HOME.top5.button")}
                 size="lg"
                 id="btn-url"
-                onClick={() => navigate("/observatorio-react/directories")}
+                onClick={() => navigate("/directories")}
               />
             </div>
             <div className="flex-1 top5_div">
@@ -135,7 +136,7 @@ export default function Home() {
                   <li className="d-flex justify-content-between align-items-center mb-2">
                     <div className="d-flex flex-row align-items-center">
                       <span className="ama-typography-body top5_number me-3">{website.index}</span>
-                      <a href="" className="top5_link ama-typography-body-large bold" onClick={() => navigate(`/observatorio-react/directories/${website.DirectoryId}/${website.id}`)}>{website.name}</a>
+                      <a href="" className="top5_link ama-typography-body-large bold" onClick={() => navigate(`/directories/${website.DirectoryId}/${website.id}`)}>{website.name}</a>
                     </div>
                     <span className="ama-typography-body-large bold">{(website.score).toFixed(1)}</span>
                   </li>

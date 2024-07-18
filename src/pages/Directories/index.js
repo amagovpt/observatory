@@ -61,8 +61,8 @@ export default function Directories() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate("/observatorio-react") },
-    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate("/observatorio-react/directories") },
+    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate("/") },
+    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate("/directories") },
   ];
 
   useEffect(() => {
@@ -72,7 +72,8 @@ export default function Directories() {
       if(!observatorioData) {
 
         // const {response, err} = await getObservatoryData();
-        const {response, err} = dataJSON;
+        const response = dataJSON
+        const err = {}
 
         if(err && err.code) {
           setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
@@ -141,7 +142,7 @@ export default function Directories() {
                 pagination={false}
                 caption={t("DIRECTORIES.table.title")}
                 columnsOptions={columnsOptions}
-                project={"/observatorio-react"}
+                project={"/"}
               />}
               <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
             </div>
@@ -166,7 +167,7 @@ export default function Directories() {
                     hasSort={true}
                     caption={t("DIRECTORY.table.subtitle")+ " "}
                     iconsAltTexts={nameOfIcons}
-                    project={"/observatorio-react"}
+                    project={"/"}
                   />
                 :
                   <div className="ama-typography-body-large">{t("DIRECTORIES.search.no_results")}</div>

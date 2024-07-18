@@ -14,7 +14,7 @@ export default function Resume() {
     <div className={`container_error ${themeClass}`}>
       <h1>{t("MISC._404.title")}</h1>
       <p className="ama-typography-body">{t("MISC._404.description")}</p>
-      <a href="/observatorio-react" className="d-flex align-items-center ama-typography-action">
+      <a href="/" className="d-flex align-items-center ama-typography-action">
         <span className="pe-2">{t("MISC._404.homepage")}</span>
         <Icon name="AMA-Entrar-Line" />
       </a>

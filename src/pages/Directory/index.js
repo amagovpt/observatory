@@ -62,8 +62,8 @@ export default function Directory() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate("/observatorio-react") },
-    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate("/observatorio-react/directories") },
+    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate("/") },
+    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate("/directories") },
     { title: directoryName },
   ];
 
@@ -73,7 +73,8 @@ export default function Directory() {
       if(!observatorioData){
         
         // const {response, err} = await getObservatoryData();
-        const {response, err} = dataJSON;
+        const response = dataJSON
+        const err = {}
 
         if(err && err.code) {
           setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
@@ -154,7 +155,7 @@ export default function Directory() {
                   itemsPaginationTexts={itemsPaginationText}
                   nItemsPerPageTexts={nItemsPerPageText}
                   paginationButtonsTexts={paginationButtonsTexts}
-                  project={"/observatorio-react"}
+                  project={"/"}
                 />}
                 <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
               </div>

@@ -29,11 +29,11 @@ export default function Layout({ children }) {
         title={t("HEADER.title.part1")}
         title2={t("HEADER.title.part2")}
         darkTheme={theme}
-        homePage={location.pathname === "/observatorio-react" ? true : false}
+        homePage={location.pathname === "/" ? true : false}
         language={language}
         changeLanguage={toggleLanguage}
         changeTheme={toggleTheme}
-        linkTo={"/observatorio-react"}
+        linkTo={"/"}
       />
       <main className={`main ${mainDark}`} id="content" aria-label={t("HOME_PAGE.main_aria")}>
         {children}
