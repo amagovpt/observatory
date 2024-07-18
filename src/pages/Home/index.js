@@ -1,7 +1,7 @@
 import "./styles.css";
 
 // Api
-import { api } from "../../config/api";
+import { api, getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
@@ -21,7 +21,8 @@ import { Top5_Practices } from "./_components/top5_practices";
 import { AchievementPerType } from "./_components/achievementPerType"
 import { ObservatoryInfoTabs } from "./_components/observatoryInfoTabs";
 
-import dataJSON from "../../utils/data.json"
+// import dataJSON from "../../utils/data.json"
+import { createStatisticsObject } from '../../utils/utils'
 
 export default function Home() {
 
@@ -34,12 +35,15 @@ export default function Home() {
 
   // Observatorio Data
   const { observatorioData, setObsData } = useContext(DataContext);
+
+  const [error, setError] = useState();
   
   // Loading
   const [loading, setLoading] = useState(true);
 
   // Data for StatisticsHeader component
   const [directoriesStats, setDirectoriesStats] = useState(null);
+
   let statsTitles = [
     t("STATISTICS.directories"),
     t("STATISTICS.entities"),
@@ -51,24 +55,16 @@ export default function Home() {
     const processData = async () => {
       setLoading(true)
 
-      const response = await api.get("/observatory")
-      setObsData(response.data?.result)
-      const tempData = response.data?.result
+      const {response, err} = await getObservatoryData();
+      // const {response, err} = dataJSON;
 
-      // setObsData(dataJSON.result)
-      // const tempData = dataJSON.result
+      if(err && err.code) {
+        setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
+      } else {
+        setObsData(response.data?.result)
+        setDirectoriesStats(createStatisticsObject("home", response.data?.result, moment))
+      }
 
-      setDirectoriesStats({
-        score: (tempData.score).toFixed(1),
-        recentPage: moment(tempData.recentPage).format("LL"),
-        oldestPage: moment(tempData.oldestPage).format("LL"),
-        statsTable: [
-          tempData.nDirectories,
-          tempData.nEntities,
-          tempData.nWebsites,
-          tempData.nPages,
-        ]
-      })
       setLoading(false)
     }
     processData()
@@ -76,19 +72,8 @@ export default function Home() {
 
   // useEffect to update the StatisticsHeader stats when language changes
   useEffect(() => {
-    if(!observatorioData) return
-    const tempData = observatorioData
-    setDirectoriesStats({
-      score: (tempData.score).toFixed(1),
-      recentPage: moment(tempData.recentPage).format("LL"),
-      oldestPage: moment(tempData.oldestPage).format("LL"),
-      statsTable: [
-        tempData.nDirectories,
-        tempData.nEntities,
-        tempData.nWebsites,
-        tempData.nPages,
-      ]
-    })
+    if(!observatorioData) return;
+    setDirectoriesStats(createStatisticsObject("home", observatorioData, moment))
   }, [language])
 
   // Data for the censos section
@@ -105,7 +90,8 @@ export default function Home() {
   return (
     <>
     {!loading ? 
-      <>
+      !error ? 
+        <>
         <section className={`bg-white ${main_content_home} d-flex flex-column align-items-center py-5 welcome_section`}>
           <div className="container welcome_container mb-4">
             <h2 className="mb-2">{t("HEADER.welcome.title")}</h2>
@@ -216,6 +202,9 @@ export default function Home() {
           </div>
         </section>
       </>
+      : <section className={`${main_content_home} d-flex flex-column align-items-center py-5 welcome_section`}>
+          <h2 className="text-center w-50">{error}</h2>
+        </section>
     : <LoadingComponent darkTheme={theme} loadingText={t("MISC.loading")} />}
     </>
   );

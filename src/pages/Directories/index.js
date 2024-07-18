@@ -1,7 +1,7 @@
 import "./styles.css";
 
 // Api
-import { api } from "../../config/api";
+import { api, getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
@@ -21,7 +21,8 @@ import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent } from "am
 // Extra Data / Functions
 import { searchFuntion, getDirectoriesTable } from "./utils"
 
-import dataJSON from "../../utils/data.json"
+// import dataJSON from "../../utils/data.json"
+import { createStatisticsObject } from '../../utils/utils'
 
 
 export default function Directories() {
@@ -31,7 +32,7 @@ export default function Directories() {
 
   // Theme
   const { theme } = useContext(ThemeContext);
-  const main_content_home = theme === "light" ? "" : "main_content_directories";
+  const main_content_directories = theme === "light" ? "" : "main_content_directories";
 
   // Observatorio Data
   const { observatorioData, setObsData } = useContext(DataContext);
@@ -39,6 +40,8 @@ export default function Directories() {
   // Search and data for the search table
   const [search, setSearch] = useState("");
   const [otherData, setOtherData] = useState(null);
+
+  const [error, setError] = useState();
 
   // Data for the main table
   const [directoriesList, setDirectoriesList] = useState();
@@ -58,45 +61,29 @@ export default function Directories() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react" },
-    { title: t("HEADER.NAV.directories"), href: "/observatorio-react/directories" },
+    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate("/observatorio-react") },
+    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate("/observatorio-react/directories") },
   ];
 
   useEffect(() => {
     const processData = async () => {
       setLoading(true)
-      if(!observatorioData){
-        const response = await api.get("/observatory")
-        setObsData(response.data?.result)
-        const tempData = response.data?.result
 
-        // setObsData(dataJSON.result)
-        // const tempData = dataJSON.result
+      if(!observatorioData) {
 
-        setDirectoriesStats({
-          score: (tempData.score).toFixed(1),
-          recentPage: moment(tempData.recentPage).format("LL"),
-          oldestPage: moment(tempData.oldestPage).format("LL"),
-          statsTable: [
-            tempData.nDirectories,
-            tempData.nEntities,
-            tempData.nWebsites,
-            tempData.nPages,
-          ]
-        })
-        setDirectoriesList(tempData.directoriesList)
+        const {response, err} = await getObservatoryData();
+        // const {response, err} = dataJSON;
+
+        if(err && err.code) {
+          setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
+        } else {
+          setObsData(response.data?.result)
+          setDirectoriesStats(createStatisticsObject("directories", response.data?.result, moment))
+          setDirectoriesList(response.data?.result)
+        }
+
       } else {
-        setDirectoriesStats({
-          score: (observatorioData.score).toFixed(1),
-          recentPage: moment(observatorioData.recentPage).format("LL"),
-          oldestPage: moment(observatorioData.oldestPage).format("LL"),
-          statsTable: [
-            observatorioData.nDirectories,
-            observatorioData.nEntities,
-            observatorioData.nWebsites,
-            observatorioData.nPages,
-          ]
-        })
+        setDirectoriesStats(createStatisticsObject("directories", observatorioData, moment))
         setDirectoriesList(observatorioData.directoriesList)
       }
       setLoading(false)
@@ -107,23 +94,13 @@ export default function Directories() {
   // useEffect to update the StatisticsHeader stats when language changes
   useEffect(() => {
     if(!observatorioData) return
-    const tempData = observatorioData
-    setDirectoriesStats({
-      score: (tempData.score).toFixed(1),
-      recentPage: moment(tempData.recentPage).format("LL"),
-      oldestPage: moment(tempData.oldestPage).format("LL"),
-      statsTable: [
-        tempData.nDirectories,
-        tempData.nEntities,
-        tempData.nWebsites,
-        tempData.nPages,
-      ]
-    })
+    setDirectoriesStats(createStatisticsObject("directories", observatorioData, moment))
   }, [language])
 
   return (
     <>
       {!loading ? 
+        !error ?
         <div className="container">
           <div className="link_breadcrumb_container py-5">
             <Breadcrumb data={breadcrumbs} darkTheme={theme} tagHere={t("NAV.youAreHere")} />
@@ -137,7 +114,7 @@ export default function Directories() {
           </div>
 
           {/* Statistics Header Component */}
-          <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
+          <section className={`bg-white ${main_content_directories} d-flex flex-row justify-content-center align-items-center my-5`}>
             {directoriesStats && <StatisticsHeader
               darkTheme={theme}
               stats={directoriesStats}
@@ -152,7 +129,7 @@ export default function Directories() {
           </section>
 
           {/* MAIN Directories TABLE */}
-          <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5`}>
+          <section className={`bg-white ${main_content_directories} d-flex flex-row justify-content-center align-items-center my-5`}>
             <div className="d-flex flex-column section_container py-4 m-0">
               <h2 className="bold pb-3 m-0">{t("DIRECTORIES.table.title")}</h2>
               {directoriesList && <SortingTable
@@ -171,7 +148,7 @@ export default function Directories() {
           </section>
 
           {/* SEARCH TABLE */}
-          <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center`}>
+          <section className={`bg-white ${main_content_directories} d-flex flex-row justify-content-center align-items-center`}>
             <div className="d-flex flex-column search_container p-4 px-5">
               <form className="d-flex flex-column">
                 <label htmlFor="search" className="ama-typography-body-large bold mb-2">{t("DIRECTORIES.search.label")}</label>
@@ -200,6 +177,9 @@ export default function Directories() {
             </div>
           </section>
         </div>
+        : <section className={`${main_content_directories} d-flex flex-column align-items-center py-5 welcome_section`}>
+            <h2 className="text-center w-50">{error}</h2>
+          </section>
       : <LoadingComponent darkTheme={theme} loadingText={t("MISC.loading")} />}
     </>
   );

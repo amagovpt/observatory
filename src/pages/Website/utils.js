@@ -364,10 +364,12 @@ export function getTopTenGraphTable (t, theme, labelsForHorizontal, dataForHoriz
 }
 
 
-export function checkIfAllOk (id, websiteId, array) {
-  if(!array) return false
+export function checkIfDirectoryOk (id, array) {
   const idObejct = array.directoriesList.find(e => e.id === id)
-  if(!idObejct) return false
+  return idObejct ? true : false;
+}
+
+export function checkIfWebsiteOk (id, websiteId, array) {
   const websiteObejct = array.directories[id].websitesList.find(e => e.id === websiteId)
   return websiteObejct ? true : false;
 }

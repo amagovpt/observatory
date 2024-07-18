@@ -1,7 +1,7 @@
 import "./styles.css";
 
 // Api
-import { api } from "../../config/api";
+import { api, getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
@@ -22,16 +22,18 @@ import { RadarGraph } from "./_components/radarGraph";
 import { Breadcrumb, Tabs, StatisticsHeader, LoadingComponent } from "ama-design-system";
 
 // Extra Data / Functions
-import { checkIfAllOk } from "./utils"
+import { checkIfDirectoryOk, checkIfWebsiteOk } from "./utils"
 
-import dataJSON from "../../utils/data.json"
-
+// import dataJSON from "../../utils/data.json"
+import { createStatisticsObject } from '../../utils/utils'
 
 export default function Directory() {
 
   const { t, i18n: {language} } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [error, setError] = useState();
 
   // Theme
   const { theme } = useContext(ThemeContext);
@@ -60,9 +62,9 @@ export default function Directory() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "/observatorio-react" },
-    { title: t("HEADER.NAV.directories"), href: "/observatorio-react/directories" },
-    { title: directoryName, href: `/observatorio-react/directories/${id}` },
+    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate("/observatorio-react") },
+    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate("/observatorio-react/directories") },
+    { title: directoryName, href: "", onClick: () => navigate(`/observatorio-react/directories/${id}`) },
     { title: data && data.name },
   ];
 
@@ -110,48 +112,30 @@ export default function Directory() {
     const processData = async () => {
       setLoading(true)
       if(!observatorioData){
-        const response = await api.get("/observatory")
-        setObsData(response.data?.result)
-        if(!checkIfAllOk(id, sitioId, response.data?.result)) navigate("/observatorio-react/error")
-        const tempData = response.data?.result.directories[id]
-        
-        // setObsData(dataJSON.result)
-        // if(!checkIfAllOk(id, sitioId, dataJSON.result)) navigate("/error")
-        // const tempData = dataJSON.result.directories[id]
 
-        setDirectoryName(tempData.name)
-        const tempData2 = tempData.websites[sitioId]
-        setData(tempData2)
-        setWebsiteStats({
-          score: (tempData2.score).toFixed(1),
-          recentPage: moment(tempData2.recentPage).format("LL"),
-          oldestPage: moment(tempData2.oldestPage).format("LL"),
-          statsTable: [
-            tempData2.nPages,
-            tempData2.pagesWithoutErrors,
-            tempData2.pagesWithErrors,
-            tempData2.pagesWithoutErrorsA,
-            tempData2.pagesWithoutErrorsAA,
-            tempData2.pagesWithoutErrorsAAA
-          ]
-        })
+        const {response, err} = await getObservatoryData();
+        // const {response, err} = dataJSON;
+
+        if(err && err.code) {
+          setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
+        } else if(!checkIfDirectoryOk(id, response.data?.result)) {
+          setError(t("MISC.directory_error"));
+        } else if(!checkIfWebsiteOk(id, sitioId, response.data?.result)) {
+          setError(t("MISC.website_error"));
+        } else {
+          setObsData(response.data?.result)
+          const tempData = response.data?.result.directories[id]
+
+          setDirectoryName(tempData.name)
+          const tempData2 = tempData.websites[sitioId]
+          setData(tempData2)
+          setWebsiteStats(createStatisticsObject("website", tempData2, moment))
+        }
       } else {
         setDirectoryName(observatorioData.directories[id].name)
         const tempData = observatorioData.directories[id].websites[sitioId]
         setData(tempData)
-        setWebsiteStats({
-          score: (tempData.score).toFixed(1),
-          recentPage: moment(tempData.recentPage).format("LL"),
-          oldestPage: moment(tempData.oldestPage).format("LL"),
-          statsTable: [
-            tempData.nPages,
-            tempData.pagesWithoutErrors,
-            tempData.pagesWithErrors,
-            tempData.pagesWithoutErrorsA,
-            tempData.pagesWithoutErrorsAA,
-            tempData.pagesWithoutErrorsAAA
-          ]
-        })
+        setWebsiteStats(createStatisticsObject("website", tempData, moment))
       }
       setLoading(false)
     }
@@ -161,77 +145,68 @@ export default function Directory() {
   // useEffect to update the StatisticsHeader stats when language changes
   useEffect(() => {
     if(!observatorioData) return
-    const tempData = observatorioData.directories[id].websites[sitioId]
-    setWebsiteStats({
-      score: (tempData.score).toFixed(1),
-      recentPage: moment(tempData.recentPage).format("LL"),
-      oldestPage: moment(tempData.oldestPage).format("LL"),
-      statsTable: [
-        tempData.nPages,
-        tempData.pagesWithoutErrors,
-        tempData.pagesWithErrors,
-        tempData.pagesWithoutErrorsA,
-        tempData.pagesWithoutErrorsAA,
-        tempData.pagesWithoutErrorsAAA
-      ]
-    })
+    setWebsiteStats(createStatisticsObject("website", observatorioData.directories[id].websites[sitioId], moment))
   }, [language])
 
   return (
     <>
       {!loading ? 
-        <div className="container website">
-          <div className="link_breadcrumb_container py-5">
-            <Breadcrumb data={breadcrumbs} darkTheme={theme} tagHere={t("NAV.youAreHere")} />
-          </div>
-
-          <div className={`title_container ${main_content_website}`}>
-            <div className="ama-typography-body-large bold observatorio px-3 mb-2">
-              {directoryName}
+        !error ?
+          <div className="container website">
+            <div className="link_breadcrumb_container py-5">
+              <Breadcrumb data={breadcrumbs} darkTheme={theme} tagHere={t("NAV.youAreHere")} />
             </div>
-            <h1 className="bold my-2">{data && data.name}</h1>
-            <h2><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h2>
-          </div>
 
-          {/* Statistics Header Component */}
-          <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
-            {websiteStats && <StatisticsHeader
-              darkTheme={theme}
-              stats={websiteStats}
-              statsTitles={statsTitles}
-              doubleRow={true}
-              title={t("DIRECTORIES.statistics_title")}
-              subtitle={t("DIRECTORIES.statistics_subtitle")}
-              oldestPage={t("STATISTICS.oldest_page_updated")}
-              newestPage={t("STATISTICS.newest_page_updated")}
-              gaugeTitle={t("STATISTICS.gauge.label")}
-              buttons={false}
-            />}
-          </section>
-
-          {/* Radar Graph */}
-          <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
-            <div className="d-flex flex-column section_container py-4">
-              <h2 className="bold">{t("WEBSITE.accessibility_plot.title")}</h2>
-              <div className="d-flex radar_graphic justify-content-center">
-                {data && <RadarGraph tempData={data} />}
+            <div className={`title_container ${main_content_website}`}>
+              <div className="ama-typography-body-large bold observatorio px-3 mb-2">
+                {directoryName}
               </div>
+              <h1 className="bold my-2">{data && data.name}</h1>
+              <h2><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h2>
             </div>
-          </section>
 
-          {/* Bar+Line Graph */}
-          <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
-            <div className="d-flex flex-column section_container py-4">
-              <h2 className="bold mb-3">{t("DIALOGS.scores.title")}</h2>
-              {data && <BarLineGraphTabs tempData={data} websiteStats={websiteStats} />}
+            {/* Statistics Header Component */}
+            <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
+              {websiteStats && <StatisticsHeader
+                darkTheme={theme}
+                stats={websiteStats}
+                statsTitles={statsTitles}
+                doubleRow={true}
+                title={t("DIRECTORIES.statistics_title")}
+                subtitle={t("DIRECTORIES.statistics_subtitle")}
+                oldestPage={t("STATISTICS.oldest_page_updated")}
+                newestPage={t("STATISTICS.newest_page_updated")}
+                gaugeTitle={t("STATISTICS.gauge.label")}
+                buttons={false}
+              />}
+            </section>
+
+            {/* Radar Graph */}
+            <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
+              <div className="d-flex flex-column section_container py-4">
+                <h2 className="bold">{t("WEBSITE.accessibility_plot.title")}</h2>
+                <div className="d-flex radar_graphic justify-content-center">
+                  {data && <RadarGraph tempData={data} />}
+                </div>
+              </div>
+            </section>
+
+            {/* Bar+Line Graph */}
+            <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
+              <div className="d-flex flex-column section_container py-4">
+                <h2 className="bold mb-3">{t("DIALOGS.scores.title")}</h2>
+                {data && <BarLineGraphTabs tempData={data} websiteStats={websiteStats} />}
+              </div>
+            </section>
+
+            {/* Good / Bad section */}
+            <div className="good_bad">
+              {data && <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={false} />}
             </div>
-          </section>
-
-          {/* Good / Bad section */}
-          <div className="good_bad">
-            {data && <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={false} />}
           </div>
-        </div>
+        : <section className={`${main_content_website} d-flex flex-column align-items-center py-5 welcome_section`}>
+            <h2 className="text-center w-50">{error}</h2>
+          </section>
       : <LoadingComponent darkTheme={theme} loadingText={t("MISC.loading")} />}
     </>
   );
