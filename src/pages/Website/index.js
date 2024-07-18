@@ -46,8 +46,8 @@ export default function Directory() {
   const { observatorioData, setObsData } = useContext(DataContext);
 
   // Navigation Parameters
-  const id = Number(location.pathname.split("/")[3]) || null;
-  const sitioId = Number(location.pathname.split("/")[4]) || null;
+  const id = Number(location.pathname.split("/")[2]) || null;
+  const sitioId = Number(location.pathname.split("/")[3]) || null;
 
   // General Data
   const [data, setData] = useState(null);
