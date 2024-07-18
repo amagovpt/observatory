@@ -1,7 +1,7 @@
 import "./styles.css";
 
 // Api
-import { api, getObservatoryData } from "../../config/api";
+//import { api, getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
@@ -24,7 +24,7 @@ import { Breadcrumb, Tabs, StatisticsHeader, LoadingComponent } from "ama-design
 // Extra Data / Functions
 import { checkIfDirectoryOk, checkIfWebsiteOk } from "./utils"
 
-// import dataJSON from "../../utils/data.json"
+import dataJSON from "../../utils/data.json"
 import { createStatisticsObject } from '../../utils/utils'
 
 export default function Directory() {

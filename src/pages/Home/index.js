@@ -1,7 +1,7 @@
 import "./styles.css";
 
 // Api
-import { api, getObservatoryData } from "../../config/api";
+//import { api, getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
@@ -21,7 +21,7 @@ import { Top5_Practices } from "./_components/top5_practices";
 import { AchievementPerType } from "./_components/achievementPerType"
 import { ObservatoryInfoTabs } from "./_components/observatoryInfoTabs";
 
-// import dataJSON from "../../utils/data.json"
+import dataJSON from "../../utils/data.json"
 import { createStatisticsObject } from '../../utils/utils'
 
 export default function Home() {

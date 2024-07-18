@@ -1,7 +1,7 @@
 import "./styles.css";
 
 // Api
-import { api, getObservatoryData } from "../../config/api";
+// import { api, getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
@@ -21,7 +21,7 @@ import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent } from "am
 // Extra Data / Functions
 import { searchFuntion, getDirectoriesTable } from "./utils"
 
-// import dataJSON from "../../utils/data.json"
+import dataJSON from "../../utils/data.json"
 import { createStatisticsObject } from '../../utils/utils'
 
 
