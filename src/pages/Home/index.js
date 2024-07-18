@@ -55,8 +55,8 @@ export default function Home() {
     const processData = async () => {
       setLoading(true)
 
-      const {response, err} = await getObservatoryData();
-      // const {response, err} = dataJSON;
+      // const {response, err} = await getObservatoryData();
+      const {response, err} = dataJSON;
 
       if(err && err.code) {
         setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
