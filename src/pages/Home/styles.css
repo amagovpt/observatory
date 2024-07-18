@@ -189,6 +189,10 @@
     border-color: var(--ama-color-text-blue);
 }
 
+.main_content_home .top5_div button:focus {
+    border-color: var(--ama-color-yellow-400);
+}
+
 .main_content_home .top5_div button:hover {
     background-color: var(--ama-color-background-dark-darker) !important;
     color:var(--ama-color-text-blue);
