@@ -150,3 +150,7 @@
     color: var(--ama-color-background-white) !important;
 }
 
+.main_dark .website .sorting_table tbody tr:hover {
+    background-color: transparent !important;
+}
+
