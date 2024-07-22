@@ -180,7 +180,7 @@ export function getGoodBadTabTables (t, goodOrBad) {
 
     let columnsOptionsAAs = {
         number: { type: "Text", center: true, bold: true, decimalPlace: false },
-        name: { type: "Text", center: false, bold: false, decimalPlace: false },
+        name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
         nPages: { type: "DoubleText", center: true, bold: false, decimalPlace: false },
     }
 
@@ -193,7 +193,7 @@ export function getGoodBadTabTables (t, goodOrBad) {
     ]
     
     let columnsOptionsDetails = {
-        name: { type: "Text", center: false, bold: false, decimalPlace: false },
+        name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
         practices: { type: "MultiText", center: true, bold: false, decimalPlace: false },
         pages: { type: "Number", center: true, bold: false, decimalPlace: false },
         occurences: { type: "Number", center: true, bold: false, decimalPlace: false },
@@ -275,7 +275,7 @@ export function getTopTenGraphTable (t, theme, labelsForHorizontal, dataForHoriz
     
     let columnsOptions = {
         lvl: { type: "Text", center: true, bold: false, decimalPlace: false },
-        name: { type: "Text", center: false, bold: false, decimalPlace: false },
+        name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
         nPages: { type: "Number", center: true, bold: false, decimalPlace: false },
         nOccurrences: { type: "Number", center: true, bold: false, decimalPlace: false },
     }

@@ -1,3 +1,7 @@
+.directory_container .sorting_table tbody tr:hover {
+    background-color: var(--ama-color-background-light-darker) !important;
+}
+
 /* DARK MODE */
 .main_content_directory {
     background-color: var(--ama-color-background-dark-lighter) !important;
@@ -17,4 +21,8 @@
 .main_content_directory .section_container h3,
 .main_content_directory .section_container h4 {
     color: var(--ama-color-background-white);
+}
+
+.main_content_directory .directory_container .sorting_table tbody tr:hover {
+    background-color: var(--ama-color-background-dark-darker) !important;
 }

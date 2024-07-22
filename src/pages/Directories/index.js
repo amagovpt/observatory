@@ -1,7 +1,7 @@
 import "./styles.css";
 
 // Api
-// import { api, getObservatoryData } from "../../config/api";
+import { getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
@@ -21,7 +21,6 @@ import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent } from "am
 // Extra Data / Functions
 import { searchFuntion, getDirectoriesTable } from "./utils"
 
-import dataJSON from "../../utils/data.json"
 import { createStatisticsObject } from '../../utils/utils'
 
 
@@ -70,9 +69,7 @@ export default function Directories() {
       setLoading(true)
 
       if(!observatorioData) {
-        // const {response, err} = await getObservatoryData();
-        const response = dataJSON
-        const err = {}
+        const {response, err} = await getObservatoryData();
 
         if(err && err.code) {
           setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
@@ -130,7 +127,7 @@ export default function Directories() {
 
           {/* MAIN Directories TABLE */}
           <section className={`bg-white ${main_content_directories} d-flex flex-row justify-content-center align-items-center my-5`}>
-            <div className="d-flex flex-column section_container py-4 m-0">
+            <div className="d-flex flex-column section_container py-4 m-0 directories_container">
               <h2 className="bold pb-3 m-0">{t("DIRECTORIES.table.title")}</h2>
               {directoriesList && <SortingTable
                 darkTheme={theme}

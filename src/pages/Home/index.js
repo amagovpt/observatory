@@ -1,7 +1,7 @@
 import "./styles.css";
 
 // Api
-//import { api, getObservatoryData } from "../../config/api";
+import { getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
@@ -21,7 +21,6 @@ import { Top5_Practices } from "./_components/top5_practices";
 import { AchievementPerType } from "./_components/achievementPerType"
 import { ObservatoryInfoTabs } from "./_components/observatoryInfoTabs";
 
-import dataJSON from "../../utils/data.json"
 import { createStatisticsObject } from '../../utils/utils'
 
 export default function Home() {
@@ -55,9 +54,7 @@ export default function Home() {
     const processData = async () => {
       setLoading(true)
 
-      // const {response, err} = await getObservatoryData();
-      const response = dataJSON
-      const err = {}
+      const {response, err} = await getObservatoryData();
 
       if(err && err.code) {
         setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
