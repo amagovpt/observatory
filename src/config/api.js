@@ -1,5 +1,5 @@
 import axios from "axios";
-import dataJSON from "../../utils/data.json"
+import dataJSON from '../utils/data.json'
 
 export const api = axios.create({
   baseURL: "http://10.55.37.16:/api",

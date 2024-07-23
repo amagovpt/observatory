@@ -133,7 +133,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
             caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"})}
           />}
         </div>
-        <h2 className="bold mt-5 mb-3">{t("WEBSITE.table.best_title")}</h2>
+        <h2 className="bold mt-5 mb-3">{t(`WEBSITES.table.${goodOrBad}`)}</h2>
         {detailsTable && <SortingTable
           hasSort={false}
           headers={detailsTableHeaders}
@@ -142,7 +142,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
           darkTheme={theme}
           pagination={false}
           links={false}
-          caption={t("WEBSITE.table.best_title")}
+          caption={t(`WEBSITES.table.${goodOrBad}`)}
         />}
       </div>
     </section>

@@ -23,6 +23,8 @@ import { getDirectoryTable, checkIfDirectoryOk } from "./utils"
 
 import { createStatisticsObject } from '../../utils/utils'
 
+import { pathURL } from "../../App";
+
 
 export default function Directory() {
 
@@ -61,8 +63,8 @@ export default function Directory() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate("/") },
-    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate("/directories") },
+    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate(`${pathURL}`) },
+    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate(`${pathURL}directories`) },
     { title: directoryName },
   ];
 
@@ -152,7 +154,7 @@ export default function Directory() {
                   itemsPaginationTexts={itemsPaginationText}
                   nItemsPerPageTexts={nItemsPerPageText}
                   paginationButtonsTexts={paginationButtonsTexts}
-                  project={""}
+                  project={`${pathURL}`}
                 />}
                 <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
               </div>

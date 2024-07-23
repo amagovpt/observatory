@@ -5,6 +5,8 @@ import "./styles.css";
 import { useTranslation } from "react-i18next";
 import { useLocation } from 'react-router-dom'
 
+import { pathURL } from "../../App";
+
 export default function Layout({ children }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const location = useLocation()
@@ -29,11 +31,11 @@ export default function Layout({ children }) {
         title={t("HEADER.title.part1")}
         title2={t("HEADER.title.part2")}
         darkTheme={theme}
-        homePage={location.pathname === "/" ? true : false}
+        homePage={location.pathname === `${pathURL}` ? true : false}
         language={language}
         changeLanguage={toggleLanguage}
         changeTheme={toggleTheme}
-        linkTo={"/"}
+        linkTo={`${pathURL}`}
       />
       <main className={`main ${mainDark}`} id="content" aria-label={t("HOME_PAGE.main_aria")}>
         {children}

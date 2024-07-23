@@ -26,6 +26,8 @@ import { checkIfDirectoryOk, checkIfWebsiteOk } from "./utils"
 
 import { createStatisticsObject } from '../../utils/utils'
 
+import { pathURL } from "../../App";
+
 export default function Directory() {
 
   const { t, i18n: {language} } = useTranslation();
@@ -61,9 +63,9 @@ export default function Directory() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate("/") },
-    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate("/directories") },
-    { title: directoryName, href: "", onClick: () => navigate(`/directories/${id}`) },
+    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate(`${pathURL}`) },
+    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate(`${pathURL}directories`) },
+    { title: directoryName, href: "", onClick: () => navigate(`${pathURL}directories/${id}`) },
     { title: data && data.name },
   ];
 

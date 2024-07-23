@@ -13,6 +13,9 @@ import Directory from "./pages/Directory"
 import Website from "./pages/Website"
 import Error from "./pages/Error"
 
+//export const pathURL = process.env.REACT_APP_DEV_SERVER_URL;
+export const pathURL = process.env.REACT_APP_PROD_SERVER_URL;
+
 export default function App() {
 
   return (
@@ -20,14 +23,14 @@ export default function App() {
       <DataProvider>
         <Router>
           <Layout>
-            <Routes basename="/">
-              <Route path="/" element={<Home />} />
-              <Route path="/directories" element={<Directories />} />
-              <Route path="/directories/:id" element={<Directory />} />
-              <Route path="/directories/:id/:id" element={<Website />} />
+            <Routes basename={`${pathURL}`}>
+              <Route path={`${pathURL}`} element={<Home />} />
+              <Route path={`${pathURL}directories`} element={<Directories />} />
+              <Route path={`${pathURL}directories/:id`} element={<Directory />} />
+              <Route path={`${pathURL}directories/:id/:id`} element={<Website />} />
 
               {/* Error page needs to be last */}
-              <Route path="/*" element={<Error />} />
+              <Route path={`${pathURL}*`} element={<Error />} />
             </Routes>
           </Layout>
         </Router>

@@ -23,6 +23,8 @@ import { searchFuntion, getDirectoriesTable } from "./utils"
 
 import { createStatisticsObject } from '../../utils/utils'
 
+import { pathURL } from "../../App";
+
 
 export default function Directories() {
 
@@ -60,8 +62,8 @@ export default function Directories() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate("/") },
-    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate("/directories") },
+    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate(`${pathURL}`) },
+    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate(`${pathURL}directories`) },
   ];
 
   useEffect(() => {
@@ -138,7 +140,7 @@ export default function Directories() {
                 pagination={false}
                 caption={t("DIRECTORIES.table.title")}
                 columnsOptions={columnsOptions}
-                project={""}
+                project={`${pathURL}`}
               />}
               <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
             </div>
@@ -163,7 +165,7 @@ export default function Directories() {
                     hasSort={true}
                     caption={t("DIRECTORY.table.subtitle")+ " "}
                     iconsAltTexts={nameOfIcons}
-                    project={""}
+                    project={`${pathURL}`}
                   />
                 :
                   <div className="ama-typography-body-large">{t("DIRECTORIES.search.no_results")}</div>

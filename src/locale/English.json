@@ -397,8 +397,8 @@
         "label": "Score distribution"
       },
       "table": {
-        "best_title": "Detailed best practices distribution",
-        "bad_title": "Detailed error distribution",
+        "top_3_best_practices": "Detailed best practices distribution",
+        "top_3_bad_practices": "Detailed error distribution",
         "practice_label": "Practice",
         "error_label": "Error",
         "n_errors_label": "Occurrences",

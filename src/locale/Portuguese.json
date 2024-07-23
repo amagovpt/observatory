@@ -397,8 +397,8 @@
         "label": "Distribuição de pontuações"
       },
       "table": {
-        "best_title": "Distribuição detalhada das melhores práticas",
-        "bad_title": "Distribuição detalhada das piores práticas",
+        "top_3_best_practices": "Distribuição detalhada das melhores práticas",
+        "top_3_bad_practices": "Distribuição detalhada das piores práticas",
         "practice_label": "Prática",
         "error_label": "Erro",
         "n_errors_label": "Ocorrências",
