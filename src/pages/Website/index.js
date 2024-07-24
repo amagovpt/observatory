@@ -10,7 +10,6 @@ import { useTranslation } from "react-i18next";
 
 // Contexts
 import { ThemeContext } from "../../context/ThemeContext";
-import { DataContext } from "../../context/DataContext";
 
 // Date formatting
 import moment from 'moment'
@@ -41,21 +40,42 @@ export default function Directory() {
   const main_content_website = theme === "light" ? "" : "main_content_website";
 
   // Loading
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  // Observatorio Data
-  const { observatorioData, setObsData } = useContext(DataContext);
+  const [parsedData, setParsedData] = useState();
 
   // Navigation Parameters
   const id = Number(location.pathname.split("/")[2]) || null;
   const sitioId = Number(location.pathname.split("/")[3]) || null;
 
   // General Data
-  const [data, setData] = useState(null);
-  const [directoryName, setDirectoryName] = useState()
+  const [data, setData] = useState({
+    name: "Unknown",
+    startingUrl: "Unknown",
+    accessibilityPlotData: [],
+    scoreDistributionFrequency: [],
+    nPages: 0,
+    successDetailsTable: {
+      practicesKeys: [],
+      practicesData: []
+    },
+    bestPracticesDistribution: [],
+    errorsDetailsTable: {
+      practicesKeys: [],
+      practicesData: []
+    },
+    errorsDistribution: []
+  });
+
+  const [directoryName, setDirectoryName] = useState("Unknown")
 
   // Statistics for StatisticsHeader
-  const [websiteStats, setWebsiteStats] = useState();
+  const [websiteStats, setWebsiteStats] = useState({
+    score: "0",
+    recentPage: "",
+    oldestPage: "",
+    statsTable: [0, 0, 0, 0, 0, 0]
+  });
 
   // Navigation options
   const breadcrumbs = [
@@ -107,45 +127,46 @@ export default function Directory() {
         />,
     },
   ];
-  
 
   useEffect(() => {
     const processData = async () => {
       setLoading(true)
-      if(!observatorioData){
+      const {response, err} = await getObservatoryData();
 
-        const {response, err} = await getObservatoryData();
-
-        if(err && err.code) {
-          setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
-        } else if(!checkIfDirectoryOk(id, response.data?.result)) {
-          setError(t("MISC.directory_error"));
-        } else if(!checkIfWebsiteOk(id, sitioId, response.data?.result)) {
-          setError(t("MISC.website_error"));
-        } else {
-          setObsData(response.data?.result)
-          const tempData = response.data?.result.directories[id]
-
-          setDirectoryName(tempData.name)
-          const tempData2 = tempData.websites[sitioId]
-          setData(tempData2)
-          setWebsiteStats(createStatisticsObject("website", tempData2, moment))
-        }
+      if(err && err.code) {
+        setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
+      } else if(!checkIfDirectoryOk(id, response.data?.result)) {
+        setError(t("MISC.directory_error"));
+      } else if(!checkIfWebsiteOk(id, sitioId, response.data?.result)) {
+        setError(t("MISC.website_error"));
       } else {
-        setDirectoryName(observatorioData.directories[id].name)
-        const tempData = observatorioData.directories[id].websites[sitioId]
-        setData(tempData)
-        setWebsiteStats(createStatisticsObject("website", tempData, moment))
+        localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
+        const tempData = response.data?.result.directories[id]
+        setDirectoryName(tempData.name)
+        const tempData2 = tempData.websites[sitioId]
+        setData(tempData2)
+        setWebsiteStats(createStatisticsObject("website", tempData2, moment))
       }
       setLoading(false)
     }
-    processData()
-  }, [id, sitioId])
+
+    const storedData = localStorage.getItem("observatorioData");
+    if(!storedData) {
+      processData()
+    } else {
+      const parsedData = JSON.parse(storedData)
+      setParsedData(parsedData)
+      setDirectoryName(parsedData.directories[id].name)
+      const tempData = parsedData.directories[id].websites[sitioId]
+      setData(tempData)
+      setWebsiteStats(createStatisticsObject("website", tempData, moment))
+    }
+  }, [])
 
   // useEffect to update the StatisticsHeader stats when language changes
   useEffect(() => {
-    if(!observatorioData) return
-    setWebsiteStats(createStatisticsObject("website", observatorioData.directories[id].websites[sitioId], moment))
+    if(!parsedData) return
+    setWebsiteStats(createStatisticsObject("website", parsedData.directories[id].websites[sitioId], moment))
   }, [language])
 
   return (
@@ -167,7 +188,7 @@ export default function Directory() {
 
             {/* Statistics Header Component */}
             <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
-              {websiteStats && <StatisticsHeader
+              <StatisticsHeader
                 darkTheme={theme}
                 stats={websiteStats}
                 statsTitles={statsTitles}
@@ -178,7 +199,7 @@ export default function Directory() {
                 newestPage={t("STATISTICS.newest_page_updated")}
                 gaugeTitle={t("STATISTICS.gauge.label")}
                 buttons={false}
-              />}
+              />
             </section>
 
             {/* Radar Graph */}
@@ -186,7 +207,7 @@ export default function Directory() {
               <div className="d-flex flex-column section_container py-4">
                 <h2 className="bold">{t("WEBSITE.accessibility_plot.title")}</h2>
                 <div className="d-flex radar_graphic justify-content-center">
-                  {data && <RadarGraph tempData={data} />}
+                  <RadarGraph tempData={data} />
                 </div>
               </div>
             </section>
@@ -195,13 +216,13 @@ export default function Directory() {
             <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
               <div className="d-flex flex-column section_container py-4">
                 <h2 className="bold mb-3">{t("DIALOGS.scores.title")}</h2>
-                {data && <BarLineGraphTabs tempData={data} websiteStats={websiteStats} />}
+                <BarLineGraphTabs tempData={data} websiteStats={websiteStats} />
               </div>
             </section>
 
             {/* Good / Bad section */}
             <div className="good_bad">
-              {data && <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={false} />}
+              <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={false} />
             </div>
           </div>
         : <section className={`${main_content_website} d-flex flex-column align-items-center py-5 welcome_section`}>

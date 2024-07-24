@@ -63,7 +63,7 @@ export function TopTenTabs({ top10Data, color, aditionalData, title }) {
         tempHorizontalLabels.push(t(`RESULTS.${value.key}`))
         tempHorizontalData.push(value.n_pages)
 
-        const level = aditionalData.practicesData.find((elem) => elem.key === value.key)
+        const level = aditionalData && aditionalData.practicesData.length > 0 && aditionalData.practicesData.find((elem) => elem.key === value.key)
         tempTableData.push({
           lvl: level.lvl,
           name: t(`RESULTS.${value.key}`),

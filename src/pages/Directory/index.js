@@ -13,7 +13,6 @@ import moment from 'moment'
 
 // Contexts
 import { ThemeContext } from "../../context/ThemeContext";
-import { DataContext } from "../../context/DataContext";
 
 // Components
 import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent } from "ama-design-system";
@@ -25,9 +24,7 @@ import { createStatisticsObject } from '../../utils/utils'
 
 import { pathURL } from "../../App";
 
-
 export default function Directory() {
-
   const { t, i18n: {language} } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
@@ -39,20 +36,24 @@ export default function Directory() {
   const main_content_directory = theme === "light" ? "" : "main_content_directory";
 
   // Loading
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  // Observatorio Data
-  const { observatorioData, setObsData } = useContext(DataContext);
+  const [parsedData, setParsedData] = useState();
 
   // Navigation Parameters
   const id = Number(location.pathname.split("/")[2]) || null;
 
   // Data for the main table
-  const [directoriesList, setDirectoriesList] = useState();
-  const [directoryName, setDirectoryName] = useState()
+  const [directoriesList, setDirectoriesList] = useState([]);
+  const [directoryName, setDirectoryName] = useState("")
 
   // Data for StatisticsHeader component
-  const [directoryStats, setDirectoryStats] = useState();
+  const [directoryStats, setDirectoryStats] = useState({
+    score: "0",
+    recentPage: "",
+    oldestPage: "",
+    statsTable: [0, 0, 0]
+  });
 
   // Data and Options for the Tables on this page
   const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t, id, navigate)
@@ -71,36 +72,39 @@ export default function Directory() {
   useEffect(() => {
     const processData = async () => {
       setLoading(true)
-      if(!observatorioData){
-        
-        const {response, err} = await getObservatoryData();
+      const {response, err} = await getObservatoryData();
 
-        if(err && err.code) {
-          setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
-        } else if(!checkIfDirectoryOk(id, response.data?.result)) {
-          setError(t("MISC.directory_error"));
-        } else {
-          setObsData(response.data?.result)
-          const tempData = response.data?.result.directories[id]
-          setDirectoryName(tempData.name)
-          setDirectoryStats(createStatisticsObject("directory", tempData, moment))
-          setDirectoriesList(tempData.websitesList)
-        }
+      if(err && err.code) {
+        setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
+      } else if(!checkIfDirectoryOk(id, response.data?.result)) {
+        setError(t("MISC.directory_error"));
       } else {
-        const tempData = observatorioData.directories[id]
-        setDirectoryName(observatorioData.directories[id].name)
+        localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
+        const tempData = response.data?.result.directories[id]
+        setDirectoryName(tempData.name)
         setDirectoryStats(createStatisticsObject("directory", tempData, moment))
         setDirectoriesList(tempData.websitesList)
       }
       setLoading(false)
     }
-    processData()
+
+    const storedData = localStorage.getItem("observatorioData");
+    if(!storedData) {
+      processData()
+    } else {
+      const parsedData = JSON.parse(storedData)
+      setParsedData(parsedData)
+      const tempData = parsedData.directories[id]
+      setDirectoryName(tempData.name)
+      setDirectoryStats(createStatisticsObject("directory", tempData, moment))
+      setDirectoriesList(tempData.websitesList)
+    }
   }, [])
 
   // useEffect to update the StatisticsHeader stats when language changes
   useEffect(() => {
-    if(!observatorioData) return
-    setDirectoryStats(createStatisticsObject("directory", observatorioData, moment))
+    if(!parsedData) return
+    setDirectoryStats(createStatisticsObject("directory", parsedData, moment))
   }, [language])
 
   return (
@@ -121,18 +125,17 @@ export default function Directory() {
 
             {/* Statistics Header Component */}
             <section className={`bg-white ${main_content_directory} d-flex flex-row justify-content-center align-items-center my-5`}>
-              {directoryStats && 
-                <StatisticsHeader
-                  darkTheme={theme}
-                  stats={directoryStats}
-                  statsTitles={statsTitles}
-                  title={t("DIRECTORIES.statistics_title")}
-                  subtitle={t("DIRECTORIES.statistics_subtitle")}
-                  oldestPage={t("STATISTICS.oldest_page_updated")}
-                  newestPage={t("STATISTICS.newest_page_updated")}
-                  gaugeTitle={t("STATISTICS.gauge.label")}
-                  buttons={false}
-                />}
+              <StatisticsHeader
+                darkTheme={theme}
+                stats={directoryStats}
+                statsTitles={statsTitles}
+                title={t("DIRECTORIES.statistics_title")}
+                subtitle={t("DIRECTORIES.statistics_subtitle")}
+                oldestPage={t("STATISTICS.oldest_page_updated")}
+                newestPage={t("STATISTICS.newest_page_updated")}
+                gaugeTitle={t("STATISTICS.gauge.label")}
+                buttons={false}
+              />
             </section>
 
             {/* MAIN Directory TABLE */}
@@ -140,22 +143,21 @@ export default function Directory() {
               <div className="d-flex flex-column section_container py-4 directory_container">
                 <h2 className="bold m-0">{t("DIRECTORIES.table.title")}</h2>
                 <p className="ama-typography-body mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</p>
-                {directoriesList && <SortingTable
+                <SortingTable
+                  darkTheme={theme}
                   hasSort={true}
                   headers={directoriesHeaders}
                   setDataList={setDirectoriesList}
                   dataList={directoriesList}
                   columnsOptions={columnsOptions}
-                  darkTheme={theme}
-                  links={true}
                   caption={t("DIRECTORY.table.subtitle")+ " " + directoryName}
+                  project={`${pathURL}`}
                   iconsAltTexts={nameOfIcons}
                   pagination={true}
                   itemsPaginationTexts={itemsPaginationText}
                   nItemsPerPageTexts={nItemsPerPageText}
                   paginationButtonsTexts={paginationButtonsTexts}
-                  project={`${pathURL}`}
-                />}
+                />
                 <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
               </div>
             </section>

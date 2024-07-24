@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 // Contexts
 import { ThemeContext } from "../../context/ThemeContext";
-import { DataContext } from "../../context/DataContext";
 
 // Date formatting
 import moment from 'moment'
@@ -34,13 +33,12 @@ export default function Home() {
   const { theme } = useContext(ThemeContext);
   const main_content_home = theme === "light" ? "" : "main_content_home";
 
-  // Observatorio Data
-  const { observatorioData, setObsData } = useContext(DataContext);
-
   const [error, setError] = useState();
   
   // Loading
   const [loading, setLoading] = useState(true);
+
+  const [parsedData, setParsedData] = useState();
 
   // Data for StatisticsHeader component
   const [directoriesStats, setDirectoriesStats] = useState(null);
@@ -55,16 +53,15 @@ export default function Home() {
   useEffect(() => {
     const processData = async () => {
       setLoading(true)
-
       const {response, err} = await getObservatoryData();
 
       if(err && err.code) {
         setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
       } else {
-        setObsData(response.data?.result)
         setDirectoriesStats(createStatisticsObject("home", response.data?.result, moment))
+        localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
+        setParsedData(response.data?.result)
       }
-
       setLoading(false)
     }
     processData()
@@ -72,8 +69,10 @@ export default function Home() {
 
   // useEffect to update the StatisticsHeader stats when language changes
   useEffect(() => {
-    if(!observatorioData) return;
-    setDirectoriesStats(createStatisticsObject("home", observatorioData, moment))
+    const storedData = localStorage.getItem("observatorioData");
+    if(!storedData) return;
+    setParsedData(JSON.parse(storedData))
+    setDirectoriesStats(createStatisticsObject("home", JSON.parse(storedData), moment))
   }, [language])
 
   // Data for the censos section
@@ -131,7 +130,7 @@ export default function Home() {
             </div>
             <div className="flex-1 top5_div">
               <ul>
-                {observatorioData.topFiveWebsites.map((website) => (
+                {parsedData.topFiveWebsites.map((website) => (
                   <li className="d-flex justify-content-between align-items-center mb-2">
                     <div className="d-flex flex-row align-items-center">
                       <span className="ama-typography-body top5_number me-3">{website.index}</span>
@@ -150,7 +149,7 @@ export default function Home() {
             {/* Declarations data */}
             <h2 className="bold">{t("NUMBERS.declaration.title")}</h2>
             <p className="ama-typography-body-large">{t("NUMBERS.declaration.paragraph")}</p>
-            <AchievementPerType data={observatorioData} type={"declarations"} good={"conform"} semi={"partial"} bad={"not_conform"}
+            <AchievementPerType data={parsedData} type={"declarations"} good={"conform"} semi={"partial"} bad={"not_conform"}
               title={t("NUMBERS.declaration.subtitle1")}
               icon={"AMA-Declaracao-Line"}
               colors={{good: "green", semi: "yellow", bad: "red"}}
@@ -162,7 +161,7 @@ export default function Home() {
             {/* Badges data */}
             <h2 className="bold">{t("NUMBERS.badge.title")}</h2>
             <p className="ama-typography-body-large">{t("NUMBERS.badge.paragraph")}</p>
-            <AchievementPerType data={observatorioData} type={"badges"} good={"gold"} semi={"silver"} bad={"bronze"}
+            <AchievementPerType data={parsedData} type={"badges"} good={"gold"} semi={"silver"} bad={"bronze"}
               title={t("NUMBERS.badge.subtitle1")}
               icon={"AMA-SeloDark2-Line"}
               colors={{good: "gold", semi: "silver", bad: "bronze"}}
@@ -196,8 +195,8 @@ export default function Home() {
            
             {/* Top 5 Good and Bad Practices */}
             <div className="d-flex my-5 top5_best_good">
-              <Top5_Practices data={observatorioData.topFiveBestPractices} title={t("HOME.summary.best_practices_title")} icon={"AMA-Check-Line"} />
-              <Top5_Practices data={observatorioData.topFiveErrors} title={t("HOME.summary.errors_title")} icon={"AMA-Wrong-Line"} />
+              <Top5_Practices data={parsedData.topFiveBestPractices} title={t("HOME.summary.best_practices_title")} icon={"AMA-Check-Line"} />
+              <Top5_Practices data={parsedData.topFiveErrors} title={t("HOME.summary.errors_title")} icon={"AMA-Wrong-Line"} />
             </div>
           </div>
         </section>

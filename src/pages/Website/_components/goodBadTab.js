@@ -35,7 +35,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
     let tempDetailsTable = []
 
     // Get the number for each practice in text format
-    tempData.practicesData.map((value) => {
+    tempData && tempData.practicesData.length > 0 && tempData.practicesData.map((value) => {
       let praticsPerPage = []
       value.quartiles.map((part) => {
         let text = ""
