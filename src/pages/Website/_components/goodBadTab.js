@@ -26,7 +26,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
 
   // Data for table of all best practices
   const [detailsTable, setDetailsTable] = useState();
-  const { dataTableHeadersA, dataTableHeadersAA, dataTableHeadersAAA, columnsOptionsAAs, detailsTableHeaders, columnsOptionsDetails } = getGoodBadTabTables(t, goodOrBad)
+  const { dataTableHeadersA, dataTableHeadersAA, dataTableHeadersAAA, columnsOptionsAAs, detailsTableHeaders, columnsOptionsDetails, ariaLabels } = getGoodBadTabTables(t, goodOrBad)
 
   useEffect(() => {
     let tempDataTableA = []
@@ -95,7 +95,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
         
         {/* Top Ten Practices Graph/Table */}
         <div className="tabs_section">
-          <TopTenTabs top10Data={top10Data} color={color} aditionalData={tempData} title={title} />
+          <TopTenTabs top10Data={top10Data} color={color} aditionalData={tempData} title={title} ariaLabels={ariaLabels} />
         </div>
 
         {/* Tables for Practices, 3 per type and one general */}
@@ -133,7 +133,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
             caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"})}
           />}
         </div>
-        <h2 className="bold mt-5 mb-3">{t(`WEBSITES.table.${goodOrBad}`)}</h2>
+        <h2 className="bold mt-5 mb-3">{t(`WEBSITE.table.${goodOrBad}`)}</h2>
         {detailsTable && <SortingTable
           hasSort={false}
           headers={detailsTableHeaders}
@@ -142,7 +142,8 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
           darkTheme={theme}
           pagination={false}
           links={false}
-          caption={t(`WEBSITES.table.${goodOrBad}`)}
+          caption={t(`WEBSITE.table.${goodOrBad}`)}
+          ariaLabels={ariaLabels}
         />}
       </div>
     </section>

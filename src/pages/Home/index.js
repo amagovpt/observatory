@@ -91,7 +91,7 @@ export default function Home() {
     {!loading ? 
       !error ? 
         <>
-        <section className={`bg-white ${main_content_home} d-flex flex-column align-items-center py-5 welcome_section`}>
+        <section className={`bg-white ${main_content_home} d-flex flex-column align-items-center py-6 welcome_section`}>
           <div className="container welcome_container mb-4">
             <h2 className="mb-2">{t("HEADER.welcome.title")}</h2>
             <h3>{t("HEADER.welcome.subtitle")}</h3>
@@ -100,8 +100,8 @@ export default function Home() {
         
         <div className="container">
           {/* Statistics Header Component */}
-          <h2 className="mt-5 bold">{t("HOME.summary.statistics_title")}</h2>
-          <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-5 section_statistics`}>
+          <h2 className="mt-6 bold">{t("HOME.summary.statistics_title")}</h2>
+          <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-4 section_statistics`}>
             {directoriesStats && <StatisticsHeader
               darkTheme={theme}
               stats={directoriesStats}
@@ -116,7 +116,7 @@ export default function Home() {
           </section>
 
           {/* Top 5 websites section */}
-          <section className={`${main_content_home} d-flex justify-content-center align-items-center my-5 top5_websites`}>
+          <section className={`${main_content_home} d-flex justify-content-center align-items-center my-6 top5_websites`}>
             <div className="flex-1 top5_div">
               <h2 className="bold mb-2">{t("HOME.top5.title")}</h2>
               <div className="ama-typography-body">{t("HOME.top5.last_updated") + " " + directoriesStats.recentPage}</div>
@@ -144,7 +144,7 @@ export default function Home() {
           </section>
         </div>
 
-        <section className={`bg-white ${main_content_home} d-flex flex-column section last_section pt-5`}>
+        <section className={`bg-white ${main_content_home} d-flex flex-column section last_section pt-6`}>
           <div className="container">
             {/* Declarations data */}
             <h2 className="bold">{t("NUMBERS.declaration.title")}</h2>
@@ -171,12 +171,12 @@ export default function Home() {
             />
 
             {/* Observatory Information Tabs */}
-            <div className="tabs-grid">
+            <div className="tabs-grid my-6">
               <ObservatoryInfoTabs />
             </div>
 
             {/* Censos Data */}
-            <div className="censos_container p-5">
+            <div className="censos_container p-6">
               <div className="d-flex flex-row align-items-center justify-content-between mb-2 mobile">
                 <h2 className="bold">{t("HOME.4all.title")}</h2>
                 <span className="ama-typography-body">{t("HOME.4all.census")}</span>
@@ -194,14 +194,14 @@ export default function Home() {
             </div>
            
             {/* Top 5 Good and Bad Practices */}
-            <div className="d-flex my-5 top5_best_good">
+            <div className="d-flex my-6 top5_best_good">
               <Top5_Practices data={parsedData.topFiveBestPractices} title={t("HOME.summary.best_practices_title")} icon={"AMA-Check-Line"} />
               <Top5_Practices data={parsedData.topFiveErrors} title={t("HOME.summary.errors_title")} icon={"AMA-Wrong-Line"} />
             </div>
           </div>
         </section>
       </>
-      : <section className={`${main_content_home} d-flex flex-column align-items-center py-5 welcome_section`}>
+      : <section className={`${main_content_home} d-flex flex-column align-items-center py-6 welcome_section`}>
           <h2 className="text-center w-50">{error}</h2>
         </section>
     : <LoadingComponent darkTheme={theme} loadingText={t("MISC.loading")} />}

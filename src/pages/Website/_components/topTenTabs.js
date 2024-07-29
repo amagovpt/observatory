@@ -15,7 +15,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 import { Bar, Chart } from 'react-chartjs-2';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export function TopTenTabs({ top10Data, color, aditionalData, title }) {
+export function TopTenTabs({ top10Data, color, aditionalData, title, ariaLabels }) {
 
   const { t, i18n: { language } } = useTranslation();
   const { theme } = useContext(ThemeContext);
@@ -50,6 +50,7 @@ export function TopTenTabs({ top10Data, color, aditionalData, title }) {
           pagination={false}
           links={false}
           caption={title}
+          ariaLabels={ariaLabels}
         />
         </div>,
     },

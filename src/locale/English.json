@@ -420,6 +420,11 @@
           "sameDetailTogether": "{{lower}} occurrences in {{nPages}} pages"
         },
         "lvl_label": "Level"
+      },
+      "ariaLabels": {
+        "A": "A",
+        "AA": "double A",
+        "AAA": "triple A"
       }
     },
     "FOOTER": {

@@ -197,10 +197,16 @@ export function getGoodBadTabTables (t, goodOrBad) {
         practices: { type: "MultiText", center: true, bold: false, decimalPlace: false },
         pages: { type: "Number", center: true, bold: false, decimalPlace: false },
         occurences: { type: "Number", center: true, bold: false, decimalPlace: false },
-        lvl: { type: "Text", center: true, bold: false, decimalPlace: false },
+        lvl: { type: "Text", center: true, bold: false, decimalPlace: false, ariaLabel: true },
     }
 
-    return { dataTableHeadersA, dataTableHeadersAA, dataTableHeadersAAA, columnsOptionsAAs, detailsTableHeaders, columnsOptionsDetails }
+    let ariaLabels = {
+      A: t("WEBSITE.ariaLabels.A"),
+      AA: t("WEBSITE.ariaLabels.AA"),
+      AAA: t("WEBSITE.ariaLabels.AAA")
+    }
+
+    return { dataTableHeadersA, dataTableHeadersAA, dataTableHeadersAAA, columnsOptionsAAs, detailsTableHeaders, columnsOptionsDetails, ariaLabels }
 }
 
 // Function to get data for Radar
@@ -274,7 +280,7 @@ export function getTopTenGraphTable (t, theme, labelsForHorizontal, dataForHoriz
     ]
     
     let columnsOptions = {
-        lvl: { type: "Text", center: true, bold: false, decimalPlace: false },
+        lvl: { type: "Text", center: true, bold: false, decimalPlace: false, ariaLabel: true },
         name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
         nPages: { type: "Number", center: true, bold: false, decimalPlace: false },
         nOccurrences: { type: "Number", center: true, bold: false, decimalPlace: false },
