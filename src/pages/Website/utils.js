@@ -138,11 +138,11 @@ export function getBarLineGraph (t, dataForLine, dataForBar, websiteStats, theme
 export function getBarLineTable (t) {
     const dataHeaders = [
         [
-          {icon: false, name: t("DIALOGS.scores.range"), justifyCenter: true},
-          {icon: false, name: t("DIALOGS.scores.frequency"), justifyCenter: true},
-          {icon: false, name: t("DIALOGS.scores.frequency")+ " (%)", justifyCenter: true},
-          {icon: false, name: t("DIALOGS.scores.cumulative"), justifyCenter: true},
-          {icon: false, name: t("DIALOGS.scores.cumulative")+ " (%)", justifyCenter: true},
+          {type: "Text", name: t("DIALOGS.scores.range"), justifyCenter: true},
+          {type: "Text", name: t("DIALOGS.scores.frequency"), justifyCenter: true},
+          {type: "Text", name: t("DIALOGS.scores.frequency")+ " (%)", justifyCenter: true},
+          {type: "Text", name: t("DIALOGS.scores.cumulative"), justifyCenter: true},
+          {type: "Text", name: t("DIALOGS.scores.cumulative")+ " (%)", justifyCenter: true},
         ]
     ]
 
@@ -167,15 +167,15 @@ export function getBarLineTable (t) {
 // columnsOptionsDetails -> Type of render to execute p/ attribute
 export function getGoodBadTabTables (t, goodOrBad) {
     const dataTableHeadersA = [
-        {icon: false, name: t(`WEBSITE.${goodOrBad}.message`, {value: "A"}), nCol: 3}
+        {type: "Text", name: t(`WEBSITE.${goodOrBad}.message`, {value: "A"}), nCol: 3}
     ]
     
     const dataTableHeadersAA = [
-        {icon: false, name: t(`WEBSITE.${goodOrBad}.message`, {value: "AA"}), nCol: 3}
+        {type: "Text", name: t(`WEBSITE.${goodOrBad}.message`, {value: "AA"}), nCol: 3}
     ]
     
     const dataTableHeadersAAA = [
-        {icon: false, name: t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"}), nCol: 3}
+        {type: "Text", name: t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"}), nCol: 3}
     ]
 
     let columnsOptionsAAs = {
@@ -185,11 +185,11 @@ export function getGoodBadTabTables (t, goodOrBad) {
     }
 
     const detailsTableHeaders = [
-        {icon: false, bigWidth: "50%", name: t("WEBSITE.table.practice_label")},
-        {icon: false, bigWidth: "30%", name: t("WEBSITE.table.details_practice_label"), justifyCenter: true},
-        {icon: false, name: t("WEBSITE.table.n_pages_label"), justifyCenter: true},
-        {icon: false, name: t("WEBSITE.table.n_errors_label"), justifyCenter: true},
-        {icon: false, name: t("WEBSITE.table.lvl_label"), justifyCenter: true},
+        {type: "Text", bigWidth: "50%", name: t("WEBSITE.table.practice_label")},
+        {type: "Text", bigWidth: "30%", name: t("WEBSITE.table.details_practice_label"), justifyCenter: true},
+        {type: "Text", name: t("WEBSITE.table.n_pages_label"), justifyCenter: true},
+        {type: "Text", name: t("WEBSITE.table.n_errors_label"), justifyCenter: true},
+        {type: "Text", name: t("WEBSITE.table.lvl_label"), justifyCenter: true},
     ]
     
     let columnsOptionsDetails = {
@@ -273,10 +273,10 @@ export function getRadarGraph (t, theme, labelsForRadar, data) {
 // horizontalData -> Data for Bar Graph
 export function getTopTenGraphTable (t, theme, labelsForHorizontal, dataForHorizontal, color) {
     const dataHeaders = [
-        {icon: false, name: t("DIALOGS.errors.level"), justifyCenter: true},
-        {icon: false, bigWidth: "50%", name: t("DIALOGS.errors.description")},
-        {icon: false, name: t("DIALOGS.errors.pages"), justifyCenter: true},
-        {icon: false, name: t("DIALOGS.errors.situations"), justifyCenter: true}
+        {type: "Text", name: t("DIALOGS.errors.level"), justifyCenter: true},
+        {type: "Text", bigWidth: "50%", name: t("DIALOGS.errors.description")},
+        {type: "Text", name: t("DIALOGS.errors.pages"), justifyCenter: true},
+        {type: "Text", name: t("DIALOGS.errors.situations"), justifyCenter: true}
     ]
     
     let columnsOptions = {

@@ -81,12 +81,12 @@ export function searchFuntion (text, setSearch, setOtherData, dataProcess) {
 // nameOfIcons -> Name of icons to be showned in the table
 export function getDirectoriesTable (t, navigate) {
     const searchTableHeaders = [
-      {icon: false, bigWidth: "40%", name: t("DIRECTORIES.search.directory"), property: "directoryName"},
-      {icon: false, bigWidth: "40%", name: t("DIRECTORIES.search.website"), property: "name"},
-      {icon: true, name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORIES.table.declaration"), property: "declaration"},
-      {icon: true, name: "AMA-SeloDark-Line", description: t("DIRECTORIES.table.stamp"), property: "stamp"},
-      {icon: false, name: t("DIRECTORIES.search.score"), property: "score", justifyCenter: true},
-      {icon: false, name: t("DIRECTORIES.search.n_pages"), property: "nPages", justifyCenter: true},
+      {type: "SortingText", bigWidth: "40%", name: t("DIRECTORIES.search.directory"), property: "directoryName"},
+      {type: "SortingText", bigWidth: "40%", name: t("DIRECTORIES.search.website"), property: "name"},
+      {type: "SortingIcon", name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORIES.table.declaration"), property: "declaration"},
+      {type: "SortingIcon", name: "AMA-SeloDark-Line", description: t("DIRECTORIES.table.stamp"), property: "stamp"},
+      {type: "SortingText", name: t("DIRECTORIES.search.score"), property: "score", justifyCenter: true},
+      {type: "SortingText", name: t("DIRECTORIES.search.n_pages"), property: "nPages", justifyCenter: true},
     ]
     
     let columnsOptionsSearch = {
@@ -102,19 +102,19 @@ export function getDirectoriesTable (t, navigate) {
       
     const directoriesHeaders = [
       [
-        {icon: false, name: t("DIRECTORIES.table.rank"), property: "rank"},
-        {icon: false, bigWidth: "50%", name: t("DIRECTORIES.table.name"), property: "name"},
-        {icon: true, name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORIES.table.declaration"), property: "declaration"},
-        {icon: true, name: "AMA-SeloDark-Line", description: t("DIRECTORIES.table.stamp"), property: "stamp"},
-        {icon: false, name: t("DIRECTORIES.table.score"), property: "score", justifyCenter: true},
-        {icon: false, name: t("DIRECTORIES.table.websites"), property: "nWebsites", justifyCenter: true},
-        {icon: false, nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},
+        {type: "SortingText", name: t("DIRECTORIES.table.rank"), property: "rank"},
+        {type: "SortingText", bigWidth: "50%", name: t("DIRECTORIES.table.name"), property: "name"},
+        {type: "SortingIcon", name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORIES.table.declaration"), property: "declaration"},
+        {type: "SortingIcon", name: "AMA-SeloDark-Line", description: t("DIRECTORIES.table.stamp"), property: "stamp"},
+        {type: "SortingText", name: t("DIRECTORIES.table.score"), property: "score", justifyCenter: true},
+        {type: "SortingText", name: t("DIRECTORIES.table.websites"), property: "nWebsites", justifyCenter: true},
+        {type: "Text", nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},
       ],
       [
-        {icon: false, nCol: 6, name: t("MISC.empty"), multiCol: true, empty: true},
-        {icon: false, name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true},
-        {icon: false, name: t("DIRECTORIES.table.AA"), property: "AA", justifyCenter: true},
-        {icon: false, name: t("DIRECTORIES.table.AAA"), property: "AAA", justifyCenter: true}
+        {type: "Empty", nCol: 6, name: t("MISC.empty"), multiCol: true, empty: true},
+        {type: "SortingText", name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true},
+        {type: "SortingText", name: t("DIRECTORIES.table.AA"), property: "AA", justifyCenter: true},
+        {type: "SortingText", name: t("DIRECTORIES.table.AAA"), property: "AAA", justifyCenter: true}
       ]
     ]
     
