@@ -37,7 +37,7 @@ export default function Layout({ children }) {
         changeTheme={toggleTheme}
         linkTo={`${pathURL}`}
       />
-      <main className={`main ${mainDark}`} id="content" aria-label={t("HOME_PAGE.main_aria")}>
+      <main className={`main ${mainDark}`} id="content" aria-label={t("HOME.main_aria")}>
         {children}
       </main>
 

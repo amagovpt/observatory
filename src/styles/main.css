@@ -1,3 +1,14 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+div#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .observatorio {
     color: var(--ama-color-background-white);
     background-color: var(--ama-color-brand-primary);
@@ -16,6 +27,10 @@
     background-color: var(--ama-color-background-light-darker);
     position: relative;
     padding-bottom: 4rem;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .section_container {
