@@ -15,7 +15,7 @@ import moment from 'moment'
 import { ThemeContext } from "../../context/ThemeContext";
 
 // Components
-import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent } from "ama-design-system";
+import { StatisticsHeader, SortingTable, Breadcrumb, LoadingComponent, Icon, Input } from "ama-design-system";
 
 // Extra Data / Functions
 import { searchFuntion, getDirectoriesTable } from "./utils"
@@ -99,6 +99,11 @@ export default function Directories() {
     setDirectoriesStats(createStatisticsObject("directories", parsedData, moment))
   }, [language])
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setOtherData(searchFuntion(search, parsedData))
+  }
+
   return (
     <>
       {!loading ? 
@@ -152,12 +157,26 @@ export default function Directories() {
             {/* SEARCH TABLE */}
             <section className={`bg-white ${main_content_directories} d-flex flex-row justify-content-center align-items-center`}>
               <div className="d-flex flex-column search_container p-4 px-5">
-                <form className="d-flex flex-column">
-                  <label htmlFor="search" className="ama-typography-body-large bold mb-2">{t("DIRECTORIES.search.label")}</label>
-                  <input className="p-3 mb-3" type="text" id="search" placeholder={t("DIRECTORIES.search.placeholder")} value={search} onChange={(e) => searchFuntion(e.target.value, setSearch, setOtherData, parsedData)}/>
+                <form className="d-flex flex-row justify-content-between mb-4" onSubmit={handleSubmit}>
+                  <Input
+                    darkTheme={theme}
+                    id="search"
+                    label={t("DIRECTORIES.search.label")}
+                    placeholder={t("DIRECTORIES.search.placeholder")}
+                    type="text"
+                    onChange={(e) => {
+                      if(e.target.value.length === 0) {
+                        setOtherData(null)
+                      }
+                      setSearch(e.target.value)
+                    }}
+                  />
+                  <button type="submit" className="search_button ms-1">
+                    <Icon name={"AMA-Pesquisar-Line"} />
+                  </button>
                 </form>
-                {search && search.length >= 3 ? 
-                  (otherData ?
+                {search && otherData &&
+                  (otherData && otherData.length > 0 ?
                     <SortingTable
                       headers={searchTableHeaders}
                       columnsOptions={columnsOptionsSearch}
@@ -173,8 +192,6 @@ export default function Directories() {
                   :
                     <div className="ama-typography-body-large">{t("DIRECTORIES.search.no_results")}</div>
                   ) 
-                : 
-                  null
                 }
               </div>
             </section>

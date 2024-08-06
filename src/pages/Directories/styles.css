@@ -9,6 +9,39 @@
     background-color: var(--ama-color-background-light-darker) !important;
 }
 
+.search_container .field {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1 !important;
+}
+
+.search_container .field label {
+    color: var(--ama-color-background-white)
+}
+
+.search_container .field input {
+    margin-bottom: 0px;
+}
+
+.search_button {
+    background-color: var(--ama-color-background-white);
+    font-size: 30px;
+    align-self: flex-end;
+    height: 54px;
+    border: 2px solid var(--ama-color-brand-primary);
+}
+
+.search_button:focus,
+.search_button:focus-visible {
+    box-shadow: 0 0 0 3px var(--ama-color-yellow-300) !important;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .search_container form {
+        flex-direction: column !important;
+    }
+}
+
 /* DARK MODE */
 .main_content_directories {
     background-color: var(--ama-color-background-dark-lighter) !important;
@@ -29,4 +62,10 @@
 .main_content_directories .directories_container .sorting_table tbody tr:hover,
 .main_content_directories .search_container .sorting_table tbody tr:hover {
     background-color: var(--ama-color-background-dark-darker) !important;
+}
+
+.main_content_directories .search_button {
+    border-color: var(--ama-color-text-blue);
+    color: var(--ama-color-text-blue);
+    background-color: transparent;
 }

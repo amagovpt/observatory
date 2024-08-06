@@ -34,9 +34,8 @@ export function _search (website, text) {
 // setSearch -> function to set the text searched
 // setOtherData -> function to set the data to be showned
 // dataProcess -> data
-export function searchFuntion (text, setSearch, setOtherData, dataProcess) {
+export function searchFuntion (text, dataProcess) {
     let searchResults = []
-    setSearch(text)
     if (text && text.trim() !== "" && text.trim().length > 2) {
       dataProcess.directoriesList.map((directory) => {
         dataProcess.directories[directory.id].websitesList.map((website) => {
@@ -57,15 +56,15 @@ export function searchFuntion (text, setSearch, setOtherData, dataProcess) {
         return ""
       })
       if (searchResults.length === 0) {
-        setOtherData(null)
+        return []
       } else {
-        setOtherData(searchResults)
+        return searchResults
       }
       
     }
 
     if (!text || text.trim() === "" || text.trim().length <= 2) {
-      setOtherData(null)
+      return []
     }
 }
 

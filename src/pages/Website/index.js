@@ -27,7 +27,7 @@ import { createStatisticsObject } from '../../utils/utils'
 
 import { pathURL } from "../../App";
 
-export default function Directory() {
+export default function Website() {
 
   const { t, i18n: {language} } = useTranslation();
   const location = useLocation();

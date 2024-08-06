@@ -167,37 +167,43 @@ export function getBarLineTable (t) {
 // columnsOptionsDetails -> Type of render to execute p/ attribute
 export function getGoodBadTabTables (t, goodOrBad) {
     const dataTableHeadersA = [
-        {type: "Text", name: t(`WEBSITE.${goodOrBad}.message`, {value: "A"}), nCol: 3}
+      {type: "Text", name: "Nº", justifyCenter: true},
+      {type: "Text", name: t("DIALOGS.table.description"), justifyCenter: false},
+      {type: "Text", name: t("WEBSITE.table.n_errors_label"), justifyCenter: true},
     ]
     
     const dataTableHeadersAA = [
-        {type: "Text", name: t(`WEBSITE.${goodOrBad}.message`, {value: "AA"}), nCol: 3}
+      {type: "Text", name: "Nº", justifyCenter: true},
+      {type: "Text", name: t("DIALOGS.table.description"), justifyCenter: false},
+      {type: "Text", name: t("WEBSITE.table.n_errors_label"), justifyCenter: true},
     ]
     
     const dataTableHeadersAAA = [
-        {type: "Text", name: t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"}), nCol: 3}
+      {type: "Text", name: "Nº", justifyCenter: true},
+      {type: "Text", name: t("DIALOGS.table.description"), justifyCenter: false},
+      {type: "Text", name: t("WEBSITE.table.n_errors_label"), justifyCenter: true},
     ]
 
     let columnsOptionsAAs = {
-        number: { type: "Text", center: true, bold: true, decimalPlace: false },
-        name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
-        nPages: { type: "DoubleText", center: true, bold: false, decimalPlace: false },
+      number: { type: "Text", center: true, bold: true, decimalPlace: false },
+      name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
+      nPages: { type: "DoubleText", center: true, bold: false, decimalPlace: false },
     }
 
     const detailsTableHeaders = [
-        {type: "Text", bigWidth: "50%", name: t("WEBSITE.table.practice_label")},
-        {type: "Text", bigWidth: "30%", name: t("WEBSITE.table.details_practice_label"), justifyCenter: true},
-        {type: "Text", name: t("WEBSITE.table.n_pages_label"), justifyCenter: true},
-        {type: "Text", name: t("WEBSITE.table.n_errors_label"), justifyCenter: true},
-        {type: "Text", name: t("WEBSITE.table.lvl_label"), justifyCenter: true},
+      {type: "Text", bigWidth: "50%", name: t("WEBSITE.table.practice_label")},
+      {type: "Text", bigWidth: "30%", name: t("WEBSITE.table.details_practice_label"), justifyCenter: true},
+      {type: "Text", name: t("WEBSITE.table.n_pages_label"), justifyCenter: true},
+      {type: "Text", name: t("WEBSITE.table.n_errors_label"), justifyCenter: true},
+      {type: "Text", name: t("WEBSITE.table.lvl_label"), justifyCenter: true},
     ]
     
     let columnsOptionsDetails = {
-        name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
-        practices: { type: "MultiText", center: true, bold: false, decimalPlace: false },
-        pages: { type: "Number", center: true, bold: false, decimalPlace: false },
-        occurences: { type: "Number", center: true, bold: false, decimalPlace: false },
-        lvl: { type: "Text", center: true, bold: false, decimalPlace: false, ariaLabel: true },
+      name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
+      practices: { type: "MultiText", center: true, bold: false, decimalPlace: false },
+      pages: { type: "Number", center: true, bold: false, decimalPlace: false },
+      occurences: { type: "Number", center: true, bold: false, decimalPlace: false },
+      lvl: { type: "Text", center: true, bold: false, decimalPlace: false, ariaLabel: true },
     }
 
     let ariaLabels = {

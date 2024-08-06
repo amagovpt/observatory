@@ -102,6 +102,29 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
         <h2 className="bold mt-5">{t(`WEBSITE.${goodOrBad}.title`)}</h2>
         <p className="ama-typography-body-large mb-3">{t(`WEBSITE.${goodOrBad}.subtitle`)}</p>
         <div className="light_tables">
+          {/* <div class="sorting_table-responsive ">
+            <table class="table sorting_table" data-sortable="true">
+              <caption className="caption_table bold ama-typography-body">As 3 melhores práticas de nível "A"</caption>
+              <tbody>
+                <tr>
+                  <td class="text-center bold ama-typography-body">1.</td>
+                  <td class="  ama-typography-body">Encontrei páginas com links com nome acessível não vazio</td>
+                  <td class="text-center "><span class="ama-typography-body">prática em </span><span class="ama-typography-body bold">87 páginas</span></td>
+                </tr>
+                <tr>
+                  <td class="text-center bold ama-typography-body">2.</td>
+                  <td class="  ama-typography-body">Elementos com descendentes decorativos</td>
+                  <td class="text-center "><span class="ama-typography-body">prática em </span><span class="ama-typography-body bold">87 páginas</span></td>
+                </tr>
+                <tr>
+                  <td class="text-center bold ama-typography-body">3.</td>
+                  <td class="  ama-typography-body">Elementos com papel semântico explícito</td>
+                  <td class="text-center "><span class="ama-typography-body">prática em </span><span class="ama-typography-body bold">87 páginas</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div> */}
+          <h3 className="mt-3 mb-2">{t(`WEBSITE.table.lvl_label`) + ": " + "A"}</h3>
           {dataTableA && <SortingTable
             hasSort={false}
             headers={dataTableHeadersA}
@@ -112,6 +135,8 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
             links={false}
             caption={t(`WEBSITE.${goodOrBad}.message`, {value: "A"})}
           />}
+
+          <h3 className="mt-3 mb-2">{t(`WEBSITE.table.lvl_label`) + ": " + "AA"}</h3>
           {dataTableAA && <SortingTable
             hasSort={false}
             headers={dataTableHeadersAA}
@@ -122,6 +147,8 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
             links={false}
             caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AA"})}
           />}
+
+          <h3 className="mt-3 mb-2">{t(`WEBSITE.table.lvl_label`) + ": " + "AAA"}</h3>
           {dataTableAAA && <SortingTable
             hasSort={false}
             headers={dataTableHeadersAAA}
