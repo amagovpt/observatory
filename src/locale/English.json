@@ -306,7 +306,8 @@
         "website": "Website",
         "score": "Score",
         "n_pages": "Nº of pages",
-        "no_results": "No websites found"
+        "no_results": "No websites found",
+        "search": "Search"
       },
       "table": {
         "filter": "Filter",

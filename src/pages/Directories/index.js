@@ -171,7 +171,7 @@ export default function Directories() {
                       setSearch(e.target.value)
                     }}
                   />
-                  <button type="submit" className="search_button ms-1">
+                  <button type="submit" className="search_button ms-1" aria-label={t("DIRECTORIES.search.search")}>
                     <Icon name={"AMA-Pesquisar-Line"} />
                   </button>
                 </form>

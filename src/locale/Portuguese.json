@@ -306,7 +306,8 @@
         "website": "Sítio web",
         "score": "Pontuação",
         "n_pages": "Nº de páginas",
-        "no_results": "Não foram encontrados sítios web"
+        "no_results": "Não foram encontrados sítios web",
+        "search": "Pesquisar"
       },
       "table": {
         "filter": "Filtro",
