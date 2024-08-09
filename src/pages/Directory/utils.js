@@ -10,19 +10,19 @@ import { pathURL } from "../../App";
 export function getDirectoryTable (t, id, navigate) {
     const directoriesHeaders = [
       [
-        {type: "SortingText", name: t("DIRECTORY.table.rank"), property: "rank"},
+        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORY.table.rank"), property: "rank"},
         {type: "SortingText", bigWidth: "50%", name: t("DIRECTORY.table.name"), property: "name"},
         {type: "SortingIcon", name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORY.table.declaration"), property: "declaration"},
         {type: "SortingIcon", name: "AMA-SeloDark-Line", description: t("DIRECTORY.table.stamp"), property: "stamp"},
-        {type: "SortingText", name: t("DIRECTORY.table.score"), property: "score", justifyCenter: true},
-        {type: "SortingText", name: t("DIRECTORY.table.pages"), property: "nPages", justifyCenter: true},
+        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORY.table.score"), property: "score", justifyCenter: true},
+        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORY.table.pages"), property: "nPages", justifyCenter: true},
         {type: "Text", name: t("DIRECTORY.table.levels"), property: "", justifyCenter: true, multiCol: true, nCol: 3},
       ],
       [
         {type: "Empty", nCol: 6, name: t("MISC.empty"), multiCol: true, empty: true},
-        {type: "SortingText", name: t("DIRECTORY.table.A"), property: "A", justifyCenter: true},
-        {type: "SortingText", name: t("DIRECTORY.table.AA"), property: "AA", justifyCenter: true},
-        {type: "SortingText", name: t("DIRECTORY.table.AAA"), property: "AAA", justifyCenter: true}
+        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORY.table.A"), property: "A", justifyCenter: true},
+        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORY.table.AA"), property: "AA", justifyCenter: true},
+        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORY.table.AAA"), property: "AAA", justifyCenter: true}
       ]
     ]
     

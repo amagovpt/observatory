@@ -89,89 +89,92 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
   }, [tempData, theme, language])
 
   return (
-    <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center`}>
+    <section
+      className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center`}
+    >
       <div className="d-flex flex-column section_container best_practises p-3">
         <h2 className="bold py-3 m-0">{title}</h2>
-        
+
         {/* Top Ten Practices Graph/Table */}
         <div className="tabs_section">
-          <TopTenTabs top10Data={top10Data} color={color} aditionalData={tempData} title={title} ariaLabels={ariaLabels} />
+          <TopTenTabs
+            top10Data={top10Data}
+            color={color}
+            aditionalData={tempData}
+            title={title}
+            ariaLabels={ariaLabels}
+          />
         </div>
 
         {/* Tables for Practices, 3 per type and one general */}
         <h2 className="bold mt-5">{t(`WEBSITE.${goodOrBad}.title`)}</h2>
-        <p className="ama-typography-body-large mb-3">{t(`WEBSITE.${goodOrBad}.subtitle`)}</p>
+        <p className="ama-typography-body-large mb-3">
+          {t(`WEBSITE.${goodOrBad}.subtitle`)}
+        </p>
         <div className="light_tables">
-          {/* <div class="sorting_table-responsive ">
-            <table class="table sorting_table" data-sortable="true">
-              <caption className="caption_table bold ama-typography-body">As 3 melhores práticas de nível "A"</caption>
-              <tbody>
-                <tr>
-                  <td class="text-center bold ama-typography-body">1.</td>
-                  <td class="  ama-typography-body">Encontrei páginas com links com nome acessível não vazio</td>
-                  <td class="text-center "><span class="ama-typography-body">prática em </span><span class="ama-typography-body bold">87 páginas</span></td>
-                </tr>
-                <tr>
-                  <td class="text-center bold ama-typography-body">2.</td>
-                  <td class="  ama-typography-body">Elementos com descendentes decorativos</td>
-                  <td class="text-center "><span class="ama-typography-body">prática em </span><span class="ama-typography-body bold">87 páginas</span></td>
-                </tr>
-                <tr>
-                  <td class="text-center bold ama-typography-body">3.</td>
-                  <td class="  ama-typography-body">Elementos com papel semântico explícito</td>
-                  <td class="text-center "><span class="ama-typography-body">prática em </span><span class="ama-typography-body bold">87 páginas</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div> */}
-          <h3 className="mt-3 mb-2">{t(`WEBSITE.table.lvl_label`) + ": " + "A"}</h3>
-          {dataTableA && <SortingTable
-            hasSort={false}
-            headers={dataTableHeadersA}
-            dataList={dataTableA}
-            columnsOptions={columnsOptionsAAs}
-            darkTheme={theme}
-            pagination={false}
-            links={false}
-            caption={t(`WEBSITE.${goodOrBad}.message`, {value: "A"})}
-          />}
 
-          <h3 className="mt-3 mb-2">{t(`WEBSITE.table.lvl_label`) + ": " + "AA"}</h3>
-          {dataTableAA && <SortingTable
-            hasSort={false}
-            headers={dataTableHeadersAA}
-            dataList={dataTableAA}
-            columnsOptions={columnsOptionsAAs}
-            darkTheme={theme}
-            pagination={false}
-            links={false}
-            caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AA"})}
-          />}
+          <h3 className="mt-3 mb-2">
+            {t(`WEBSITE.table.lvl_label`) + ": " + "A"}
+          </h3>
+          {dataTableA && (
+            <SortingTable
+              hasSort={false}
+              headers={dataTableHeadersA}
+              dataList={dataTableA}
+              columnsOptions={columnsOptionsAAs}
+              darkTheme={theme}
+              pagination={false}
+              links={false}
+              caption={t(`WEBSITE.${goodOrBad}.message`, { value: "A" })}
+            />
+          )}
 
-          <h3 className="mt-3 mb-2">{t(`WEBSITE.table.lvl_label`) + ": " + "AAA"}</h3>
-          {dataTableAAA && <SortingTable
-            hasSort={false}
-            headers={dataTableHeadersAAA}
-            dataList={dataTableAAA}
-            columnsOptions={columnsOptionsAAs}
-            darkTheme={theme}
-            pagination={false}
-            links={false}
-            caption={t(`WEBSITE.${goodOrBad}.message`, {value: "AAA"})}
-          />}
+          <h3 className="mt-3 mb-2">
+            {t(`WEBSITE.table.lvl_label`) + ": " + "AA"}
+          </h3>
+          {dataTableAA && (
+            <SortingTable
+              hasSort={false}
+              headers={dataTableHeadersAA}
+              dataList={dataTableAA}
+              columnsOptions={columnsOptionsAAs}
+              darkTheme={theme}
+              pagination={false}
+              links={false}
+              caption={t(`WEBSITE.${goodOrBad}.message`, { value: "AA" })}
+            />
+          )}
+
+          <h3 className="mt-3 mb-2">
+            {t(`WEBSITE.table.lvl_label`) + ": " + "AAA"}
+          </h3>
+          {dataTableAAA && (
+            <SortingTable
+              hasSort={false}
+              headers={dataTableHeadersAAA}
+              dataList={dataTableAAA}
+              columnsOptions={columnsOptionsAAs}
+              darkTheme={theme}
+              pagination={false}
+              links={false}
+              caption={t(`WEBSITE.${goodOrBad}.message`, { value: "AAA" })}
+            />
+          )}
         </div>
         <h2 className="bold mt-5 mb-3">{t(`WEBSITE.table.${goodOrBad}`)}</h2>
-        {detailsTable && <SortingTable
-          hasSort={false}
-          headers={detailsTableHeaders}
-          dataList={detailsTable}
-          columnsOptions={columnsOptionsDetails}
-          darkTheme={theme}
-          pagination={false}
-          links={false}
-          caption={t(`WEBSITE.table.${goodOrBad}`)}
-          ariaLabels={ariaLabels}
-        />}
+        {detailsTable && (
+          <SortingTable
+            hasSort={false}
+            headers={detailsTableHeaders}
+            dataList={detailsTable}
+            columnsOptions={columnsOptionsDetails}
+            darkTheme={theme}
+            pagination={false}
+            links={false}
+            caption={t(`WEBSITE.table.${goodOrBad}`)}
+            ariaLabels={ariaLabels}
+          />
+        )}
       </div>
     </section>
   );

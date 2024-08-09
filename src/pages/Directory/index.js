@@ -158,6 +158,7 @@ export default function Directory() {
                   nItemsPerPageTexts={nItemsPerPageText}
                   paginationButtonsTexts={paginationButtonsTexts}
                 />
+
                 <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
               </div>
             </section>

@@ -155,8 +155,8 @@ export default function Directories() {
             </section>
 
             {/* SEARCH TABLE */}
-            <section className={`bg-white ${main_content_directories} d-flex flex-row justify-content-center align-items-center`}>
-              <div className="d-flex flex-column search_container p-4 px-5">
+            <section className={`search_container ${main_content_directories} d-flex flex-row justify-content-center align-items-center`}>
+              <div className="d-flex flex-column section_container py-4">
                 <form className="d-flex flex-row justify-content-between mb-4" onSubmit={handleSubmit}>
                   <Input
                     darkTheme={theme}
