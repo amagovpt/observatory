@@ -52,7 +52,7 @@ export default function Directories() {
   });
 
   // Data and Options for the Tables on this page
-  const { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons } = getDirectoriesTable(t, navigate)
+  const { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons } = getDirectoriesTable(t)
 
   // Loading
   const [loading, setLoading] = useState(false);

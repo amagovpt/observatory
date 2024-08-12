@@ -56,7 +56,7 @@ export default function Directory() {
   });
 
   // Data and Options for the Tables on this page
-  const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t, id, navigate)
+  const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t, id)
 
   // Navigation options
   const breadcrumbs = [

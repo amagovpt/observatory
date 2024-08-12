@@ -78,7 +78,7 @@ export function searchFuntion (text, dataProcess) {
 // columnsOptions -> Options to tell the type to render with which property for main table
 // statsTitles -> Titles for the StatisticsHeader component
 // nameOfIcons -> Name of icons to be showned in the table
-export function getDirectoriesTable (t, navigate) {
+export function getDirectoriesTable (t) {
     const searchTableHeaders = [
       {type: "SortingText", bigWidth: "40%", name: t("DIRECTORIES.search.directory"), property: "directoryName"},
       {type: "SortingText", bigWidth: "40%", name: t("DIRECTORIES.search.website"), property: "name"},
@@ -114,12 +114,7 @@ export function getDirectoriesTable (t, navigate) {
         {type: "Text", nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},
       ],
       [
-        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
-        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
-        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
-        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
-        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
-        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
+        {type: "Empty", nCol: 6, name: t("MISC.empty"), multiCol: true, empty: true},
         {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true},
         {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AA"), property: "AA", justifyCenter: true},
         {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AAA"), property: "AAA", justifyCenter: true}
@@ -127,18 +122,18 @@ export function getDirectoriesTable (t, navigate) {
     ]
     
     let columnsOptions = {
-      id: { type: "Skip", center: false, bold: false, decimalPlace: false },
-      rank: { type: "Number", center: true, bold: false, decimalPlace: false },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => {
+      id: { type: "Skip", center: false, bold: false, decimalPlace: false, headers: '' },
+      rank: { type: "Number", center: true, bold: false, decimalPlace: false, headers: t("DIRECTORIES.table.rank") },
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, headers: t("DIRECTORIES.table.name"), href: (row) => {
         return `${pathURL}directories/${row.id}`
       }},
-      declarations: { type: "Number", center: true, bold: false, decimalPlace: false },
-      stamps: { type: "Number", center: true, bold: false, decimalPlace: false },
-      score: { type: "Number", center: true, bold: false, decimalPlace: true },
-      nWebsites: { type: "Number", center: true, bold: false, decimalPlace: false },
-      A: { type: "Number", center: true, bold: false, decimalPlace: false },
-      AA: { type: "Number", center: true, bold: false, decimalPlace: false },
-      AAA: { type: "Number", center: true, bold: false, decimalPlace: false },
+      declarations: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "AMA-DeclaracaoDark-Line" },
+      stamps: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "AMA-SeloDark-Line" },
+      score: { type: "Number", center: true, bold: false, decimalPlace: true, headers: t("DIRECTORIES.table.score") },
+      nWebsites: { type: "Number", center: true, bold: false, decimalPlace: false, headers: t("DIRECTORIES.table.websites").replaceAll(' ', '') },
+      A: { type: "Number", center: true, bold: false, decimalPlace: false, headers: (t("DIRECTORIES.table.levels").replaceAll(' ', '') + " " + t("DIRECTORIES.table.A")) },
+      AA: { type: "Number", center: true, bold: false, decimalPlace: false, headers: (t("DIRECTORIES.table.levels").replaceAll(' ', '') + " " + t("DIRECTORIES.table.AA")) },
+      AAA: { type: "Number", center: true, bold: false, decimalPlace: false, headers: (t("DIRECTORIES.table.levels").replaceAll(' ', '') + " " + t("DIRECTORIES.table.AAA")) },
     }
     
     let statsTitles = [
