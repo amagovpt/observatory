@@ -89,9 +89,13 @@ export function getDirectoriesTable (t, navigate) {
     ]
     
     let columnsOptionsSearch = {
-      directoryName: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => navigate(`${pathURL}directories/${row.directoryId}`) },
+      directoryName: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => {
+        return `${pathURL}directories/${row.directoryId}`
+      }},
       directoryId: { type: "Skip", center: false, bold: false, decimalPlace: false },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => navigate(`${pathURL}directories/${row.directoryId}/${row.id}`) },
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => {
+        return `${pathURL}directories/${row.directoryId}/${row.id}`
+      }},
       id: { type: "Skip", center: false, bold: false, decimalPlace: false },
       declaration: { type: "Declaration", center: true, bold: false, decimalPlace: false },
       stamp: { type: "Stamp", center: true, bold: false, decimalPlace: false },
@@ -110,7 +114,12 @@ export function getDirectoriesTable (t, navigate) {
         {type: "Text", nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},
       ],
       [
-        {type: "Empty", nCol: 6, name: t("MISC.empty"), multiCol: true, empty: true},
+        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
+        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
+        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
+        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
+        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
+        {type: "Empty", nCol: 1, name: t("MISC.empty"), multiCol: true, empty: true},
         {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true},
         {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AA"), property: "AA", justifyCenter: true},
         {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AAA"), property: "AAA", justifyCenter: true}
@@ -120,7 +129,9 @@ export function getDirectoriesTable (t, navigate) {
     let columnsOptions = {
       id: { type: "Skip", center: false, bold: false, decimalPlace: false },
       rank: { type: "Number", center: true, bold: false, decimalPlace: false },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => navigate(`${pathURL}directories/${row.id}`) },
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => {
+        return `${pathURL}directories/${row.id}`
+      }},
       declarations: { type: "Number", center: true, bold: false, decimalPlace: false },
       stamps: { type: "Number", center: true, bold: false, decimalPlace: false },
       score: { type: "Number", center: true, bold: false, decimalPlace: true },
