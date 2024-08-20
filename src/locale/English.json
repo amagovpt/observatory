@@ -31,7 +31,7 @@
         "observatory": "Observatory",
         "numbers": "The Observatory in numbers",
         "directories": "Directories",
-        "youarehere": "you are here"
+        "youAreHere": "you are here"
       },
       "dark_mode": "Dark mode",
       "light_mode": "Light mode",
