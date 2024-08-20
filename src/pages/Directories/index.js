@@ -110,7 +110,7 @@ export default function Directories() {
         !error ?
           <div className="container">
             <div className="link_breadcrumb_container py-5">
-              <Breadcrumb data={breadcrumbs} darkTheme={theme} tagHere={t("NAV.youAreHere")} />
+              <Breadcrumb data={breadcrumbs} darkTheme={theme} tagHere={t("HEADER.NAV.youAreHere")} />
             </div>
 
             <div className="title_container">
