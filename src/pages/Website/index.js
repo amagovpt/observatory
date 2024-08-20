@@ -45,8 +45,9 @@ export default function Website() {
   const [parsedData, setParsedData] = useState();
 
   // Navigation Parameters
-  const id = Number(location.pathname.split("/")[2]) || null;
-  const sitioId = Number(location.pathname.split("/")[3]) || null;
+  const splitLocation = location.pathname.split("/")
+  const id = Number(splitLocation[splitLocation.length-2]) || null;
+  const sitioId = Number(splitLocation[splitLocation.length-1]) || null;
 
   // General Data
   const [data, setData] = useState({

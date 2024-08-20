@@ -12,8 +12,8 @@ import Directory from "./pages/Directory"
 import Website from "./pages/Website"
 import Error from "./pages/Error"
 
-//export const pathURL = process.env.REACT_APP_DEV_SERVER_URL;
-export const pathURL = process.env.REACT_APP_PROD_SERVER_URL;
+export const pathURL = process.env.REACT_APP_DEV_SERVER_URL;
+//export const pathURL = process.env.REACT_APP_PROD_SERVER_URL;
 
 export default function App() {
 

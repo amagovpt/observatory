@@ -1,14 +1,17 @@
 import axios from "axios";
 import dataJSON from '../utils/data.json'
 
+const baseURLDEV = process.env.REACT_APP_AMP_DEV_SERVER;
+const baseURLPROD = process.env.REACT_APP_AMP_PROD_SERVER;
+
 export const api = axios.create({
-  baseURL: "http://10.55.37.16:/api",
+  baseURL: baseURLDEV,
 });
 
 
 export const getObservatoryData = async () => {
-  // const {response, err} = await getObservatoryByAPI();
-  const {response, err} = await getObservatoryByLocal();
+  const {response, err} = await getObservatoryByAPI();
+  //const {response, err} = await getObservatoryByLocal();
   return { response, err };
 }
 

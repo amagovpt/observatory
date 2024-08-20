@@ -41,7 +41,8 @@ export default function Directory() {
   const [parsedData, setParsedData] = useState();
 
   // Navigation Parameters
-  const id = Number(location.pathname.split("/")[2]) || null;
+  const splitLocation = location.pathname.split("/")
+  const id = Number(splitLocation[splitLocation.length-1]) || null;
 
   // Data for the main table
   const [directoriesList, setDirectoriesList] = useState([]);

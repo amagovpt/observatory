@@ -1,5 +1,6 @@
 {
   "name": "observatorio_react",
+  "homepage": "observatorio-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
