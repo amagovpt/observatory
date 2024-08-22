@@ -41,7 +41,8 @@ export function TopTenTabs({ top10Data, color, aditionalData, title, ariaLabels 
       eventKey: "tab2",
       title: t("DIALOGS.scores.table"),
       component: <div className="dark_table">
-        <SortingTable
+        {dataTable && dataTable.length > 0 ? (
+          <SortingTable
           hasSort={false}
           headers={dataHeaders}
           dataList={dataTable}
@@ -51,7 +52,7 @@ export function TopTenTabs({ top10Data, color, aditionalData, title, ariaLabels 
           links={false}
           caption={title}
           ariaLabels={ariaLabels}
-        />
+        />) : <p className="ama-typography-body-large mb-3">{t(`WEBSITE.empty_table`)}</p>}
         </div>,
     },
   ];

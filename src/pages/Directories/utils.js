@@ -107,8 +107,8 @@ export function getDirectoriesTable (t) {
       [
         {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.rank"), property: "rank"},
         {type: "SortingText", bigWidth: "50%", name: t("DIRECTORIES.table.name"), property: "name"},
-        {type: "SortingIcon", name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORIES.table.declaration"), property: "declaration"},
-        {type: "SortingIcon", name: "AMA-SeloDark-Line", description: t("DIRECTORIES.table.stamp"), property: "stamp"},
+        {type: "SortingIcon", name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORY.table.declaration"), property: "declaration"},
+        {type: "SortingIcon", name: "AMA-SeloDark-Line", description: t("DIRECTORY.table.stamp"), property: "stamp"},
         {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.score"), property: "score", justifyCenter: true},
         {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.websites"), property: "nWebsites", justifyCenter: true},
         {type: "Text", nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},

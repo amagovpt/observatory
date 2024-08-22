@@ -137,21 +137,19 @@ export function getBarLineGraph (t, dataForLine, dataForBar, websiteStats, theme
 // columnsOptions -> Bar/Line type of render to execute p/ attribute
 export function getBarLineTable (t) {
     const dataHeaders = [
-        [
-          {type: "Text", name: t("DIALOGS.scores.range"), justifyCenter: true},
-          {type: "Text", name: t("DIALOGS.scores.frequency"), justifyCenter: true},
-          {type: "Text", name: t("DIALOGS.scores.frequency")+ " (%)", justifyCenter: true},
-          {type: "Text", name: t("DIALOGS.scores.cumulative"), justifyCenter: true},
-          {type: "Text", name: t("DIALOGS.scores.cumulative")+ " (%)", justifyCenter: true},
-        ]
+      {type: "Text", name: t("DIALOGS.scores.range"), justifyCenter: true},
+      {type: "Text", name: t("DIALOGS.scores.frequency"), justifyCenter: true},
+      {type: "Text", name: t("DIALOGS.scores.frequency")+ " (%)", justifyCenter: true},
+      {type: "Text", name: t("DIALOGS.scores.cumulative"), justifyCenter: true},
+      {type: "Text", name: t("DIALOGS.scores.cumulative")+ " (%)", justifyCenter: true},
     ]
 
     const columnsOptions = {
-        range: { type: "Text", center: true, bold: false, decimalPlace: false },
-        frequency: { type: "Number", center: true, bold: false, decimalPlace: false },
-        frequency_percent: { type: "Text", center: true, bold: false, decimalPlace: false },
-        cumulative: { type: "Number", center: true, bold: false, decimalPlace: false },
-        cumulative_percent: { type: "Text", center: true, bold: false, decimalPlace: false },
+      range: { type: "Text", center: true, bold: false, decimalPlace: false },
+      frequency: { type: "Number", center: true, bold: false, decimalPlace: false },
+      frequency_percent: { type: "Text", center: true, bold: false, decimalPlace: false },
+      cumulative: { type: "Number", center: true, bold: false, decimalPlace: false },
+      cumulative_percent: { type: "Text", center: true, bold: false, decimalPlace: false },
     }
 
     return { dataHeaders,  columnsOptions }

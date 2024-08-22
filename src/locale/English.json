@@ -371,6 +371,7 @@
       "subtitle": "Website:",
       "statistics_title": "Statistics",
       "statistics_subtitle": "Metadata",
+      "empty_table": "Contains no items.",
       "tabs": {
         "best_practices": "Best practices",
         "bad_practices": "Bad practices"

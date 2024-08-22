@@ -153,8 +153,8 @@ export default function Directory() {
                   columnsOptions={columnsOptions}
                   caption={t("DIRECTORY.table.subtitle")+ " " + directoryName}
                   project={`${pathURL}`}
-                  iconsAltTexts={nameOfIcons}
                   pagination={true}
+                  iconsAltTexts={nameOfIcons}
                   itemsPaginationTexts={itemsPaginationText}
                   nItemsPerPageTexts={nItemsPerPageText}
                   paginationButtonsTexts={paginationButtonsTexts}

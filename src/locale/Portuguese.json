@@ -371,6 +371,7 @@
       "subtitle": "Sítio Web",
       "statistics_title": "Estatísticas",
       "statistics_subtitle": "Metadados",
+      "empty_table": "Não contém itens.",
       "tabs": {
         "best_practices": "Boas práticas",
         "bad_practices": "Más práticas"

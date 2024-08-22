@@ -29,7 +29,7 @@ export function getDirectoryTable (t, id) {
     let columnsOptions = {
       id: { type: "Skip", center: false, bold: false, decimalPlace: false, headers: '' },
       rank: { type: "Number", center: true, bold: false, decimalPlace: false, headers: t("DIRECTORY.table.rank") },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, headers: t("DIRECTORY.table.name"), href: (row) => {
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, headers: t("DIRECTORY.table.name").replaceAll(' ', ''), href: (row) => {
         return `${pathURL}directories/${id}/${row.id}`
       }},
       entity: { type: "Skip", center: false, bold: false, decimalPlace: false, headers: '' },

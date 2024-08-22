@@ -116,7 +116,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
           <h3 className="mt-3 mb-2">
             {t(`WEBSITE.table.lvl_label`) + ": " + "A"}
           </h3>
-          {dataTableA && (
+          {dataTableA && dataTableA.length > 0 ? (
             <SortingTable
               hasSort={false}
               headers={dataTableHeadersA}
@@ -127,12 +127,12 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
               links={false}
               caption={t(`WEBSITE.${goodOrBad}.message`, { value: "A" })}
             />
-          )}
+          ) : <p className="ama-typography-body-large mb-3">{t(`WEBSITE.empty_table`)}</p>}
 
           <h3 className="mt-3 mb-2">
             {t(`WEBSITE.table.lvl_label`) + ": " + "AA"}
           </h3>
-          {dataTableAA && (
+          {dataTableAA && dataTableAA.length > 0 ? (
             <SortingTable
               hasSort={false}
               headers={dataTableHeadersAA}
@@ -143,12 +143,12 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
               links={false}
               caption={t(`WEBSITE.${goodOrBad}.message`, { value: "AA" })}
             />
-          )}
+          ) : <p className="ama-typography-body-large mb-3">{t(`WEBSITE.empty_table`)}</p>}
 
           <h3 className="mt-3 mb-2">
             {t(`WEBSITE.table.lvl_label`) + ": " + "AAA"}
           </h3>
-          {dataTableAAA && (
+          {dataTableAAA && dataTableAAA.length > 0 ? (
             <SortingTable
               hasSort={false}
               headers={dataTableHeadersAAA}
@@ -159,10 +159,10 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
               links={false}
               caption={t(`WEBSITE.${goodOrBad}.message`, { value: "AAA" })}
             />
-          )}
+          ) : <p className="ama-typography-body-large mb-3">{t(`WEBSITE.empty_table`)}</p>}
         </div>
         <h2 className="bold mt-5 mb-3">{t(`WEBSITE.table.${goodOrBad}`)}</h2>
-        {detailsTable && (
+        {detailsTable && detailsTable.length > 0 ? (
           <SortingTable
             hasSort={false}
             headers={detailsTableHeaders}
@@ -174,7 +174,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
             caption={t(`WEBSITE.table.${goodOrBad}`)}
             ariaLabels={ariaLabels}
           />
-        )}
+        ) : <p className="ama-typography-body-large mb-3">{t(`WEBSITE.empty_table`)}</p>}
       </div>
     </section>
   );
