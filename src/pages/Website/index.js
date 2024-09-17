@@ -46,6 +46,9 @@ export default function Website() {
 
   // Navigation Parameters
   const splitLocation = location.pathname.split("/")
+  while (splitLocation.length && splitLocation[splitLocation.length - 1] === "") {
+    splitLocation.pop();
+  }
   const id = Number(splitLocation[splitLocation.length-2]) || null;
   const sitioId = Number(splitLocation[splitLocation.length-1]) || null;
 
