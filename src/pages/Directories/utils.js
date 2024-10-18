@@ -105,35 +105,34 @@ export function getDirectoriesTable (t) {
       
     const directoriesHeaders = [
       [
-        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.rank"), property: "rank"},
-        {type: "SortingText", bigWidth: "50%", name: t("DIRECTORIES.table.name"), property: "name"},
-        {type: "SortingIcon", name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORY.table.declaration"), property: "declaration"},
-        {type: "SortingIcon", name: "AMA-SeloDark-Line", description: t("DIRECTORY.table.stamp"), property: "stamp"},
-        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.score"), property: "score", justifyCenter: true},
-        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.websites"), property: "nWebsites", justifyCenter: true},
-        {type: "Text", nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},
+        {type: "SortingText", nRow: 2, bigWidth: "10%", name: t("DIRECTORIES.table.rank"), property: "rank"},
+        {type: "SortingText", nRow: 2, bigWidth: "50%", name: t("DIRECTORIES.table.name"), property: "name"},
+        {type: "SortingIcon", nRow: 2, name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORY.table.declaration"), property: "declaration"},
+        {type: "SortingIcon", nRow: 2, name: "AMA-SeloDark-Line", description: t("DIRECTORY.table.stamp"), property: "stamp"},
+        {type: "SortingText", nRow: 2, bigWidth: "10%", name: t("DIRECTORIES.table.score"), property: "score", justifyCenter: true},
+        {type: "SortingText", nRow: 2, bigWidth: "10%", name: t("DIRECTORIES.table.websites"), property: "nWebsites", justifyCenter: true},
+        {id: "conformidade", type: "Text", nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},
       ],
       [
-        {type: "Empty", nCol: 6, name: t("MISC.empty"), multiCol: true, empty: true},
-        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true},
-        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AA"), property: "AA", justifyCenter: true},
-        {type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AAA"), property: "AAA", justifyCenter: true}
+        {id: "A", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true},
+        {id: "AA", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AA"), property: "AA", justifyCenter: true},
+        {id: "AAA", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AAA"), property: "AAA", justifyCenter: true}
       ]
     ]
     
     let columnsOptions = {
-      id: { type: "Skip", center: false, bold: false, decimalPlace: false, headers: '' },
-      rank: { type: "Number", center: true, bold: false, decimalPlace: false, headers: t("DIRECTORIES.table.rank") },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, headers: t("DIRECTORIES.table.name"), href: (row) => {
+      id: { type: "Skip", center: false, bold: false, decimalPlace: false },
+      rank: { type: "Number", center: true, bold: false, decimalPlace: false },
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => {
         return `${pathURL}directories/${row.id}`
       }},
-      declarations: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "AMA-DeclaracaoDark-Line" },
-      stamps: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "AMA-SeloDark-Line" },
-      score: { type: "Number", center: true, bold: false, decimalPlace: true, headers: t("DIRECTORIES.table.score") },
-      nWebsites: { type: "Number", center: true, bold: false, decimalPlace: false, headers: t("DIRECTORIES.table.websites").replaceAll(' ', '') },
-      A: { type: "Number", center: true, bold: false, decimalPlace: false, headers: (t("DIRECTORIES.table.levels").replaceAll(' ', '') + " " + t("DIRECTORIES.table.A")) },
-      AA: { type: "Number", center: true, bold: false, decimalPlace: false, headers: (t("DIRECTORIES.table.levels").replaceAll(' ', '') + " " + t("DIRECTORIES.table.AA")) },
-      AAA: { type: "Number", center: true, bold: false, decimalPlace: false, headers: (t("DIRECTORIES.table.levels").replaceAll(' ', '') + " " + t("DIRECTORIES.table.AAA")) },
+      declarations: { type: "Number", center: true, bold: false, decimalPlace: false },
+      stamps: { type: "Number", center: true, bold: false, decimalPlace: false },
+      score: { type: "Number", center: true, bold: false, decimalPlace: true },
+      nWebsites: { type: "Number", center: true, bold: false, decimalPlace: false },
+      A: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "conformidade A" },
+      AA: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "conformidade AA" },
+      AAA: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "conformidade AAA" },
     }
     
     let statsTitles = [

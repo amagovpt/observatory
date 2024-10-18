@@ -139,17 +139,17 @@ export default function Directories() {
             <section className={`bg-white ${main_content_directories} d-flex flex-row justify-content-center align-items-center my-5`}>
               <div className="d-flex flex-column section_container py-4 m-0 directories_container">
                 <h2 className="bold pb-3 m-0">{t("DIRECTORIES.table.title")}</h2>
-                  <SortingTable
-                    darkTheme={theme}
-                    hasSort={true}
-                    headers={directoriesHeaders}
-                    setDataList={setDirectoriesList}
-                    dataList={directoriesList}
-                    caption={t("DIRECTORIES.table.title")}
-                    columnsOptions={columnsOptions}
-                    project={`${pathURL}`}
-                    pagination={false}
-                  />
+                <SortingTable
+                  darkTheme={theme}
+                  hasSort={true}
+                  headers={directoriesHeaders}
+                  setDataList={setDirectoriesList}
+                  dataList={directoriesList}
+                  caption={t("DIRECTORIES.table.title")}
+                  columnsOptions={columnsOptions}
+                  project={`${pathURL}`}
+                  pagination={false}
+                />
                 <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
               </div>
             </section>
