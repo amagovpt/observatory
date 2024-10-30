@@ -69,7 +69,8 @@
     },
     "STATISTICS": {
       "gauge": {
-        "label": "Average score"
+        "label": "Average score",
+        "description": "AccessMonitor score. Page rating: {{value}} out of 10"
       },
       "directories": "Directories",
       "entities": "Entities",

@@ -110,7 +110,8 @@ export default function Home() {
               subtitle={t("DIRECTORIES.statistics_subtitle")}
               oldestPage={t("STATISTICS.oldest_page_updated")}
               newestPage={t("STATISTICS.newest_page_updated")}
-              gaugeTitle={t("STATISTICS.gauge.label")}
+              gaugeTitle={[t("STATISTICS.gauge.label")]}
+              gaugeDescription={t("STATISTICS.gauge.description", {value: directoriesStats.score})}
               buttons={false}
             />}
           </section>

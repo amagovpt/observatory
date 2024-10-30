@@ -69,7 +69,8 @@
     },
     "STATISTICS": {
       "gauge": {
-        "label": "Pontuação média"
+        "label": "Pontuação média",
+        "description": "Pontuação do AccessMonitor. Avaliação da página: {{value}} de 10"
       },
       "directories": "Diretórios",
       "entities": "Entidades",

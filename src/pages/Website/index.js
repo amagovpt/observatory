@@ -201,7 +201,8 @@ export default function Website() {
                 subtitle={t("DIRECTORIES.statistics_subtitle")}
                 oldestPage={t("STATISTICS.oldest_page_updated")}
                 newestPage={t("STATISTICS.newest_page_updated")}
-                gaugeTitle={t("STATISTICS.gauge.label")}
+                gaugeTitle={[t("STATISTICS.gauge.label")]}
+                gaugeDescription={t("STATISTICS.gauge.description", {value: websiteStats.score})}
                 buttons={false}
               />
             </section>
