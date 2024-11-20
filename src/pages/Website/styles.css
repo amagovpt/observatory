@@ -20,15 +20,19 @@
     background-color: transparent !important;
 }
 
-.good_bad .nav-tabs .nav-link.active {
+.good_bad .ama.tabs-container .nav-tabs .nav-link.active {
     background-color: transparent !important;
+}
+
+.BarLine_section ul li {
+    line-height: 24px;
 }
 
 .good_bad ul li {
     font-weight: 700;
     padding: 0px;
     font-size: 22px;
-    line-height: 48px;
+    line-height: 24px;
 }
 
 .barLineContainer {
@@ -58,7 +62,7 @@
     margin-bottom: 10px !important;
 }
 
-.topTen_section .nav-tabs .nav-link.active {
+.topTen_section .ama.tabs-container .nav-tabs .nav-link.active {
     background-color: var(--ama-color-background-light-darker) !important;
 }
 
@@ -69,7 +73,7 @@
 /* MOBILE */
 @media (min-width: 320px) and (max-width: 480px) {
     .radar_graphic {
-        height: fit-content;
+        height: fit-content !important;
     }
 
     .best_practises .table {
@@ -93,8 +97,8 @@
         background-color: var(--ama-color-background-dark-darker) !important;
     }
 
-    .tabs_section .nav-tabs .nav-link.active,
-    .good_bad .nav-tabs .nav-link.active {
+    .tabs_section .ama.tabs-container .nav-tabs .nav-link.active,
+    .good_bad .ama.tabs-container .nav-tabs .nav-link.active {
         background-color: var(--ama-color-brand-primary) !important;
     }
 
@@ -102,8 +106,8 @@
         background-color: var(--ama-color-background-dark-darker);
     }
 
-    .main_dark .topTen_section .nav-tabs .nav-link.active,
-    .main_dark .BarLine_section .nav-tabs .nav-link.active {
+    .main_dark .topTen_section .ama.tabs-container .nav-tabs .nav-link.active,
+    .main_dark .BarLine_section .ama.tabs-container .nav-tabs .nav-link.active {
         border: 0px !important;
         background-color: var(--ama-color-text-blue) !important;
         color: var(--ama-color-text-gray) !important;
@@ -111,20 +115,20 @@
 }
 
 /* DARK MODE */
-.main_dark .good_bad .nav-tabs,
-.main_dark .tabs_section .nav-tabs {
+.main_dark .good_bad .ama.tabs-container .nav-tabs,
+.main_dark .tabs_section .ama.tabs-container .nav-tabs {
     border-color: var(--ama-color-background-dark-darker) !important;
     background-color: var(--ama-color-background-dark-darker) !important;
 }
 
-.main_dark .good_bad .nav-tabs .nav-link,
-.main_dark .tabs_section .nav-tabs .nav-link {
+.main_dark .good_bad .ama.tabs-container .nav-tabs .nav-link,
+.main_dark .tabs_section .ama.tabs-container .nav-tabs .nav-link {
     color: var(--ama-color-text-blue) !important;
     background-color: var(--ama-color-background-dark-darker) !important;
 }
 
-.main_dark .good_bad .nav-tabs .nav-link.active,
-.main_dark .tabs_section .nav-tabs .nav-link.active {
+.main_dark .good_bad .ama.tabs-container .nav-tabs .nav-link.active,
+.main_dark .tabs_section .ama.tabs-container .nav-tabs .nav-link.active {
     border-bottom: 5px solid var(--ama-color-text-blue);
 }
 

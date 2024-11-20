@@ -1,6 +1,8 @@
 import "./styles/theme.css";
 import "./styles/main.css";
 import "./styles/fontStyle.css"
+import 'ama-design-system/dist/index.css';
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import "./i18n";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -12,8 +14,8 @@ import Directory from "./pages/Directory"
 import Website from "./pages/Website"
 import Error from "./pages/Error"
 
-export const pathURL = process.env.REACT_APP_DEV_SERVER_URL;
-//export const pathURL = process.env.REACT_APP_PROD_SERVER_URL;
+//export const pathURL = process.env.REACT_APP_DEV_SERVER_URL;
+export const pathURL = process.env.REACT_APP_PROD_SERVER_URL;
 
 export default function App() {
 

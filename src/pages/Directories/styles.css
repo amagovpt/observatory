@@ -3,8 +3,8 @@
     color: var(--ama-color-background-white);
 }
 
-.directories_container .sorting_table tbody tr:hover,
-.search_container .sorting_table tbody tr:hover {
+.directories_container .ama.sorting_table_responsive tbody tr:hover,
+.search_container .ama.sorting_table_responsive tbody tr:hover {
     background-color: var(--ama-color-background-light-darker) !important;
 }
 
@@ -27,6 +27,7 @@
     font-size: 30px;
     align-self: flex-end;
     height: 54px;
+    width: 93px;
     border: 2px solid var(--ama-color-brand-primary);
 }
 
@@ -58,8 +59,8 @@
     color: var(--ama-color-background-white);
 }
 
-.main_content_directories .directories_container .sorting_table tbody tr:hover,
-.main_content_directories .search_container .sorting_table tbody tr:hover {
+.main_content_directories .directories_container .ama.sorting_table_responsive tbody tr:hover,
+.main_content_directories.search_container .ama.sorting_table_responsive tbody tr:hover {
     background-color: var(--ama-color-background-dark-darker) !important;
 }
 
