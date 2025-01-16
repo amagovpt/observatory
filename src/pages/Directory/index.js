@@ -5,7 +5,7 @@ import { getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 // Date formatting
@@ -60,7 +60,7 @@ export default function Directory() {
   });
 
   // Data and Options for the Tables on this page
-  const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText } = getDirectoryTable(t, id)
+  const { directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, paginationButtonsTexts, nItemsPerPageText, itemsPaginationText, ariaLabels } = getDirectoryTable(t, id)
 
   // Navigation options
   const breadcrumbs = [
@@ -68,8 +68,8 @@ export default function Directory() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate(`${pathURL}`) },
-    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate(`${pathURL}directories`) },
+    { children: <Link to={`${pathURL}`}>{t("HEADER.NAV.observatory")}</Link> },
+    { children: <Link to={`${pathURL}directories`}>{t("HEADER.NAV.directories")}</Link> },
     { title: directoryName },
   ];
 
@@ -146,8 +146,10 @@ export default function Directory() {
             {/* MAIN Directory TABLE */}
             <section className={`bg-white ${main_content_directory} d-flex flex-row justify-content-center align-items-center my-5`}>
               <div className="d-flex flex-column section_container py-4 directory_container">
-                <h2 className="bold m-0">{t("DIRECTORIES.table.title")}</h2>
-                <p className="ama-typography-body mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</p>
+                <div role="text">
+                  <h2 className="bold m-0">{t("DIRECTORIES.table.title")}</h2>
+                  <p className="ama-typography-body mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</p>
+                </div>
                 <SortingTable
                   darkTheme={theme}
                   hasSort={true}
@@ -162,6 +164,7 @@ export default function Directory() {
                   itemsPaginationTexts={itemsPaginationText}
                   nItemsPerPageTexts={nItemsPerPageText}
                   paginationButtonsTexts={paginationButtonsTexts}
+                  ariaLabels={ariaLabels}
                 />
 
                 <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>

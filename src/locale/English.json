@@ -70,7 +70,7 @@
     "STATISTICS": {
       "gauge": {
         "label": "Average score",
-        "description": "AccessMonitor score. Page rating: {{value}} out of 10"
+        "description": "AccessMonitor average score. Pages rating: {{value}} out of 10"
       },
       "directories": "Directories",
       "entities": "Entities",
@@ -157,6 +157,7 @@
     },
     "HOME": {
       "tabs": {
+        "title": "Information about the Observatory",
         "_1": {
           "title": "What is the Observatory?",
           "paragraph": "In an increasingly digital society, where online services are multiplying, the Portuguese Accessibility Observatory for websites and mobile applications emerges with the aim of:",
@@ -190,26 +191,10 @@
           "part2": "In Portugal, it is estimated that there are approximately:"
         },
         "disabilities": {
-          "_1": {
-            "part1": "people with visual impairments,",
-            "part2": "hearing or temporary motor",
-            "part3": "or permanent"
-          },
-          "_2": {
-            "part1": "of the population with limitations",
-            "part2": "chronic physical or cognitive",
-            "part3": "or permanent"
-          },
-          "_3": {
-            "part1": "of the population between 15 and 64 years old",
-            "part2": "with visual or hearing limitations,",
-            "part3": "even with auxiliaries"
-          },
-          "_4": {
-            "part1": "people over 65",
-            "part2": "with difficulty seeing,",
-            "part3": "even with glasses"
-          }
+          "_1": "people with visual impairments, hearing or temporary motor or permanent",
+          "_2": "of the population with limitations chronic physical or cognitive or permanent",
+          "_3": "of the population between 15 and 64 years old with visual or hearing limitations, even with auxiliaries",
+          "_4": "people over 65 with difficulty seeing, even with glasses"
         }
       },
       "top5": {
@@ -221,7 +206,10 @@
           "part3": "WCAG 2.1 accessibility best practices criteria."
         },
         "numbers_link": "More numbers from the Observatory",
-        "button": "Consult the Observatory data"
+        "button": "Consult the Observatory data",
+        "rank": "Rank",
+        "name": "Website",
+        "score": "Score"
       },
       "summary": {
         "title": "The Observatory in numbers",
@@ -244,8 +232,7 @@
           "sentence2": "Project co-financed by the European Commission",
           "sentence3": "Horizon 2020 - Innovation Action program",
           "sentence4": "GA 780057"
-        },
-        "statistics_title": "Summary of the current state of usability and accessibility"
+        }
       },
       "main_aria": "main body of the Observatory page"
     },
@@ -360,6 +347,8 @@
           "items": " items",
           "see": "Show ",
           "per_page": " items per page",
+          "selectorAria": "Number of rows per page",
+          "selectorNav": "Page selector",
           "first_page": "First page",
           "previous_page": "Previous page",
           "next_page": "Next page",
@@ -397,7 +386,8 @@
       },
       "accessibility_plot": {
         "title": "Accessibility plot",
-        "label": "Score distribution"
+        "label": "Score distribution",
+        "headerTable": "Page"
       },
       "table": {
         "top_3_best_practices": "Detailed best practices distribution",

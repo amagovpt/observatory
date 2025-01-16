@@ -264,6 +264,21 @@ export function getRadarGraph (t, theme, labelsForRadar, data) {
     return { options, manchaData }
 }
 
+
+export function getRadarTable (t) {
+	const dataHeaders = [
+		{type: "Text", name: t("WEBSITE.accessibility_plot.headerTable"), justifyCenter: true},
+		{type: "Text", name: t("STATISTICS.score"), justifyCenter: true},
+	]
+
+	let columnsOptions = {
+		id: { type: "Number", center: true, bold: false, decimalPlace: false },
+		score: { type: "Number", center: true, bold: false, decimalPlace: true }
+	}
+
+	return { dataHeaders, columnsOptions }
+}
+
 // Function to get data for Top Ten for each Good or Bad table
 // t -> the translation
 // theme -> Dark/Light theme
@@ -276,85 +291,72 @@ export function getRadarGraph (t, theme, labelsForRadar, data) {
 // optionsHorizontalBar -> Options for Bar Graph
 // horizontalData -> Data for Bar Graph
 export function getTopTenGraphTable (t, theme, labelsForHorizontal, dataForHorizontal, color) {
-    const dataHeaders = [
-        {type: "Text", name: t("DIALOGS.errors.level"), justifyCenter: true},
-        {type: "Text", bigWidth: "50%", name: t("DIALOGS.errors.description")},
-        {type: "Text", name: t("DIALOGS.errors.pages"), justifyCenter: true},
-        {type: "Text", name: t("DIALOGS.errors.situations"), justifyCenter: true}
-    ]
-    
-    let columnsOptions = {
-        lvl: { type: "Text", center: true, bold: false, decimalPlace: false, ariaLabel: true },
-        name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
-        nPages: { type: "Number", center: true, bold: false, decimalPlace: false },
-        nOccurrences: { type: "Number", center: true, bold: false, decimalPlace: false },
-    }
+	const dataHeaders = [
+		{type: "Text", name: t("DIALOGS.errors.level"), justifyCenter: true},
+		{type: "Text", bigWidth: "50%", name: t("DIALOGS.errors.description")},
+		{type: "Text", name: t("DIALOGS.errors.pages"), justifyCenter: true},
+		{type: "Text", name: t("DIALOGS.errors.situations"), justifyCenter: true}
+	]
+  
+	let columnsOptions = {
+		lvl: { type: "Text", center: true, bold: false, decimalPlace: false, ariaLabel: true },
+		name: { type: "DangerousHTML", center: false, bold: false, decimalPlace: false },
+		nPages: { type: "Number", center: true, bold: false, decimalPlace: false },
+		nOccurrences: { type: "Number", center: true, bold: false, decimalPlace: false },
+	}
     
     const optionsHorizontalBar = {
-        indexAxis: 'y', // This makes the bar chart horizontal
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: {
-              color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white', // Color of the legend text
-            }
-          },
+      indexAxis: 'y', // This makes the bar chart horizontal
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white', // Color of the legend text
+          }
         },
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: t("DIALOGS.corrections.situations_label"),
-              color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white', // Color of Title on X axis
-              font: {
-                size: 14
-              }
-            },
-            ticks: {
-                color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white' // Color of Text on X axis
-            },
-            grid: {
-                color: theme === "light" ? 'rgba(0,0,0, 0.1)' : 'rgba(255, 255, 255, 0.2)' // Color of Dividers vertically
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: t("DIALOGS.corrections.situations_label"),
+            color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white', // Color of Title on X axis
+            font: {
+              size: 14
             }
           },
-          y: {
-            title: {
-              display: true,
-              text: t("DIALOGS.corrections.tests_label"),
-              color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white', // Color of Title on Y axis
-              font: {
-                size: 14
-              }
-            },
-            ticks: {
-                color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white', // Color of Text on Y axis
-                callback: function (value, index) {
-                    // Fetch the label using the index
-                    const label = labelsForHorizontal[index];
-                    // Word-wrap the label into multiple lines
-                    const words = label.split(' ');
-                    const maxLength = 20; // Set the max length for each line
-                    let result = '';
-                    let line = '';
-                    words.forEach((word) => {
-                        if (line.length + word.length < maxLength) {
-                        line += word + ' ';
-                        } else {
-                        result += line.trim() + '\n';
-                        line = word + ' ';
-                        }
-                    });
-                    result += line.trim();
-                    return result;
-                }
-              },
-            grid: {
-                color: theme === "light" ? 'rgba(0,0,0, 0.1)' : 'rgba(255, 255, 255, 0.2)' // Color of Dividers horizontaly
+          ticks: {
+            color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white' // Color of Text on X axis
+          },
+          grid: {
+            color: theme === "light" ? 'rgba(0,0,0, 0.1)' : 'rgba(255, 255, 255, 0.2)' // Color of Dividers vertically
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: t("DIALOGS.corrections.tests_label"),
+            color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white', // Color of Title on Y axis
+            font: {
+              size: 14
             }
+          },
+          ticks: {
+            color: theme === "light" ? 'rgba(0,0,0, 1)' : 'white', // Color of Text on Y axis
+            autoSkip: false,
+            callback: function (value, index) {
+              // Fetch the label using the index
+              const label = labelsForHorizontal[index];
+              return splitLabelForChart(label);
+            }
+          },
+          grid: {
+            color: theme === "light" ? 'rgba(0,0,0, 0.1)' : 'rgba(255, 255, 255, 0.2)' // Color of Dividers horizontaly
           }
         }
+      }
     };
     
     const horizontalData = {
@@ -382,4 +384,36 @@ export function checkIfDirectoryOk (id, array) {
 export function checkIfWebsiteOk (id, websiteId, array) {
   const websiteObejct = array.directories[id].websitesList.find(e => e.id === websiteId)
   return websiteObejct ? true : false;
+}
+
+function splitLabelForChart(label) {
+  const words = label.split(' ');
+  const lineLimit = 85;
+  const lines = [];
+
+  let line = '';
+  let currentWordIdx = 0;
+
+  while (currentWordIdx < words.length) {
+    if (line.length + words[currentWordIdx].length < lineLimit) {
+      line += `${words[currentWordIdx]} `;
+      currentWordIdx++;
+
+      if (currentWordIdx === words.length) {
+        lines.push(line);
+      }
+    } else {
+      if (line.length) {
+        lines.push(line);
+        line = '';
+      }
+
+      if (words[currentWordIdx].length >= lineLimit) {
+        lines.push([words.currentWord]);
+        currentWordIdx++;
+      }
+    }
+  }
+
+  return lines;
 }

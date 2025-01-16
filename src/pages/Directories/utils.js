@@ -1,4 +1,5 @@
 import { pathURL } from "../../App";
+import { Link } from "react-router-dom";
 
 // Secondary search function that checks if the text matches
 // website -> name of the website
@@ -89,12 +90,12 @@ export function getDirectoriesTable (t) {
     ]
     
     let columnsOptionsSearch = {
-      directoryName: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => {
-        return `${pathURL}directories/${row.directoryId}`
+      directoryName: { type: "Link", center: false, bold: false, decimalPlace: false, children: (row, data) => {
+        return <Link to={`${pathURL}directories/${row.directoryId}`} className="ama-typography-action-large bold">{data}</Link>
       }},
       directoryId: { type: "Skip", center: false, bold: false, decimalPlace: false },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => {
-        return `${pathURL}directories/${row.directoryId}/${row.id}`
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, children: (row, data) => {
+        return <Link to={`${pathURL}directories/${row.directoryId}/${row.id}`} className="ama-typography-action-large bold">{data}</Link>
       }},
       id: { type: "Skip", center: false, bold: false, decimalPlace: false },
       declaration: { type: "Declaration", center: true, bold: false, decimalPlace: false },
@@ -114,17 +115,17 @@ export function getDirectoriesTable (t) {
         {id: "conformidade", type: "Text", nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},
       ],
       [
-        {id: "A", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true},
-        {id: "AA", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AA"), property: "AA", justifyCenter: true},
-        {id: "AAA", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AAA"), property: "AAA", justifyCenter: true}
+        {id: "A", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true, ariaLabel: true},
+        {id: "AA", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AA"), property: "AA", justifyCenter: true, ariaLabel: true},
+        {id: "AAA", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.AAA"), property: "AAA", justifyCenter: true, ariaLabel: true}
       ]
     ]
     
     let columnsOptions = {
       id: { type: "Skip", center: false, bold: false, decimalPlace: false },
       rank: { type: "Number", center: true, bold: false, decimalPlace: false },
-      name: { type: "Link", center: false, bold: false, decimalPlace: false, href: (row) => {
-        return `${pathURL}directories/${row.id}`
+      name: { type: "Link", center: false, bold: false, decimalPlace: false, children: (row, data) => {
+        return <Link to={`${pathURL}directories/${row.id}`} className="ama-typography-action-large bold">{data}</Link>
       }},
       declarations: { type: "Number", center: true, bold: false, decimalPlace: false },
       stamps: { type: "Number", center: true, bold: false, decimalPlace: false },
@@ -151,5 +152,11 @@ export function getDirectoriesTable (t) {
       t("DIRECTORY.table.declaration_conform")
     ]
 
-    return { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons }
+    let ariaLabels = {
+      A: t("WEBSITE.ariaLabels.A"),
+      AA: t("WEBSITE.ariaLabels.AA"),
+      AAA: t("WEBSITE.ariaLabels.AAA")
+    }
+
+    return { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, ariaLabels }
 }

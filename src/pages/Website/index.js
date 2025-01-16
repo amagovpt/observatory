@@ -5,7 +5,7 @@ import { getObservatoryData } from "../../config/api";
 
 // Hooks
 import { useContext, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 // Contexts
@@ -87,9 +87,9 @@ export default function Website() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate(`${pathURL}`) },
-    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate(`${pathURL}directories`) },
-    { title: directoryName, href: "", onClick: () => navigate(`${pathURL}directories/${id}`) },
+    { children: <Link to={`${pathURL}`}>{t("HEADER.NAV.observatory")}</Link> },
+    { children: <Link to={`${pathURL}directories`}>{t("HEADER.NAV.directories")}</Link> },
+    { children: <Link to={`${pathURL}directories/${id}`}>{directoryName}</Link> },
     { title: data && data.name },
   ];
 
@@ -211,9 +211,7 @@ export default function Website() {
             <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
               <div className="d-flex flex-column section_container py-4">
                 <h2 className="bold">{t("WEBSITE.accessibility_plot.title")}</h2>
-                <div className="d-flex radar_graphic justify-content-center">
-                  <RadarGraph tempData={data} />
-                </div>
+                <RadarGraph tempData={data} />
               </div>
             </section>
 

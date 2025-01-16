@@ -11,8 +11,13 @@
     text-decoration: underline !important;
 }
 
-.radar_graphic {
+.radar_graph,
+.radar_graph_table {
     height: 500px !important;
+}
+
+.radar_graph_table {
+    overflow-y: auto;
 }
 
 .good_bad ul {
@@ -72,9 +77,6 @@
 
 /* MOBILE */
 @media (min-width: 320px) and (max-width: 480px) {
-    .radar_graphic {
-        height: fit-content !important;
-    }
 
     .best_practises .table {
         width: 700px !important;

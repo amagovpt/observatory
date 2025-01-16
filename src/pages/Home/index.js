@@ -6,7 +6,7 @@ import { getObservatoryData } from "../../config/api";
 // Hooks
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // Contexts
 import { ThemeContext } from "../../context/ThemeContext";
@@ -15,7 +15,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import moment from 'moment'
 
 // Components
-import { Button, Icon, StatisticsHeader, LoadingComponent } from "ama-design-system"
+import { Icon, StatisticsHeader, LoadingComponent } from "ama-design-system"
 import { Top5_Practices } from "./_components/top5_practices";
 import { AchievementPerType } from "./_components/achievementPerType"
 import { ObservatoryInfoTabs } from "./_components/observatoryInfoTabs";
@@ -78,11 +78,13 @@ export default function Home() {
   // Data for the censos section
   const censosDataIndividual = (icon, number, spans) => {
     return (
-      <div className="d-flex flex-column align-items-center text-center censos_column">
+      <p className="d-flex flex-column align-items-center text-center censos_column px-2">
         <Icon name={icon} />
-        <span className="ama-typography-display-6 bold mt-2">{number}</span>
-        <span className="ama-typography-body bold">{spans[0]}<br/>{spans[1]}<br/>{spans[2]}</span>
-      </div>
+        <div role="text" className="d-flex flex-column align-items-center text-center">
+          <span className="ama-typography-display-6 bold mt-2">{number}</span>
+          <span className="ama-typography-body bold">{spans}</span>
+        </div>
+      </p>
     )
   }
 
@@ -93,14 +95,13 @@ export default function Home() {
         <>
         <section className={`bg-white ${main_content_home} d-flex flex-column align-items-center py-6 welcome_section`}>
           <div className="container welcome_container mb-4">
-            <h2 className="mb-2">{t("HEADER.welcome.title")}</h2>
-            <h3>{t("HEADER.welcome.subtitle")}</h3>
+            <h1 className="mb-2 title">{t("HEADER.welcome.title")}</h1>
+            <p className="subtitle">{t("HEADER.welcome.subtitle")}</p>
           </div>
         </section>
         
-        <div className="container">
+        <div className="container pt-6">
           {/* Statistics Header Component */}
-          <h2 className="mt-6 bold">{t("HOME.summary.statistics_title")}</h2>
           <section className={`bg-white ${main_content_home} d-flex flex-row justify-content-center align-items-center my-4 section_statistics`}>
             {directoriesStats && <StatisticsHeader
               darkTheme={theme}
@@ -117,31 +118,38 @@ export default function Home() {
           </section>
 
           {/* Top 5 websites section */}
-          <section className={`${main_content_home} d-flex justify-content-center align-items-center my-6 top5_websites`}>
-            <div className="flex-1 top5_div">
-              <h2 className="bold mb-2">{t("HOME.top5.title")}</h2>
-              <div className="ama-typography-body">{t("HOME.top5.last_updated") + " " + directoriesStats.recentPage}</div>
-              <p className="ama-typography-body mt-2">{t("HOME.top5.paragraph.part1")+ " " +t("HOME.top5.paragraph.part2")+ " " +t("HOME.top5.paragraph.part3")}</p>
-              <Button
-                text={t("HOME.top5.button")}
-                size="lg"
-                id="btn-url"
-                onClick={() => navigate(`${pathURL}directories`)}
-              />
+          <section className={`${main_content_home} d-flex flex-column justify-content-center my-6 top5_websites`}>
+            <h2 className="bold mb-2">{t("HOME.top5.title")}</h2>
+            <div className="d-flex mt-4 top5websites">
+              <div className="description w-50">
+                <div className="ama-typography-body mt-2">{t("HOME.top5.last_updated") + " " + directoriesStats.recentPage}</div>
+                <p className="ama-typography-body mt-4">{t("HOME.top5.paragraph.part1")+ " " +t("HOME.top5.paragraph.part2")+ " " +t("HOME.top5.paragraph.part3")}</p>
+              </div>
+              <table className="table top5table">
+                <thead>
+                  <tr>
+                    <th className="d-flex justify-content-center">{t("HOME.top5.rank")}</th>
+                    <th>{t("HOME.top5.name")}</th>
+                    <th className="d-flex justify-content-center">{t("HOME.top5.score")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {parsedData.topFiveWebsites.map((website) => 
+                    <tr>
+                      <td><div className="ama-typography-body top5_number text-center">{website.index}</div></td>
+                      <td><Link to={`${pathURL}directories/${website.DirectoryId}/${website.id}`} className="top5_link ama-typography-body-large bold">{website.name}</Link></td>
+                      <td className="ama-typography-body-large bold text-center">{(website.score).toFixed(1)}</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
             </div>
-            <div className="flex-1 top5_div">
-              <ul>
-                {parsedData.topFiveWebsites.map((website) => (
-                  <li className="d-flex justify-content-between align-items-center mb-2">
-                    <div className="d-flex flex-row align-items-center">
-                      <span className="ama-typography-body top5_number me-3">{website.index}</span>
-                      <a href="" className="top5_link ama-typography-body-large bold" onClick={() => navigate(`${pathURL}directories/${website.DirectoryId}/${website.id}`)}>{website.name}</a>
-                    </div>
-                    <span className="ama-typography-body-large bold">{(website.score).toFixed(1)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <Link
+              className="ama-typography-body-large bold top5_link"
+              to={`${pathURL}directories`}
+            >
+              {t("HOME.top5.button")}
+            </Link>
           </section>
         </div>
 
@@ -155,7 +163,6 @@ export default function Home() {
               icon={"AMA-Declaracao-Line"}
               colors={{good: "green", semi: "yellow", bad: "red"}}
               colorTitle={{good: t("NUMBERS.declaration.conform"), semi: t("NUMBERS.declaration.partial"), bad: t("NUMBERS.declaration.non_conform")}}
-              colorRGB={{good: "rgb(21, 172, 81)", semi: "rgb(243, 214, 9)", bad: "rgb(233, 0, 24)"}}
               translationType={"declaration"}
             />
 
@@ -167,7 +174,6 @@ export default function Home() {
               icon={"AMA-SeloDark2-Line"}
               colors={{good: "gold", semi: "silver", bad: "bronze"}}
               colorTitle={{good: t("NUMBERS.badge.gold"), semi: t("NUMBERS.badge.silver"), bad: t("NUMBERS.badge.bronze")}}
-              colorRGB={{good: "rgb(168, 125, 0)", semi: "rgb(117, 121, 123)", bad: "rgb(188, 116, 72)"}}
               translationType={"badge"}
             />
 
@@ -184,13 +190,10 @@ export default function Home() {
               </div>
               <p className="ama-typography-body mb-4">{t("HOME.4all.paragraph.part1")}<br/>{t("HOME.4all.paragraph.part2")}</p>
               <div className="d-flex justify-content-between">
-                {censosDataIndividual("AMA-BracoPartido-Line", "1 085 472", [t("HOME.4all.disabilities._1.part1"), t("HOME.4all.disabilities._1.part2"), t("HOME.4all.disabilities._1.part3")])}
-
-                {censosDataIndividual("AMA-CadeiraRodasPC-Line", "10,9%", [t("HOME.4all.disabilities._2.part1"), t("HOME.4all.disabilities._2.part2"), t("HOME.4all.disabilities._2.part3")])}
-
-                {censosDataIndividual("AMA-Braille-Line", "62,4%", [t("HOME.4all.disabilities._3.part1"), t("HOME.4all.disabilities._3.part2"), t("HOME.4all.disabilities._3.part3")])}
-
-                {censosDataIndividual("AMA-Idoso-Line", "78,7%", [t("HOME.4all.disabilities._4.part1"), t("HOME.4all.disabilities._4.part2"), t("HOME.4all.disabilities._4.part3")])}
+                {censosDataIndividual("AMA-BracoPartido-Line", "1 085 472", t("HOME.4all.disabilities._1"))}
+                {censosDataIndividual("AMA-CadeiraRodasPC-Line", "10,9%", t("HOME.4all.disabilities._2"))}
+                {censosDataIndividual("AMA-Braille-Line", "62,4%", t("HOME.4all.disabilities._3"))}
+                {censosDataIndividual("AMA-Idoso-Line", "78,7%", t("HOME.4all.disabilities._4"))}
               </div>
             </div>
            

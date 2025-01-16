@@ -3,7 +3,7 @@ import "./styles/main.css";
 import "./styles/fontStyle.css"
 import 'ama-design-system/dist/index.css';
 
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./i18n";
 import { ThemeProvider } from "./context/ThemeContext";
 
