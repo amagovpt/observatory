@@ -80,10 +80,8 @@ export default function Home() {
     return (
       <p className="d-flex flex-column align-items-center text-center censos_column px-2">
         <Icon name={icon} />
-        <div role="text" className="d-flex flex-column align-items-center text-center">
-          <span className="ama-typography-display-6 bold mt-2">{number}</span>
-          <span className="ama-typography-body bold">{spans}</span>
-        </div>
+        <span className="ama-typography-display-6 bold mt-2">{number}</span>
+        <span className="ama-typography-body bold">{spans}</span>
       </p>
     )
   }
@@ -126,6 +124,7 @@ export default function Home() {
                 <p className="ama-typography-body mt-4">{t("HOME.top5.paragraph.part1")+ " " +t("HOME.top5.paragraph.part2")+ " " +t("HOME.top5.paragraph.part3")}</p>
               </div>
               <table className="table top5table">
+                <caption className="visually-hidden">{t("HOME.top5.title")}</caption>
                 <thead>
                   <tr>
                     <th className="d-flex justify-content-center">{t("HOME.top5.rank")}</th>

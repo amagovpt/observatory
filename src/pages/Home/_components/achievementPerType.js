@@ -19,10 +19,8 @@ export function AchievementPerType({ data, type, good, semi, bad, title, icon, c
     return (
       <div className={`d-flex ${marginBottom} w-100 row_st_dc align-items-center`}>
         <p className="d-flex w-50">
-          <div className="d-flex flex-row w-50" role="text">
-            <span className="ama-typography-display-6 bold quantity">{quantityTotal}</span>
-            <span className={`d-flex ps-2 ${barColor} conform_container ama-typography-body bold align-items-center`}>{type}</span>
-          </div>
+          <span className="ama-typography-display-6 bold quantity">{quantityTotal}</span>
+          <span className={`d-flex ps-2 ${barColor} conform_container ama-typography-body bold align-items-center`}>{type}</span>
         </p>
         <progress className={`bar ${barColor}`} value={`${percentTotal}`} max="100"/>
       </div>
@@ -32,13 +30,11 @@ export function AchievementPerType({ data, type, good, semi, bad, title, icon, c
   return (
     <div className="d-flex group_container p-5 mb-5 mt-4">
       <p className="d-flex flex-column first_column">
-        <div role="text">
-          <span className="ama-typography-body-larger bold mb-3">{title}</span>
-          <span className="d-flex flex-row align-items-center ama-typography-display-1">
-            {total}
-            <Icon name={icon} />
-          </span>
-        </div>
+        <span className="ama-typography-body-larger bold mb-3">{title}</span>
+        <span className="d-flex flex-row align-items-center ama-typography-display-1">
+          {total}
+          <Icon name={icon} />
+        </span>
       </p>
       <div className="d-flex flex-column second_column">
         <div className="ama-typography-body mb-3 align-self-end">{t(`NUMBERS.${translationType}.percentTitle`)}</div>

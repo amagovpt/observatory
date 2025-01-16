@@ -146,10 +146,8 @@ export default function Directory() {
             {/* MAIN Directory TABLE */}
             <section className={`bg-white ${main_content_directory} d-flex flex-row justify-content-center align-items-center my-5`}>
               <div className="d-flex flex-column section_container py-4 directory_container">
-                <div role="text">
-                  <h2 className="bold m-0">{t("DIRECTORIES.table.title")}</h2>
-                  <p className="ama-typography-body mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</p>
-                </div>
+                <h2 className="bold m-0">{t("DIRECTORIES.table.title")}</h2>
+                <p className="ama-typography-body mb-4">{t("DIRECTORY.table.subtitle")+ " " + directoryName}</p>
                 <SortingTable
                   darkTheme={theme}
                   hasSort={true}

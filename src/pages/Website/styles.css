@@ -75,6 +75,12 @@
     font-size: 16px;
 }
 
+mark {
+    background-color: initial;
+    font-weight: 900 !important;
+    text-decoration: underline;
+}
+
 /* MOBILE */
 @media (min-width: 320px) and (max-width: 480px) {
 
@@ -158,4 +164,8 @@
 
 .main_dark .website .sorting_table tbody tr:hover {
     background-color: transparent !important;
+}
+
+.main_dark mark {
+    color: var(--ama-color-background-white);
 }
