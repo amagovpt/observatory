@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Icon } from "ama-design-system"
 
 
-export function AchievementPerType({ data, type, good, semi, bad, title, icon, colors, colorTitle, colorRGB, translationType}) {
+export function AchievementPerType({ data, type, good, semi, bad, title, icon, colors, colorTitle, translationType}) {
 
   const { t } = useTranslation();
 
@@ -15,37 +15,36 @@ export function AchievementPerType({ data, type, good, semi, bad, title, icon, c
   const valueGood = data[type].total.websites[good]+data[type].total.apps[good]
 
   // The number + the bar for each row
-  const barStatsRow = (marginBottom, quantityTotal, barColor, type, barColorRGB, percentTotal) => {
-    const percentageTotalGrey = 100 - percentTotal
+  const barStatsRow = (marginBottom, quantityTotal, barColor, type, percentTotal) => {
     return (
       <div className={`d-flex ${marginBottom} w-100 row_st_dc align-items-center`}>
-        <span className="ama-typography-display-6 bold quantity">{quantityTotal}</span>
-        <div className={`ps-2 ${barColor} conform_container`}>
-          <span className="ama-typography-body bold">{type}</span>
-        </div>
-        <div className="d-flex justify-content-center ps-2">
-          <div className="d-flex flex-row">
-            <span className="bar" style={{background: `-webkit-linear-gradient(left, ${barColorRGB}, ${barColorRGB} ${percentTotal}%, rgb(220, 220, 219) ${percentTotal}%, rgb(220, 220, 219) ${percentageTotalGrey}%)`}}></span>
+        <p className="d-flex w-50">
+          <div className="d-flex flex-row w-50" role="text">
+            <span className="ama-typography-display-6 bold quantity">{quantityTotal}</span>
+            <span className={`d-flex ps-2 ${barColor} conform_container ama-typography-body bold align-items-center`}>{type}</span>
           </div>
-        </div>
+        </p>
+        <progress className={`bar ${barColor}`} value={`${percentTotal}`} max="100"/>
       </div>
     )
   }
 
   return (
     <div className="d-flex group_container p-5 mb-5 mt-4">
-      <div className="d-flex flex-column first_column">
-        <div className="ama-typography-body-larger bold mb-3">{title}</div>
-        <div className="d-flex flex-row align-items-center ama-typography-display-1">
-          <span className="me-2">{total}</span>
-          <Icon name={icon} />
+      <p className="d-flex flex-column first_column">
+        <div role="text">
+          <span className="ama-typography-body-larger bold mb-3">{title}</span>
+          <span className="d-flex flex-row align-items-center ama-typography-display-1">
+            {total}
+            <Icon name={icon} />
+          </span>
         </div>
-      </div>
+      </p>
       <div className="d-flex flex-column second_column">
         <div className="ama-typography-body mb-3 align-self-end">{t(`NUMBERS.${translationType}.percentTitle`)}</div>
-        {barStatsRow("mb-5", valueGood, colors.good, colorTitle.good, colorRGB.good, valueGood*100/total)}
-        {barStatsRow("mb-5", valueSemi, colors.semi, colorTitle.semi, colorRGB.semi, valueSemi*100/total)}
-        {barStatsRow("", valueBad, colors.bad, colorTitle.bad, colorRGB.bad, valueBad*100/total)}
+        {barStatsRow("mb-5", valueGood, colors.good, colorTitle.good, valueGood*100/total)}
+        {barStatsRow("mb-5", valueSemi, colors.semi, colorTitle.semi, valueSemi*100/total)}
+        {barStatsRow("", valueBad, colors.bad, colorTitle.bad, valueBad*100/total)}
       </div>
     </div>
   )

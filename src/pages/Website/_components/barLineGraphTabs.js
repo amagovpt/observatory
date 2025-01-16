@@ -64,7 +64,7 @@ export function BarLineGraphTabs({ tempData, websiteStats }) {
           darkTheme={theme}
           pagination={false}
           links={false}
-          caption={t("DIALOGS.scores.table")}
+          caption={t("DIALOGS.scores.title")}
           columnsOptions={columnsOptions}
         />
       </div>,

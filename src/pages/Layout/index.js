@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { Footer, Header } from "ama-design-system";
 import { ThemeContext } from "../../context/ThemeContext";
 import "./styles.css";
@@ -11,6 +11,10 @@ export default function Layout({ children }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const location = useLocation()
   const mainDark = theme === "light" ? "" : "main_dark";
+
+  useLayoutEffect(() => {
+    document.body.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const { t, i18n: {language, changeLanguage} } = useTranslation();
 
@@ -37,6 +41,7 @@ export default function Layout({ children }) {
         changeTheme={toggleTheme}
         linkTo={`${pathURL}`}
         ariaLabel={t("HEADER.header_arial_label")}
+        obsSpecial={true}
       />
       <main className={`main ${mainDark}`} id="content" aria-label={t("HOME.main_aria")}>
         {children}

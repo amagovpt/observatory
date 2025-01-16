@@ -70,7 +70,7 @@
     "STATISTICS": {
       "gauge": {
         "label": "Pontuação média",
-        "description": "Pontuação do AccessMonitor. Avaliação da página: {{value}} de 10"
+        "description": "Pontuação média do AccessMonitor. Avaliação das páginas: {{value}} de 10"
       },
       "directories": "Diretórios",
       "entities": "Entidades",
@@ -157,6 +157,7 @@
     },
     "HOME": {
       "tabs": {
+        "title": "Informação sobre o observatório",
         "_1": {
           "title": "O que é o Observatório?",
           "paragraph": "Numa sociedade cada vez mais digital, onde se multiplicam os serviços online, o Observatório Português da Acessibilidade dos sítios Web e das aplicações móveis surge com o objetivo de:",
@@ -190,26 +191,10 @@
           "part2": "Em Portugal, estima-se que há aproximadamente:"
         },
         "disabilities": {
-          "_1": {
-            "part1": "pessoas com limitações visuais,",
-            "part2": "auditivas, cognitivas ou motoras",
-            "part3": "temporárias ou permanentes."
-          },
-          "_2": {
-            "part1": "da população com 5 ou",
-            "part2": "mais anos apresenta pelo",
-            "part3": "menos uma incapacidade."
-          },
-          "_3": {
-            "part1": "da população com mais de 65",
-            "part2": "anos com dificuldade em ver,",
-            "part3": "mesmo com óculos."
-          },
-          "_4": {
-            "part1": "da população com mais de 65",
-            "part2": "anos com limitações auditivas,",
-            "part3": "mesmo com auxiliares."
-          }
+          "_1": "pessoas com limitações visuais, auditivas, cognitivas ou motoras temporárias ou permanentes.",
+          "_2": "da população com 5 ou mais anos apresenta pelo menos uma incapacidade.",
+          "_3": "da população com mais de 65 anos com dificuldade em ver, mesmo com óculos.",
+          "_4": "da população com mais de 65 anos com limitações auditivas, mesmo com auxiliares."
         }
       },
       "top5": {
@@ -221,7 +206,10 @@
           "part3": "os critérios de boas práticas de acessibilidade WCAG 2.1."
         },
         "numbers_link": "Mais números do Observatório",
-        "button": "Consulte os dados do Observatório"
+        "button": "Consulte os dados do Observatório",
+        "rank": "Classificação",
+        "name": "Sítio Web",
+        "score": "Pontuação"
       },
       "summary": {
         "title": "O Observatório em números",
@@ -244,8 +232,7 @@
           "sentence2": "Projeto co-financiado pela Comissão Europeia",
           "sentence3": "programa Horizon 2020 - Innovation Action",
           "sentence4": "GA 780057"
-        },
-        "statistics_title": "Sumário do estado atual da usabilidade e acessibilidade"
+        }
       },
       "main_aria": "corpo principal da página do Observatório"
     },
@@ -360,6 +347,8 @@
           "items": " itens",
           "see": "Ver ",
           "per_page": " itens por página",
+          "selectorAria": "Número de linhas por página",
+          "selectorNav": "Seletor de páginas",
           "first_page": "Primeira página",
           "previous_page": "Página anterior",
           "next_page": "Página seguinte",
@@ -397,7 +386,8 @@
       },
       "accessibility_plot": {
         "title": "Mancha de acessibilidade",
-        "label": "Distribuição de pontuações"
+        "label": "Distribuição de pontuações",
+        "headerTable": "Página"
       },
       "table": {
         "top_3_best_practices": "Distribuição detalhada das melhores práticas",

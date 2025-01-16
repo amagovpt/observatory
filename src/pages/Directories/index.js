@@ -6,7 +6,7 @@ import { getObservatoryData } from "../../config/api";
 // Hooks
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // Date formatting
 import moment from 'moment'
@@ -52,7 +52,7 @@ export default function Directories() {
   });
 
   // Data and Options for the Tables on this page
-  const { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons } = getDirectoriesTable(t)
+  const { searchTableHeaders, columnsOptionsSearch, directoriesHeaders, columnsOptions, statsTitles, nameOfIcons, ariaLabels } = getDirectoriesTable(t)
 
   // Loading
   const [loading, setLoading] = useState(false);
@@ -63,8 +63,8 @@ export default function Directories() {
       title: "Acessibilidade.gov.pt",
       href: "https://www.acessibilidade.gov.pt/",
     },
-    { title: t("HEADER.NAV.observatory"), href: "", onClick: () => navigate(`${pathURL}`) },
-    { title: t("HEADER.NAV.directories"), href: "", onClick: () => navigate(`${pathURL}directories`) },
+    { children: <Link to={`${pathURL}`}>{t("HEADER.NAV.observatory")}</Link> },
+    { title: t("HEADER.NAV.directories") },
   ];
 
   useEffect(() => {
@@ -150,6 +150,7 @@ export default function Directories() {
                   columnsOptions={columnsOptions}
                   project={`${pathURL}`}
                   pagination={false}
+                  ariaLabels={ariaLabels}
                 />
                 <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
               </div>
