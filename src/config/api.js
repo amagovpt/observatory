@@ -10,8 +10,8 @@ export const api = axios.create({
 
 
 export const getObservatoryData = async () => {
-  //const {response, err} = await getObservatoryByAPI();
-  const {response, err} = await getObservatoryByLocal();
+  const {response, err} = await getObservatoryByAPI();
+  //const {response, err} = await getObservatoryByLocal();
   return { response, err };
 }
 
