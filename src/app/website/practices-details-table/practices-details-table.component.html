@@ -22,8 +22,6 @@
             {{ q.int.lower }}
             {{ "WEBSITE.table.details.single_practice" | translate }}
             {{ q.tot }}
-            {{ "WEBSITE.table.details.from" | translate }}
-            <!--{{ website.nPages }}-->
             {{ "WEBSITE.table.details.multi_page" | translate }}
           </span>
           <span *ngIf="q.int.lower === q.int.upper && q.int.lower === 1 && q.tot > 1 && q.tot === website.nPages">
@@ -41,8 +39,6 @@
             {{ q.int.lower }}
             {{ "WEBSITE.table.details.multi_practices" | translate }}
             {{ q.tot }}
-            {{ "WEBSITE.table.details.from" | translate }}
-            <!--{{ website.nPages }}-->
             {{ "WEBSITE.table.details.multi_page" | translate }}
           </span>
 
@@ -53,8 +49,6 @@
             {{ q.int.upper }}
             {{ "WEBSITE.table.details.multi_practices" | translate }}
             {{ q.tot }}
-            {{ "WEBSITE.table.details.from" | translate }}
-            <!--{{ website.nPages }}-->
             {{ "WEBSITE.table.details.multi_page" | translate }}
           </span>
           <span *ngIf="q.int.lower !== q.int.upper && q.tot > 1">
@@ -64,8 +58,6 @@
             {{ q.int.upper }}
             {{ "WEBSITE.table.details.multi_practices" | translate }}
             {{ q.tot }}
-            {{ "WEBSITE.table.details.from" | translate }}
-            <!--{{ website.nPages }}-->
             {{ "WEBSITE.table.details.multi_page" | translate }}
           </span>
         </span>

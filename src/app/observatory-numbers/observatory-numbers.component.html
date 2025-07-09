@@ -335,7 +335,7 @@
             </div>
           </div>
         </div>
-        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} 22 {{ "MONTHS.12" | translate }}, 2020</span>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ globalData.recentPage | date | customDate }}</span>
       </div>
       <div class="stamp">
         <div fxLayout="row">
@@ -571,7 +571,7 @@
             </div>
           </div>
         </div>
-        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} 22 {{ "MONTHS.12" | translate }}, 2020</span>
+        <span class="last_updated" fxLayoutAlign="end center">{{ "NUMBERS.last_updated" | translate }} {{ globalData.recentPage | date | customDate }}</span>
       </div>
       <div fxLayout="row">
         <a class="directories-link" routerLink="/directories">{{
