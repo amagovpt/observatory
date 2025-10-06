@@ -64,10 +64,7 @@ export default function Directory() {
 
   // Navigation options
   const breadcrumbs = [
-    {
-      title: "Acessibilidade.gov.pt",
-      href: "https://www.acessibilidade.gov.pt/",
-    },
+
     { children: <Link to={`${pathURL}`}>{t("HEADER.NAV.observatory")}</Link> },
     { children: <Link to={`${pathURL}directories`}>{t("HEADER.NAV.directories")}</Link> },
     { title: directoryName },
@@ -83,7 +80,7 @@ export default function Directory() {
       } else if(!checkIfDirectoryOk(id, response.data?.result)) {
         setError(t("MISC.directory_error"));
       } else {
-        localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
+        //localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
         const tempData = response.data?.result.directories[id]
         setDirectoryName(tempData.name)
         setDirectoryStats(createStatisticsObject("directory", tempData, moment))
@@ -92,7 +89,9 @@ export default function Directory() {
       setLoading(false)
     }
 
-    const storedData = localStorage.getItem("observatorioData");
+    processData()
+
+    /*const storedData = localStorage.getItem("observatorioData");
     if(!storedData) {
       processData()
     } else {
@@ -102,7 +101,7 @@ export default function Directory() {
       setDirectoryName(tempData.name)
       setDirectoryStats(createStatisticsObject("directory", tempData, moment))
       setDirectoriesList(tempData.websitesList)
-    }
+    }*/ 
   }, [])
 
   // useEffect to update the StatisticsHeader stats when language changes
@@ -165,7 +164,6 @@ export default function Directory() {
                   ariaLabels={ariaLabels}
                 />
 
-                <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
               </div>
             </section>
           </div>

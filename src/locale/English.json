@@ -25,7 +25,7 @@
         "title": "Welcome to the Portuguese Web Accessibility Observatory",
         "subtitle": "Discover the indicators and status of accessibility and usability on Portuguese websites and mobile applications"
       },
-      "text": "The Public Observatory of accessibility and usability practices on websites and mobile applications.",
+      "text": "<p>The Observatory of accessibility practices (<a href='https://www.acessibilidade.gov.pt/wcag/'><abbr title='Web Content Accessibility Guidelines'>WCAG</abbr> do <abbr title='World Wide Web Consortium'>W3C</abbr></a>) for websites and mobile applications.</p>",
       "NAV": {
         "location": "Acessibilidade.gov.pt",
         "observatory": "Observatory",

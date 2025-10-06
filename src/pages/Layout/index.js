@@ -31,7 +31,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header
-        description={t("HEADER.text")}
+        description={<div dangerouslySetInnerHTML={{ __html: t('HEADER.text') }}></div>}
         title={t("HEADER.title.part1")}
         title2={t("HEADER.title.part2")}
         darkTheme={theme}

@@ -12,8 +12,7 @@ export function ObservatoryInfoTabs({ }) {
   // Each vertical tab
   const tab = (title, paragraph, bullet1, bullet2, bullet3, isActive) => {
     return (
-      <div className="tabs_info_container" tabIndex={isActive ? 0 : -1}>
-        <h3 className="bold">{title}</h3>
+      <div className="tabs_info_container mt-3" tabIndex={isActive ? 0 : -1}>
         <p className="ama-typography-body-large">{paragraph}</p>
         <ul className="ps-0">
           <li className="d-flex p-1">
@@ -53,9 +52,15 @@ export function ObservatoryInfoTabs({ }) {
   ];
 
   return (
-    <>
-      <h2 className="bold mb-4">{t("HOME.tabs.title")}</h2>
-      <Tabs tabs={tabsGoodBad} defaultActiveKey="tab1" vertical={true} onSelect={(key) => setActiveTab(key)} />
-    </>
+    <div className="d-flex justify-content-between">
+      <Tabs 
+      tabs={tabsGoodBad} 
+      title={t("HOME.tabs.title")}
+      defaultActiveKey="tab1" 
+      vertical={true} 
+      onSelect={(key) => setActiveTab(key)} 
+      className="tabs_container"
+      />
+    </div>
   );
 }

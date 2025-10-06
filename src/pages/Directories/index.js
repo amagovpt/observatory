@@ -59,10 +59,7 @@ export default function Directories() {
   
   // Navigation options
   const breadcrumbs = [
-    {
-      title: "Acessibilidade.gov.pt",
-      href: "https://www.acessibilidade.gov.pt/",
-    },
+
     { children: <Link to={`${pathURL}`}>{t("HEADER.NAV.observatory")}</Link> },
     { title: t("HEADER.NAV.directories") },
   ];
@@ -77,12 +74,14 @@ export default function Directories() {
       } else {
         setDirectoriesStats(createStatisticsObject("directories", response.data?.result, moment))
         setDirectoriesList(response.data?.result.directoriesList)
-        localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
+        //localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
       }
       setLoading(false)
     }
+    
+    processData()
 
-    const storedData = localStorage.getItem("observatorioData");
+    /*const storedData = localStorage.getItem("observatorioData");
     if(!storedData) {
       processData()
     } else {
@@ -90,7 +89,7 @@ export default function Directories() {
       setParsedData(parsedData)
       setDirectoriesStats(createStatisticsObject("directories", parsedData, moment))
       setDirectoriesList(parsedData.directoriesList)
-    }
+    }*/
   }, [])
 
   // useEffect to update the StatisticsHeader stats when language changes
@@ -152,7 +151,6 @@ export default function Directories() {
                   pagination={false}
                   ariaLabels={ariaLabels}
                 />
-                <div className="ama-typography-body mt-4">{t("DIRECTORIES.table.note")}</div>
               </div>
             </section>
 
