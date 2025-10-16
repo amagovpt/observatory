@@ -288,6 +288,7 @@
       "statistics_subtitle": "Metadados",
       "show_websites": "Mostrar sítios Web",
       "search": {
+        "title": "Pesquisa",
         "label": "Pesquise sítios Web:",
         "placeholder": "Pesquise sitios Web por nome ou url",
         "directory": "Diretório",

@@ -1,12 +1,13 @@
 {
   "name": "observatorio_react",
+  "homepage": "observatory",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "ama-design-system": "file:../Storybook Design System AMA/ama-design-system-1.1.88.tgz",
+    "ama-design-system": "file:./ama-design-system-1.1.88.tgz",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",

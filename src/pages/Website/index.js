@@ -142,6 +142,7 @@ export default function Website() {
       } else {
         //localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
         const tempData = response.data?.result.directories[id]
+        console.log(" TEMP 1: ",tempData)
         setDirectoryName(tempData.name)
         const tempData2 = tempData.websites[sitioId]
         setData(tempData2)
@@ -184,7 +185,7 @@ export default function Website() {
                 {directoryName}
               </div>
               <h1 className="bold my-2">{data && data.name}</h1>
-              <h2><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h2>
+              <p><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></p>
             </div>
 
             {/* Statistics Header Component */}
@@ -207,7 +208,6 @@ export default function Website() {
             {/* Radar Graph */}
             <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
               <div className="d-flex flex-column section_container py-4">
-                <h2 className="bold">{t("WEBSITE.accessibility_plot.title")}</h2>
                 <RadarGraph tempData={data} />
               </div>
             </section>

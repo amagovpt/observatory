@@ -117,8 +117,7 @@
 }
 
 .top5_best_good .top5_number {
-    border: 0px;
-    background-color: var(--ama-color-background-light-darker);
+    border: 2px solid black;
 }
 
 .top5_best_good i {
@@ -203,6 +202,10 @@
 }
 
 /* DARK MODE */
+
+.main_dark .top5_best_good .top5_number {
+    border-color: var(--ama-color-background-white);
+}
 .main_dark .home_container {
     color: var(--ama-color-text-blue);
     background-color: var(--ama-color-background-dark-lighter) !important;
@@ -266,9 +269,6 @@
     filter: invert(100%) sepia(0%) saturate(7446%) hue-rotate(83deg) brightness(116%) contrast(115%);
 }
 
-.main_content_home .top5_best_good .top5_number {
-    background-color: var(--ama-color-background-dark-darker);
-}
 
 .main_content_home .group_container {
     background-color: var(--ama-color-background-dark-darker);

@@ -46,3 +46,5 @@ div#root {
 .link_breadcrumb_container .breadcrumbs.dark .breadcrumb .breadcrumb-item:not(:first-child) {
     background-image: url("/public/img/chevron-right-light.svg");
 }
+
+
