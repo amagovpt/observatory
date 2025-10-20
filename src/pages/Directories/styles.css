@@ -1,0 +1,71 @@
+.search_container {
+    background-color: var(--ama-color-brand-primary);
+    color: var(--ama-color-background-white);
+}
+
+.directories_container .ama.sorting_table_responsive tbody tr:hover,
+.search_container .ama.sorting_table_responsive tbody tr:hover {
+    background-color: var(--ama-color-background-light-darker) !important;
+}
+
+.search_container .field {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1 !important;
+}
+
+.search_container .field label {
+    color: var(--ama-color-background-white)
+}
+
+.search_container .field input {
+    margin-bottom: 0px;
+}
+
+.search_button {
+    background-color: var(--ama-color-background-white);
+    font-size: 30px;
+    align-self: flex-end;
+    height: 54px;
+    width: 93px;
+    border: 2px solid var(--ama-color-brand-primary);
+}
+
+.search_button:focus,
+.search_button:focus-visible {
+    box-shadow: 0 0 0 3px var(--ama-color-yellow-300) !important;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .search_container form {
+        flex-direction: column !important;
+    }
+}
+
+/* DARK MODE */
+.main_content_directories {
+    background-color: var(--ama-color-background-dark-lighter) !important;
+    color: var(--ama-color-background-white);
+}
+
+.main_dark .observatorio {
+    color: var(--ama-color-grey-900);
+    background-color: var(--ama-color-text-blue);
+    border-color: transparent;
+}
+
+.main_dark .page_title,
+.main_content_directories .section_container h3 {
+    color: var(--ama-color-background-white);
+}
+
+.main_content_directories .directories_container .ama.sorting_table_responsive tbody tr:hover,
+.main_content_directories.search_container .ama.sorting_table_responsive tbody tr:hover {
+    background-color: var(--ama-color-background-dark-darker) !important;
+}
+
+.main_content_directories .search_button {
+    border-color: var(--ama-color-text-blue);
+    color: var(--ama-color-text-blue);
+    background-color: transparent;
+}

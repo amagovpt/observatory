@@ -1,0 +1,22 @@
+.container_error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_error a {
+    color: var(--ama-color-grey-900);
+    text-decoration: none !important;
+}
+
+.container_error a span:hover {
+    text-decoration: underline !important;
+}
+
+
+/* DARK MODE */
+.dark_mode-error,
+.dark_mode-error a {
+    color: var(--ama-color-background-white);
+}
