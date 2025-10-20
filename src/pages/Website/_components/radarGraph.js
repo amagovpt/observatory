@@ -54,7 +54,7 @@ export function RadarGraph({ tempData }) {
 
   const tabs = [
       {
-        eventKey: "tab1",
+        eventKey: "tab3",
         title: t("DIALOGS.scores.chart_title"),
         component:
         <div className="radar_graph d-flex justify-content-center">
@@ -62,7 +62,7 @@ export function RadarGraph({ tempData }) {
         </div>,
       },
       {
-        eventKey: "tab2",
+        eventKey: "tab4",
         title: t("DIALOGS.scores.table"),
         component: <div className="radar_graph_table">
           <SortingTable
@@ -81,7 +81,7 @@ export function RadarGraph({ tempData }) {
 
   return (
     <div className="BarLine_section tabs_section">
-      <Tabs tabs={tabs} defaultActiveKey="tab1" vertical={false} />
+      <Tabs tabs={tabs} title={t("WEBSITE.accessibility_plot.title")} defaultActiveKey="tab3" vertical={false} />
     </div>
   );
 }

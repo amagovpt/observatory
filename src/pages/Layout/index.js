@@ -6,11 +6,13 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from 'react-router-dom'
 
 import { pathURL } from "../../App";
+import { useFocusManagement } from "../../hooks/useFocusManagement";
 
 export default function Layout({ children }) {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const location = useLocation()
   const mainDark = theme === "light" ? "" : "main_dark";
+  const mainContentRef = useFocusManagement();
 
   useLayoutEffect(() => {
     document.body.scrollTo(0, 0);
@@ -31,7 +33,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header
-        description={t("HEADER.text")}
+        description={<div dangerouslySetInnerHTML={{ __html: t('HEADER.text') }}></div>}
         title={t("HEADER.title.part1")}
         title2={t("HEADER.title.part2")}
         darkTheme={theme}
@@ -43,7 +45,13 @@ export default function Layout({ children }) {
         ariaLabel={t("HEADER.header_arial_label")}
         obsSpecial={true}
       />
-      <main className={`main ${mainDark}`} id="content" aria-label={t("HOME.main_aria")}>
+      <main 
+        ref={mainContentRef}
+        className={`main ${mainDark}`} 
+        id="content" 
+        aria-label={t("HOME.main_aria")}
+        tabIndex="-1"
+      >
         {children}
       </main>
 

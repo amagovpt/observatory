@@ -46,12 +46,17 @@
 
 .top5_link {
     color: var(--ama-color-brand-primary);
-    text-decoration: none !important;
+    text-decoration: underline !important;
+
 }
 
 .top5_link:hover {
     text-decoration: underline !important;
     cursor: pointer;
+}
+
+.title_tab_list{
+    font-weight: bold !important;
 }
 
 .censos_container {
@@ -112,8 +117,7 @@
 }
 
 .top5_best_good .top5_number {
-    border: 0px;
-    background-color: var(--ama-color-background-light-darker);
+    border: 2px solid black;
 }
 
 .top5_best_good i {
@@ -198,6 +202,10 @@
 }
 
 /* DARK MODE */
+
+.main_dark .top5_best_good .top5_number {
+    border-color: var(--ama-color-background-white);
+}
 .main_dark .home_container {
     color: var(--ama-color-text-blue);
     background-color: var(--ama-color-background-dark-lighter) !important;
@@ -261,9 +269,6 @@
     filter: invert(100%) sepia(0%) saturate(7446%) hue-rotate(83deg) brightness(116%) contrast(115%);
 }
 
-.main_content_home .top5_best_good .top5_number {
-    background-color: var(--ama-color-background-dark-darker);
-}
 
 .main_content_home .group_container {
     background-color: var(--ama-color-background-dark-darker);
@@ -282,7 +287,13 @@
     fill: var(--ama-color-background-white);
 }
 
+.ama.tabs-container .nav-tabs .nav-link{
+    padding: 35px !important;
+}
 
+.tabs-grid .ama.tabs-container.vertical-tabs {
+    gap: 110px !important;
+}
 @media (min-width: 320px) and (max-width: 480px) {
     .top5_websites {
       flex-direction: column !important;
@@ -334,7 +345,17 @@
 
     .tabs-grid .tabs_info_container {
         margin-top: 25px;
-        margin-left: 0px;
+    }
+
+    .tabs-grid .tabs_info_container > h2 {
+        font-size: 42px !important;
+        line-height: 48px !important;
+        font-weight: 900 !important;
+        font-family: Lato !important;
+    }
+
+    .nav-item button {
+        padding: 40px !important;
     }
 
     .top5_best_good {

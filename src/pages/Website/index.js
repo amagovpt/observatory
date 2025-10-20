@@ -83,10 +83,6 @@ export default function Website() {
 
   // Navigation options
   const breadcrumbs = [
-    {
-      title: "Acessibilidade.gov.pt",
-      href: "https://www.acessibilidade.gov.pt/",
-    },
     { children: <Link to={`${pathURL}`}>{t("HEADER.NAV.observatory")}</Link> },
     { children: <Link to={`${pathURL}directories`}>{t("HEADER.NAV.directories")}</Link> },
     { children: <Link to={`${pathURL}directories/${id}`}>{directoryName}</Link> },
@@ -144,8 +140,9 @@ export default function Website() {
       } else if(!checkIfWebsiteOk(id, sitioId, response.data?.result)) {
         setError(t("MISC.website_error"));
       } else {
-        localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
+        //localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
         const tempData = response.data?.result.directories[id]
+        console.log(" TEMP 1: ",tempData)
         setDirectoryName(tempData.name)
         const tempData2 = tempData.websites[sitioId]
         setData(tempData2)
@@ -153,8 +150,9 @@ export default function Website() {
       }
       setLoading(false)
     }
+    processData()
 
-    const storedData = localStorage.getItem("observatorioData");
+    /*const storedData = localStorage.getItem("observatorioData");
     if(!storedData) {
       processData()
     } else {
@@ -164,7 +162,7 @@ export default function Website() {
       const tempData = parsedData.directories[id].websites[sitioId]
       setData(tempData)
       setWebsiteStats(createStatisticsObject("website", tempData, moment))
-    }
+    }*/
   }, [])
 
   // useEffect to update the StatisticsHeader stats when language changes
@@ -187,7 +185,7 @@ export default function Website() {
                 {directoryName}
               </div>
               <h1 className="bold my-2">{data && data.name}</h1>
-              <h2><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></h2>
+              <p><a className="ama-typography-action-large bold" href={data && data.startingUrl} >{data && data.startingUrl}</a></p>
             </div>
 
             {/* Statistics Header Component */}
@@ -210,7 +208,6 @@ export default function Website() {
             {/* Radar Graph */}
             <section className={`bg-white ${main_content_website} d-flex flex-row justify-content-center align-items-center my-5`}>
               <div className="d-flex flex-column section_container py-4">
-                <h2 className="bold">{t("WEBSITE.accessibility_plot.title")}</h2>
                 <RadarGraph tempData={data} />
               </div>
             </section>

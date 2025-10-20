@@ -44,7 +44,7 @@ export function BarLineGraphTabs({ tempData, websiteStats }) {
 
   const tabs = [
     {
-      eventKey: "tab1",
+      eventKey: "tab7",
       title: t("DIALOGS.scores.chart_title"),
       component:
       <div className="overflow">
@@ -54,7 +54,7 @@ export function BarLineGraphTabs({ tempData, websiteStats }) {
       </div>,
     },
     {
-      eventKey: "tab2",
+      eventKey: "tab8",
       title: t("DIALOGS.scores.table"),
       component: <div>
         <SortingTable
@@ -107,7 +107,7 @@ export function BarLineGraphTabs({ tempData, websiteStats }) {
 
   return (
     <div className="BarLine_section tabs_section">
-      <Tabs tabs={tabs} defaultActiveKey="tab1" vertical={false} />
+      <Tabs tabs={tabs} defaultActiveKey="tab7" vertical={false} />
     </div>
   );
 }

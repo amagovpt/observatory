@@ -28,7 +28,7 @@ export function TopTenTabs({ top10Data, color, aditionalData, title, ariaLabels 
 
   const tabs = [
     {
-      eventKey: "tab1",
+      eventKey: "tab5",
       title: t("DIALOGS.scores.chart_title"),
       component: 
       <div className="overflow">
@@ -38,7 +38,7 @@ export function TopTenTabs({ top10Data, color, aditionalData, title, ariaLabels 
       </div>,
     },
     {
-      eventKey: "tab2",
+      eventKey: "tab6",
       title: t("DIALOGS.scores.table"),
       component: <div className="dark_table">
         {dataTable && dataTable.length > 0 ? (
@@ -81,7 +81,7 @@ export function TopTenTabs({ top10Data, color, aditionalData, title, ariaLabels 
 
   return (
     <div className="topTen_section tabs_section">
-      <Tabs tabs={tabs} defaultActiveKey="tab1" vertical={false} />
+      <Tabs tabs={tabs} defaultActiveKey="tab5" vertical={false} />
     </div>
   );
 }

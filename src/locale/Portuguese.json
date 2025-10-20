@@ -22,10 +22,10 @@
         "part2": "da Acessibilidade Web"
       },
       "welcome": {
-        "title": "Bem vindo ao Observatório Português da Acessibilidade Web",
-        "subtitle": "Conheça os indicadores e estado acessibilidade e usabilidade em sítios web e aplicações móveis portuguesas"
+        "title": "Bem-vindo ao Observatório Português da Acessibilidade Web",
+        "subtitle": "Conheça os indicadores e o estado da acessibilidade dos sítios web e das aplicações móveis em Portugal"
       },
-      "text": "O Observatório público das práticas de acessibilidade e usabilidade em sítios Web e aplicações móveis.",
+      "text": "<p>O Observatório das práticas de acessibilidade (<a href='https://www.acessibilidade.gov.pt/wcag/'><abbr title='Web Content Accessibility Guidelines'>WCAG</abbr> do <abbr title='World Wide Web Consortium'>W3C</abbr></a>) de sítios Web e de aplicações móveis.</p>",
       "NAV": {
         "location": "Acessibilidade.gov.pt",
         "observatory": "Observatório",
@@ -198,12 +198,12 @@
         }
       },
       "top5": {
-        "title": "Top 5 da Acessibilidade Web na Administração Pública",
+        "title": "Os melhores classificados",
         "last_updated": "Última atualização:",
         "paragraph": {
-          "part1": "Conheça os sítios Web com melhor classificação de",
-          "part2": "acessibilidade na Administração Pública, segundo",
-          "part3": "os critérios de boas práticas de acessibilidade WCAG 2.1."
+          "part1": "Conheça as boas práticas de",
+          "part2": "acessibilidade dos sítios Web da Administração Pública Portuguesa",
+          "part3": "tendo por referência a Norma Europeia EN 301 549 ou WCAG 2.1 do W3C."
         },
         "numbers_link": "Mais números do Observatório",
         "button": "Consulte os dados do Observatório",
@@ -269,7 +269,7 @@
       },
       "badge": {
         "title": "Selo de Usabilidade e Acessibilidade",
-        "paragraph": "O Observatório monitoriza e regista o número de distinções com o Selo de excelência e o nível atingido – Ouro, Prata ou Bronze.",
+        "paragraph": "O Observatório regista o número de sítios Web e de aplicações móveis certificados com o Selo de Usabilidade e Acessibilidade – Ouro, Prata ou Bronze.",
         "subtitle1": "Sítios Web e aplicações móveis com Selo de Usabilidade",
         "subtitle2": "Sítios Web com Selo de Usabilidade",
         "subtitle3": "Aplicações móveis com Selo de Usabilidade",
@@ -288,6 +288,7 @@
       "statistics_subtitle": "Metadados",
       "show_websites": "Mostrar sítios Web",
       "search": {
+        "title": "Pesquisa",
         "label": "Pesquise sítios Web:",
         "placeholder": "Pesquise sitios Web por nome ou url",
         "directory": "Diretório",

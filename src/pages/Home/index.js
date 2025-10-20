@@ -59,7 +59,7 @@ export default function Home() {
         setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
       } else {
         setDirectoriesStats(createStatisticsObject("home", response.data?.result, moment))
-        localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
+        //localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
         setParsedData(response.data?.result)
       }
       setLoading(false)
@@ -69,11 +69,12 @@ export default function Home() {
 
   // useEffect to update the StatisticsHeader stats when language changes
   useEffect(() => {
-    const storedData = localStorage.getItem("observatorioData");
+    /*const storedData = localStorage.getItem("observatorioData");
     if(!storedData) return;
     setParsedData(JSON.parse(storedData))
     setDirectoriesStats(createStatisticsObject("home", JSON.parse(storedData), moment))
-  }, [language])
+    }*/
+    }, [language])
 
   // Data for the censos section
   const censosDataIndividual = (icon, number, spans) => {
@@ -95,6 +96,12 @@ export default function Home() {
           <div className="container welcome_container mb-4">
             <h1 className="mb-2 title">{t("HEADER.welcome.title")}</h1>
             <p className="subtitle">{t("HEADER.welcome.subtitle")}</p>
+            <Link
+              className="ama-typography-body-large bold text-underline top5_link d-flex"
+              to={`${pathURL}directories`}
+            >   
+             <span className="bold ms-2"> <Icon name="AMA-Edificio-Line" aria-hidden="true" /> {t("HOME.top5.button")}</span>
+            </Link>
           </div>
         </section>
         
@@ -143,13 +150,14 @@ export default function Home() {
                 </tbody>
               </table>
             </div>
-            <Link
-              className="ama-typography-body-large bold top5_link"
-              to={`${pathURL}directories`}
-            >
-              {t("HOME.top5.button")}
-            </Link>
+
           </section>
+
+                  {/* Top 5 Good and Bad Practices */}
+                  <div className="d-flex my-6 top5_best_good">
+              <Top5_Practices data={parsedData.topFiveBestPractices} title={t("HOME.summary.best_practices_title")} icon={"AMA-Check-Line"} />
+              <Top5_Practices data={parsedData.topFiveErrors} title={t("HOME.summary.errors_title")} icon={"AMA-Wrong-Line"} />
+            </div>
         </div>
 
         <section className={`bg-white ${main_content_home} d-flex flex-column section last_section pt-6`}>
@@ -196,11 +204,7 @@ export default function Home() {
               </div>
             </div>
            
-            {/* Top 5 Good and Bad Practices */}
-            <div className="d-flex my-6 top5_best_good">
-              <Top5_Practices data={parsedData.topFiveBestPractices} title={t("HOME.summary.best_practices_title")} icon={"AMA-Check-Line"} />
-              <Top5_Practices data={parsedData.topFiveErrors} title={t("HOME.summary.errors_title")} icon={"AMA-Wrong-Line"} />
-            </div>
+    
           </div>
         </section>
       </>
