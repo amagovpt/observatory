@@ -1,0 +1,50 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden; /* Prevent unwanted overflow */
+    width: 100%; /* Ensure consistent sizing */
+}
+
+div#root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.observatorio {
+    color: var(--ama-color-background-white);
+    background-color: var(--ama-color-brand-primary);
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+}
+
+.container {
+    width: 87% !important;
+    max-width: none !important;
+}
+
+.main {
+    height: auto;
+    background-color: var(--ama-color-background-light-darker);
+    position: relative;
+    padding-bottom: 4rem;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section_container {
+    width: 90%;
+}
+
+.link_breadcrumb_container .breadcrumb .breadcrumb-item:not(:first-child) {
+    background-image: url("/public/img/chevron-right-dark.svg");
+}
+
+.link_breadcrumb_container .breadcrumbs.dark .breadcrumb .breadcrumb-item:not(:first-child) {
+    background-image: url("/public/img/chevron-right-light.svg");
+}
+
+
