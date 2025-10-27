@@ -29,8 +29,7 @@ export function RadarGraph({ tempData }) {
   // Radar Graph
   const [dataForRadar, setDataForRadar] = useState();
   const [dataForTable, setDataForTable] = useState([]);
-
-  const { options } = getRadarGraph(t, theme, tempData.accessibilityPlotData)
+  const [options, setOptions] = useState();
 
   const { dataHeaders, columnsOptions } = getRadarTable(t)
 
@@ -46,9 +45,10 @@ export function RadarGraph({ tempData }) {
       return ""
     })
 
-    const { manchaData } = getRadarGraph(t, theme, labelsForRadar, tempData.accessibilityPlotData)
+    const { manchaData, options: radarOptions } = getRadarGraph(t, theme, labelsForRadar, tempData.accessibilityPlotData, language)
     setDataForRadar(manchaData)
     setDataForTable(dataForTable)
+    setOptions(radarOptions)
 
   }, [tempData, language, theme, t])
 
