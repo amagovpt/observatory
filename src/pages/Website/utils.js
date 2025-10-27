@@ -218,10 +218,11 @@ export function getGoodBadTabTables (t, goodOrBad) {
 // theme -> Dark/Light theme
 // labelsForRadar -> labels for the radar
 // data -> Data for the radar
+// language -> Current language (pt or en)
 // RETURNS
 // options -> Options for the radar
 // manchaData -> Data for radar
-export function getRadarGraph (t, theme, labelsForRadar, data) {
+export function getRadarGraph (t, theme, labelsForRadar, data, language = 'pt') {
     const options = {
       scales: {
         r: {
@@ -243,6 +244,20 @@ export function getRadarGraph (t, theme, labelsForRadar, data) {
         legend: {
           labels: {
             color: theme === "light" ? "black" : '#b6dcf6', // Color of the legend text
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const dataIndex = context.dataIndex;
+              const value = context.parsed.r;
+              const pageNumber = dataIndex + 1;
+              if (language === 'pt') {
+                return `Pagina: ${pageNumber}, Classificação: ${value}`;
+              } else {
+                return `Page: ${pageNumber}, Score: ${value}`;
+              }
+            }
           }
         }
       }
