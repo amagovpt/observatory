@@ -74,7 +74,6 @@ export default function Directories() {
       } else {
         setParsedData(response.data?.result)
         setDirectoriesStats(createStatisticsObject("directories", response.data?.result, moment))
-        console.log("LOG DIRECTORIES: ",response.data?.result.directoriesList)
         setDirectoriesList(response.data?.result.directoriesList)
         //localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
       }

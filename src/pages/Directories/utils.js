@@ -123,7 +123,7 @@ export function getDirectoriesTable (t) {
         {type: "SortingIcon", nRow: 2, name: "AMA-SeloDark-Line", description: t("DIRECTORY.table.stamp"), property: "stamps"},
         {type: "SortingText", nRow: 2, bigWidth: "10%", name: t("DIRECTORIES.table.score"), property: "score", justifyCenter: true},
         {type: "SortingText", nRow: 2, bigWidth: "10%", name: t("DIRECTORIES.table.websites"), property: "nWebsites", justifyCenter: true},
-        {id: "conformidade", type: "Text", nRow: 1, name: "Páginas em conformidade*", property: "", justifyCenter: true, nCol: 3},
+        {id: "conformidade", type: "Text", nRow: 1, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, nCol: 3},
       ],
       [
         {id: "A", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true, ariaLabel: true},
@@ -142,7 +142,7 @@ export function getDirectoriesTable (t) {
       stamps: { type: "Number", center: true, bold: false, decimalPlace: false },
       score: { type: "Number", center: true, bold: false, decimalPlace: true },
       nWebsites: { type: "Number", center: true, bold: false, decimalPlace: false },
-      A: { type: "Number", center: false, bold: false, decimalPlace: false, headers: "conformidade A" },
+      A: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "conformidade A" },
       AA: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "conformidade AA" },
       AAA: { type: "Number", center: true, bold: false, decimalPlace: false, headers: "conformidade AAA" },
     }
