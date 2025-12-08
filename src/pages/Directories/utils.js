@@ -8,10 +8,21 @@ export function _search (website, text) {
     const parts = text.trim().toLowerCase().split(" ");
     let hasText = true;
 
+    // Normalize URL by removing protocol, www, and trailing slashes
+    const normalizeUrl = (url) => {
+      if (!url) return "";
+      return url
+        .replace(/^https?:\/\//, "")  // Remove http:// or https://
+        .replace(/^www\./, "")         // Remove www.
+        .replace(/\/$/, "");           // Remove trailing slash
+    };
+
     const totalText = (
       website.name +
       " " +
       website.startingUrl +
+      " " +
+      normalizeUrl(website.startingUrl) +
       " " +
       (website.entity ?? "")
     )
@@ -108,11 +119,11 @@ export function getDirectoriesTable (t) {
       [
         {type: "SortingText", nRow: 2, bigWidth: "10%", name: t("DIRECTORIES.table.rank"), property: "rank"},
         {type: "SortingText", nRow: 2, bigWidth: "50%", name: t("DIRECTORIES.table.name"), property: "name"},
-        {type: "SortingIcon", nRow: 2, name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORY.table.declaration"), property: "declaration"},
-        {type: "SortingIcon", nRow: 2, name: "AMA-SeloDark-Line", description: t("DIRECTORY.table.stamp"), property: "stamp"},
+        {type: "SortingIcon", nRow: 2, name: "AMA-DeclaracaoDark-Line", description: t("DIRECTORY.table.declaration"), property: "declarations"},
+        {type: "SortingIcon", nRow: 2, name: "AMA-SeloDark-Line", description: t("DIRECTORY.table.stamp"), property: "stamps"},
         {type: "SortingText", nRow: 2, bigWidth: "10%", name: t("DIRECTORIES.table.score"), property: "score", justifyCenter: true},
         {type: "SortingText", nRow: 2, bigWidth: "10%", name: t("DIRECTORIES.table.websites"), property: "nWebsites", justifyCenter: true},
-        {id: "conformidade", type: "Text", nCol: 3, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, multiCol: true},
+        {id: "conformidade", type: "Text", nRow: 1, name: t("DIRECTORIES.table.levels"), property: "", justifyCenter: true, nCol: 3},
       ],
       [
         {id: "A", type: "SortingText", bigWidth: "10%", name: t("DIRECTORIES.table.A"), property: "A", justifyCenter: true, ariaLabel: true},

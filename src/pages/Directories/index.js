@@ -72,6 +72,7 @@ export default function Directories() {
       if(err && err.code) {
         setError(t("MISC.unexpected_error") + " " + t("MISC.error_contact"));
       } else {
+        setParsedData(response.data?.result)
         setDirectoriesStats(createStatisticsObject("directories", response.data?.result, moment))
         setDirectoriesList(response.data?.result.directoriesList)
         //localStorage.setItem("observatorioData", JSON.stringify(response.data?.result));
