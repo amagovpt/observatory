@@ -49,6 +49,6 @@
   },
   "devDependencies": {
     "prop-types": "^15.8.1",
-    "webpack": "^5.91.0"
+    "webpack": "^5.105.0"
   }
 }
