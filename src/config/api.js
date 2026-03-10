@@ -2,9 +2,6 @@ import axios from "axios";
 import dataJSON from '../utils/data.json'
 
 const baseURL = process.env.REACT_APP_AMP_SERVER;
-console.log("ALL Environment Variables:", process.env);
-console.log("API Base URL:", baseURL);
-console.log("API Data Source:", process.env.REACT_APP_API_DATA_SOURCE);
 
 export const api = axios.create({
   baseURL: baseURL,
