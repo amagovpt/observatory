@@ -1,0 +1,40 @@
+FROM node:20-alpine AS base 
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+  
+FROM base AS development
+
+ARG REACT_APP_AMP_SERVER
+ARG REACT_APP_SERVER_URL
+ARG REACT_APP_API_DATA_SOURCE
+ENV REACT_APP_API_DATA_SOURCE=$REACT_APP_API_DATA_SOURCE
+ENV REACT_APP_SERVER_URL=$REACT_APP_SERVER_URL
+ENV REACT_APP_AMP_SERVER=$REACT_APP_AMP_SERVER
+
+COPY . .
+
+EXPOSE 3000
+CMD [ "npm","run", "start:noenv" ]
+
+
+FROM base AS builder
+ARG REACT_APP_AMP_SERVER
+ARG REACT_APP_SERVER_URL
+ARG REACT_APP_API_DATA_SOURCE
+ENV REACT_APP_API_DATA_SOURCE=$REACT_APP_API_DATA_SOURCE
+ENV REACT_APP_SERVER_URL=$REACT_APP_SERVER_URL
+ENV REACT_APP_AMP_SERVER=$REACT_APP_AMP_SERVER
+COPY . .
+RUN npm run build:noenv
+
+
+FROM httpd:alpine AS production
+COPY .htaccess ./
+COPY --from=builder /app/build /usr/local/apache2/htdocs/observatory
+COPY --from=builder /app/.htaccess /usr/local/apache2/htdocs/observatory
+
+EXPOSE 80

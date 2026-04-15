@@ -12,7 +12,7 @@ import { Tabs, SortingTable } from "ama-design-system";
 import { getTopTenGraphTable } from "../utils"
 
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { Bar, Chart } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export function TopTenTabs({ top10Data, color, aditionalData, title, ariaLabels }) {
@@ -62,13 +62,13 @@ export function TopTenTabs({ top10Data, color, aditionalData, title, ariaLabels 
     let tempHorizontalLabels = []
     let tempTableData = []
     top10Data.map((value) => {
-        tempHorizontalLabels.push(t(`RESULTS.${value.key}`))
+        tempHorizontalLabels.push(t(`TESTS_RESULTS.${value.key}.title`))
         tempHorizontalData.push(value.n_pages)
 
         const level = aditionalData && aditionalData.practicesData.length > 0 && aditionalData.practicesData.find((elem) => elem.key === value.key)
         tempTableData.push({
           lvl: level.lvl,
-          name: t(`RESULTS.${value.key}`),
+          name: t(`TESTS_RESULTS.${value.key}.title`),
           nPages: value.n_pages,
           nOccurrences: value.n_occurrences,
         })

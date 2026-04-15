@@ -51,13 +51,13 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
         praticsPerPage.push(text)
       })
       
-      tempDetailsTable.push({name: t(`RESULTS.${value.key}`), practices: praticsPerPage, pages: value.n_pages, occurences: value.n_occurrences, lvl: value.lvl})
+      tempDetailsTable.push({name: t(`TESTS_RESULTS.${value.key}.title`), practices: praticsPerPage, pages: value.n_pages, occurences: value.n_occurrences, lvl: value.lvl})
       switch(value.lvl) {
         case "A":
           if(tempDataTableA.length < 3) {
             tempDataTableA.push({
               number: tempDataTableA.length+1+".",
-              name: t(`RESULTS.${value.key}`),
+              name: t(`TESTS_RESULTS.${value.key}.title`),
               nPages: [t(`WEBSITE.${goodOrBad}.practice`) + " ", value.n_pages + " " + t(`WEBSITE.${goodOrBad}.pages`)]
             })
           }
@@ -66,7 +66,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
           if(tempDataTableAA.length < 3) {
             tempDataTableAA.push({
               number: tempDataTableAA.length+1+".",
-              name: t(`RESULTS.${value.key}`),
+              name: t(`TESTS_RESULTS.${value.key}.title`),
               nPages: [t(`WEBSITE.${goodOrBad}.practice`) + " ", value.n_pages + " " + t(`WEBSITE.${goodOrBad}.pages`)]
             })
           }
@@ -75,7 +75,7 @@ export function GoodBadTab({ main_content_website, tempData, top10Data, color, g
           if(tempDataTableAAA.length < 3) {
             tempDataTableAAA.push({
               number: tempDataTableAAA.length+1+".",
-              name: t(`RESULTS.${value.key}`),
+              name: t(`TESTS_RESULTS.${value.key}.title`),
               nPages: [t(`WEBSITE.${goodOrBad}.practice`) + " ", value.n_pages + " " + t(`WEBSITE.${goodOrBad}.pages`)]
             })
           }

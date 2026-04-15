@@ -18,7 +18,7 @@ export function Top5_Practices({ data, title, icon }) {
         {data.map((practice, index) => 
           <li className="d-flex align-items-center mb-3">
             <span className="top5_number me-2">{index+1}</span>
-            <span>{t(`RESULTS.${practice.key}`)}</span>
+            <span>{t(`TESTS_RESULTS.${practice.key}.title`)}</span>
           </li>
         )}
         </ul>
