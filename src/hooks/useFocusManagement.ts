@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
  */
 export const useFocusManagement = () => {
   const location = useLocation();
-  const mainContentRef = useRef(null);
+  const mainContentRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // Small delay to ensure DOM is updated after route change
@@ -23,7 +23,7 @@ export const useFocusManagement = () => {
         const mainElement = document.getElementById('content');
         if (mainElement) {
           // Strategy 1: Look for the first heading (h1) as it's typically the first meaningful content
-          const firstHeading = mainElement.querySelector('h1');
+          const firstHeading = mainElement.querySelector<HTMLElement>('h1');
           if (firstHeading) {
             firstHeading.setAttribute('tabindex', '-1');
             firstHeading.focus();
@@ -31,17 +31,17 @@ export const useFocusManagement = () => {
           }
 
           // Strategy 2: Look for the first interactive element (links, buttons, etc.)
-          const interactiveElements = mainElement.querySelectorAll(
-            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          const interactiveElements = mainElement.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
           );
-          
+
           if (interactiveElements.length > 0) {
             interactiveElements[0].focus();
             return;
           }
 
           // Strategy 3: Look for any heading (h1-h6) as fallback
-          const anyHeading = mainElement.querySelector('h1, h2, h3, h4, h5, h6');
+          const anyHeading = mainElement.querySelector<HTMLElement>('h1, h2, h3, h4, h5, h6');
           if (anyHeading) {
             anyHeading.setAttribute('tabindex', '-1');
             anyHeading.focus();
