@@ -1,0 +1,152 @@
+{
+  "score": 8.7,
+  "directoriesCount": 142,
+  "websitesCount": 3500,
+  "entitiesCount": 48,
+  "pagesCount": 2105430,
+  "pagesWithoutErrorsCount": 450,
+  "recentPageDate": "2026-08-10",
+  "oldestPageDate": "2022-05-15",
+  "topWebsites": [
+    {
+      "index": 1,
+      "id": 101,
+      "directoryId": 5,
+      "entity": "Entidade Exemplo A",
+      "name": "Portal Governamental Teste",
+      "score": 9.8
+    },
+    {
+      "index": 2,
+      "id": 102,
+      "directoryId": 5,
+      "entity": "Entidade Exemplo B",
+      "name": "Serviços Digitais Município",
+      "score": 8.9
+    },
+    {
+      "index": 3,
+      "id": 103,
+      "directoryId": 7,
+      "entity": "Instituto de Inovação",
+      "name": "Diretório de Acesso Público",
+      "score": 8.2
+    }
+  ],
+  "topBestPractices": [
+    {
+      "key": "label_02",
+      "occurrenceCount": 120400,
+      "pagesCount": 2100,
+      "websitesCount": 40
+    },
+    {
+      "key": "focus_04",
+      "occurrenceCount": 85000,
+      "pagesCount": 1500,
+      "websitesCount": 38
+    },
+    {
+      "key": "table_01",
+      "occurrenceCount": 78000,
+      "pagesCount": 1100,
+      "websitesCount": 35
+    },
+    {
+      "key": "alt_03",
+      "occurrenceCount": 65000,
+      "pagesCount": 980,
+      "websitesCount": 32
+    },
+    {
+      "key": "lang_01",
+      "occurrenceCount": 54000,
+      "pagesCount": 850,
+      "websitesCount": 30
+    }
+  ],
+  "topErrors": [
+    {
+      "key": "contrast_01",
+      "occurrenceCount": 5100,
+      "pagesCount": 700,
+      "websitesCount": 25
+    },
+    {
+      "key": "heading_02",
+      "occurrenceCount": 4200,
+      "pagesCount": 400,
+      "websitesCount": 22
+    },
+    {
+      "key": "aria_09",
+      "occurrenceCount": 3500,
+      "pagesCount": 350,
+      "websitesCount": 20
+    },
+    {
+      "key": "link_04",
+      "occurrenceCount": 2800,
+      "pagesCount": 280,
+      "websitesCount": 18
+    },
+    {
+      "key": "form_01",
+      "occurrenceCount": 1900,
+      "pagesCount": 150,
+      "websitesCount": 15
+    }
+  ],
+  "declarations": {
+    "total": {
+      "websites": {
+        "conform": 60,
+        "partial": 30,
+        "not_conform": 10
+      },
+      "apps": {
+        "conform": 50,
+        "partial": 150,
+        "not_conform": 800
+      }
+    },
+    "currentYear": {
+      "websites": {
+        "conform": 150,
+        "partial": 40,
+        "not_conform": 50
+      },
+      "apps": {
+        "conform": 25,
+        "partial": 120,
+        "not_conform": 180
+      }
+    }
+  },
+  "badges": {
+    "total": {
+      "websites": {
+        "gold": 300,
+        "silver": 450,
+        "bronze": 700
+      },
+      "apps": {
+        "gold": 50,
+        "silver": 150,
+        "bronze": 400
+      }
+    },
+    "currentYear": {
+      "websites": {
+        "gold": 150,
+        "silver": 250,
+        "bronze": 350
+      },
+      "apps": {
+        "gold": 20,
+        "silver": 80,
+        "bronze": 200
+      }
+    }
+  }
+}
